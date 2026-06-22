@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="mark">🦊</span>
+      <span class="name">Fairy<b>Fox</b></span>
+    </a>
+    <nav class="nav">
+      {%- assign p = page.url -%}
+      <a href="{{ '/' | relative_url }}"         class="{% if p == '/' %}active{% endif %}">Home</a>
+      <a href="{{ '/projects/' | relative_url }}" class="{% if p contains '/projects' %}active{% endif %}">Projects</a>
+      <a href="{{ '/blog/' | relative_url }}"     class="{% if p contains '/blog' %}active{% endif %}">Blog</a>
+      <a href="{{ '/about/' | relative_url }}"    class="{% if p contains '/about' %}active{% endif %}">About</a>
+    </nav>
+  </div>
+</header>

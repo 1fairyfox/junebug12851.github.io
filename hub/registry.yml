@@ -1,0 +1,33 @@
+# ── Project registry (machine-readable) ──────────────────────────────────────
+# The list the hub uses for cross-project sync + blog round-ups. The human-facing
+# companion (rendered on the site) is ../_data/projects.yml — keep them in step.
+#
+# Per entry:
+#   key      short slug = the folder name under assets/references/
+#   repo     github URL
+#   branch   branch to track for sync (default: dev)
+#   adopts_hub  true if this project pulls standards from this hub
+#   notes_system  true if the project uses the shared living-notes system
+#
+# last_seen is updated by the round-up pass (see notes/reference/blogging-workflow.md)
+# to remember where the previous diff stopped.
+
+hub:
+  repo: https://github.com/junebug12851/junebug12851.github.io
+  branch: dev
+  role: hub            # this very repo — the source of shared standards
+
+projects:
+  - key: pokered-save-editor-2
+    repo: https://github.com/junebug12851/pokered-save-editor-2
+    branch: dev
+    adopts_hub: true
+    notes_system: true
+    last_seen: null
+
+  - key: random-ai-prompt
+    repo: https://github.com/junebug12851/random-ai-prompt
+    branch: dev
+    adopts_hub: true
+    notes_system: false
+    last_seen: null

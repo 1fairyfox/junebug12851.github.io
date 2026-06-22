@@ -1,0 +1,26 @@
+# ── Jekyll build output ──────────────────────────────────────────────────────
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# ── Ruby / Bundler ───────────────────────────────────────────────────────────
+vendor/
+.bundle/
+# Gemfile.lock is intentionally committed (locks the build for reproducibility).
+
+# ── Cross-project reference clones ───────────────────────────────────────────
+# assets/references/ holds shallow clones of OTHER repositories, pulled on
+# demand for reference + blogging (see notes/reference/cross-project-sync.md).
+# They are NOT part of this repo — never commit them. The folder itself is kept
+# via its tracked README.
+assets/references/*
+!assets/references/README.md
+
+# ── OS / editor cruft ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/

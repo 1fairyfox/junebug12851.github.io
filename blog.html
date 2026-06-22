@@ -1,0 +1,22 @@
+---
+layout: page
+title: Blog
+subtitle: Notes on what I'm building — including changes across my other projects.
+permalink: /blog/
+---
+
+<ul class="post-list" style="margin-top:1.4rem">
+  {%- for post in site.posts -%}
+  <li>
+    <div class="meta">{{ post.date | date: "%b %-d, %Y" }}
+      {%- if post.tags and post.tags.size > 0 %} ·
+        {% for t in post.tags %}<span class="tag muted">{{ t }}</span>{% endfor %}
+      {%- endif -%}
+    </div>
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 180 }}</p>
+  </li>
+  {%- else -%}
+  <li><p class="muted">No posts yet.</p></li>
+  {%- endfor -%}
+</ul>

@@ -1,0 +1,58 @@
+---
+layout: default
+title: null
+---
+<section class="hero">
+  <div class="wrap">
+    <h1>Hey, I'm Twilight. <span class="grad">Welcome to my den.</span></h1>
+    <p class="lede">
+      This is my little corner of the web — a hub for the things I build, a
+      blog about what I'm tinkering with, and the shared scaffolding that keeps
+      all my projects tidy. Poke around.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="{{ '/projects/' | relative_url }}">See my projects →</a>
+      <a class="btn" href="{{ '/blog/' | relative_url }}">Read the blog</a>
+      <a class="btn" href="https://github.com/{{ site.author.github }}">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:2.4rem">
+  <div class="section-head">
+    <h2 class="mb0">Featured projects</h2>
+    <a class="more" href="{{ '/projects/' | relative_url }}">All projects →</a>
+  </div>
+  <div class="grid cols-2" style="margin-top:1rem">
+    {%- for proj in site.data.projects -%}
+      {%- if proj.featured -%}
+      <a class="card" href="{{ proj.site | default: proj.repo }}">
+        <h3>{{ proj.name }}</h3>
+        <p>{{ proj.blurb }}</p>
+        <div>
+          {%- for t in proj.tags limit: 3 -%}<span class="tag">{{ t }}</span>{%- endfor -%}
+          {%- if proj.status -%}<span class="tag muted">{{ proj.status }}</span>{%- endif -%}
+        </div>
+      </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:2.8rem">
+  <div class="section-head">
+    <h2 class="mb0">From the blog</h2>
+    <a class="more" href="{{ '/blog/' | relative_url }}">All posts →</a>
+  </div>
+  <ul class="post-list" style="margin-top:.4rem">
+    {%- for post in site.posts limit: 4 -%}
+    <li>
+      <div class="meta">{{ post.date | date: "%b %-d, %Y" }}</div>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 140 }}</p>
+    </li>
+    {%- else -%}
+    <li><p class="muted">No posts yet — the first one is on its way.</p></li>
+    {%- endfor -%}
+  </ul>
+</section>

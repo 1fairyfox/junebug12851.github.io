@@ -1,0 +1,29 @@
+# ── Project registry ─────────────────────────────────────────────────────────
+# The single list of my projects, rendered on the home page (featured) and the
+# /projects/ page. This is also the human-readable companion to hub/registry.yml
+# (the machine registry used for cross-project git sync). Keep them in step.
+#
+# Fields: name, repo (github URL), blurb, tags [], status, featured (bool),
+#         site (optional live URL), reference (bool — pulled into assets/references).
+
+- name: Pokered Save Editor 2
+  repo: https://github.com/junebug12851/pokered-save-editor-2
+  site: https://junebug12851.github.io/pokered-save-editor-2/
+  blurb: >-
+    A polished desktop save-file editor for Pokémon Red & Blue — Qt 6 C++/QML.
+    Byte-exact save read/write, full team/box/item/randomizer editing, and an
+    in-game font keyboard. Originally built 2017–2020, revived in 2026.
+  tags: [Qt 6, C++, QML, desktop, open source]
+  status: Active · alpha
+  featured: true
+  reference: true
+
+- name: Random AI Prompt
+  repo: https://github.com/junebug12851/random-ai-prompt
+  blurb: >-
+    A JavaScript prompt generator for Stable Diffusion — endless creative,
+    controllable prompts, a full WebUI, and one-click image-to-animation export.
+  tags: [JavaScript, Stable Diffusion, WebUI, tooling]
+  status: Released
+  featured: true
+  reference: true

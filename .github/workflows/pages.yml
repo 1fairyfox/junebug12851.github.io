@@ -1,0 +1,63 @@
+name: pages
+
+# Builds the Jekyll site and deploys it to GitHub Pages on every push to `main`.
+# Because we build with our own `bundle exec jekyll build` (not GitHub's built-in
+# Pages-gem build), we are free to use any Jekyll version / plugins — see Gemfile.
+#
+# Site identity: served at the user-site root (junebug12851.github.io) and at the
+# custom domain fairyfox.io (CNAME). The version-number scheme is unrelated to
+# deployment — see notes/reference/versioning.md.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deploy; don't cancel an in-progress production deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true   # runs bundle install + caches gems
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        # JEKYLL_ENV=production turns on jekyll-seo-tag canonical URLs, minified
+        # output, etc. baseurl comes from the Pages config step.
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        # uploads ./_site by default
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4

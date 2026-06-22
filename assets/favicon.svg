@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7048e8"/>
+      <stop offset=".55" stop-color="#e64980"/>
+      <stop offset="1" stop-color="#f08c00"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <!-- a simple fox face -->
+  <path d="M16 18 L26 26 L20 40 Z" fill="#fff" opacity=".95"/>
+  <path d="M48 18 L38 26 L44 40 Z" fill="#fff" opacity=".95"/>
+  <path d="M32 24 L46 30 L40 44 Q32 52 24 44 L18 30 Z" fill="#fff"/>
+  <circle cx="27" cy="34" r="2.4" fill="#15131d"/>
+  <circle cx="37" cy="34" r="2.4" fill="#15131d"/>
+  <path d="M32 40 l-3 3 a4 4 0 0 0 6 0 Z" fill="#15131d"/>
+</svg>
