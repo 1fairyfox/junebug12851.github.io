@@ -25,6 +25,17 @@ projects:
     notes_system: true
     last_seen: null
 
+  # Predecessor to pokered-save-editor-2. Outside the sync mesh — it follows none
+  # of the shared standards and is not pulled into assets/references (reference:
+  # false in ../_data/projects.yml). Listed here only to keep the two registries
+  # in step. Default branch is `master`.
+  - key: pokered-save-editor
+    repo: https://github.com/junebug12851/pokered-save-editor
+    branch: master
+    adopts_hub: false
+    notes_system: false
+    last_seen: null
+
   - key: random-ai-prompt
     repo: https://github.com/junebug12851/random-ai-prompt
     branch: dev

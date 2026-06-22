@@ -25,6 +25,11 @@ and the application/QML layer — with a comprehensive automated test suite
 (QtTest/CTest) and continuous integration. It originated in 2017–2020 and was
 revived in 2026.
 
+It is a ground-up rewrite of the original
+[Pokered Save Editor](/docs/pokered-save-editor/) (Electron/Angular). While this
+Qt 6 version is still in alpha, that predecessor remains the complete, stable
+tool for editing a save.
+
 ## Full documentation
 
 The project publishes its own documentation site (generated API documentation

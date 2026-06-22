@@ -30,6 +30,20 @@
   featured: true
   reference: true
 
+- name: Pokered Save Editor
+  key: pokered-save-editor
+  repo: https://github.com/junebug12851/pokered-save-editor
+  docs: null
+  notes: https://github.com/junebug12851/pokered-save-editor#readme
+  blurb: >-
+    The predecessor to Pokered Save Editor 2 — a complete, stable save-file
+    editor for Pokémon Red & Blue, built with Electron, Angular, and TypeScript.
+    The recommended working tool until the Qt 6 rewrite reaches parity.
+  tags: [TypeScript, Angular, Electron, desktop]
+  status: Released · stable · predecessor
+  featured: true
+  reference: false
+
 - name: Random AI Prompt
   key: random-ai-prompt
   repo: https://github.com/junebug12851/random-ai-prompt
