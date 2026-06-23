@@ -40,5 +40,5 @@ projects:
     repo: https://github.com/junebug12851/random-ai-prompt
     branch: dev
     adopts_hub: true
-    notes_system: false
+    notes_system: true
     last_seen: null

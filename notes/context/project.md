@@ -36,11 +36,38 @@ https://github.com/junebug12851/junebug12851.github.io  (served at https://fairy
 
 ## Related projects (referenced by the hub)
 
-- [pokered-save-editor-2](https://github.com/junebug12851/pokered-save-editor-2)
-  — Pokémon Red/Blue save editor (Qt 6 C++/QML). The source of the conventions
-  this hub standardizes.
-- [random-ai-prompt](https://github.com/junebug12851/random-ai-prompt)
-  — Stable Diffusion prompt generator (JS) with a WebUI.
+The canonical list lives in [`../../hub/registry.yml`](../../hub/registry.yml)
+(machine) and [`../../_data/projects.yml`](../../_data/projects.yml) (site-facing)
+— keep those in step; this is the narrative view, pulled from each project's own
+`notes/`. Three projects sit around the hub:
+
+- **[pokered-save-editor-2](https://github.com/junebug12851/pokered-save-editor-2)**
+  — a desktop save-file editor for Pokémon Red & Blue, built in **Qt 6 (C++/QML)**
+  over a four-layer architecture (`common → db → savefile → app`) with byte-exact
+  save read/write as its prime value. Originated 2019–2020 (~592 commits, last
+  pushed March 2020) and **revived in 2026**; currently **`0.14.2-alpha`**,
+  functional and in a UI-polish phase, with a comprehensive QtTest/CTest suite
+  (~90% library coverage), a clang-tidy/cppcheck static-analysis layer, and CI.
+  **This is where the hub's shared conventions came from** — it adopts the hub,
+  uses the shared living-notes system, and is pulled into `assets/references/`.
+
+- **[pokered-save-editor](https://github.com/junebug12851/pokered-save-editor)**
+  — the **predecessor** (v1): the original editor in **Electron + Angular
+  (TypeScript)**, Apache-2.0. Complete and stable (final release **`2.0.1`**, last
+  active 2019), no longer developed — but the **recommended working tool until the
+  Qt 6 rewrite reaches parity**. It sits **outside the standards/sync mesh**:
+  default branch `master`, does not adopt the hub, no shared notes system, and is
+  **not** cloned into `assets/references/`. Listed for completeness and linking.
+
+- **[random-ai-prompt](https://github.com/junebug12851/random-ai-prompt)**
+  — a **Node.js** generator of random/dynamic text prompts for **Stable Diffusion**
+  that can also drive the SD WebUI `--api` to produce images, animations, and
+  upscales. It runs as a CLI and an Express + Pug web UI over one shared core, plus
+  a newer **React + Vite SPA** (`web-app/`). Started 2022 (CommonJS), dormant after
+  April 2023, then **modernized in June 2026** (2.0.0: ES modules, Node 24 LTS,
+  dependencies to current majors); currently **`2.6.0`**, with a Vitest + Playwright
+  test suite, a JSDoc doc-site, and a dynamic-prompt language (DPL). It adopts the
+  hub, uses the shared living-notes system, and is pulled into `assets/references/`.
 
 ## Developer
 
