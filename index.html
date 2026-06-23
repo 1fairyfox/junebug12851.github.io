@@ -2,113 +2,232 @@
 layout: default
 title: null
 ---
-<section class="masthead">
-  <div class="wrap">
-    <div class="mast-id">
-      <img class="mast-logo" src="{{ '/assets/icons/fox.png' | relative_url }}" alt="Fairy Fox">
-      <div>
-        <div class="mast-name">Fairy&nbsp;Fox</div>
-        <p class="mast-tag">A hub for the projects, their docs, and what's changing.</p>
+{%- comment -%} Pick the current-focus project: first one whose status is "Active", else the first listed. {%- endcomment -%}
+{%- assign focus = nil -%}
+{%- for proj in site.data.projects -%}
+  {%- if focus == nil and proj.status contains "Active" -%}{%- assign focus = proj -%}{%- endif -%}
+{%- endfor -%}
+{%- unless focus -%}{%- assign focus = site.data.projects | first -%}{%- endunless -%}
+{%- assign latest = site.posts | first -%}
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-lead">
+      <div class="hero-eyebrow">
+        <img class="hero-mark" src="{{ '/assets/icons/fox.png' | relative_url }}" alt="" aria-hidden="true">
+        <span>Fairy&nbsp;Fox · independent software</span>
+      </div>
+      <h1>A working archive of software projects, their documentation, and what changes day to day.</h1>
+      <p class="hero-sub">A hub for an independent developer's tools — desktop and web. Explore the projects,
+        read the documentation behind them, grab a build, and follow the running log of what's shipping.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="{{ '/projects/' | relative_url }}">Browse projects →</a>
+        <a class="btn" href="{{ '/docs/' | relative_url }}">Documentation</a>
+        <a class="btn" href="{{ '/blog/' | relative_url }}">Latest updates</a>
+        <a class="btn" href="{{ '/downloads/' | relative_url }}">Downloads</a>
       </div>
     </div>
-    <div class="mast-meta">
-      <span class="mchip"><b>{{ site.data.projects | size }}</b>&nbsp;projects</span>
-      {%- assign latest = site.posts | first -%}
-      {%- if latest %}<span class="mchip"><span class="pulse-dot" aria-hidden="true"></span>Updated {{ latest.date | date: "%b %-d" }}</span>{% endif -%}
-      <a class="btn sm primary" href="{{ '/projects/' | relative_url }}">Browse projects →</a>
+    <ul class="hero-stats" aria-label="At a glance">
+      <li>
+        <span class="stat-n">{{ site.data.projects | size }}</span>
+        <span class="stat-l">projects tracked</span>
+      </li>
+      <li>
+        <span class="stat-n">{{ site.posts | size }}</span>
+        <span class="stat-l">update posts</span>
+      </li>
+      {%- if latest -%}
+      <li>
+        <span class="stat-n"><span class="pulse-dot" aria-hidden="true"></span>{{ latest.date | date: "%b %-d" }}</span>
+        <span class="stat-l">last update</span>
+      </li>
+      {%- endif -%}
+    </ul>
+  </div>
+</section>
+
+{%- comment -%} ── Current focus: the active project, given prominence ──────────────────── {%- endcomment -%}
+<section class="band band-tight">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">
+        <h2>Current focus</h2>
+        <p class="sub">The project under active development right now.</p>
+      </div>
+      <a class="more" href="{{ '/projects/' | relative_url }}">All projects →</a>
+    </div>
+
+    {%- assign fdl = site.data.downloads | where: "key", focus.key | first -%}
+    <div class="feature" style="--pc:{{ focus.color | default: '#8b6cff' }}">
+      <div class="feature-main">
+        <div class="feature-id">
+          <span class="proj-glyph" aria-hidden="true">{%- if focus.icon -%}<img src="{{ '/assets/icons/' | append: focus.icon | append: '.png' | relative_url }}" alt="">{%- endif -%}</span>
+          <div>
+            <h3>{{ focus.name }}</h3>
+            {%- if focus.status %}<div class="proj-status"><span class="sdot"></span>{{ focus.status }}</div>{% endif -%}
+          </div>
+        </div>
+        <p class="feature-blurb">{{ focus.blurb }}</p>
+        <div class="tags">
+          {%- for t in focus.tags -%}<span class="tag{% if forloop.first %} accent{% endif %}">{{ t }}</span>{%- endfor -%}
+        </div>
+        <div class="feature-actions">
+          <a class="btn sm primary" href="{{ focus.key | prepend: '/docs/' | append: '/' | relative_url }}">Documentation →</a>
+          {%- if fdl %}<a class="btn sm" href="{{ '/downloads/' | relative_url }}#{{ focus.key }}">Download</a>{% endif -%}
+          <a class="btn sm" href="{{ focus.repo }}">Repository ↗</a>
+        </div>
+      </div>
+      <aside class="feature-side" aria-label="Recent activity">
+        <div class="side-title"><span class="bar" aria-hidden="true"></span>Recent activity</div>
+        {%- assign fposts = site.posts | where_exp: "p", "p.tags contains focus.key" -%}
+        {%- if fposts.size > 0 -%}
+        <ul class="mini-log">
+          {%- for post in fposts limit: 4 -%}
+          {%- assign dt = post.title | remove_first: focus.name | remove_first: ": " | strip -%}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ dt }}</a>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+          </li>
+          {%- endfor -%}
+        </ul>
+        <a class="side-more" href="{{ '/blog/' | relative_url }}">Full update log →</a>
+        {%- else -%}
+        <p class="muted">No updates logged yet.</p>
+        {%- endif -%}
+      </aside>
     </div>
   </div>
 </section>
 
+{%- comment -%} ── The rest of the projects, as compact editorial rows ──────────────────── {%- endcomment -%}
+<section class="band band-alt band-tight">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">
+        <h2>Also in the archive</h2>
+        <p class="sub">Other tools — shipped, stable, and kept on record.</p>
+      </div>
+    </div>
+    <ul class="proj-rows">
+      {%- for proj in site.data.projects -%}
+        {%- if proj.key != focus.key -%}
+        {%- assign pdl = site.data.downloads | where: "key", proj.key | first -%}
+        <li class="proj-row" style="--pc:{{ proj.color | default: '#8b6cff' }}">
+          <span class="proj-glyph sm" aria-hidden="true">{%- if proj.icon -%}<img src="{{ '/assets/icons/' | append: proj.icon | append: '.png' | relative_url }}" alt="">{%- endif -%}</span>
+          <div class="proj-row-body">
+            <div class="proj-row-head">
+              <h3>{{ proj.name }}</h3>
+              {%- if proj.status %}<span class="proj-status"><span class="sdot"></span>{{ proj.status }}</span>{% endif -%}
+            </div>
+            <p class="blurb">{{ proj.blurb }}</p>
+            <div class="card-links">
+              <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">Documentation →</a>
+              {%- if pdl %}<a href="{{ '/downloads/' | relative_url }}#{{ proj.key }}">Downloads</a>{% endif -%}
+              <a href="{{ proj.repo }}">Repository ↗</a>
+            </div>
+          </div>
+        </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{%- comment -%} ── Latest updates: a lead item + a tight list ───────────────────────────── {%- endcomment -%}
 <section class="band">
   <div class="wrap">
     <div class="section-head">
       <div class="label">
-        <h2>Projects</h2>
-        <p class="sub">Each project links to its documentation, downloads, and source.</p>
-      </div>
-      <a class="more" href="{{ '/projects/' | relative_url }}">All projects →</a>
-    </div>
-    <div class="grid cols-3">
-      {%- for proj in site.data.projects -%}
-        {%- if proj.featured -%}
-        <article class="card proj-card" style="--pc:{{ proj.color | default: '#8b6cff' }}">
-          <div class="proj-top">
-            <span class="proj-glyph" aria-hidden="true">{%- if proj.icon -%}<img src="{{ '/assets/icons/' | append: proj.icon | append: '.png' | relative_url }}" alt="">{%- endif -%}</span>
-            <div>
-              <h3>{{ proj.name }}</h3>
-              {%- if proj.status %}<div class="proj-status"><span class="sdot"></span>{{ proj.status }}</div>{% endif -%}
-            </div>
-          </div>
-          <p class="blurb">{{ proj.blurb }}</p>
-          <div class="tags">
-            {%- for t in proj.tags limit: 4 -%}<span class="tag{% if forloop.first %} accent{% endif %}">{{ t }}</span>{%- endfor -%}
-          </div>
-          <div class="card-links">
-            <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">Documentation →</a>
-            {%- assign dl = site.data.downloads | where: "key", proj.key | first -%}
-            {%- if dl %}<a href="{{ '/downloads/' | relative_url }}#{{ proj.key }}">Downloads</a>{% endif -%}
-            <a href="{{ proj.repo }}">Repository ↗</a>
-          </div>
-        </article>
-        {%- endif -%}
-      {%- endfor -%}
-    </div>
-  </div>
-</section>
-
-<section class="band divider">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="label">
         <h2>Latest updates</h2>
-        <p class="sub">Round-ups of what changed across the projects.</p>
+        <p class="sub">Round-ups of what changed across the projects, newest first.</p>
       </div>
       <a class="more" href="{{ '/blog/' | relative_url }}">All updates →</a>
     </div>
-    <div class="update-grid">
-      {%- for post in site.posts limit: 6 -%}
-        {%- assign pc = '#f59f0a' -%}{%- assign pname = 'Site' -%}
-        {%- for proj in site.data.projects -%}
-          {%- if post.tags contains proj.key -%}{%- assign pc = proj.color -%}{%- assign pname = proj.name -%}{%- endif -%}
+
+    {%- if latest -%}
+    <div class="updates-layout">
+      {%- comment -%} Lead post {%- endcomment -%}
+      {%- assign lc = '#f59f0a' -%}{%- assign lname = 'This site' -%}
+      {%- for proj in site.data.projects -%}{%- if latest.tags contains proj.key -%}{%- assign lc = proj.color -%}{%- assign lname = proj.name -%}{%- endif -%}{%- endfor -%}
+      {%- assign lt = latest.title -%}
+      {%- if lname != 'This site' -%}{%- assign lt = latest.title | remove_first: lname | remove_first: ": " | strip -%}{%- endif -%}
+      <a class="update-lead" href="{{ latest.url | relative_url }}" style="--pc:{{ lc }}">
+        <div class="update-meta"><span class="pdot" aria-hidden="true"></span><span class="uname">{{ lname }}</span><span class="udate">{{ latest.date | date: "%b %-d, %Y" }}</span></div>
+        <h3>{{ lt }}</h3>
+        <p>{{ latest.subtitle | default: latest.excerpt | strip_html | truncate: 220 }}</p>
+        <span class="read-on">Read this update →</span>
+      </a>
+
+      {%- comment -%} The next few, as a tight list {%- endcomment -%}
+      <ul class="update-rows">
+        {%- for post in site.posts offset: 1 limit: 5 -%}
+          {%- assign pc = '#f59f0a' -%}{%- assign pname = 'This site' -%}
+          {%- for proj in site.data.projects -%}{%- if post.tags contains proj.key -%}{%- assign pc = proj.color -%}{%- assign pname = proj.name -%}{%- endif -%}{%- endfor -%}
+          {%- assign dt = post.title -%}
+          {%- if pname != 'This site' -%}{%- assign dt = post.title | remove_first: pname | remove_first: ": " | strip -%}{%- endif -%}
+          <li style="--pc:{{ pc }}">
+            <a href="{{ post.url | relative_url }}">
+              <div class="update-meta"><span class="pdot" aria-hidden="true"></span><span class="uname">{{ pname }}</span><span class="udate">{{ post.date | date: "%b %-d" }}</span></div>
+              <span class="urow-title">{{ dt }}</span>
+            </a>
+          </li>
         {%- endfor -%}
-        {%- assign dt = post.title -%}
-        {%- if pname != 'Site' -%}{%- assign dt = post.title | remove_first: pname | remove_first: ": " | strip -%}{%- endif -%}
-        <a class="update-card" href="{{ post.url | relative_url }}" style="--pc:{{ pc }}">
-          <div class="update-meta"><span class="pdot" aria-hidden="true"></span><span class="uname">{{ pname }}</span><span class="udate">{{ post.date | date: "%b %-d" }}</span></div>
-          <h3>{{ dt }}</h3>
-          <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 130 }}</p>
-        </a>
-      {%- else -%}
-      <p class="muted">No updates yet.</p>
-      {%- endfor -%}
+      </ul>
     </div>
+    {%- else -%}
+    <p class="muted">No updates yet.</p>
+    {%- endif -%}
   </div>
 </section>
 
-<section class="band divider">
+{%- comment -%} ── Documentation entry points + downloads callout ───────────────────────── {%- endcomment -%}
+<section class="band band-alt divider">
   <div class="wrap">
-    <div class="section-head">
-      <div class="label">
-        <h2>Documentation</h2>
-        <p class="sub">The project ecosystem, this site's internals, and the shared engineering standards.</p>
+    <div class="docs-dl">
+      <div class="docs-col">
+        <div class="section-head">
+          <div class="label">
+            <h2>Documentation</h2>
+            <p class="sub">The ecosystem, this site's internals, and the shared engineering standards.</p>
+          </div>
+          <a class="more" href="{{ '/docs/' | relative_url }}">Full library →</a>
+        </div>
+        <div class="doc-cats">
+          {%- for cat in site.data.doc_categories -%}
+            {%- assign items = site.docs | where: "category", cat.slug | sort: "order" -%}
+            {%- if items.size > 0 -%}
+            <div class="doc-cat">
+              <div class="cat-title"><span class="bar" aria-hidden="true"></span>{{ cat.name }}</div>
+              <ul>
+                {%- for d in items limit: 5 -%}
+                <li><a href="{{ d.url | relative_url }}">{{ d.nav_title | default: d.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
       </div>
-      <a class="more" href="{{ '/docs/' | relative_url }}">Full library →</a>
-    </div>
-    <div class="doc-cats">
-      {%- for cat in site.data.doc_categories -%}
-        {%- assign items = site.docs | where: "category", cat.slug | sort: "order" -%}
-        {%- if items.size > 0 -%}
-        <div class="doc-cat">
-          <div class="cat-title"><span class="bar" aria-hidden="true"></span>{{ cat.name }}</div>
-          <ul>
-            {%- for d in items -%}
-            <li><a href="{{ d.url | relative_url }}">{{ d.nav_title | default: d.title }}</a></li>
+
+      <aside class="dl-col" aria-label="Downloads">
+        <div class="dl-callout">
+          <div class="cat-title"><span class="bar" aria-hidden="true"></span>Latest builds</div>
+          <ul class="dl-mini">
+            {%- for proj in site.data.projects -%}
+              {%- assign d = site.data.downloads | where: "key", proj.key | first -%}
+              {%- if d -%}
+              <li style="--pc:{{ proj.color | default: '#8b6cff' }}">
+                <a href="{{ '/downloads/' | relative_url }}#{{ proj.key }}">
+                  <span class="dl-mini-name"><span class="sdot" aria-hidden="true"></span>{{ proj.name }}</span>
+                  <span class="dl-mini-rel">{{ d.release }}</span>
+                </a>
+              </li>
+              {%- endif -%}
             {%- endfor -%}
           </ul>
+          <a class="side-more" href="{{ '/downloads/' | relative_url }}">All downloads →</a>
         </div>
-        {%- endif -%}
-      {%- endfor -%}
+      </aside>
     </div>
   </div>
 </section>

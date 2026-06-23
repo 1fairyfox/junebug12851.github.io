@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.3.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.4.0` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -19,9 +19,15 @@ The site is framed as a **project hub + documentation library** for Fairy Fox's
 work, written in a neutral documentation voice (not first-person, not glorifying;
 see [`context/principles.md`](context/principles.md)). It now includes:
 
-- A **full-bleed, fluid visual design** (0.3.0): full-width section bands instead of
-  a single narrow column, a sticky footer, a refined violet/amber palette tuned to
-  **WCAG 2.1 AA**, focus-visible outlines, and a reduced-motion guard.
+- A distinct **"Midnight Archive" visual identity** (0.4.0): the index pages (home,
+  projects, downloads, docs) are built on hairline rules instead of shadowed cards, a
+  monospace catalogue system (kickers, statuses, tags, dates, numbered project rows via
+  CSS counters), and an editorial type scale — so they no longer read as a generated
+  template. The home page has a hero, a prominent **Current focus** feature for the
+  active project, numbered catalogue rows for the rest, a lead-plus-rows updates block,
+  and a docs+latest-builds band. Built on the earlier full-bleed band layout (0.3.0):
+  full-width sections, a sticky footer, a violet/amber palette tuned to **WCAG 2.1 AA**,
+  focus-visible outlines, a reduced-motion guard, and light-mode parity.
 - A **dropdown header nav** (monogram wordmark). The **Projects** menu lists the
   projects and links to each one's on-site `/docs/<key>/` page; the **Updates** menu
   (formerly "Blog") and **Docs** menu round it out.

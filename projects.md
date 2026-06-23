@@ -6,30 +6,30 @@ subtitle: Fairy Fox's software projects, each linking into its documentation, do
 permalink: /projects/
 ---
 
-<div class="grid cols-3" style="margin-bottom:2.4rem">
+<ul class="proj-rows" style="margin-bottom:2.6rem">
 {%- for proj in site.data.projects -%}
-  <article class="card proj-card" style="--pc:{{ proj.color | default: '#8b6cff' }}">
-    <div class="proj-top">
-      <span class="proj-glyph" aria-hidden="true">{%- if proj.icon -%}<img src="{{ '/assets/icons/' | append: proj.icon | append: '.png' | relative_url }}" alt="">{%- endif -%}</span>
-      <div>
+  <li class="proj-row" style="--pc:{{ proj.color | default: '#8b6cff' }}">
+    <span class="proj-glyph" aria-hidden="true">{%- if proj.icon -%}<img src="{{ '/assets/icons/' | append: proj.icon | append: '.png' | relative_url }}" alt="">{%- endif -%}</span>
+    <div class="proj-row-body">
+      <div class="proj-row-head">
         <h3>{{ proj.name }}</h3>
-        {%- if proj.status %}<div class="proj-status"><span class="sdot"></span>{{ proj.status }}</div>{% endif -%}
+        {%- if proj.status %}<span class="proj-status"><span class="sdot"></span>{{ proj.status }}</span>{% endif -%}
+      </div>
+      <p class="blurb">{{ proj.blurb }}</p>
+      <div class="tags">
+        {%- for t in proj.tags -%}<span class="tag{% if forloop.first %} accent{% endif %}">{{ t }}</span>{%- endfor -%}
+      </div>
+      <div class="card-links">
+        <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">Documentation →</a>
+        {%- assign dl = site.data.downloads | where: "key", proj.key | first -%}
+        {%- if dl -%}<a href="{{ '/downloads/' | relative_url }}#{{ proj.key }}">Downloads</a>{%- endif -%}
+        {%- if proj.docs -%}<a href="{{ proj.docs }}">Docs site ↗</a>{%- endif -%}
+        <a href="{{ proj.repo }}">Repository ↗</a>
       </div>
     </div>
-    <p class="blurb">{{ proj.blurb }}</p>
-    <div class="tags">
-      {%- for t in proj.tags -%}<span class="tag{% if forloop.first %} accent{% endif %}">{{ t }}</span>{%- endfor -%}
-    </div>
-    <div class="card-links">
-      <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">Documentation →</a>
-      {%- assign dl = site.data.downloads | where: "key", proj.key | first -%}
-      {%- if dl -%}<a href="{{ '/downloads/' | relative_url }}#{{ proj.key }}">Downloads</a>{%- endif -%}
-      {%- if proj.docs -%}<a href="{{ proj.docs }}">Docs site ↗</a>{%- endif -%}
-      <a href="{{ proj.repo }}">Repository ↗</a>
-    </div>
-  </article>
+  </li>
 {%- endfor -%}
-</div>
+</ul>
 
 <div class="prose">
   <h2>How the projects connect</h2>
