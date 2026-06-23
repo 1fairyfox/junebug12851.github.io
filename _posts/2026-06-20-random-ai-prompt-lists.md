@@ -18,9 +18,9 @@ parts of speech a real dictionary *states* the answer rather than guessing it. S
 dictionary dump was re-sorted into parts of speech using WordNet as the authority, and a
 roughly 8,800-entry "keyword" junk drawer of proper nouns was hand-classified into
 people, places, organisations, mythology, astronomy, religion, history, and more — with
-coverage checks so nothing was silently dropped. A content-safety pass removed slurs and
-illegal or extreme material while keeping ordinary adult content gated rather than
-deleted, with real place names and artist handles protected from false positives.
+coverage checks so nothing was silently dropped. A content-safety pass also tightened
+the lists, keeping ordinary adult content gated rather than deleted, with real place
+names and artist handles protected from false positives.
 
 The structural work was just as large. Lists were organised into folders with
 path-suffix resolution, so a bare name, a partial path, or a full path all resolve.
