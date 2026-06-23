@@ -1,0 +1,20 @@
+# ── Round-up "last seen" markers ─────────────────────────────────────────────
+# Records the dev-branch commit each project was at when the most recent round-up
+# pass ran, so the next pass knows where to resume. Updated by the cross-project
+# round-up pass (see notes/reference/blogging-workflow.md). Git-only awareness;
+# nothing here is a dependency.
+
+pokered-save-editor-2:
+  commit: 005a0cbff9022a107b76657efbb9c761df332d7f
+  branch: dev
+  seen: 2026-06-23
+  # Covered through the 0.14.x static-analysis gate + test-type breadth push
+  # (blogged: _posts/2026-06-23-pokered-save-editor-2-static-analysis-and-tests.md).
+
+random-ai-prompt:
+  commit: 8fd02ab300256635a16e4775bdd65e171b494de7
+  branch: dev
+  seen: 2026-06-23
+  # Covered through the 2.6.0 test suite + first ship to master + CI unbreak
+  # (blogged: _posts/2026-06-22-random-ai-prompt-tests-and-shipping.md). The
+  # trailing CI Linux-baseline follow-up is incremental plumbing, not its own post.

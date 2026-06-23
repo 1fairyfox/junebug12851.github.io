@@ -26,7 +26,7 @@
 
 # ───────────────────────────────────────────────────────────────────────────
 - key: pokered-save-editor-2
-  release: "v0.13.1-alpha (pre-release)"
+  release: "v0.14.2-alpha (pre-release)"
   releases_url: https://github.com/junebug12851/pokered-save-editor-2/releases/latest
   readme_url: https://github.com/junebug12851/pokered-save-editor-2#readme
   docs_url: https://fairyfox.io/pokered-save-editor-2/
@@ -36,8 +36,8 @@
   tabs:
     - label: "Windows · Installer"
       badge: Recommended
-      download: https://github.com/junebug12851/pokered-save-editor-2/releases/download/v0.13.1-alpha/PokeredSaveEditor-0.13.1-alpha-windows-x64-setup.exe
-      filename: PokeredSaveEditor-0.13.1-alpha-windows-x64-setup.exe
+      download: https://github.com/junebug12851/pokered-save-editor-2/releases/download/v0.14.2-alpha/PokeredSaveEditor-0.14.2-alpha-windows-x64-setup.exe
+      filename: PokeredSaveEditor-0.14.2-alpha-windows-x64-setup.exe
       intro: The simplest way to get going on Windows — a standard installer.
       steps:
         - "Download and run the installer."
@@ -45,31 +45,31 @@
         - "Launch <strong>Pokered Save Editor</strong> from the Start menu."
 
     - label: "Windows · Portable"
-      download: https://github.com/junebug12851/pokered-save-editor-2/releases/download/v0.13.1-alpha/PokeredSaveEditor-0.13.1-alpha-windows-x64-portable.zip
-      filename: PokeredSaveEditor-0.13.1-alpha-windows-x64-portable.zip
+      download: https://github.com/junebug12851/pokered-save-editor-2/releases/download/v0.14.2-alpha/PokeredSaveEditor-0.14.2-alpha-windows-x64-portable.zip
+      filename: PokeredSaveEditor-0.14.2-alpha-windows-x64-portable.zip
       intro: No-install build — unzip and run in place.
       steps:
         - "Download the .zip and extract it anywhere."
         - "Run <code>PokeredSaveEditor.exe</code> from the extracted folder."
 
     - label: "Linux · AppImage"
-      download: https://github.com/junebug12851/pokered-save-editor-2/releases/download/v0.13.1-alpha/PokeredSaveEditor-0.13.1-alpha-x86_64.AppImage
-      filename: PokeredSaveEditor-0.13.1-alpha-x86_64.AppImage
+      download: https://github.com/junebug12851/pokered-save-editor-2/releases/download/v0.14.2-alpha/PokeredSaveEditor-0.14.2-alpha-x86_64.AppImage
+      filename: PokeredSaveEditor-0.14.2-alpha-x86_64.AppImage
       intro: Portable single-file build — no install, runs on most distros.
       steps:
         - "Download the .AppImage, then make it executable and run it:"
       code: |
-        chmod +x PokeredSaveEditor-0.13.1-alpha-x86_64.AppImage
-        ./PokeredSaveEditor-0.13.1-alpha-x86_64.AppImage
+        chmod +x PokeredSaveEditor-0.14.2-alpha-x86_64.AppImage
+        ./PokeredSaveEditor-0.14.2-alpha-x86_64.AppImage
 
     - label: "Linux · Portable"
-      download: https://github.com/junebug12851/pokered-save-editor-2/releases/download/v0.13.1-alpha/PokeredSaveEditor-0.13.1-alpha-linux-x64-portable.tar.gz
-      filename: PokeredSaveEditor-0.13.1-alpha-linux-x64-portable.tar.gz
+      download: https://github.com/junebug12851/pokered-save-editor-2/releases/download/v0.14.2-alpha/PokeredSaveEditor-0.14.2-alpha-linux-x64-portable.tar.gz
+      filename: PokeredSaveEditor-0.14.2-alpha-linux-x64-portable.tar.gz
       intro: The full bundled tree (Qt libraries included), if you prefer a tarball.
       steps:
         - "Download and extract the archive:"
       code: |
-        tar -xzf PokeredSaveEditor-0.13.1-alpha-linux-x64-portable.tar.gz
+        tar -xzf PokeredSaveEditor-0.14.2-alpha-linux-x64-portable.tar.gz
         ./usr/bin/PokeredSaveEditor
 
     - label: "Source & build"
