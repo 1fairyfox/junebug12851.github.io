@@ -73,13 +73,13 @@ standards from the system on request — see `notes/reference/cross-project-sync
 
 **When the user asks you to check *the fairyfox system* for updates** — to sync the
 standards, get the latest version, or pull a particular standard/runbook — treat it
-as the check-for-updates flow. **To invoke it the request must name the fairyfox
-ecosystem** — "fairyfox" / "fairyfox.io" / "the fairyfox system", "the hub", "the
-mesh", "the (shared) standards", or a named standard/runbook — *paired with* an
-update/sync intent (check for updates · what changed · sync · refresh · pull the
-latest · get the newest). An **update verb alone** ("check for updates") or a bare
-"system" is **not** enough — it's ambiguous (the OS, dependencies, a file); if the
-fairyfox ecosystem isn't named, don't assume this flow.
+as the check-for-updates flow. **To invoke it the request must carry the word
+"fairyfox"** — normally **"the fairyfox system"**, or a *fairyfox*-prefixed variant
+("fairyfox.io", "fairyfox standards") — *paired with* an update/sync intent (check
+for updates · what changed · sync · refresh · pull the latest · get the newest).
+Generic handles — "the hub", "the mesh", "the standards", a runbook name, a bare
+"system", or an update verb alone — do **not** qualify; the word *fairyfox* must be
+present, or don't assume this flow.
 
 The default is **check, report, then wait**: refresh the read-only system clone
 under `assets/references/`, diff it against what this project has adopted, and

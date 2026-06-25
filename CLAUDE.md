@@ -105,9 +105,10 @@ standards. Both track the `dev` branch. Full model:
 **Checking "the fairyfox system" for updates here means the inbound side, not
 adoption.** (The user calls this mesh **the fairyfox system** in conversation; the
 public website calls it the **hub** — same thing.) To invoke it the request must
-**name the fairyfox ecosystem** ("fairyfox" / "the hub" / "the mesh" / "the
-standards") *paired with* an update/sync intent — an update verb alone ("check for
-updates"), or a bare "system", isn't enough (ambiguous: OS, dependencies, a file).
+**carry the word "fairyfox"** ("the fairyfox system", or "fairyfox standards" /
+"fairyfox.io") *paired with* an update/sync intent — generic handles ("the hub",
+"the mesh", "the standards", a bare "system") or an update verb alone ("check for
+updates") do not qualify (ambiguous: OS, dependencies, a file).
 This repo is the source of the shared standards, so it never adopts them *from*
 itself: when asked to check the fairyfox system for updates, for this repo that
 means scan the registered siblings in

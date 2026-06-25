@@ -27,23 +27,22 @@ website calls it the *hub* — same thing.)
 
 **What must be present to invoke this flow** — both parts:
 
-1. **A reference to the fairyfox ecosystem** *(this is the gate)*. Any one of:
-   - "fairyfox" / "fairyfox.io" / "the fairyfox system"
-   - "the hub" / "the mesh"
-   - "the (shared) standards" / "the fairyfox standards"
-   - a named shared artifact or runbook ("the sync doc", "the git-workflow
-     standard", "adopting-updates")
+1. **The word "fairyfox," naming the ecosystem** *(this is the gate)*. Normally
+   the two words **"fairyfox system"**. The allowed variants are other
+   *fairyfox*-prefixed references — "fairyfox.io", "fairyfox standards". The word
+   *fairyfox* is mandatory.
 2. **An update/sync intent** paired with it: *check for updates · what changed ·
    anything newer · sync · refresh · update from · pull the latest · get the
    newest version · adopt the latest.*
 
-**An update verb alone is not enough.** "Check for updates" / "any updates?" /
-"are we current?" — with no fairyfox reference — is ambiguous (the OS,
-dependencies, a file) and must **not** trigger this flow. A bare "the system"
-isn't enough either; it has to be the *fairyfox* system. Recognize all of the
-above naturally, the way a colleague would — these are references to spot, not
-exact strings to match. If the fairyfox ecosystem isn't named, don't assume this
-flow: ask, or treat it as the ordinary kind of update it literally sounds like.
+**Generic words do not count, and an update verb alone never does.** "Check for
+updates" / "any updates?" / "are we current?" — with no *fairyfox* — is ambiguous
+(the OS, dependencies, a file). And **"the hub", "the mesh", "the standards", "the
+sync doc", a runbook name, or a bare "system"** do **not** qualify on their own:
+they must carry the word *fairyfox* ("the fairyfox system", "fairyfox standards").
+Read the update intent naturally, but the *fairyfox* reference has to actually be
+there. If it isn't, don't assume this flow — ask, or treat it as the ordinary kind
+of update it literally sounds like.
 
 **The default is check-and-report, then stop:**
 
