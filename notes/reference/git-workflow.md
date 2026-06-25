@@ -8,81 +8,91 @@ low-risk** history — "a dull flat repo over a screwed-up one."
 > [`../../hub/standards/git-workflow.md`](../../hub/standards/git-workflow.md).
 > Keep them in step; promote changes up to the hub.
 
-## This is git-flow — the model, not the scripts
+## The model: full git-flow — the model, not the scripts
 
-The workflow follows **git-flow** (Driessen's branching model) for its
-*procedures and policies* — branch roles, where work happens, how changes reach a
-release. It does **not** use the `git flow` CLI extension or wrapper scripts:
-plain `git` is enough, and the model is adapted freely for a small, solo,
-mostly-site/docs repo. These are **procedures the AI working in the repo upholds**
-by judgement, not automation — standardize the *policy*, not a script. Use the
-policies, skip the scripts. Day to day this repo runs the **paper-thin core**
-below; the **full git-flow branches** are there for when a change warrants them.
+This repo runs **git-flow** (Driessen's branching model) **in full**, as far as
+makes sense here — its branch roles, feature flow, and release/hotfix flows are the
+standard, not a stripped-down subset. It does **not** use the `git flow` CLI
+extension or wrapper scripts: plain `git` carries the whole model, and these are
+**procedures the AI working in the repo upholds** by judgement, not automation —
+standardize the *policy*, not a script. This replaces the old lean `dev → main`
+fast-forward habit, which was only a thin shadow of git-flow; git-flow is the
+fuller, sturdier foundation.
 
-## The core (everyday)
+## Branches
 
-- **`main`** — stable, deployable, **pushed**. Every push to `main` triggers the
-  Pages deploy, so `main` must always build green. **Never commit directly to
-  `main`.** It advances only at a **release**, by merging `dev` into it.
+Two long-lived branches, three kinds of short-lived support branch — all
+first-class.
+
+- **`main`** — production; every commit on it is a **tagged release**. **Never
+  commit directly**, and `dev` is **never merged straight in** — `main` advances
+  *only* via a **`release/*`** or **`hotfix/*`** merge (`--no-ff`) + tag. Every push
+  to `main` triggers the Pages deploy, so `main` must always build green.
+  `main` is mandatory mesh-wide — `master` is not used (a project on `master`
+  renames it; this repo is already on `main`). Full procedure: the
+  [git-workflow standard](../../hub/standards/git-workflow.md#master--main-is-mandatory).
 - **`dev`** — the **integration branch** (git-flow's `develop` role; we keep the
-  shorter name `dev`). Commit **early and often.** This is also the branch other
-  repos and the hub track when they pull (see
-  [`cross-project-sync.md`](cross-project-sync.md)).
-- **`main` is mandatory across the mesh** — `master` is not used. A project still on
-  `master` renames it to `main` on adoption (a safe rename, not history surgery; fix
-  the Pages/CI/`tree/master/…` references). This repo is already on `main`. Full
-  procedure: the [git-workflow standard](../../hub/standards/git-workflow.md#master--main-is-mandatory).
+  shorter name `dev`). Finished work lands here first. Also the branch other repos
+  and the hub track when they pull (see [`cross-project-sync.md`](cross-project-sync.md)).
+- **`feature/<name>`** — the normal unit of work: branch from `dev`, build, merge
+  back into `dev` (`--no-ff`), delete. Never off `main`.
+- **`release/<x.y.z>`** — the release mechanism: branch from `dev`, finalize
+  (VERSION bump, changelog, polish), merge into `main` + tag **and** back into
+  `dev` (`--no-ff` both), delete.
+- **`hotfix/<x.y.z>`** — urgent production fix: branch from `main`, fix, merge into
+  `main` + tag **and** back into `dev` (`--no-ff` both), delete.
 
-Everyday loop: work and commit on `dev`, push often. At a good green checkpoint,
-**cut a release** to `main`:
+Support-branch names use a `type/` prefix + a short kebab-case description.
+
+## Feature flow
 
 ```sh
-git checkout main
-git merge --no-ff dev          # release merge commit marks the release on main
-git tag -a vX.Y.Z -m "vX.Y.Z"  # tag the release (matches VERSION)
-git push origin main --tags
-git checkout dev
+git checkout dev && git checkout -b feature/<name>
+# … commit + push the feature branch as you go …
+git checkout dev && git merge --no-ff feature/<name>   # one revertible unit
+git branch -d feature/<name> && git push origin dev
 ```
 
-The `--no-ff` merge leaves a visible release marker on `main`; the **tag** is the
-durable release reference (it matches `VERSION`). Every original `dev` commit is
-preserved — we do **not** squash, rebase, or reorder.
+## Release flow
 
-> Small solo work does **not** need a feature branch — committing straight on
-> `dev` is the expected default. The branches below are the *expansion*, not a
-> per-change tax.
+`main` is updated only this way (or by a hotfix), so a release stays a deliberate event:
 
-## The full git-flow branches (expansions, when warranted)
+```sh
+git checkout dev && git checkout -b release/X.Y.Z
+# … bump VERSION, finish the changelog entry, last polish …
+git checkout main && git merge --no-ff release/X.Y.Z
+git tag -a vX.Y.Z -m "vX.Y.Z"          # tag matches VERSION
+git checkout dev && git merge --no-ff release/X.Y.Z   # carry finalizations back
+git branch -d release/X.Y.Z
+git push origin main dev --tags        # pushing main triggers the Pages deploy
+```
 
-Layered on top of the core when a change earns the ceremony; all merge back with
-`--no-ff` so the grouping stays visible.
+## Hotfix flow
 
-- **`feature/<name>`** — from `dev`, to isolate a large/risky change. Merge back
-  into `dev` (`--no-ff`), then delete. Never branch a feature off `main`.
-- **`release/<x.y.z>`** — from `dev`, to stabilize a release without freezing `dev`.
-  Merge into `main` (tag) **and** back into `dev`, then delete. For this repo the
-  core "merge `dev` → `main`" usually *is* the release; a `release/*` branch is
-  rarely needed.
-- **`hotfix/<x.y.z>`** — from `main`, to patch a release without pulling in
-  unreleased `dev` work. Merge into `main` (tag) **and** back into `dev`, then
-  delete.
+```sh
+git checkout main && git checkout -b hotfix/X.Y.Z
+# … fix, bump VERSION (patch), changelog …
+git checkout main && git merge --no-ff hotfix/X.Y.Z && git tag -a vX.Y.Z -m "vX.Y.Z"
+git checkout dev && git merge --no-ff hotfix/X.Y.Z
+git branch -d hotfix/X.Y.Z && git push origin main dev --tags
+```
 
-Branch names use a `type/` prefix (`feature/`, `release/`, `hotfix/`) + a short
-kebab-case description.
+## Solo latitude
+
+This repo is solo, so apply judgement *within* git-flow (not a lighter model): a
+**trivial** change (typo, one-line doc fix) may be committed directly on `dev`
+instead of a `feature/*` branch, and a **routine release** of accumulated `dev`
+work may merge `dev → main` directly (`--no-ff` + tag) when a `release/*` branch
+would only briefly hold a version bump. Anything that's really a feature, or any
+release that needs staging/review, takes its proper branch.
 
 ## Merging — `--no-ff`, never rewrite
 
-git-flow merges with `--no-ff`: releases into `main` and support branches back
-into their target each create a merge commit, so the grouping is legible. This is
-**additive** — never a history rewrite. We do **not** squash, rebase, or reorder
-anything pushed.
-
-## Pushing
-
-**Push on every commit**, early and often — don't leave work sitting only on the
-local machine. `git push origin dev` after each commit; release to `main`
-(`--no-ff` + tag + push `--tags`) after a green checkpoint (here "green" = the
-site builds; the Pages build is the deploy).
+git-flow merges with `--no-ff`: features back into `dev`, and `release/`/`hotfix/`
+into both `main` and `dev`, each leave a merge commit so the grouping stays legible
+and revertible (`git revert -m 1 <merge>`). `main` carries only tagged
+release/hotfix merges. All **additive** — never a history rewrite. We do **not**
+squash, rebase, or reorder anything pushed.
 
 ## Commit messages
 
@@ -93,17 +103,17 @@ site builds; the Pages build is the deploy).
   plain-English entry to the top of `notes/version/YYYY-MM.md` and stage it in the
   **same commit** (no separate "update changelog" commit). See
   [`../version.md`](../version.md).
-- **Keep `VERSION` current in the same commit** when a change warrants it — PATCH
-  default, MINOR milestone, never MAJOR. The release tag on `main` matches it. See
-  [`versioning.md`](versioning.md).
+- **Keep `VERSION` current** as part of the release (the `release/*`/`hotfix/*`
+  branch is the natural place to bump it) — PATCH default, MINOR milestone, never
+  MAJOR. The release tag on `main` matches it. See [`versioning.md`](versioning.md).
 
 ## Hard safety rules
 
-- **Never** `push --force`, force-with-lease, or rewrite pushed history. (`--no-ff`
-  merge commits are additive and allowed — not a rewrite.)
-- **Never** `reset --hard`, `rebase`, `clean -fd`, or delete a long-lived branch
-  **without an explicit request.** Spent `feature/`/`release/`/`hotfix/` branches
-  are deleted as the normal end of their merge.
+- **Never** `push --force`, force-with-lease, or rewrite pushed history. (git-flow's
+  `--no-ff` merge commits are additive and allowed — not a rewrite.)
+- **Never** `reset --hard`, `rebase`, `clean -fd`, or delete a **long-lived** branch
+  (`main`/`dev`) **without an explicit request.** Spent `feature/`/`release/`/
+  `hotfix/` branches are deleted as the normal end of their merge.
 - **Stage specific files**, never `git add -A`/`.` — keep build output
   (`_site/`, `.jekyll-cache/`) and the reference clones (`assets/references/*`)
   out (they're git-ignored anyway, but be deliberate).

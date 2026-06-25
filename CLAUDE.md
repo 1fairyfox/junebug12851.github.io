@@ -65,14 +65,18 @@ Deploy is automatic: every push to `main` runs `.github/workflows/pages.yml`
 After making changes, without being asked:
 
 1. **Build-check** the site (`jekyll build`); fix any errors before shipping.
-2. **Commit + push on `dev`**, staging specific files (never `git add -A`). The
-   **changelog entry rides inside the commit** (top of `notes/version/YYYY-MM.md`,
-   no hash marker), and **bump `VERSION`** in the same commit when warranted
-   (PATCH default, MINOR milestone, never MAJOR).
-3. When the build is green, **release `dev` → `main`** the git-flow way and push:
+2. **Work on `dev`** — or a `feature/<name>` branch off `dev` for an actual feature,
+   merged back `--no-ff` (a trivial fix may commit straight on `dev`). Stage specific
+   files (never `git add -A`). The **changelog entry rides inside the commit** (top of
+   `notes/version/YYYY-MM.md`, no hash marker); **bump `VERSION`** as part of the
+   release (PATCH default, MINOR milestone, never MAJOR).
+3. When the build is green, **release to `main` the git-flow way** (full flow:
+   `hub/standards/git-workflow.md`). Through a `release/<x.y.z>` branch off `dev` for
+   anything substantive — merge `--no-ff` into `main`, tag `vX.Y.Z`, merge back into
+   `dev` — or, for a routine increment, a direct `dev → main` `--no-ff` + tag:
    `git checkout main && git merge --no-ff dev && git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags && git checkout dev`
-   (tag matches `VERSION`). Pushing `main` triggers the Pages deploy. The `--no-ff`
-   merge commit is additive (a release marker), **not** a history rewrite.
+   (tag matches `VERSION`). Pushing `main` triggers the Pages deploy; `--no-ff` merge
+   commits are additive, **not** a history rewrite.
 
 **Hard safety rules:** never `push --force` / rewrite pushed history; never
 `reset --hard` / `rebase` / `clean -fd` / delete a branch without an explicit
