@@ -1,0 +1,33 @@
+{%- comment -%}
+  Standardized project card. Pass a project: {% include project-card.html proj=proj %}
+  Status taxonomy: lifecycle (alpha/beta/released) · version · activity (active/inactive).
+{%- endcomment -%}
+{%- assign p = include.proj -%}
+{%- if p.doc_url -%}{%- assign docurl = p.doc_url -%}{%- else -%}{%- assign docurl = p.key | prepend: '/docs/' | append: '/' -%}{%- endif -%}
+<article class="card proj-card" style="--pc:{{ p.color | default: '#ef6149' }}">
+  <div class="proj-top">
+    <span class="proj-glyph" aria-hidden="true">{%- if p.icon -%}<img src="{{ '/assets/icons/' | append: p.icon | append: '.png' | relative_url }}" alt="">{%- endif -%}</span>
+    <div class="proj-id">
+      <h3>{{ p.name }}</h3>
+      <div class="status">
+        {%- if p.lifecycle -%}<span class="badge {{ p.lifecycle }}">{{ p.lifecycle | capitalize }}</span>{%- endif -%}
+        {%- if p.version -%}<span class="ver">v{{ p.version }}</span>{%- endif -%}
+        {%- if p.activity -%}<span class="activity {{ p.activity }}"><span class="adot" aria-hidden="true"></span>{{ p.activity | capitalize }}</span>{%- endif -%}
+      </div>
+    </div>
+  </div>
+  <p class="blurb">{{ p.blurb }}</p>
+  <div class="proj-bottom">
+    {%- if p.updated -%}<p class="updated">Updated {{ p.updated }}</p>{%- endif -%}
+    <div class="tags">
+      {%- for t in p.tags -%}<span class="tag">{{ t }}</span>{%- endfor -%}
+    </div>
+    <div class="card-links">
+      <a href="{{ docurl | relative_url }}">Documentation →</a>
+      {%- assign dl = site.data.downloads | where: "key", p.key | first -%}
+      {%- if dl -%}<a href="{{ '/downloads/' | relative_url }}#{{ p.key }}">Downloads →</a>{%- endif -%}
+      {%- if p.docs -%}<a class="ext" href="{{ p.docs }}">Docs site</a>{%- endif -%}
+      <a class="ext" href="{{ p.repo }}">Repository</a>
+    </div>
+  </div>
+</article>

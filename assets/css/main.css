@@ -211,7 +211,26 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
   border-color:color-mix(in srgb,var(--pc,var(--violet)) 35%,transparent)}
 .tag.amber{background:color-mix(in srgb,var(--amber) 18%,transparent);color:var(--amber)}
 .tag.muted{background:var(--panel-3);color:var(--text-faint);border:1px solid var(--line)}
-.proj-card .card-links{margin-top:auto;padding-top:.2rem}
+.proj-card .card-links{padding-top:.2rem}
+
+/* ── Standardized status taxonomy (lifecycle · version · activity) ─────────── */
+.proj-id{min-width:0}
+.proj-card .status{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin-top:.3rem}
+.badge{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:.2rem .5rem;border-radius:999px;border:1px solid transparent;line-height:1}
+.badge.alpha{color:color-mix(in srgb,var(--hue-alpha) 62%,var(--text));background:color-mix(in srgb,var(--hue-alpha) 14%,var(--panel));border-color:color-mix(in srgb,var(--hue-alpha) 40%,transparent)}
+.badge.beta{color:color-mix(in srgb,var(--hue-beta) 66%,var(--text));background:color-mix(in srgb,var(--hue-beta) 16%,var(--panel));border-color:color-mix(in srgb,var(--hue-beta) 44%,transparent)}
+.badge.released{color:color-mix(in srgb,var(--hue-released) 60%,var(--text));background:color-mix(in srgb,var(--hue-released) 14%,var(--panel));border-color:color-mix(in srgb,var(--hue-released) 40%,transparent)}
+.ver{font-family:var(--mono);font-size:.76rem;color:var(--text-soft)}
+.activity{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--sans);font-size:.76rem;color:var(--text-faint)}
+.activity .adot{width:.5rem;height:.5rem;border-radius:50%}
+.activity.active .adot{background:var(--hue-released)}
+.activity.inactive .adot{background:var(--text-faint)}
+.proj-bottom{margin-top:auto;padding-top:.6rem}
+.proj-bottom .updated{font-family:var(--sans);font-size:.78rem;color:var(--text-faint);margin:0 0 .5rem}
+.proj-bottom .tags{margin:0 0 .6rem}
+.card-links a{display:inline-flex;align-items:center;gap:.15rem}
+.card-links a.ext::after{content:"↗";margin-left:.02em;font-size:.92em;opacity:.8}
 
 /* ── Doc category cards ──────────────────────────────────────────────────── */
 .doc-cats{display:grid;gap:1.15rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}

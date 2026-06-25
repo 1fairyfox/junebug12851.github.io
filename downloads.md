@@ -24,7 +24,7 @@ permalink: /downloads/
       <h2 class="mb0">{{ proj.name | default: dl.key }}</h2>
       {%- if proj.blurb %}<p class="muted dl-blurb">{{ proj.blurb }}</p>{% endif -%}
       <p class="dl-release">
-        {%- if proj.status %}<span class="tag muted">{{ proj.status }}</span>{% endif -%}
+        {%- if proj.lifecycle %}<span class="tag muted">{{ proj.lifecycle | capitalize }}{% if proj.version %} · v{{ proj.version }}{% endif %}</span>{% endif -%}
         <span class="dl-release-label">{{ dl.release }}</span>
       </p>
     </div>

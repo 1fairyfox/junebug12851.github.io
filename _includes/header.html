@@ -20,7 +20,7 @@
             <span class="dd-group-title">Projects</span>
             <div class="dd-links">
               {%- for proj in site.data.projects -%}
-              <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">{{ proj.name }}</a>
+              <a href="{% if proj.doc_url %}{{ proj.doc_url | relative_url }}{% else %}{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}{% endif %}">{{ proj.name }}</a>
               {%- endfor -%}
             </div>
           </div>

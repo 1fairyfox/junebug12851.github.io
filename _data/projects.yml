@@ -4,22 +4,24 @@
 # registry used for cross-project git sync). Keep them in step.
 #
 # Fields:
-#   name      display name
-#   key       slug = repo name = path under the domain (fairyfox.io/<key>/)
-#   repo      GitHub repository URL
-#   docs      project documentation site URL (its GitHub Pages site, served under
-#             the fairyfox.io custom domain). null if no Pages site yet.
-#   notes     browsable documentation/notes location (repo notes folder). null if none.
-#   blurb     one-line description
-#   tags []   technologies
-#   status    short status string
-#   color     per-project accent (hex) — used for the card accent + status dot
-#   icon      icon slug under /assets/icons/<icon>.png
-#   featured  show on the home page
-#   reference pulled into assets/references for cross-project sync
+#   name       display name
+#   key        slug = repo name = path under the domain (fairyfox.io/<key>/)
+#   repo       GitHub repository URL
+#   docs       project's OWN docs site (external GitHub Pages). null if none.
+#   doc_url    override for the on-site "Documentation" link (else /docs/<key>/)
+#   notes      browsable notes location (repo notes folder). null if none.
+#   blurb      one-line description
+#   tags []    category tags (Title-cased; tech / kind)
+#   lifecycle  alpha | beta | released   (one; standard colors red/yellow/green)
+#   version    e.g. "0.14.2"  (rendered as v0.14.2)
+#   activity   active | inactive   (separate axis from lifecycle)
+#   updated    last-updated date string (manual for now; later from the pulse)
+#   color      per-project accent (hex) — card accent + glyph
+#   icon       icon slug under /assets/icons/<icon>.png
+#   featured   show on the home page
+#   reference  pulled into assets/references for cross-project sync
 #
-# Display order = list order. Keep Random AI Prompt next to the Pokered editors,
-# with the predecessor (v1) last.
+# fairyfox.io itself is listed as a (meta) project, treated like the others.
 
 - name: Pokered Save Editor 2
   key: pokered-save-editor-2
@@ -30,8 +32,11 @@
     A desktop save-file editor for Pokémon Red & Blue, built in Qt 6 (C++/QML):
     byte-exact save read/write, full team/box/item/randomiser editing, and an
     in-game font keyboard.
-  tags: [Qt 6, C++, QML, desktop]
-  status: Active · alpha
+  tags: [Qt 6, C++, QML, Desktop]
+  lifecycle: alpha
+  version: "0.14.2"
+  activity: active
+  updated: "Jun 23, 2026"
   color: "#e6488f"
   icon: pse2
   featured: true
@@ -43,10 +48,13 @@
   docs: https://fairyfox.io/random-ai-prompt/
   notes: https://github.com/junebug12851/random-ai-prompt/tree/master/notes
   blurb: >-
-    A JavaScript prompt generator for Stable Diffusion — controllable prompt
-    generation, a web UI, and one-click image-to-animation export.
-  tags: [JavaScript, Stable Diffusion, web UI]
-  status: Released
+    A generator for random and dynamic text prompts — built around a controllable
+    dynamic-prompt language (DPL), with a CLI and a web UI.
+  tags: [JavaScript, Node 24, Web UI]
+  lifecycle: released
+  version: "2.6.0"
+  activity: active
+  updated: "Jun 22, 2026"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -61,9 +69,32 @@
     The predecessor to Pokered Save Editor 2 — a complete, stable save-file
     editor for Pokémon Red & Blue, built with Electron, Angular, and TypeScript.
     The recommended working tool until the Qt 6 rewrite reaches parity.
-  tags: [TypeScript, Angular, Electron, desktop]
-  status: Released · stable · predecessor
+  tags: [TypeScript, Angular, Electron, Desktop]
+  lifecycle: released
+  version: "2.0.1"
+  activity: inactive
+  updated: "Mar 31, 2019"
   color: "#f59f0a"
   icon: pse2
+  featured: true
+  reference: false
+
+- name: fairyfox.io
+  key: fairyfox-io
+  repo: https://github.com/junebug12851/junebug12851.github.io
+  docs: null
+  doc_url: "/docs/"
+  notes: https://github.com/junebug12851/junebug12851.github.io/tree/main/notes
+  blurb: >-
+    The project hub and documentation library itself — this site. A custom Jekyll
+    build with its own living notes, the shared engineering standards, and the
+    cross-project sync model.
+  tags: [Jekyll, Ruby, GitHub Pages]
+  lifecycle: beta
+  version: "0.3.7"
+  activity: active
+  updated: "Jun 24, 2026"
+  color: "#ff7a5e"
+  icon: fox
   featured: true
   reference: false
