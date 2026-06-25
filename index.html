@@ -2,21 +2,24 @@
 layout: default
 title: null
 ---
-<section class="masthead">
+<section class="band hero">
   <div class="wrap">
-    <div class="mast-id">
-      <img class="mast-logo" src="{{ '/assets/icons/fox.png' | relative_url }}" alt="Fairy Fox">
-      <div>
-        <div class="mast-name">Fairy&nbsp;Fox</div>
-        <p class="mast-tag">A hub for the projects, their docs, and what's changing.</p>
+    <div class="hero-text">
+      <h1>Projects <span class="amp">&amp;</span> documentation</h1>
+      <p class="lead">Plus a running log of changes.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">Projects</a>
+        <a class="btn" href="{{ '/docs/' | relative_url }}">Documentation</a>
       </div>
-    </div>
-    <div class="mast-meta">
-      <span class="mchip"><b>{{ site.data.projects | size }}</b>&nbsp;projects</span>
       {%- assign latest = site.posts | first -%}
-      {%- if latest %}<span class="mchip"><span class="pulse-dot" aria-hidden="true"></span>Updated {{ latest.date | date: "%b %-d" }}</span>{% endif -%}
-      <a class="btn sm primary" href="{{ '/projects/' | relative_url }}">Browse projects →</a>
+      <p class="hero-stat">{{ site.data.projects | size }} projects{% if latest %} · updated <b>{{ latest.date | date: "%b %-d" }}</b>{% endif %}</p>
     </div>
+    <aside class="actpanel" aria-label="Recent activity">
+      <div class="actpanel-head"><span>Activity · last 30 days</span><b id="actTotal"></b></div>
+      <div class="actpanel-ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+      <div class="actpanel-chart" id="actChart" aria-hidden="true"></div>
+      <div class="actpanel-axis"><span>30 days ago</span><span>today</span></div>
+    </aside>
   </div>
 </section>
 
@@ -92,3 +95,29 @@ title: null
     </div>
   </div>
 </section>
+
+{%- comment -%} Activity panel data is static for now; later it comes from the generated pulse. {%- endcomment -%}
+<script>
+(function(){
+  var bars=[9,4,13,16,23,10,5,19,26,15,7,4,12,21,29,17,10,8,15,25,31,14,6,11,20,34,22,10,13,24];
+  var changes=[
+    {c:'var(--coral)',m:'Status taxonomy + fairyfox.io listed',t:'today'},
+    {c:'var(--coral)',m:'Live re-skin to the warm language',t:'today'},
+    {c:'var(--pink)',m:'Static analysis layer (clang-tidy + cppcheck)',t:'2d'},
+    {c:'var(--green)',m:'DPL parser + Vitest suite',t:'3d'},
+    {c:'var(--pink)',m:'Pokémon editor: team & box writes',t:'5d'},
+    {c:'var(--green)',m:'React + Vite web app',t:'6d'},
+    {c:'var(--pink)',m:'Library coverage to ~90%',t:'8d'},
+    {c:'var(--green)',m:'Prompt list overhaul',t:'9d'},
+    {c:'var(--pink)',m:'Drag-and-drop save loading',t:'12d'},
+    {c:'var(--green)',m:'ES modules · Node 24 LTS',t:'14d'}
+  ];
+  var chart=document.getElementById('actChart'),track=document.getElementById('tickerTrack'),total=document.getElementById('actTotal');
+  if(!chart)return;
+  var max=Math.max.apply(null,bars),maxIdx=bars.indexOf(max),sum=bars.reduce(function(a,b){return a+b;},0);
+  total.textContent=sum+' commits';
+  bars.forEach(function(v,i){var b=document.createElement('span');b.className='bar'+(i===maxIdx?' peak':'');b.style.height=Math.max(8,Math.round(v/max*86))+'%';b.setAttribute('data-v',v);b.title=v+(v===1?' commit':' commits');chart.appendChild(b);});
+  function row(ch){var r=document.createElement('div');r.className='tick-row';r.innerHTML='<span class="tdot" style="background:'+ch.c+'"></span><span class="tmsg">'+ch.m+'</span><span class="ttime">'+ch.t+'</span>';return r;}
+  changes.concat(changes).forEach(function(ch){track.appendChild(row(ch));});
+})();
+</script>
