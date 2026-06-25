@@ -22,11 +22,11 @@ current. Read [`status.md`](status.md) first for the actual current state.
 | **[`status.md`](status.md)** | **Start here.** Current state only — what's live, what's in flight, what's next. No history. |
 | [`sessions/`](sessions/README.md) | **The history.** One file per day in month folders (`YYYY-MM/YYYY-MM-DD.md`): what changed each session and why. |
 | [`version.md`](version.md) | **The changelog** — plain-English, one entry per commit, newest first (index; months under `version/`). |
-| `context/` | Background that changes rarely: [`project.md`](context/project.md) (what this is + goals), [`architecture.md`](context/architecture.md) (how the site is put together), [`principles.md`](context/principles.md) (what to do / avoid). |
+| `context/` | Background that changes rarely: [`project.md`](context/project.md) (what this is + goals), [`architecture.md`](context/architecture.md) (how the site is put together), [`principles.md`](context/principles.md) (what to do / avoid), [`design-direction.md`](context/design-direction.md) (UX study + working design notes). |
 | `systems/` | **System map** — [`overview.md`](systems/overview.md): the site build, the blog, the hub, and the cross-project sync, and how they fit. |
 | `reference/` | Quick lookup, no story: [`git-workflow.md`](reference/git-workflow.md), [`versioning.md`](reference/versioning.md), [`deployment.md`](reference/deployment.md) (Pages/Actions), [`documentation.md`](reference/documentation.md), [`cross-project-sync.md`](reference/cross-project-sync.md) (the pull-only model), [`blogging-workflow.md`](reference/blogging-workflow.md) (how update posts get written). |
 | `decisions/` | Rationale: [`architecture.md`](decisions/architecture.md) (choices + why), [`rejected.md`](decisions/rejected.md) (things considered and not done). |
-| `plans/` | What's next: [`next-steps.md`](plans/next-steps.md), [`future.md`](plans/future.md). |
+| `plans/` | What's next: [`next-steps.md`](plans/next-steps.md), [`implementation.md`](plans/implementation.md) (the v2 build plan), [`future.md`](plans/future.md). |
 
 > **`version.md` vs `reference/versioning.md`** — easy to confuse. `version.md`
 > (+ `version/`) is the **changelog** (what changed). `reference/versioning.md`
@@ -81,7 +81,7 @@ notes/
     README.md            ← how the per-day log system works
     YYYY-MM/YYYY-MM-DD.md
   context/               ← background that changes rarely
-    project.md  architecture.md  principles.md
+    project.md  architecture.md  principles.md  design-direction.md
   systems/               ← the system map
     overview.md  README.md
   reference/             ← quick lookup, no story
@@ -90,5 +90,5 @@ notes/
   decisions/             ← rationale for choices
     architecture.md  rejected.md
   plans/                 ← what comes next
-    next-steps.md  future.md
+    next-steps.md  implementation.md  future.md
 ```

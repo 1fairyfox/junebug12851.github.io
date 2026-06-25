@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fairyfox.io — warm mockup (Phase 0.5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   fairyfox.io — Phase 0.5 visual-language mockup · "Warm & friendly"
+   A non-final exploration of the new look (home portal + a project node),
+   drawing on the joshwcomeau teardown, in a neutral / no-ego key.
+   Not site code — a design target to react to. Light + dark via the toggle.
+   ========================================================================== */
+
+/* ---- Tokens: warm light (default) ---------------------------------------- */
+:root{
+  --coral:#ef6149; --coral-deep:#dd4f37; --honey:#f0a330; --mint:#1fae84; --plum:#9a64d6;
+  --pink:#e6488f; --green:#1fae84; --amber:#e08a1e;       /* per-project accents */
+  --hue-alpha:#e5484d; --hue-beta:#e0a210; --hue-released:#22a06b;  /* standard lifecycle: red / yellow / green */
+
+  --bg:#fbf2ea; --bg-top:#fff6ee;
+  --panel:#fffaf5; --panel-2:#fdf2e9; --panel-3:#f7e7da;
+  --line:#efddcf; --line-2:#e6cdba;
+  --ink:#2c2230; --ink-soft:#6a5a62; --ink-faint:#9c8b92;
+  --accent:var(--coral-deep); --on-accent:#fff8f4;
+  --link:var(--coral-deep); --link-hover:#bb3c25;
+  --glow:rgba(239,97,73,.32);
+  --card-grad:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0));
+  --shadow:0 1px 2px rgba(80,40,30,.05), 0 16px 34px -22px rgba(120,60,40,.32);
+  --shadow-lg:0 36px 80px -34px rgba(120,55,35,.42);
+  --code-bg:#2b2030; --code-ink:#f1e3da;
+  --grain:.04;
+
+  --radius:20px; --radius-sm:13px; --radius-xs:9px;
+  --maxw:1180px; --maxw-text:43rem; --gutter:clamp(1.15rem,4vw,2.75rem);
+  --ui:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --display:"Fraunces",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+@media (prefers-color-scheme:dark){:root[data-theme="auto"]{color-scheme:dark}}
+:root[data-theme="dark"]{color-scheme:dark}
+
+/* ---- Tokens: warm dark ---------------------------------------------------- */
+:root[data-theme="dark"], :root[data-theme="auto"]{}
+@media (prefers-color-scheme:dark){
+  :root[data-theme="auto"]{
+    --bg:#191116; --bg-top:#211622;
+    --panel:#241823; --panel-2:#2a1d29; --panel-3:#322433;
+    --line:#3a2a37; --line-2:#4a3646;
+    --ink:#f7ece6; --ink-soft:#cdb8c2; --ink-faint:#9c8893;
+    --accent:#ff7a5e; --on-accent:#241016;
+    --link:#ffb59f; --link-hover:#ffd0c2;
+    --glow:rgba(255,122,94,.34);
+    --card-grad:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0));
+    --shadow:0 1px 0 rgba(255,255,255,.03), 0 18px 40px -24px rgba(0,0,0,.8);
+    --shadow-lg:0 34px 80px -30px rgba(0,0,0,.86);
+    --coral:#ff7a5e; --coral-deep:#ff7a5e; --honey:#f6b25a; --mint:#38d3a3;
+    --pink:#ff7ab0; --green:#38d3a3; --amber:#f6b25a;
+    --code-bg:#120c12; --code-ink:#ecdcd2; --grain:.05;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#191116; --bg-top:#211622;
+  --panel:#241823; --panel-2:#2a1d29; --panel-3:#322433;
+  --line:#3a2a37; --line-2:#4a3646;
+  --ink:#f7ece6; --ink-soft:#cdb8c2; --ink-faint:#9c8893;
+  --accent:#ff7a5e; --on-accent:#241016;
+  --link:#ffb59f; --link-hover:#ffd0c2;
+  --glow:rgba(255,122,94,.34);
+  --card-grad:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0));
+  --shadow:0 1px 0 rgba(255,255,255,.03), 0 18px 40px -24px rgba(0,0,0,.8);
+  --shadow-lg:0 34px 80px -30px rgba(0,0,0,.86);
+  --coral:#ff7a5e; --coral-deep:#ff7a5e; --honey:#f6b25a; --mint:#38d3a3;
+  --pink:#ff7ab0; --green:#38d3a3; --amber:#f6b25a;
+  --code-bg:#120c12; --code-ink:#ecdcd2; --grain:.05;
+}
+
+/* ---- Base ---------------------------------------------------------------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;font-family:var(--ui);font-size:16.5px;line-height:1.62;
+  color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(50% 40% at 88% -8%,color-mix(in srgb,var(--honey) 22%,transparent),transparent 70%),
+    radial-gradient(52% 44% at 6% -6%,color-mix(in srgb,var(--coral) 22%,transparent),transparent 72%),
+    linear-gradient(180deg,var(--bg-top),var(--bg) 38%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--grain);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover);text-decoration:underline;text-underline-offset:3px}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.1;letter-spacing:-.01em;color:var(--ink);margin:0}
+h1{font-size:clamp(2.2rem,4.4vw,3.3rem);font-weight:600}
+h2{font-size:clamp(1.55rem,2.6vw,2.1rem)}
+h3{font-size:1.2rem}
+p{margin:0 0 1.05rem}
+:focus-visible{outline:2.5px solid var(--coral);outline-offset:3px;border-radius:6px}
+::selection{background:color-mix(in srgb,var(--coral) 30%,transparent)}
+code{font-family:var(--mono);font-size:.85em;background:var(--panel-3);padding:.12em .42em;border-radius:6px;color:var(--accent)}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.band>.wrap{padding-block:clamp(2.6rem,6vw,4.6rem)}
+.band-alt{background:var(--panel);border-block:1px solid var(--line)}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--ui);font-size:.72rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--accent);
+  background:color-mix(in srgb,var(--coral) 13%,transparent);
+  border:1px solid color-mix(in srgb,var(--coral) 24%,transparent);padding:.32rem .7rem;border-radius:999px}
+.lead{font-size:1.16rem;color:var(--ink-soft);max-width:var(--maxw-text)}
+.muted{color:var(--ink-soft)}
+
+/* ---- Buttons ------------------------------------------------------------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.62rem 1.15rem;border-radius:999px;font-family:var(--ui);
+  font-weight:600;font-size:.95rem;cursor:pointer;border:1px solid var(--line-2);background:var(--panel-2);color:var(--ink);
+  box-shadow:var(--shadow);transition:transform .15s var(--ease),border-color .2s,background .2s,box-shadow .2s}
+.btn:hover{text-decoration:none;transform:translateY(-2px);border-color:color-mix(in srgb,var(--coral) 50%,var(--line-2))}
+.btn.primary{border:none;color:var(--on-accent);background:linear-gradient(180deg,var(--coral),var(--coral-deep));
+  box-shadow:0 12px 28px -12px var(--glow)}
+.btn.primary:hover{box-shadow:0 18px 38px -14px var(--glow);filter:saturate(1.05)}
+.btn.sm{padding:.4rem .8rem;font-size:.85rem}
+
+/* ---- Header -------------------------------------------------------------- */
+.site-header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(150%) blur(14px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.site-header>.wrap{display:flex;align-items:center;gap:1rem;height:68px}
+.brand{display:flex;align-items:center;gap:.65rem;color:var(--ink);font-weight:700;font-family:var(--display)}
+.brand:hover{text-decoration:none}
+.brand .mark{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;flex:none;color:#fff;
+  background:conic-gradient(from 210deg,var(--coral),var(--honey),var(--pink),var(--coral));
+  box-shadow:0 6px 18px -6px var(--glow);font-family:var(--display);font-weight:700;font-size:1.1rem}
+.brand .bn{font-size:1.12rem;letter-spacing:-.01em}
+.nav{margin-left:auto;display:flex;align-items:center;gap:.1rem}
+.nav a{color:var(--ink-soft);padding:.45rem .72rem;border-radius:999px;font-size:.93rem;font-weight:600}
+.nav a:hover{color:var(--ink);background:var(--panel-2);text-decoration:none}
+.nav a.active{color:var(--ink);background:color-mix(in srgb,var(--coral) 15%,transparent)}
+.theme-btn{margin-left:.4rem;width:42px;height:42px;border-radius:12px;border:1px solid var(--line-2);background:var(--panel-2);
+  color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:transform .15s var(--ease),background .2s}
+.theme-btn:hover{transform:translateY(-2px);background:var(--panel-3)}
+.theme-btn svg{width:19px;height:19px}
+@media(max-width:760px){.nav a:not(.cta){display:none}}
+
+/* ---- Home hero ----------------------------------------------------------- */
+.hero>.wrap{padding-block:clamp(3rem,7vw,5.5rem) clamp(2rem,4vw,3rem)}
+.hero{position:relative;overflow:clip}
+.hero>.wrap{position:relative}
+.hero h1{max-width:16ch}
+.hero h1,.hero .lead,.hero-actions,.hero-stat{position:relative;z-index:1}
+.amp{font-family:var(--ui);font-weight:500;font-style:normal;letter-spacing:0}
+.hero-stat{margin-top:1.5rem;color:var(--ink-faint);font-family:var(--ui);font-size:.9rem}
+.hero-stat b{color:var(--ink-soft);font-weight:600}
+.hero>.wrap{display:grid;gap:1.8rem 2.4rem;grid-template-columns:1fr}
+@media(min-width:940px){.hero>.wrap{grid-template-columns:minmax(0,1fr) 424px;align-items:center}}
+.hero-text{position:relative;z-index:1}
+.actpanel{position:relative;z-index:1;background:var(--panel);background-image:var(--card-grad);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:1.1rem 1.25rem;overflow:hidden}
+.actpanel-head{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;font-family:var(--ui);font-size:.76rem;color:var(--ink-faint);margin-bottom:.7rem}
+.actpanel-head b{font-family:var(--display);font-size:1.05rem;color:var(--ink);font-weight:600}
+.actpanel-ticker{height:6.5rem;overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent);
+          mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent)}
+.ticker-track{display:flex;flex-direction:column;gap:.5rem;animation:tick 20s linear infinite}
+.actpanel:hover .ticker-track{animation-play-state:paused}
+@keyframes tick{to{transform:translateY(-50%)}}
+.tick-row{display:flex;align-items:center;gap:.5rem;font-family:var(--ui);font-size:.8rem;color:var(--ink-soft)}
+.tick-row .tdot{width:.5rem;height:.5rem;border-radius:50%;flex:none}
+.tick-row .tmsg{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.tick-row .ttime{margin-left:auto;color:var(--ink-faint);font-size:.74rem;flex:none}
+.actpanel-chart{display:flex;align-items:flex-end;gap:3px;height:84px;margin-top:1.3rem;
+  border-bottom:1px solid var(--line);padding-bottom:1px}
+.actpanel-chart .bar{flex:1;min-height:5px;border-radius:3px 3px 0 0;position:relative;
+  background:linear-gradient(180deg,var(--coral),color-mix(in srgb,var(--coral) 45%,var(--honey)));opacity:.9}
+.actpanel-chart .bar:hover{opacity:1}
+.actpanel-chart .bar.peak{background:linear-gradient(180deg,var(--honey),var(--coral));opacity:1}
+.actpanel-chart .bar.peak::after{content:attr(data-v);position:absolute;top:-1.05rem;left:50%;transform:translateX(-50%);
+  font-family:var(--ui);font-size:.66rem;font-weight:700;color:color-mix(in srgb,var(--honey) 55%,var(--ink))}
+.actpanel-axis{display:flex;justify-content:space-between;margin-top:.45rem;font-family:var(--ui);font-size:.7rem;color:var(--ink-faint)}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(42% 82% at 86% 44%,color-mix(in srgb,var(--coral) 17%,transparent),transparent 70%),
+            radial-gradient(34% 66% at 103% 6%,color-mix(in srgb,var(--honey) 15%,transparent),transparent 72%)}
+.hero h1 .hl{background:linear-gradient(120deg,var(--coral),var(--honey));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{margin-top:1.1rem;font-size:1.22rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.7rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.7rem}
+.mchip{display:inline-flex;align-items:center;gap:.45rem;font-size:.84rem;color:var(--ink-soft);
+  background:var(--panel-2);border:1px solid var(--line);padding:.4rem .78rem;border-radius:999px}
+.mchip b{color:var(--ink);font-weight:700}
+.live-dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 color-mix(in srgb,var(--mint) 60%,transparent);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ---- Section heads ------------------------------------------------------- */
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.section-head h2{margin:.4rem 0 .2rem}
+.section-head .sub{margin:0;color:var(--ink-soft);max-width:42rem}
+.more{font-weight:650;font-size:.93rem;white-space:nowrap;color:var(--accent)}
+
+/* ---- Project node cards (home) ------------------------------------------- */
+.grid{display:grid;gap:1.3rem}
+.grid.c2{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.node-card{--pc:var(--coral);position:relative;display:flex;flex-direction:column;background:var(--panel);background-image:var(--card-grad);
+  border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem 1.6rem;box-shadow:var(--shadow);
+  transition:transform .18s var(--ease),box-shadow .2s,border-color .2s}
+.node-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--pc) 48%,var(--line))}
+.node-top{display:flex;align-items:center;gap:.85rem;margin-bottom:.7rem}
+.node-glyph{flex:none;width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:700;
+  font-family:var(--display);font-size:1.15rem;background:linear-gradient(150deg,var(--pc),color-mix(in srgb,var(--pc) 55%,var(--honey)));
+  box-shadow:0 8px 20px -8px color-mix(in srgb,var(--pc) 70%,transparent)}
+.node-card h3{font-size:1.2rem;margin:0}
+.node-status{display:flex;align-items:center;gap:.4rem;margin-top:.25rem;font-size:.78rem;color:var(--ink-faint);font-family:var(--ui)}
+.node-status .sdot{width:.5rem;height:.5rem;border-radius:50%;background:var(--pc)}
+.node-card .blurb{color:var(--ink-soft);font-size:.97rem;margin:.2rem 0 1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1rem}
+.tag{font-size:.71rem;font-weight:600;padding:.2rem .58rem;border-radius:999px;background:var(--panel-3);color:var(--ink-soft);
+  border:1px solid var(--line);font-family:var(--ui)}
+/* standardized status taxonomy + card bottom block */
+.node-id{min-width:0}
+.status{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin-top:.35rem}
+.badge{font-family:var(--ui);font-size:.66rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:.2rem .5rem;border-radius:999px;border:1px solid transparent;line-height:1}
+.badge.alpha{color:color-mix(in srgb,var(--hue-alpha) 62%,var(--ink));background:color-mix(in srgb,var(--hue-alpha) 14%,var(--panel));border-color:color-mix(in srgb,var(--hue-alpha) 40%,transparent)}
+.badge.beta{color:color-mix(in srgb,var(--hue-beta) 66%,var(--ink));background:color-mix(in srgb,var(--hue-beta) 17%,var(--panel));border-color:color-mix(in srgb,var(--hue-beta) 44%,transparent)}
+.badge.released{color:color-mix(in srgb,var(--hue-released) 60%,var(--ink));background:color-mix(in srgb,var(--hue-released) 14%,var(--panel));border-color:color-mix(in srgb,var(--hue-released) 40%,transparent)}
+.ver{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
+.activity{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--ui);font-size:.76rem;color:var(--ink-faint)}
+.activity .adot{width:.5rem;height:.5rem;border-radius:50%}
+.activity.active .adot{background:var(--hue-released)}
+.activity.inactive .adot{background:var(--ink-faint)}
+.node-bottom{margin-top:auto;padding-top:.7rem}
+.node-bottom .tags{margin:0 0 .55rem}
+a.tag{cursor:pointer;transition:background .15s,color .15s,border-color .15s,transform .12s var(--ease)}
+a.tag:hover{text-decoration:none;color:var(--ink);background:color-mix(in srgb,var(--pc,var(--coral)) 16%,transparent);
+  border-color:color-mix(in srgb,var(--pc,var(--coral)) 40%,transparent);transform:translateY(-1px)}
+.updated{font-family:var(--ui);font-size:.78rem;color:var(--ink-faint);margin:0 0 .55rem}
+.node-links{display:flex;flex-wrap:wrap;gap:.55rem 1rem;font-size:.9rem;font-weight:600}
+.node-links a{color:var(--accent);display:inline-flex;align-items:center;gap:.2rem}
+.node-links a:hover{text-decoration:none;color:var(--link-hover)}
+.ext::after{content:"↗";margin-left:.05em;font-size:.92em;opacity:.8}
+.np-status{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
+.np-updated{font-family:var(--ui);font-size:.82rem;color:var(--ink-faint)}
+.np-tags{margin-top:.85rem}
+.badge-live{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--ui);font-size:.72rem;font-weight:700;letter-spacing:.04em;
+  color:var(--mint);background:color-mix(in srgb,var(--mint) 14%,transparent);border:1px solid color-mix(in srgb,var(--mint) 32%,transparent);
+  padding:.18rem .5rem;border-radius:999px;text-transform:uppercase}
+
+/* ---- Pulse / recently ---------------------------------------------------- */
+.pulse{display:grid;gap:.2rem}
+.pulse-row{display:flex;align-items:center;gap:.8rem;padding:.85rem .2rem;border-bottom:1px solid var(--line)}
+.pulse-row:last-child{border-bottom:none}
+.pulse-row .pdot{width:.6rem;height:.6rem;border-radius:50%;flex:none;background:var(--pc,var(--coral))}
+.pulse-row .pwhat{flex:1;min-width:0}
+.pulse-row .pwhat b{font-weight:600;color:var(--ink)}
+.pulse-row .pproj{font-size:.8rem;color:var(--ink-faint);font-family:var(--ui)}
+.pulse-row .pdate{margin-left:auto;font-size:.82rem;color:var(--ink-faint);font-variant-numeric:tabular-nums;white-space:nowrap;font-family:var(--ui)}
+
+/* ---- Self-locating header (node page) ------------------------------------ */
+.node-page{--pc:var(--green)}
+.locator{font-family:var(--ui);font-size:.82rem;color:var(--ink-faint);display:flex;gap:.5rem;align-items:center;margin-bottom:1rem}
+.locator a{color:var(--ink-soft)}
+.locator .kind{color:var(--pc);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.72rem}
+.np-head{display:flex;align-items:flex-start;gap:1.1rem;flex-wrap:wrap}
+.np-glyph{flex:none;width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:#231018;font-weight:700;
+  font-family:var(--display);font-size:1.5rem;background:linear-gradient(150deg,var(--pc),color-mix(in srgb,var(--pc) 50%,var(--honey)));
+  box-shadow:0 12px 28px -10px color-mix(in srgb,var(--pc) 65%,transparent)}
+.np-head h1{margin:0;font-size:clamp(2rem,4vw,2.8rem)}
+.np-oneline{margin:.3rem 0 0;color:var(--ink-soft);font-size:1.12rem;max-width:40rem}
+.np-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+
+/* ---- Live example block -------------------------------------------------- */
+.example{margin:1.8rem 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);box-shadow:var(--shadow)}
+.example-bar{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;border-bottom:1px solid var(--line);background:var(--panel-2);
+  font-family:var(--ui);font-size:.82rem;color:var(--ink-faint)}
+.example-bar .badge-live{margin-left:auto}
+.example-body{padding:1.3rem}
+.demo-controls{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.chip{cursor:pointer;font-family:var(--ui);font-size:.85rem;font-weight:600;padding:.4rem .8rem;border-radius:999px;
+  border:1px solid var(--line-2);background:var(--panel-2);color:var(--ink-soft);transition:all .15s var(--ease)}
+.chip[aria-pressed="true"]{background:color-mix(in srgb,var(--green) 18%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent);color:var(--ink)}
+.chip:hover{transform:translateY(-1px);color:var(--ink)}
+.demo-out{font-family:var(--mono);font-size:.92rem;line-height:1.6;background:var(--code-bg);color:var(--code-ink);
+  border-radius:var(--radius-sm);padding:1rem 1.1rem;min-height:3.4rem;display:flex;align-items:center}
+.demo-actions{display:flex;align-items:center;gap:.6rem;margin-top:.9rem}
+.demo-tpl{font-family:var(--mono);font-size:.83rem;color:var(--ink-faint);margin-bottom:.7rem;line-height:1.55}
+.demo-tpl b{color:var(--green);font-weight:500;background:color-mix(in srgb,var(--green) 12%,transparent);padding:.05em .25em;border-radius:5px}
+.demo-out{transition:opacity .12s}
+.demo-out.rolling{opacity:.55}
+.btn:active{transform:translateY(0) scale(.97)}
+.demo-group{margin:0 0 .8rem}
+.demo-glabel{font-family:var(--ui);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .35rem}
+.demo-glabel .ct{color:var(--green);font-weight:600}
+.demo-grow{display:flex;flex-wrap:wrap;gap:.4rem}
+.demo-label{font-family:var(--ui);font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin:.9rem 0 .35rem}
+.demo-dpl{font-family:var(--mono);font-size:.85rem;color:var(--ink-soft);background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-xs);padding:.55rem .8rem}
+.demo-dpl b{color:color-mix(in srgb,var(--green) 58%,var(--ink));font-weight:500;background:color-mix(in srgb,var(--green) 13%,transparent);padding:.04em .3em;border-radius:5px}
+/* playful hover touches */
+.brand .mark{transition:transform .3s var(--ease)}
+.brand:hover .mark{transform:rotate(-10deg) scale(1.07)}
+.node-glyph,.np-glyph{transition:transform .25s var(--ease)}
+.node-card:hover .node-glyph{transform:rotate(-6deg) scale(1.06)}
+.np-glyph:hover{transform:rotate(8deg) scale(1.06)}
+.chip:active{transform:scale(.95)}
+.pulse-row .pdot{transition:transform .2s var(--ease)}
+.pulse-row:hover .pdot{transform:scale(1.5)}
+
+/* ---- Connections --------------------------------------------------------- */
+.connections{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:1.4rem 0}
+.conn{display:flex;flex-direction:column;gap:.3rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--panel-2)}
+.conn .ctitle{font-family:var(--ui);font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint)}
+.conn a{font-weight:600}
+.callout{display:flex;gap:.7rem;padding:.9rem 1.1rem;border-radius:var(--radius-sm);font-size:.95rem;color:var(--ink-soft);
+  background:color-mix(in srgb,var(--honey) 12%,var(--panel));border:1px solid color-mix(in srgb,var(--honey) 30%,transparent);
+  border-left:3px solid var(--honey);margin:1.3rem 0}
+
+/* ---- Divider note -------------------------------------------------------- */
+.mock-note{font-family:var(--ui);font-size:.84rem;color:var(--ink-faint);text-align:center;padding:1.4rem;border-top:1px dashed var(--line-2);border-bottom:1px dashed var(--line-2);background:var(--panel-2)}
+
+/* ---- Footer -------------------------------------------------------------- */
+.site-footer{border-top:1px solid var(--line);background:var(--panel)}
+.site-footer>.wrap{padding-block:2.6rem 1.4rem;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2rem}
+.fcol h4{font-family:var(--ui);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-faint);margin:0 0 .7rem}
+.fcol a{display:block;color:var(--ink-soft);font-size:.9rem;padding:.22rem 0}
+.fbrand p{color:var(--ink-faint);font-size:.88rem;max-width:22rem}
+.fbar{border-top:1px solid var(--line)}
+.fbar>.wrap{padding-block:1.05rem;display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;color:var(--ink-faint);font-size:.83rem;font-family:var(--ui)}
+.fbar .sp{margin-left:auto}
+@media(max-width:720px){.site-footer>.wrap{grid-template-columns:1fr 1fr}}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#"><span class="mark">F</span><span class="bn">Fairy&nbsp;Fox</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#" class="active">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">Docs</a>
+      <a href="#">Updates</a>
+      <a href="#">About</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle light/dark" title="Toggle theme">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HOME: hero ===== -->
+<section class="band hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <h1>Projects <span class="amp">&amp;</span> documentation</h1>
+      <p class="lead">Plus a running log of changes.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">Projects</a>
+        <a class="btn" href="#">Documentation</a>
+      </div>
+      <p class="hero-stat">3 projects · updated <b>2 days ago</b></p>
+    </div>
+    <aside class="actpanel" aria-label="Recent activity">
+      <div class="actpanel-head"><span>Activity · last 30 days</span><b id="actTotal"></b></div>
+      <div class="actpanel-ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+      <div class="actpanel-chart" id="actChart"></div>
+      <div class="actpanel-axis"><span>30 days ago</span><span>today</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== HOME: projects ===== -->
+<section class="band band-alt" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <a class="more" href="#">All projects →</a>
+    </div>
+    <div class="grid c2">
+
+      <div class="node-card" style="--pc:var(--green)">
+        <div class="node-top">
+          <span class="node-glyph">R</span>
+          <div class="node-id">
+            <h3>Random AI Prompt</h3>
+            <div class="status">
+              <span class="badge released">Released</span>
+              <span class="ver">v2.6.0</span>
+              <span class="activity active"><span class="adot"></span>Active</span>
+            </div>
+          </div>
+        </div>
+        <p class="blurb">A generator for random and dynamic text prompts — built around a controllable
+          dynamic-prompt language (DPL), with a CLI and a web UI.</p>
+        <div class="node-bottom">
+          <p class="updated">Updated Jun 22, 2026</p>
+          <div class="tags"><a class="tag" href="#">JavaScript</a><a class="tag" href="#">Node 24</a><a class="tag" href="#">Web UI</a></div>
+          <div class="node-links"><a href="#node">More details →</a><a class="ext" href="#">Docs</a><a class="ext" href="#">Repo</a></div>
+        </div>
+      </div>
+
+      <div class="node-card" style="--pc:var(--pink)">
+        <div class="node-top">
+          <span class="node-glyph">P</span>
+          <div class="node-id">
+            <h3>Pokered Save Editor 2</h3>
+            <div class="status">
+              <span class="badge alpha">Alpha</span>
+              <span class="ver">v0.14.2</span>
+              <span class="activity active"><span class="adot"></span>Active</span>
+            </div>
+          </div>
+        </div>
+        <p class="blurb">A desktop save-file editor for Pokémon Red &amp; Blue, built in Qt 6 (C++/QML): byte-exact
+          save read/write, full team/box/item editing, and an in-game font keyboard.</p>
+        <div class="node-bottom">
+          <p class="updated">Updated Jun 23, 2026</p>
+          <div class="tags"><a class="tag" href="#">Qt 6</a><a class="tag" href="#">C++</a><a class="tag" href="#">QML</a><a class="tag" href="#">Desktop</a></div>
+          <div class="node-links"><a href="#">More details →</a><a class="ext" href="#">Docs</a><a class="ext" href="#">Repo</a></div>
+        </div>
+      </div>
+
+      <div class="node-card" style="--pc:var(--amber)">
+        <div class="node-top">
+          <span class="node-glyph">P</span>
+          <div class="node-id">
+            <h3>Pokered Save Editor</h3>
+            <div class="status">
+              <span class="badge released">Released</span>
+              <span class="ver">v2.0.1</span>
+              <span class="activity inactive"><span class="adot"></span>Inactive</span>
+            </div>
+          </div>
+        </div>
+        <p class="blurb">The original editor (Electron · Angular · TypeScript) — complete and stable, and the
+          recommended working tool until the Qt 6 rewrite reaches parity.</p>
+        <div class="node-bottom">
+          <p class="updated">Updated Mar 31, 2019</p>
+          <div class="tags"><a class="tag" href="#">TypeScript</a><a class="tag" href="#">Angular</a><a class="tag" href="#">Electron</a><a class="tag" href="#">Desktop</a></div>
+          <div class="node-links"><a href="#">More details →</a><a class="ext" href="#">Repo</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOME: recently / pulse ===== -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Recently</h2>
+      <a class="more" href="#">All updates →</a>
+    </div>
+    <div class="pulse">
+      <div class="pulse-row" style="--pc:var(--pink)"><span class="pdot"></span>
+        <div class="pwhat"><b>Static analysis &amp; tests</b> landed — clang-tidy + cppcheck layer, CI green.
+          <span class="pproj">Pokered Save Editor 2</span></div><span class="pdate">Jun 23</span></div>
+      <div class="pulse-row" style="--pc:var(--green)"><span class="pdot"></span>
+        <div class="pwhat"><b>Dynamic Prompt Language (DPL)</b> shipped with a parser + Vitest suite.
+          <span class="pproj">Random AI Prompt</span></div><span class="pdate">Jun 21</span></div>
+      <div class="pulse-row" style="--pc:var(--green)"><span class="pdot"></span>
+        <div class="pwhat"><b>Prompt lists</b> overhauled for cleaner vocabularies.
+          <span class="pproj">Random AI Prompt</span></div><span class="pdate">Jun 20</span></div>
+      <div class="pulse-row" style="--pc:var(--green)"><span class="pdot"></span>
+        <div class="pwhat"><b>Web app (React + Vite SPA)</b> added over the shared core.
+          <span class="pproj">Random AI Prompt</span></div><span class="pdate">Jun 19</span></div>
+      <div class="pulse-row" style="--pc:var(--pink)"><span class="pdot"></span>
+        <div class="pwhat"><b>Pokémon editor</b> — full team &amp; box editing with byte-exact writes.
+          <span class="pproj">Pokered Save Editor 2</span></div><span class="pdate">Jun 17</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="mock-note">↓ Same site, a different page — a <b>project node</b> (self-standing, landable cold) with a live example ↓</div>
+
+<!-- ===== PROJECT NODE PAGE ===== -->
+<section class="band node-page">
+  <div class="wrap" style="max-width:calc(var(--maxw-text) + 12rem)">
+    <div class="locator">
+      <span class="kind">Project</span><span aria-hidden="true">·</span>
+      <a href="#">Fairy Fox</a><span aria-hidden="true">/</span>
+      <a href="#">Projects</a><span aria-hidden="true">/</span>
+      <span>Random AI Prompt</span>
+    </div>
+
+    <div class="np-head">
+      <span class="np-glyph">R</span>
+      <div>
+        <h1>Random AI Prompt</h1>
+        <p class="np-oneline">A controllable generator for random and dynamic text prompts, built around a dynamic-prompt language — with a CLI and a web UI.</p>
+      </div>
+    </div>
+    <div class="np-status">
+      <span class="badge released">Released</span>
+      <span class="ver">v2.6.0</span>
+      <span class="activity active"><span class="adot"></span>Active</span>
+      <span class="np-updated">Updated Jun 22, 2026</span>
+    </div>
+    <div class="tags np-tags"><a class="tag" href="#">JavaScript</a><a class="tag" href="#">Node 24</a><a class="tag" href="#">Web UI</a></div>
+
+    <h2 style="margin:1.6rem 0 .5rem">What it is</h2>
+    <p class="muted">Random AI Prompt turns small, composable rules into rich, varied text prompts. Its dynamic-prompt
+      language (DPL) makes generation controllable rather than purely random, and it runs as a CLI and a web app
+      (a React + Vite SPA) over one shared core.</p>
+
+    <h2 style="margin:2rem 0 .9rem">Connections</h2>
+    <div class="connections">
+      <div class="conn"><span class="ctitle">Documentation</span><a class="ext" href="#">Docs site</a><a class="ext" href="#">README</a></div>
+      <div class="conn"><span class="ctitle">Source</span><a class="ext" href="#">GitHub repo</a><a class="ext" href="#">Changelog</a></div>
+      <div class="conn"><span class="ctitle">Referenced by</span><a href="#">Shared standards →</a><a href="#">Updates: DPL →</a></div>
+    </div>
+
+    <h2 style="margin:2rem 0 .9rem">Recent activity</h2>
+    <div class="pulse" style="--pc:var(--green)">
+      <div class="pulse-row"><span class="pdot"></span><div class="pwhat"><b>Test suite</b> (Vitest + Playwright) and 2.6.0 shipped.</div><span class="pdate">Jun 22</span></div>
+      <div class="pulse-row"><span class="pdot"></span><div class="pwhat"><b>DPL</b> — dynamic prompt language with parser + tests.</div><span class="pdate">Jun 21</span></div>
+      <div class="pulse-row"><span class="pdot"></span><div class="pwhat"><b>Prompt lists</b> overhauled for cleaner vocabularies.</div><span class="pdate">Jun 20</span></div>
+      <div class="pulse-row"><span class="pdot"></span><div class="pwhat"><b>React + Vite SPA</b> added over the shared core.</div><span class="pdate">Jun 19</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fcol fbrand">
+      <a class="brand" href="#" style="margin-bottom:.6rem"><span class="mark">F</span><span class="bn">Fairy Fox</span></a>
+      <p>The project hub and documentation library for Fairy Fox’s software work.</p>
+    </div>
+    <div class="fcol"><h4>Explore</h4><a href="#">Projects</a><a href="#">Documentation</a><a href="#">Downloads</a><a href="#">Updates</a><a href="#">About</a></div>
+    <div class="fcol"><h4>Projects</h4><a href="#">Pokered Save Editor 2</a><a href="#">Random AI Prompt</a><a href="#">Pokered Save Editor</a></div>
+    <div class="fcol"><h4>Elsewhere</h4><a href="#">GitHub ↗</a><a href="#">Atom feed</a></div>
+  </div>
+  <div class="fbar"><div class="wrap"><span>© 2026 Fairy Fox</span><span>Built with care · open source</span><span class="sp"></span><span>@junebug12851</span></div></div>
+</footer>
+
+<script>
+/* Theme toggle: auto → light → dark, remembered for the session */
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn'), icon=document.getElementById('themeIcon');
+  var sun='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  var moon='<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>';
+  function prefersDark(){return window.matchMedia('(prefers-color-scheme:dark)').matches;}
+  function apply(t){root.setAttribute('data-theme',t);
+    var dark = t==='dark' || (t==='auto' && prefersDark());
+    icon.innerHTML = dark ? sun : moon;}
+  var cur='auto'; apply(cur);
+  btn.addEventListener('click',function(){
+    var dark = cur==='dark' || (cur==='auto' && prefersDark());
+    cur = dark ? 'light' : 'dark'; apply(cur);});
+})();
+
+/* Hero activity panel — static pre-gathered data, just for the "alive" impression */
+(function(){
+  var bars=[9,4,13,16,23,10,5,19,26,15,7,4,12,21,29,17,10,8,15,25,31,14,6,11,20,34,22,10,13,24];
+  var changes=[
+    {c:'var(--coral)', m:'Design direction settled (v2)',                 t:'today'},
+    {c:'var(--pink)',  m:'Static analysis layer (clang-tidy + cppcheck)', t:'2d'},
+    {c:'var(--green)', m:'DPL parser + Vitest suite',                     t:'3d'},
+    {c:'var(--coral)', m:'Day-centric updates model',                     t:'today'},
+    {c:'var(--pink)',  m:'Pokémon editor: team & box writes',             t:'5d'},
+    {c:'var(--green)', m:'React + Vite web app',                          t:'6d'},
+    {c:'var(--coral)', m:'Warm visual language (mockup)',                 t:'today'},
+    {c:'var(--pink)',  m:'Library coverage to ~90%',                      t:'8d'},
+    {c:'var(--green)', m:'Prompt list overhaul',                          t:'9d'},
+    {c:'var(--pink)',  m:'Drag-and-drop save loading',                    t:'12d'},
+    {c:'var(--green)', m:'ES modules · Node 24 LTS',                      t:'14d'}
+  ];
+  var chart=document.getElementById('actChart'), track=document.getElementById('tickerTrack'), total=document.getElementById('actTotal');
+  if(!chart) return;
+  var max=Math.max.apply(null,bars), maxIdx=bars.indexOf(max), sum=bars.reduce(function(a,b){return a+b;},0);
+  total.textContent=sum+' commits';
+  bars.forEach(function(v,i){var b=document.createElement('span');b.className='bar'+(i===maxIdx?' peak':'');
+    b.style.height=Math.max(8,Math.round(v/max*86))+'%';b.setAttribute('data-v',v);b.title=v+(v===1?' commit':' commits');chart.appendChild(b);});
+  function row(ch){var r=document.createElement('div');r.className='tick-row';
+    r.innerHTML='<span class="tdot" style="background:'+ch.c+'"></span><span class="tmsg">'+ch.m+'</span><span class="ttime">'+ch.t+'</span>';return r;}
+  changes.concat(changes).forEach(function(ch){track.appendChild(row(ch));}); /* duplicated for seamless loop */
+})();
+</script>
+</body>
+</html>

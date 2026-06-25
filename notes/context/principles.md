@@ -16,6 +16,9 @@ specifics live in the reference files.
   Fairy Fox by name only for attribution; never multiple lines of third-person
   praise or elevation. The site documents and indexes the work — it does not boast
   about it. Mentioning and referencing capabilities is fine; glorifying is not.
+  This rule targets **ego, not passion**: the platform is heartfelt and built with
+  deep care, and the craft and quality should be *maximal*. Neutral never means
+  dry, minimal, or low-effort. See [`design-direction.md`](design-direction.md).
 
 ## What the repo should feel like
 

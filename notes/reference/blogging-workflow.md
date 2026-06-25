@@ -1,64 +1,89 @@
-# Blogging Workflow — including project round-ups
+# Updates / Blogging Workflow — day-centric
 
-How posts get written. Two kinds: ordinary write-ups, and **cross-project
-round-ups** that report what changed in my repos.
+How posts get written. **The unit of a post is a *day*, not a project.** A post is
+about *what happened that day* across everything — and "what happened" includes both
+**work** (code/changes in any or all projects) and **talking** (discussion, decisions,
+design, planning, this kind of back-and-forth). The day is the story; projects are just
+some of what the day touched.
 
-## Ordinary posts
+## The core model
 
-Create `_posts/YYYY-MM-DD-title.md` with front matter:
+- **One post per day, spanning whatever the day touched.** If a day saw work on two
+  projects plus a design discussion, that's *one* post covering all of it — not three.
+  Merge by day; don't split by project.
+- **Talking counts, not just commits.** Decisions, direction changes, design
+  conversations, planning — these are first-class content. A day can be mostly (or
+  entirely) discussion and still be worth a post.
+- **Session notes feed the post.** The day's `notes/sessions/YYYY-MM/YYYY-MM-DD.md`
+  log is the raw material. Fold it into that day's post. **A discussion-only day**
+  (no code work) still gets a post — a session/notes-style update of what was talked
+  through and decided.
+- **Cover the day properly.** Aim to genuinely reflect the day — the work *and* the
+  thinking — not a thin changelog line.
+
+## Writing a post
+
+Create `_posts/YYYY-MM-DD-<day-slug>.md` — the slug names the **day's theme**, not a
+project (e.g. `2026-06-24-design-direction-and-mockups`, not
+`...-random-ai-prompt-update`). Front matter:
 
 ```yaml
 ---
-title: "Post title"
+title: "What the day was about"
 subtitle: "Optional one-liner shown in lists and at the top."
 date: YYYY-MM-DD
-tags: [tag1, tag2]
+tags: [<each project touched>, <topics>, update]   # e.g. [pokered-save-editor-2, random-ai-prompt, design, update]
 ---
 ```
 
-Write in Markdown. It shows up automatically on the home page (latest few),
-`/blog/`, and `/feed.xml`. Commit on `dev`, FF `main` to publish (see
-[`git-workflow.md`](git-workflow.md)).
+Tag **every project the day touched** plus topic tags (`design`, `notes`, `site`,
+`update`…) so per-project and per-topic views can still filter to it. Structure the body
+by theme — a short framing of the day, then sections for each strand (a project's work,
+a discussion, a decision). It appears automatically on the home page (latest few),
+`/blog/` (Updates), and `/feed.xml`. Commit on `dev`, FF `main` to publish.
 
-## Project round-ups (the "look for updates, then blog" loop)
+## The gathering pass (look across everything, then write the day)
 
-The standing job: **regularly check the reference projects for changes and write
-about the interesting ones.** It runs on explicit request (a human ask or a
-scheduled task that asks the AI to do a pass) — never as silent automation.
-
-The pass:
+Runs on explicit request (a human ask or a scheduled prompt) — never silent automation;
+keeps the pull-on-request / anti-recursion rule intact
+([`cross-project-sync.md`](cross-project-sync.md)).
 
 1. **Refresh the clones.** For each project in
-   [`../../hub/registry.yml`](../../hub/registry.yml), shallow-pull its `dev`
-   branch into `assets/references/<project>/` (see
-   [`cross-project-sync.md`](cross-project-sync.md)).
-2. **See what changed since last time.** Compare against the last-seen commit.
-   The cheap, reliable signal is each project's own living history — read the new
-   entries in its `notes/version/` (changelog) and `notes/sessions/` (day logs),
-   plus `git -C assets/references/<project> log --oneline -n 30`. Record the
-   commit you stopped at so the next pass knows where to resume (e.g. a small
-   `hub/.last-seen.yml`, or just cite the range in the post).
-3. **Judge what's worth saying.** Not every commit is a story. Group related
-   changes into themes; skip pure chores/typos. Aim for "what got better and why
-   it matters," not a raw commit dump.
-4. **Draft the post.** `_posts/YYYY-MM-DD-<project>-update.md`, tagged with the
-   project name and `update`. Link to the repo and to specific commits/PRs where
-   useful. Keep the project's plain, matter-of-fact voice.
-5. **Publish** via the normal git flow. Add its changelog entry inline
-   ([`../version.md`](../version.md)) and bump `VERSION` (PATCH) in the same
-   commit.
+   [`../../hub/registry.yml`](../../hub/registry.yml), shallow-pull its `dev` branch into
+   `assets/references/<project>/`.
+2. **Reconstruct each day.** For the day(s) since last time, read — across *all*
+   projects — their `notes/sessions/` (day logs) and `notes/version/` (changelog), plus
+   `git -C assets/references/<project> log --oneline`. **Include the hub (fairyfox.io)
+   as a project too** — read its *own* `notes/version/` (changelog), `VERSION`, and
+   `notes/sessions/`. The hub's work, version bumps, and the day's talking/decisions all
+   belong in the day's post, exactly like the siblings — don't cover only the other
+   projects. Record where you stopped (`hub/.last-seen.yml` or cite the range).
+3. **Assemble per day, not per project.** Group everything that happened on a given day
+   — every project + every discussion — into that day's single post. Judge what's worth
+   saying: themes over raw commits, decisions over chores.
+4. **Draft + publish** via the normal git flow; inline changelog entry
+   ([`../version.md`](../version.md)) and a PATCH `VERSION` bump in the same commit.
 
-### Voice & scope
+## Voice & scope
 
-- Honest and concrete: real changes, real reasons. No hype.
-- It's *my* projects from *my* hub — first person is fine, but let the work be the
-  star.
-- One project per round-up usually reads better than a mega-digest; combine only
-  when changes are small.
+- **Neutral documentation voice** — *not* first person, not glorifying (see
+  [`../context/principles.md`](../context/principles.md)). The assistant is the site's
+  voice; let the day's work and thinking be the star.
+- Honest and concrete: real work, real discussions, real reasons. No hype.
+- Day-centric and merged: combine projects and topics into the day. Multiple posts for a
+  single day only when genuinely warranted (rare).
 
-### Optional: schedule it
+## Retro note (2026-06-24)
 
-A recurring pass can be set up with the scheduled-tasks tooling (e.g. weekly:
-"refresh the reference clones and draft round-ups for anything noteworthy").
-It still produces a *draft to review*, keeping a human in the loop and the
-pull-on-request / anti-recursion rule intact.
+The existing `_posts/` were written one-project-per-post (project-centric). They should
+be **redone day-centric**: merge posts that share a date, weave in that day's discussions
+from the session notes, and re-slug/re-tag by day. **Preserve the existing content when
+re-doing — merge and re-frame, don't discard; don't lose changes.** And make sure the
+hub's own work and versions are represented, not just the siblings'. Tracked in
+[`../plans/next-steps.md`](../plans/next-steps.md).
+
+## Optional: schedule it
+
+A recurring pass can be set up with the scheduled-tasks tooling (e.g. weekly: "refresh
+the clones, reconstruct each day across all projects + the hub's session notes, and draft
+day-centric updates"). It still produces a *draft to review*.

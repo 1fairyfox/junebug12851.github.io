@@ -22,6 +22,26 @@
   oriented from `README.md` → `CLAUDE.md` → `notes/` without anything trapped in
   my head.
 
+## Why this matters (the bigger picture)
+
+This is more than a homepage. It's a deliberate, heartfelt attempt to bring a
+whole body of work together under one **overarching, loosely coupled system** — to
+resurface dormant projects and give everything a single connected home. The
+long-term aim is a **mesh**: a layer over all the projects, communicating through
+cleanly decoupled, non-recursive channels (the hub's pull-only, on-request sync
+model is the seed of it), eventually scaling to manage a large set of projects
+end to end. The experience to build toward is an integrated, interconnected
+landing page — posts, **live/workable examples**, updates, and deep interlinked
+docs, all woven together.
+
+Two things follow for how we work on it: quality is **mandatory** (rich, careful,
+polished — never dry or minimal for its own sake), and the assistant's standing
+role is to be the **persistent systems-management layer** that keeps the system
+stable and current across sessions, so the work persists. The neutral
+documentation voice (below / in `principles.md`) is about *not boasting* — it is
+not a license to do less; the care should be obvious. Longer-term ambitions live
+in [`../plans/future.md`](../plans/future.md).
+
 ## Hosting
 
 - **Repo:** `junebug12851.github.io` (a GitHub *user site* — the repo name is

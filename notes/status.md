@@ -44,6 +44,13 @@ The rest of the structure is in place end to end:
 
 ## In flight / awaiting
 
+- **Design direction v2 + Phase 0.5 mockup (notes-only).** The new warm design language
+  (light/dark) and the build plan are settled in
+  [`context/design-direction.md`](context/design-direction.md),
+  [`plans/implementation.md`](plans/implementation.md), and `mockups/v1-warm.html`.
+  **Next:** build it — tokens → component kit → one project-node slice. Not yet reflected
+  in the live site.
+
 - **HTTPS for `fairyfox.io`.** The custom domain is **live over HTTP** (DNS points
   at GitHub Pages and the domain is set in Settings → Pages). The only thing
   outstanding is the **HTTPS certificate**, which GitHub is still provisioning;

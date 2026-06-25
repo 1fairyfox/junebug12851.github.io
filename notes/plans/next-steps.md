@@ -16,11 +16,16 @@ Ordered, current. Check off / remove as done; the history lives in
 
 ## Soon (make it real)
 
-- Write the first genuine **project round-up** post once there's a diff to report
-  (see [`../reference/blogging-workflow.md`](../reference/blogging-workflow.md)).
+- **Re-do existing `_posts/` day-centric** — merge posts that share a date, weave in
+  that day's discussions from the session notes, re-slug/re-tag by day. **Preserve
+  existing content (don't lose changes)** and **include the hub (fairyfox.io) itself as a
+  project**, not just the siblings. Big content pass; the model is in
+  [`../reference/blogging-workflow.md`](../reference/blogging-workflow.md).
+- Going forward, write **day-centric updates** (work + discussion across all projects in
+  one post per day), per the same doc.
 - Flesh out `/about/` with whatever I want public.
 - Add an Open Graph share image (`assets/og.png`) referenced by `jekyll-seo-tag`.
-- Decide whether to schedule a recurring "check projects, draft round-ups" pass.
+- Decide whether to schedule a recurring day-centric update pass.
 
 ## Later
 
