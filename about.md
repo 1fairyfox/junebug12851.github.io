@@ -38,23 +38,25 @@ permalink: /about/
 
 <div class="prose">
   <h2>The projects</h2>
-  <p>Three projects sit around the hub, each developed in the open with its own
-  documentation and releases:</p>
+  <p>The projects below are developed in the open, each with its own documentation and
+  releases — and the hub itself is listed alongside them:</p>
   <ul>
-    <li><strong><a href="/docs/pokered-save-editor-2/">Pokered Save Editor 2</a></strong>
-    — a desktop save-file editor for Pokémon Red &amp; Blue, built in Qt 6 (C++/QML).
-    It reads and writes saves byte-for-byte and is the project the shared engineering
-    standards originally came from. It is currently in alpha.</li>
-    <li><strong><a href="/docs/pokered-save-editor/">Pokered Save Editor</a></strong>
-    — the predecessor: the original editor, built with Electron and Angular. It is
-    complete and stable, and remains the recommended working tool until the Qt 6
-    rewrite reaches parity.</li>
-    <li><strong><a href="/docs/random-ai-prompt/">Random AI Prompt</a></strong> — a
-    JavaScript prompt generator for Stable Diffusion, with a web UI and one-click
-    image-to-animation export.</li>
+    <li><strong><a href="/projects/pokered-save-editor-2/">Pokered Save Editor 2</a></strong>
+    — a desktop save-file editor for Pokémon Red &amp; Blue, built in Qt 6 (C++/QML). It
+    reads and writes saves byte-for-byte and is the project the shared engineering standards
+    originally came from. Currently in alpha.</li>
+    <li><strong><a href="/projects/random-ai-prompt/">Random AI Prompt</a></strong> — a
+    generator for random and dynamic text prompts, built around a controllable
+    dynamic-prompt language (DPL), with a CLI and a web UI.</li>
+    <li><strong><a href="/projects/pokered-save-editor/">Pokered Save Editor</a></strong> —
+    the predecessor: the original editor, built with Electron and Angular. Complete and
+    stable, and the recommended working tool until the Qt 6 rewrite reaches parity.</li>
+    <li><strong><a href="/projects/fairyfox-io/">fairyfox.io</a></strong> — this site: the
+    hand-built Jekyll hub and documentation library itself, listed as a project like the
+    rest.</li>
   </ul>
-  <p>The full list, with links to each project's documentation, downloads, and source,
-  is on the <a href="/projects/">projects</a> page.</p>
+  <p>The full list, with links to each project's documentation, downloads, and source, is
+  on the <a href="/projects/">projects</a> page.</p>
 
   <h2>How it's built</h2>
   <p>The site is a static <a href="https://jekyllrb.com/">Jekyll</a> site with no

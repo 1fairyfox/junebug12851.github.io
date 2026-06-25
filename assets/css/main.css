@@ -266,10 +266,13 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
 .proj-bottom .tags{margin:0 0 .6rem}
 .card-links a{display:inline-flex;align-items:center;gap:.15rem}
 .card-links a.ext::after{content:"↗";margin-left:.02em;font-size:.92em;opacity:.8}
+/* whole project card clickable → node page (stretched link); other links stay above */
+.proj-card .card-links a.stretch::after{content:"";position:absolute;inset:0;z-index:1}
+.proj-card .card-links a:not(.stretch){position:relative;z-index:2}
 
 /* ── Doc category cards ──────────────────────────────────────────────────── */
 .doc-cats{display:grid;gap:1.15rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.doc-cat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.4rem;box-shadow:var(--shadow)}
+.doc-cat{background:var(--panel);background-image:var(--card-grad);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.4rem;box-shadow:var(--shadow)}
 .doc-cat .cat-title{display:flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:600;font-size:1.02rem;margin-bottom:.8rem;color:var(--text)}
 .doc-cat .cat-title .bar{width:.3rem;height:1.05rem;border-radius:3px;background:var(--violet)}
 .doc-cat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.05rem}

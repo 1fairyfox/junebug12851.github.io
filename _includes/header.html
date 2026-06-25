@@ -12,42 +12,8 @@
     {%- assign p = page.url -%}
     <nav class="nav" aria-label="Primary">
       <a href="{{ '/' | relative_url }}" class="{% if p == '/' %}active{% endif %}">Home</a>
-
-      <details class="dd">
-        <summary class="{% if p contains '/projects' %}active{% endif %}">Projects</summary>
-        <div class="dd-panel">
-          <div class="dd-group">
-            <span class="dd-group-title">Projects</span>
-            <div class="dd-links">
-              {%- for proj in site.data.projects -%}
-              <a href="{% if proj.doc_url %}{{ proj.doc_url | relative_url }}{% else %}{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}{% endif %}">{{ proj.name }}</a>
-              {%- endfor -%}
-            </div>
-          </div>
-          <a class="dd-foot" href="{{ '/projects/' | relative_url }}">All projects →</a>
-        </div>
-      </details>
-
-      <details class="dd">
-        <summary class="{% if p contains '/docs' %}active{% endif %}">Docs</summary>
-        <div class="dd-panel">
-          {%- for cat in site.data.doc_categories -%}
-            {%- assign items = site.docs | where: "category", cat.slug | sort: "order" -%}
-            {%- if items.size > 0 -%}
-            <div class="dd-group">
-              <span class="dd-group-title">{{ cat.name }}</span>
-              <div class="dd-links">
-                {%- for d in items -%}
-                <a href="{{ d.url | relative_url }}">{{ d.nav_title | default: d.title }}</a>
-                {%- endfor -%}
-              </div>
-            </div>
-            {%- endif -%}
-          {%- endfor -%}
-          <a class="dd-foot" href="{{ '/docs/' | relative_url }}">Documentation library →</a>
-        </div>
-      </details>
-
+      <a href="{{ '/projects/' | relative_url }}" class="{% if p contains '/projects' %}active{% endif %}">Projects</a>
+      <a href="{{ '/docs/' | relative_url }}" class="{% if p contains '/docs' %}active{% endif %}">Docs</a>
       <a href="{{ '/downloads/' | relative_url }}" class="{% if p contains '/downloads' %}active{% endif %}">Downloads</a>
       <a href="{{ '/blog/' | relative_url }}" class="{% if p contains '/blog' %}active{% endif %}">Updates</a>
       <a href="{{ '/about/' | relative_url }}" class="{% if p contains '/about' %}active{% endif %}">About</a>

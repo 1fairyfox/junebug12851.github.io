@@ -23,7 +23,7 @@
       {%- for t in p.tags -%}<span class="tag">{{ t }}</span>{%- endfor -%}
     </div>
     <div class="card-links">
-      <a href="{{ '/projects/' | append: p.key | append: '/' | relative_url }}">More details →</a>
+      <a class="stretch" href="{{ '/projects/' | append: p.key | append: '/' | relative_url }}">More details →</a>
       <a href="{{ docurl | relative_url }}">Documentation →</a>
       <a class="ext" href="{{ p.repo }}">Repository</a>
     </div>
