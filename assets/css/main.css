@@ -210,7 +210,7 @@ th{font-weight:700;color:var(--text)}
 .section-head .label{max-width:42rem}
 .section-head h2{margin:0 0 .2em}
 .section-head .sub{margin:0;color:var(--text-soft)}
-.section-head a.more,.more{font-size:.92rem;font-weight:650;white-space:nowrap;color:var(--accent-ink)}
+.section-head a.more,.more{font-size:.92rem;font-weight:650;white-space:nowrap;color:var(--accent)}
 
 /* ── Cards & grids ───────────────────────────────────────────────────────── */
 .grid{display:grid;gap:1.2rem}
@@ -307,7 +307,7 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
 .page-head::before{content:"";position:absolute;inset:-40% 55% auto -10%;height:120%;z-index:0;filter:blur(55px);opacity:.4;
   background:radial-gradient(circle at 20% 0,color-mix(in srgb,var(--violet) 36%,transparent),transparent 60%)}
 .page-head > .wrap{position:relative;z-index:1;padding-block:clamp(2.4rem,5vw,3.6rem) clamp(1.4rem,3vw,2rem)}
-.page-head h1{margin:0 0 .3em}
+.page-head h1,.article h1{margin:0 0 .3em;font-family:var(--sans);font-weight:700;letter-spacing:-.02em}
 .page-head .lead{font-size:1.14rem;color:var(--text-soft);max-width:var(--maxw-text);margin:0}
 .page-body > .wrap{padding-block:clamp(1.8rem,4vw,2.6rem) clamp(2.4rem,5vw,3.4rem)}
 .article > .wrap{padding-block:clamp(2rem,5vw,3.2rem);max-width:calc(var(--maxw-text) + 2 * var(--gutter))}
