@@ -141,13 +141,20 @@ never be committed (committing it nests repos and bloats history).
 ## Verify
 
 - `git status` is clean; `assets/references/` is untracked/ignored.
-- `CLAUDE.md` opens to a real `notes/status.md`.
+- `CLAUDE.md` opens to a real `notes/status.md`, **and actually contains the
+  "Cross-project standards & checking the fairyfox system for updates" standing
+  instruction** (confirm the text is present, not just that the file exists).
 - `VERSION` reads a sane starting number.
 - The project resolves in **both** registries (`hub/registry.yml` and
   `_data/projects.yml`) with matching `key` and `branch`.
-- The themed docs site loads at `fairyfox.io/<key>/`, matches the design system, and
-  links back to Fairy Fox (passes [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md)).
+- The themed docs site loads at `fairyfox.io/<key>/`, **wears the fairyfox theme**,
+  and links back to Fairy Fox — **look at the served page**; default-theme
+  JSDoc/Doxygen output or a merely-resolving `docs:` URL is a miss. Bar:
+  [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
 - If the project builds/serves, it builds green.
+
+Don't report the project as fully set up unless every item above actually holds —
+name any that don't rather than rounding up.
 
 ## Gotchas
 

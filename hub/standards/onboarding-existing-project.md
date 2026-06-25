@@ -78,10 +78,20 @@ Fold each template in around what's there — never a straight overwrite:
 
 | Template | If absent | If something already exists |
 |----------|-----------|-----------------------------|
-| `CLAUDE.md` | Copy it in and fill out the project identity. | Fold the standard's structure into the existing AI-context file; keep the project's real landmines/build steps. |
+| `CLAUDE.md` | Copy it in and fill out the project identity, **including the mesh-awareness block** (see below). | Fold the standard's structure into the existing AI-context file, keeping the project's real landmines/build steps — **but you must still add the mesh-awareness block** (see below); an existing `CLAUDE.md` almost never has it. |
 | `VERSION` | Create it — but **seed it from the project's actual version** (latest tag / `package.json`), *not* `0.1.0`. Reconcile the scheme toward SemVer. | Leave the real number; just confirm it matches the SemVer rule. |
 | `.gitignore` | Add the `assets/references/` ignore (+ cruft). | **Merge** the `assets/references/` line in; don't replace the existing file. |
 | `notes/` skeleton | Drop the skeleton in and seed `status.md` from reality. | Add the skeleton *alongside* existing docs; migrate them in over time, not big-bang. |
+
+> **The mesh-awareness block is required — and it's the easiest thing to skip when
+> reconciling an existing `CLAUDE.md`.** The project's `CLAUDE.md` must carry the
+> **"Cross-project standards & checking the fairyfox system for updates"** standing
+> instruction from the template ([`templates/CLAUDE.md`](../templates/CLAUDE.md)) —
+> the check-for-updates flow plus its guardrails. Without it the project never
+> learns it is a node: it won't respond to "check the fairyfox system for updates"
+> and won't know to adopt later changes. A mature project that already has its own
+> polished `CLAUDE.md` is the **most likely** place this gets missed — verify it is
+> actually present, don't assume.
 
 ### 5. Map existing docs into the notes system
 
@@ -106,6 +116,17 @@ of onboarding:
   honestly and tighten via [`adopting-updates.md`](adopting-updates.md). Check
   progress against [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
 
+> **Raw generated docs served alone do NOT satisfy this — and don't count as
+> "partial" either.** A bare JSDoc / Doxygen / TypeDoc dump at `fairyfox.io/<key>/`,
+> with the generator's default theme and no Fairy Fox shell or back-links, is an
+> *unthemed boundaried zone with no site around it* — the exact failure this step
+> exists to catch. The compliant minimum is a **themed docs site** (the shared
+> tokens, header/footer, and the two-way links from
+> [`docs-site/05-navigation-and-cross-linking.md`](docs-site/05-navigation-and-cross-linking.md))
+> that *wraps and links to* the generated reference. **Verify by actually looking at
+> the served page**, not by trusting that a `docs:` URL resolves — a URL that
+> resolves to default-theme generator output is a miss, not a pass.
+
 ### 7. Register with the hub *(hub-side change)*
 
 A commit **in the hub repo**, not the project:
@@ -128,24 +149,54 @@ git push origin <work-branch>
 git checkout main && git merge --ff-only dev && git push origin main && git checkout dev
 ```
 
-## Partial adoption is fine
+## Registered ≠ integrated (read before declaring "done")
+
+**Hub-side registration is the easy half and proves almost nothing about whether
+the project is actually integrated.** A project can be in both registries, have a
+node page, a docs-library entry, and blog posts — and still have done **none** of
+the project-side work (no mesh-awareness in its `CLAUDE.md`, no themed docs site).
+Listing it on the hub is necessary but **not sufficient**.
+
+So separate the two when you assess or report:
+
+- **Hub side** — registry entries, node/docs pages, blog. (Steps 7.)
+- **Project side** — the standards actually living in the repo: the mesh-awareness
+  `CLAUDE.md` block, the notes system, the git/version model, and a **themed docs
+  site**. (Steps 1–6, 8.)
+
+A project that's only hub-registered is **not onboarded** — it's *listed*. Never
+report it as "fully onboarded."
+
+## Partial adoption is fine — *if reported honestly*
 
 An established repo rarely adopts everything on day one — it might take the notes
-system now and the full git model later. That's expected: onboard incrementally,
-mark the registry flags honestly, and tighten over subsequent passes via
-[`adopting-updates.md`](adopting-updates.md). Joining the mesh is a direction, not
-a single switch.
+system now and the full git model later. That's expected: onboard incrementally
+and tighten over subsequent passes via [`adopting-updates.md`](adopting-updates.md).
+But "partial" is only acceptable when it is **reported as partial, with the
+specific gaps named.** Mark the registry flags honestly, and never round a
+partially-integrated project up to "done." Joining the mesh is a direction, not a
+single switch — say where on the path it actually is.
 
-## Verify
+## Verify — the completeness audit
 
-- `git status` clean; `assets/references/` untracked/ignored.
-- Nothing pre-existing was clobbered — README, license, CI, and history intact.
-- `VERSION` reflects the project's **real** version, not a reset to `0.1.0`.
-- The registry `branch` matches the repo's actual default branch.
-- The project resolves in **both** registries with honest `adopts_hub` /
-  `notes_system` flags.
-- Its docs site is moving toward the design system and links back to Fairy Fox
-  (full or honestly-partial — [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md)).
+Run **every** row and report each with its real status — `done`, `partial`, or
+**`missing`**. This same audit is what you run to check a project that's *claimed*
+to be onboarded; finding `missing` rows means it isn't.
+
+| # | Dimension | Passes only when… |
+|---|-----------|-------------------|
+| 1 | Working tree | `git status` clean; `assets/references/` untracked/ignored; nothing pre-existing clobbered (README, license, CI, history intact). |
+| 2 | Versioning | `VERSION` reflects the project's **real** version (not reset to `0.1.0`), SemVer-shaped. |
+| 3 | Branch model | Registry `branch` matches the repo's **actual** default/work branch. |
+| 4 | Notes system | The `notes/` tree exists with a real `status.md`; existing docs mapped in, not duplicated. |
+| 5 | **Mesh-awareness in `CLAUDE.md`** | The project's `CLAUDE.md` **actually contains** the "Cross-project standards & checking the fairyfox system for updates" standing instruction. **Open the file and confirm the text is there** — don't infer it from the project being registered. |
+| 6 | **Themed docs site** | `fairyfox.io/<key>/` serves a site **wearing the fairyfox theme** with the **two-way links back** to Fairy Fox. **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
+| 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. |
+
+**Reporting rule:** only call a project **"fully onboarded" when rows 1–7 are all
+`done`.** If any row is `partial` or `missing`, say exactly which — e.g. "registered
+and noted, but the docs site is unthemed JSDoc and the `CLAUDE.md` mesh block is
+missing." A clean hub-side registration is **not** a green light.
 
 ## Gotchas
 
