@@ -90,7 +90,7 @@ The notes are a living document — keep them current as you work, by default.
 | Made / rejected a decision | `notes/decisions/architecture.md` / `rejected.md` |
 | A change warrants a version | Bump `VERSION`, same commit |
 | A convention becomes reusable across projects | Promote it to `hub/standards/` |
-| The setup or update procedure changes (git model, registry shape, template/skeleton layout, sync flow) | Keep the runbooks current, by default: `hub/standards/new-project-setup.md` and `hub/standards/adopting-updates.md` |
+| The setup or update procedure changes (git model, registry shape, template/skeleton layout, sync flow) | Keep the lifecycle runbooks current, by default: `hub/standards/new-project-setup.md`, `hub/standards/onboarding-existing-project.md`, and `hub/standards/adopting-updates.md` |
 
 ## The hub & cross-project sync
 

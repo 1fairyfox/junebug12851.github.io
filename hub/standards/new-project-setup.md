@@ -11,6 +11,11 @@ and getting registered so the hub is aware of it.
 
 For AI or human. Run the steps in order; each is small and reversible.
 
+> **Greenfield only.** This runbook assumes a blank or new repo. Folding in an
+> **established repo** that already has its own history, README, docs, or version
+> scheme is a different path — use
+> [`onboarding-existing-project.md`](onboarding-existing-project.md) instead.
+
 ## What "fully set up" means
 
 The end state — tick every box before calling a project done:
