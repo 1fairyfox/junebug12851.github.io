@@ -224,7 +224,7 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
 .card h3{margin:0 0 .4rem}
 .card p{margin:0 0 .7rem;color:var(--text-soft);font-size:.97rem}
 .card-links{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:.9rem;font-weight:600}
-.card-links a{color:var(--accent-ink)}
+.card-links a{color:var(--accent)}
 
 /* project card */
 .proj-card{display:flex;flex-direction:column;--pc:var(--violet)}

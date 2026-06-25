@@ -23,30 +23,25 @@ title: null
   </div>
 </section>
 
-<section class="band">
+<section class="band band-alt" id="projects">
   <div class="wrap">
     <div class="section-head">
-      <div class="label">
-        <h2>Projects</h2>
-        <p class="sub">Each project links to its documentation, downloads, and source.</p>
-      </div>
+      <h2>Projects</h2>
       <a class="more" href="{{ '/projects/' | relative_url }}">All projects →</a>
     </div>
+    {%- assign ff_projs = site.data.projects | where_exp: "p", "p.meta != true" | sort: "updated_iso" | reverse -%}
+    {%- assign ff_metas = site.data.projects | where: "meta", true -%}
     <div class="grid cols-3">
-      {%- for proj in site.data.projects -%}
-        {%- if proj.featured -%}{% include project-card.html proj=proj %}{%- endif -%}
-      {%- endfor -%}
+      {%- for proj in ff_projs -%}{%- if proj.featured -%}{% include project-card.html proj=proj %}{%- endif -%}{%- endfor -%}
+      {%- for proj in ff_metas -%}{%- if proj.featured -%}{% include project-card.html proj=proj %}{%- endif -%}{%- endfor -%}
     </div>
   </div>
 </section>
 
-<section class="band divider">
+<section class="band">
   <div class="wrap">
     <div class="section-head">
-      <div class="label">
-        <h2>Latest updates</h2>
-        <p class="sub">Round-ups of what changed across the projects.</p>
-      </div>
+      <h2>Latest updates</h2>
       <a class="more" href="{{ '/blog/' | relative_url }}">All updates →</a>
     </div>
     <div class="update-grid">
@@ -69,13 +64,10 @@ title: null
   </div>
 </section>
 
-<section class="band divider">
+<section class="band band-alt">
   <div class="wrap">
     <div class="section-head">
-      <div class="label">
-        <h2>Documentation</h2>
-        <p class="sub">The project ecosystem, this site's internals, and the shared engineering standards.</p>
-      </div>
+      <h2>Documentation</h2>
       <a class="more" href="{{ '/docs/' | relative_url }}">Full library →</a>
     </div>
     <div class="doc-cats">
