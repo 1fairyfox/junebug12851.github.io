@@ -49,6 +49,8 @@ Full rule: [`09-adopting-and-maintaining.md`](09-adopting-and-maintaining.md).
 | [`08-compliance-checklist.md`](08-compliance-checklist.md) | A concrete checklist to verify a project is compliant. |
 | [`09-adopting-and-maintaining.md`](09-adopting-and-maintaining.md) | How to adopt this, keep it current, and record deliberate deviations. |
 | [`10-domain-and-publishing.md`](10-domain-and-publishing.md) | How a project joins the `fairyfox.io` domain on GitHub Pages (served at `fairyfox.io/<key>/`) — the infrastructure under the one-domain model. |
+| [`11-measurements-reference.md`](11-measurements-reference.md) | Every exact value pinned — per-element dimensions, spacing, placement, breakpoints. The precision appendix to `02`–`04`. |
+| [`reference/`](reference/) | The master stylesheet bundled read-only (`main.css`) as the ultimate exact reference. Reimplement, don't link. |
 
 ## In one paragraph
 

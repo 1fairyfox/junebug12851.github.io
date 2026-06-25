@@ -4,6 +4,11 @@ The shared UI pieces. Reproduce their **appearance and behaviour**; class names 
 fairyfox.io's and are given for reference, not required. All colours/sizes refer to
 the tokens in [`02-design-tokens.md`](02-design-tokens.md).
 
+> For the **exact** padding/gap/size/position of every element here, see
+> [`11-measurements-reference.md`](11-measurements-reference.md) and the bundled
+> [`reference/main.css`](reference/main.css). This file describes intent; `11` pins
+> the numbers.
+
 ## Brand lockup (`.brand`)
 
 A round logo image + the wordmark, used in the header and footer.
