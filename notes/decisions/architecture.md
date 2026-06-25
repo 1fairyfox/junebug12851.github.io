@@ -2,6 +2,24 @@
 
 Key structural choices and why. Newest on top.
 
+### Two-layer projection architecture + standardized status taxonomy (2026-06-24)
+
+The site is a **read-only projection** of mesh state. The **display layer** (Jekyll now,
+possibly Laravel later) only ever *reads* `_data`; a separate, decoupled **management
+layer** (the assistant + tooling + GitHub Actions) *computes* that state and *writes* it
+into the repo. Communication is one-directional and non-recursive — the same rule as
+cross-project sync. The heavy work (aggregating repos, the activity pulse, cross-project
+links) lives off the page, so the surface stays static, fast, and framework-free, and the
+eventual Laravel move swaps only the display layer. Confirmed as "Option A" with Fairy
+Fox. Full rationale: [`../context/design-direction.md`](../context/design-direction.md)
+§4 and the build plan [`../plans/implementation.md`](../plans/implementation.md).
+
+Project **status is a standardized taxonomy**, not a freeform string: three independent
+fields — **lifecycle** (`alpha` | `beta` | `released`, fixed colors red / yellow / green),
+**version**, and **activity** (`active` | `inactive`). Authored in `_data/projects.yml`;
+`last_updated` comes from the generated pulse. Category tags are clickable and
+consistently cased.
+
 ### Documentation library as a Jekyll collection (2026-06-22)
 
 The on-site docs are a `_docs` collection (output pages, `/docs/:path/`) rendered
