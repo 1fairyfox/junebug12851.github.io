@@ -44,12 +44,15 @@ The rest of the structure is in place end to end:
 
 ## In flight / awaiting
 
-- **Design direction v2 + Phase 0.5 mockup (notes-only).** The new warm design language
-  (light/dark) and the build plan are settled in
-  [`context/design-direction.md`](context/design-direction.md),
-  [`plans/implementation.md`](plans/implementation.md), and `mockups/v1-warm.html`.
-  **Next:** build it — tokens → component kit → one project-node slice. Not yet reflected
-  in the live site.
+- **Warm redesign is LIVE (`0.4.0`).** The new design language (warm palette + Fraunces/
+  Inter/JetBrains, light/dark), the **portal home** (hero + live activity panel), the
+  **standardized status cards** (lifecycle/version/activity, sorted newest-first with the
+  hub last), and the **project node pages** (`/projects/<key>/`) are all shipped — built
+  increment-by-increment, each verified with a local `jekyll build` + headless screenshot.
+  Direction/plan: [`context/design-direction.md`](context/design-direction.md),
+  [`plans/implementation.md`](plans/implementation.md), mockup `mockups/v1-warm.html`.
+  **Remaining polish:** the Latest-updates and doc sections; later the generated activity
+  pulse + Web-Component live examples (built with Fairy Fox).
 
 - **HTTPS for `fairyfox.io`.** The custom domain is **live over HTTP** (DNS points
   at GitHub Pages and the domain is set in Settings → Pages). The only thing

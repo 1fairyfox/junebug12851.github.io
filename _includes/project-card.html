@@ -23,10 +23,8 @@
       {%- for t in p.tags -%}<span class="tag">{{ t }}</span>{%- endfor -%}
     </div>
     <div class="card-links">
+      <a href="{{ '/projects/' | append: p.key | append: '/' | relative_url }}">More details →</a>
       <a href="{{ docurl | relative_url }}">Documentation →</a>
-      {%- assign dl = site.data.downloads | where: "key", p.key | first -%}
-      {%- if dl -%}<a href="{{ '/downloads/' | relative_url }}#{{ p.key }}">Downloads →</a>{%- endif -%}
-      {%- if p.docs -%}<a class="ext" href="{{ p.docs }}">Docs site</a>{%- endif -%}
       <a class="ext" href="{{ p.repo }}">Repository</a>
     </div>
   </div>
