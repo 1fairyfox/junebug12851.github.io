@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.3.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.4.6` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -17,18 +17,23 @@ GitHub Actions on every push to `main`.
 
 The site is framed as a **project hub + documentation library** for Fairy Fox's
 work, written in a neutral documentation voice (not first-person, not glorifying;
-see [`context/principles.md`](context/principles.md)). It now includes:
+see [`context/principles.md`](context/principles.md)). The **warm rebuild is live**
+through the `0.4.x` line; it now includes:
 
-- A **full-bleed, fluid visual design** (0.3.0): full-width section bands instead of
-  a single narrow column, a sticky footer, a refined violet/amber palette tuned to
-  **WCAG 2.1 AA**, focus-visible outlines, and a reduced-motion guard.
-- A **dropdown header nav** (monogram wordmark). The **Projects** menu lists the
-  projects and links to each one's on-site `/docs/<key>/` page; the **Updates** menu
-  (formerly "Blog") and **Docs** menu round it out.
-- A substantially **expanded on-site documentation library** (`/docs/`, the `_docs`
-  collection): the ecosystem overview, a **"This site"** group surfacing the whole
-  `notes/` tree (architecture, system map, deployment, updates workflow, decisions,
-  principles), the **shared standards**, and a per-project doc page.
+- The **warm visual design** (0.4.x): a warm palette with a Fraunces/Inter/JetBrains
+  type system, light and dark each designed (not one inverted), full-width section
+  bands, focus-visible outlines, and a reduced-motion guard — tuned to **WCAG 2.1 AA**.
+- A **portal home**: a hero beside a static **activity panel** (a 30-day commit chart
+  + a scrolling "Recently" ticker), both rendered at build time in Liquid from
+  `_data/pulse.yml` (no client JS), plus a single-column "Recently" list.
+- **Standardized project cards** (lifecycle badge · version · activity, sorted
+  newest-first with the hub last) that are **fully clickable** to each project's node.
+- **Project node pages** at `/projects/<key>/` — a self-locating page per project
+  with status, "What it is" prose, a connections grid, and recent tagged activity.
+- A plain-link header nav (Projects · Updates · Docs; no dropdowns) and an
+  **on-site documentation library** (`/docs/`, the `_docs` collection): the ecosystem
+  overview, a **"This site"** group surfacing the whole `notes/` tree, the **shared
+  standards**, and a per-project doc page.
 
 The rest of the structure is in place end to end:
 
@@ -44,15 +49,17 @@ The rest of the structure is in place end to end:
 
 ## In flight / awaiting
 
-- **Warm redesign is LIVE (`0.4.0`).** The new design language (warm palette + Fraunces/
-  Inter/JetBrains, light/dark), the **portal home** (hero + live activity panel), the
-  **standardized status cards** (lifecycle/version/activity, sorted newest-first with the
-  hub last), and the **project node pages** (`/projects/<key>/`) are all shipped — built
-  increment-by-increment, each verified with a local `jekyll build` + headless screenshot.
+- **Warm redesign is shipped (`0.4.x`, currently `0.4.6`).** The design language, the
+  **portal home** (hero + static activity panel), the **standardized status cards**, the
+  **day-centric updates feed**, the **clickable cards / simpler nav** review pass, and the
+  **project node pages** (`/projects/<key>/`) are all live — built increment-by-increment,
+  each verified with a local `jekyll build` + headless screenshot. The home/updates/doc
+  sections have been polished into one consistent language.
   Direction/plan: [`context/design-direction.md`](context/design-direction.md),
   [`plans/implementation.md`](plans/implementation.md), mockup `mockups/v1-warm.html`.
-  **Remaining polish:** the Latest-updates and doc sections; later the generated activity
-  pulse + Web-Component live examples (built with Fairy Fox).
+  **Remaining (the deeper, decoupled machinery, not structure):** the off-site gathering
+  layer that generates `_data/pulse.yml` from the projects' real history (it's hand-kept
+  for now), and Web-Component live examples (built with Fairy Fox).
 
 - **HTTPS for `fairyfox.io`.** The custom domain is **live over HTTP** (DNS points
   at GitHub Pages and the domain is set in Settings → Pages). The only thing
