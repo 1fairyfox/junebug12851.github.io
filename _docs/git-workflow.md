@@ -3,35 +3,51 @@ title: Git workflow
 nav_title: Git workflow
 category: standards
 order: 1
-summary: Branch model, fast-forward merges, and the safety rules shared across repositories.
+summary: The shared git-flow branch model, no-fast-forward merges, and the safety rules used across repositories.
 ---
 
-The shared git standard favours a clean, faithful, low-risk history. Its
-canonical machine copy lives in the repository at `hub/standards/git-workflow.md`;
-this page is the readable summary.
+The shared git standard favours a clean, faithful, low-risk history. The mesh
+follows **git-flow** — Vincent Driessen's branching model — for its procedures and
+policies, not the `git flow` scripts: plain `git` commands carry the whole model,
+upheld by judgement rather than automation. Its canonical machine copy lives in the
+repository at `hub/standards/git-workflow.md`; this page is the readable summary.
 
 ## Branches
 
-- **`main`** is stable and deployable, and is never committed to directly. It only
-  moves by fast-forward to a known-good `dev` commit. On the hub, every push to
-  `main` triggers a deployment.
-- **`dev`** is the working branch, committed to early and often. It is also the
-  branch the hub and other repositories track when they sync.
+Two long-lived branches and three kinds of short-lived support branch — all
+first-class, not exceptions.
 
-Feature branches are not used by default; one is added only to isolate a large or
-risky change, then merged back and deleted.
+- **`main`** is production; every commit on it is a tagged release, always made with
+  `--no-ff`. It is never committed to directly. It advances at a release — a **PATCH**
+  goes directly from `dev`, a **MINOR or MAJOR** through a `release/*` branch — or by a
+  `hotfix/*` merge. On the hub, every push to `main` triggers a deployment. The stable
+  branch must be named `main`; `master` is not used in the mesh.
+- **`dev`** is the integration branch (git-flow's `develop` role), where finished
+  work lands first. It is also the branch the hub and other repositories track when
+  they sync.
+- **`feature/<name>`** is the normal unit of work: branched from `dev`, built, then
+  merged back into `dev` with `--no-ff` and deleted.
+- **`release/<x.y.0>`** is the release mechanism for a **MINOR or MAJOR** release:
+  branched from `dev` to finalize it (version bump, changelog, last polish), merged
+  into `main` and tagged, carried back into `dev`, then deleted. A PATCH skips this.
+- **`hotfix/<x.y.z>`** is an urgent production fix: branched from `main`, then
+  merged into both `main` (tagged) and `dev`, and deleted.
 
-## Fast-forward merges only
+## No-fast-forward merges
 
-Because `main` is never committed to directly, `dev` is always ahead of it, so
-`dev → main` is always a fast-forward:
+Every merge uses `--no-ff`, so each feature or release stays a legible, revertible
+unit in the history, and every merge into `main` is a tagged release. The release
+path follows the SemVer level: a **PATCH** releases accumulated `dev` work directly,
 
 ```sh
-git checkout main && git merge --ff-only dev && git push origin main && git checkout dev
+git checkout main && git merge --no-ff dev && git tag -a vX.Y.Z -m "vX.Y.Z"
+git push origin main --tags && git checkout dev
 ```
 
-This produces a linear history while preserving every original commit. History is
-never squashed, rebased, or rewritten once pushed.
+while a **MINOR or MAJOR** goes through a `release/X.Y.0` branch. The merge commits
+are additive — history is never squashed, rebased, or rewritten once pushed. On a
+small solo project there is one piece of latitude *within* the model: a truly
+trivial change may be committed straight on `dev` rather than on a `feature/*` branch.
 
 ## Commits
 
@@ -42,6 +58,8 @@ in a follow-up.
 
 ## Safety rules
 
-Force-pushing, history rewriting, hard resets, rebases, and branch deletion are
-not performed without an explicit request. Files are staged individually rather
-than with `git add -A`, so build output and reference clones stay out of history.
+Force-pushing, history rewriting, hard resets, rebases, and deleting a *long-lived*
+branch (`main` or `dev`) are not performed without an explicit request; spent
+`feature/`, `release/`, and `hotfix/` branches are deleted as the normal end of
+their merge. Files are staged individually rather than with `git add -A`, so build
+output and reference clones stay out of history.

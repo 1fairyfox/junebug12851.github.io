@@ -53,10 +53,10 @@
     dynamic-prompt language (DPL), with a CLI and a web UI.
   tags: [JavaScript, Node 24, Web UI]
   lifecycle: released
-  version: "2.6.0"
+  version: "2.6.1"
   activity: active
-  updated: "Jun 22, 2026"
-  updated_iso: "2026-06-22"
+  updated: "Jun 25, 2026"
+  updated_iso: "2026-06-25"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -94,7 +94,7 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.4.10"
+  version: "0.6.5"
   activity: active
   updated: "Jun 25, 2026"
   updated_iso: "2026-06-25"

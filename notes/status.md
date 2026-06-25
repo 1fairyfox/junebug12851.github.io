@@ -3,15 +3,15 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.4.12` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.6.5` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
 
 **The site is live** at https://junebug12851.github.io/ and at the **`fairyfox.io`
-custom domain** (2026-06-22) — the domain now resolves and serves over **HTTP**;
-the GitHub-issued **HTTPS certificate is still provisioning** (enable Enforce HTTPS
-once it lands). It's a
+custom domain** (2026-06-22) — the domain now resolves and **serves over HTTPS**
+(the GitHub-issued certificate has provisioned; `https://fairyfox.io/` returns 200).
+Confirm **Enforce HTTPS** is enabled in Settings → Pages. It's a
 clean, custom Jekyll build — no external theme — deployed to GitHub Pages by
 GitHub Actions on every push to `main`.
 
@@ -40,7 +40,12 @@ The rest of the structure is in place end to end:
 - **Site:** home, `/projects/`, `/blog/`, `/about/`, a first blog post, RSS feed,
   SEO tags, sitemap. Custom responsive CSS with light/dark.
 - **Hub:** [`../hub/`](../hub/) holds the cross-project standards + templates and
-  the project registry. This is what other repos pull.
+  the project registry. This is what other repos pull. The standards now include
+  the three lifecycle runbooks (setup · onboard · adopt), a **docs-site design
+  system** (`hub/standards/docs-site/`, `0.5.x`) so every project's docs match the
+  site, and a **full git-flow** model with the `master → main` mandate (`0.6.x`).
+  **Random AI Prompt is the first project to fully onboard** (mesh-aware `CLAUDE.md`
+  + a fairyfox-themed docs site, `2.6.1`).
 - **Notes:** this living-notes system, mirroring the convention used across my
   projects.
 - **Sync:** the pull-only cross-project model is documented
@@ -49,7 +54,7 @@ The rest of the structure is in place end to end:
 
 ## In flight / awaiting
 
-- **Warm redesign is shipped (`0.4.x`, currently `0.4.12`).** The design language, the
+- **Warm redesign is shipped (`0.4.x`; the repo is now at `0.6.5`).** The design language, the
   **portal home** (hero + static activity panel), the **standardized status cards**, the
   **day-centric updates feed**, the **clickable cards / simpler nav** review pass, and the
   **project node pages** (`/projects/<key>/`) are all live — built increment-by-increment,
@@ -61,12 +66,11 @@ The rest of the structure is in place end to end:
   layer that generates `_data/pulse.yml` from the projects' real history (it's hand-kept
   for now), and Web-Component live examples (built with Fairy Fox).
 
-- **HTTPS for `fairyfox.io`.** The custom domain is **live over HTTP** (DNS points
-  at GitHub Pages and the domain is set in Settings → Pages). The only thing
-  outstanding is the **HTTPS certificate**, which GitHub is still provisioning;
-  once it issues, enable **Enforce HTTPS** in Settings → Pages. Both project Pages
-  sites are served under the domain too (`fairyfox.io/pokered-save-editor-2/`,
-  `fairyfox.io/random-ai-prompt/`).
+- **HTTPS for `fairyfox.io`.** The custom domain is **live over HTTPS** — the
+  GitHub-issued certificate has provisioned and `https://fairyfox.io/` returns 200.
+  Remaining nicety: confirm **Enforce HTTPS** is toggled on in Settings → Pages so
+  HTTP redirects up. Both project Pages sites are served under the domain too
+  (`fairyfox.io/pokered-save-editor-2/`, `fairyfox.io/random-ai-prompt/`).
 
 ## Next
 
@@ -81,5 +85,5 @@ first real "what changed in my projects" round-up once there's a diff to report.
 | Jekyll config + layouts | ✅ Scaffolded |
 | Content pages (home/projects/blog/about) | ✅ Live |
 | Pages deploy workflow | ✅ First run green; site live |
-| Custom domain | ✅ Live over HTTP; ⏳ HTTPS cert provisioning |
+| Custom domain | ✅ Live over HTTPS (cert provisioned; confirm Enforce HTTPS) |
 | Local build verification | ✅ `bundle install` + `jekyll build` green (Ruby 3.3.11) |
