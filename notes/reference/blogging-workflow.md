@@ -20,6 +20,10 @@ some of what the day touched.
   through and decided.
 - **Cover the day properly.** Aim to genuinely reflect the day — the work *and* the
   thinking — not a thin changelog line.
+- **Faithful to the actual day.** A post is dated to when the work and discussion actually
+  happened. **Don't move or postpone a post to a different day because it would look tidier**
+  — only reassign a day when analysis genuinely supports it (e.g. the work really belongs to
+  that day). The history should reflect reality, not a nicer-looking timeline.
 
 ## Writing a post
 
@@ -73,14 +77,14 @@ keeps the pull-on-request / anti-recursion rule intact
 - Day-centric and merged: combine projects and topics into the day. Multiple posts for a
   single day only when genuinely warranted (rare).
 
-## Retro note (2026-06-24)
+## Retro note (2026-06-24, done)
 
-The existing `_posts/` were written one-project-per-post (project-centric). They should
-be **redone day-centric**: merge posts that share a date, weave in that day's discussions
-from the session notes, and re-slug/re-tag by day. **Preserve the existing content when
-re-doing — merge and re-frame, don't discard; don't lose changes.** And make sure the
-hub's own work and versions are represented, not just the siblings'. Tracked in
-[`../plans/next-steps.md`](../plans/next-steps.md).
+The `_posts/` were reworked day-centric: the two multi-post days (Jun 22, Jun 23) were
+**merged** into one day post each (content preserved), a **design-day** post was added for
+Jun 24, and the **hub is tagged as a project** (`fairyfox-io`) on the days it was touched so
+it surfaces on its own node. Single-focus days were already one post per day and were left
+as-is (re-titling them to a day narrative is an optional future nicety). The card/node
+templates no longer strip a project name from titles, so day-centric titles render whole.
 
 ## Optional: schedule it
 

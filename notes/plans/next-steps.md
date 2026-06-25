@@ -16,11 +16,9 @@ Ordered, current. Check off / remove as done; the history lives in
 
 ## Soon (make it real)
 
-- **Re-do existing `_posts/` day-centric** — merge posts that share a date, weave in
-  that day's discussions from the session notes, re-slug/re-tag by day. **Preserve
-  existing content (don't lose changes)** and **include the hub (fairyfox.io) itself as a
-  project**, not just the siblings. Big content pass; the model is in
-  [`../reference/blogging-workflow.md`](../reference/blogging-workflow.md).
+- [x] **Re-do existing `_posts/` day-centric** (done 2026-06-24) — merged the two
+  double-post days, added the Jun 24 design-day post, tagged the hub as a project. Optional
+  follow-up: re-title the older single-focus days to a day narrative.
 - Going forward, write **day-centric updates** (work + discussion across all projects in
   one post per day), per the same doc.
 - **List `fairyfox.io` as a project** — add it to `_data/projects.yml` + `hub/registry.yml`

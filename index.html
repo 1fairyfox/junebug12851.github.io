@@ -58,15 +58,11 @@ title: null
     </div>
     <div class="update-grid">
       {%- for post in site.posts limit: 6 -%}
-        {%- assign pc = '#f59f0a' -%}{%- assign pname = 'Site' -%}
-        {%- for proj in site.data.projects -%}
-          {%- if post.tags contains proj.key -%}{%- assign pc = proj.color -%}{%- assign pname = proj.name -%}{%- endif -%}
-        {%- endfor -%}
-        {%- assign dt = post.title -%}
-        {%- if pname != 'Site' -%}{%- assign dt = post.title | remove_first: pname | remove_first: ": " | strip -%}{%- endif -%}
+        {%- assign pc = '#ef6149' -%}
+        {%- for proj in site.data.projects -%}{%- if post.tags contains proj.key -%}{%- assign pc = proj.color -%}{%- endif -%}{%- endfor -%}
         <a class="update-card" href="{{ post.url | relative_url }}" style="--pc:{{ pc }}">
-          <div class="update-meta"><span class="pdot" aria-hidden="true"></span><span class="uname">{{ pname }}</span><span class="udate">{{ post.date | date: "%b %-d" }}</span></div>
-          <h3>{{ dt }}</h3>
+          <div class="update-meta"><span class="pdot" aria-hidden="true"></span><span class="udate">{{ post.date | date: "%b %-d, %Y" }}</span></div>
+          <h3>{{ post.title }}</h3>
           <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 130 }}</p>
         </a>
       {%- else -%}

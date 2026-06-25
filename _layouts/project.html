@@ -57,7 +57,7 @@ layout: default
       {%- for post in pposts limit: 6 -%}
       <a class="pulse-row" href="{{ post.url | relative_url }}">
         <span class="pdot" aria-hidden="true"></span>
-        <span class="pwhat">{{ post.title | remove_first: p.name | remove_first: ": " | strip }}</span>
+        <span class="pwhat">{{ post.title }}</span>
         <span class="pdate">{{ post.date | date: "%b %-d" }}</span>
       </a>
       {%- endfor -%}
