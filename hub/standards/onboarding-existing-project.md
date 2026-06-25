@@ -89,7 +89,24 @@ Don't duplicate — **relocate or link.** The existing `README` stays the repo
 tour; fold deeper material into the `notes/` tree (status, context, reference) and
 link out rather than copy. One fact, one home.
 
-### 6. Register with the hub *(hub-side change)*
+### 6. Bring its docs onto the themed docs site *(often incremental)*
+
+Adopt the [docs-site design system](docs-site/) so the project's documentation is
+seamless with fairyfox.io — but **reconcile, don't clobber**, the same as the rest
+of onboarding:
+
+- If the project already has a docs site (Doxygen output, an existing Pages site),
+  **re-skin it toward the theme** and fold its content in rather than discarding it;
+  generated API docs stay a boundaried zone
+  ([`docs-site/06-content-and-organization.md`](docs-site/06-content-and-organization.md)).
+- Add the **required links back** to Fairy Fox and publish at `fairyfox.io/<key>/`
+  (set the base path to `/<key>`, no project CNAME —
+  [`docs-site/10-domain-and-publishing.md`](docs-site/10-domain-and-publishing.md)).
+- This can be **partial on day one** (skin the shell now, deepen later) — mark it
+  honestly and tighten via [`adopting-updates.md`](adopting-updates.md). Check
+  progress against [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
+
+### 7. Register with the hub *(hub-side change)*
 
 A commit **in the hub repo**, not the project:
 
@@ -99,7 +116,7 @@ A commit **in the hub repo**, not the project:
   normal for an existing repo; mark what's actually true today.
 - Add the companion row to the site's `_data/projects.yml`.
 
-### 7. Commit on the project's working branch, then fast-forward
+### 8. Commit on the project's working branch, then fast-forward
 
 Stage specific files (never `-A`; never `assets/references/*`):
 
@@ -127,6 +144,8 @@ a single switch.
 - The registry `branch` matches the repo's actual default branch.
 - The project resolves in **both** registries with honest `adopts_hub` /
   `notes_system` flags.
+- Its docs site is moving toward the design system and links back to Fairy Fox
+  (full or honestly-partial — [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md)).
 
 ## Gotchas
 

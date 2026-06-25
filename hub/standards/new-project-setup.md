@@ -29,6 +29,7 @@ The end state — tick every box before calling a project done:
 | Ignores | `.gitignore` excludes `assets/references/*` and build cruft. |
 | Standards adopted | The project follows the hub's git, versioning, notes, and AI-context standards (copied in, not linked). |
 | Registered | The project is listed in the hub's [`registry.yml`](../registry.yml) **and** the site's `_data/projects.yml`. |
+| Docs site | A themed documentation site published at `fairyfox.io/<key>/`, built to the [docs-site design system](docs-site/) (seamless with fairyfox.io, links back). |
 
 ## Before you start
 
@@ -94,7 +95,24 @@ and cross-project sync. Adopting a standard is a **copy committed locally**, not
 a live link; re-pull later to see what changed (see
 [`adopting-updates.md`](adopting-updates.md)).
 
-### 6. Register the project with the hub *(hub-side change)*
+### 6. Build the project's themed docs site
+
+A project isn't fully set up until it has a documentation site that's **seamless
+with fairyfox.io**. Follow the [docs-site design system](docs-site/) standard:
+
+- Reproduce the theme (tokens, shell, components) in the project's stack — match as
+  closely as the stack allows; exact values in
+  [`docs-site/11-measurements-reference.md`](docs-site/11-measurements-reference.md)
+  and [`docs-site/reference/main.css`](docs-site/reference/).
+- Add the **required two-way links** — header brand → `fairyfox.io/`, a locator
+  back to the project's node page, footer back to the main site
+  ([`docs-site/05-navigation-and-cross-linking.md`](docs-site/05-navigation-and-cross-linking.md)).
+- Publish it at **`fairyfox.io/<key>/`** on GitHub Pages
+  ([`docs-site/10-domain-and-publishing.md`](docs-site/10-domain-and-publishing.md)) —
+  enable Pages, set the base path to `/<key>`, no project CNAME.
+- Verify against [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
+
+### 7. Register the project with the hub *(hub-side change)*
 
 So the hub knows the project exists and can read it for round-ups. This is a
 commit **in the hub repo**, not the project:
@@ -127,6 +145,8 @@ never be committed (committing it nests repos and bloats history).
 - `VERSION` reads a sane starting number.
 - The project resolves in **both** registries (`hub/registry.yml` and
   `_data/projects.yml`) with matching `key` and `branch`.
+- The themed docs site loads at `fairyfox.io/<key>/`, matches the design system, and
+  links back to Fairy Fox (passes [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md)).
 - If the project builds/serves, it builds green.
 
 ## Gotchas

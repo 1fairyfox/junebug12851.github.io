@@ -91,7 +91,7 @@ The notes are a living document — keep them current as you work, by default.
 | A change warrants a version | Bump `VERSION`, same commit |
 | A convention becomes reusable across projects | Promote it to `hub/standards/` |
 | The setup or update procedure changes (git model, registry shape, template/skeleton layout, sync flow) | Keep the lifecycle runbooks current, by default: `hub/standards/new-project-setup.md`, `hub/standards/onboarding-existing-project.md`, and `hub/standards/adopting-updates.md` |
-| The site's visual design system changes (tokens, layout, components, cross-linking) | Update the docs-site standard `hub/standards/docs-site/` to match — but this is the **master copy: manual review only, never auto-applied** to fairyfox.io |
+| The site's visual design system changes (tokens, layout, components, cross-linking) — e.g. edits to `assets/css/main.css`, layouts, or includes | Keep the docs-site standard `hub/standards/docs-site/` in step, by default: the spec prose, `11-measurements-reference.md`, **and** the bundled snapshot `docs-site/reference/main.css`. fairyfox.io is the **master copy: manual review only, never auto-applied** here — but the *standard* must mirror what the site actually is |
 
 ## The hub & cross-project sync
 

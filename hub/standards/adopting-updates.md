@@ -109,7 +109,8 @@ edits — the project's copy may legitimately diverge.
 | **Structure** (notes skeleton, folder layout) | `notes/` tree | Add new files/sections; don't blow away existing content to match the skeleton. |
 | **Spec / convention** (a shared rule or format) | wherever the project encodes it | Update the project's implementation and its doc to match the new spec. |
 | **Template** (`CLAUDE.md`, `.gitignore`, `VERSION` format) | repo root | Port the meaningful change; never overwrite the project's filled-in identity. |
-| **Design / shared asset** | the project's own design layer | Adopt the *intent*; the hub holds the convention, the project owns its rendering. |
+| **Design system** (the [docs-site standard](docs-site/) — tokens, layout, components, cross-linking, the bundled `reference/main.css`) | the project's themed docs site | Re-apply the *intent* to the project's stack; diff `docs-site/` (incl. `11-measurements-reference.md` + `reference/main.css`) and re-run the [compliance checklist](docs-site/08-compliance-checklist.md). |
+| **Design / other shared asset** | the project's own design layer | Adopt the *intent*; the hub holds the convention, the project owns its rendering. |
 
 Rule of thumb: **copy the change, not the file.** A blind file overwrite usually
 clobbers project-specific work — diff, then hand-merge.
