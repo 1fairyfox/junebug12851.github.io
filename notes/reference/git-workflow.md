@@ -24,21 +24,21 @@ fuller, sturdier foundation.
 Two long-lived branches, three kinds of short-lived support branch — all
 first-class.
 
-- **`main`** — production; every commit on it is a **tagged release**. **Never
-  commit directly**, and `dev` is **never merged straight in** — `main` advances
-  *only* via a **`release/*`** or **`hotfix/*`** merge (`--no-ff`) + tag. Every push
-  to `main` triggers the Pages deploy, so `main` must always build green.
-  `main` is mandatory mesh-wide — `master` is not used (a project on `master`
-  renames it; this repo is already on `main`). Full procedure: the
+- **`main`** — production; every commit on it is a **tagged release** (always by
+  `--no-ff` merge). **Never commit directly.** It advances at a release — a **PATCH**
+  goes **directly from `dev`**, a **MINOR/MAJOR** through a **`release/*`** branch — or
+  by a **`hotfix/*`** merge. Every push to `main` triggers the Pages deploy, so `main`
+  must always build green. `main` is mandatory mesh-wide — `master` is not used (a
+  project on `master` renames it; this repo is already on `main`). Full procedure: the
   [git-workflow standard](../../hub/standards/git-workflow.md#master--main-is-mandatory).
 - **`dev`** — the **integration branch** (git-flow's `develop` role; we keep the
   shorter name `dev`). Finished work lands here first. Also the branch other repos
   and the hub track when they pull (see [`cross-project-sync.md`](cross-project-sync.md)).
 - **`feature/<name>`** — the normal unit of work: branch from `dev`, build, merge
   back into `dev` (`--no-ff`), delete. Never off `main`.
-- **`release/<x.y.z>`** — the release mechanism: branch from `dev`, finalize
-  (VERSION bump, changelog, polish), merge into `main` + tag **and** back into
-  `dev` (`--no-ff` both), delete.
+- **`release/<x.y.0>`** — the release mechanism **for MINOR/MAJOR** (a milestone):
+  branch from `dev`, finalize (VERSION bump, changelog, polish), merge into `main` +
+  tag **and** back into `dev` (`--no-ff` both), delete. PATCH releases skip this.
 - **`hotfix/<x.y.z>`** — urgent production fix: branch from `main`, fix, merge into
   `main` + tag **and** back into `dev` (`--no-ff` both), delete.
 
@@ -55,16 +55,29 @@ git branch -d feature/<name> && git push origin dev
 
 ## Release flow
 
-`main` is updated only this way (or by a hotfix), so a release stays a deliberate event:
+**The path depends on the SemVer level** (see [`versioning.md`](versioning.md)) —
+ceremony proportional to the change.
+
+**PATCH** (default — fixes, docs, ordinary changes): release **directly** `dev → main`,
+no release branch:
 
 ```sh
-git checkout dev && git checkout -b release/X.Y.Z
-# … bump VERSION, finish the changelog entry, last polish …
-git checkout main && git merge --no-ff release/X.Y.Z
+git checkout main && git merge --no-ff dev
 git tag -a vX.Y.Z -m "vX.Y.Z"          # tag matches VERSION
-git checkout dev && git merge --no-ff release/X.Y.Z   # carry finalizations back
-git branch -d release/X.Y.Z
-git push origin main dev --tags        # pushing main triggers the Pages deploy
+git push origin main --tags            # pushing main triggers the Pages deploy
+git checkout dev
+```
+
+**MINOR / MAJOR** (a milestone): through a `release/X.Y.0` branch (MAJOR is FF's call only):
+
+```sh
+git checkout dev && git checkout -b release/X.Y.0
+# … bump VERSION, finish the changelog entry, last polish …
+git checkout main && git merge --no-ff release/X.Y.0
+git tag -a vX.Y.0 -m "vX.Y.0"          # tag matches VERSION
+git checkout dev && git merge --no-ff release/X.Y.0   # carry finalizations back
+git branch -d release/X.Y.0
+git push origin main dev --tags
 ```
 
 ## Hotfix flow
@@ -79,20 +92,19 @@ git branch -d hotfix/X.Y.Z && git push origin main dev --tags
 
 ## Solo latitude
 
-This repo is solo, so apply judgement *within* git-flow (not a lighter model): a
-**trivial** change (typo, one-line doc fix) may be committed directly on `dev`
-instead of a `feature/*` branch, and a **routine release** of accumulated `dev`
-work may merge `dev → main` directly (`--no-ff` + tag) when a `release/*` branch
-would only briefly hold a version bump. Anything that's really a feature, or any
-release that needs staging/review, takes its proper branch.
+This repo is solo, so one piece of judgement applies *within* git-flow (not a lighter
+model): a **trivial** change (typo, one-line doc fix) may be committed directly on
+`dev` instead of a `feature/*` branch. Anything that's really a feature, or is
+large/risky, takes its own branch. (The release path is **not** latitude — it's fixed
+by the SemVer level: PATCH direct, MINOR/MAJOR via a `release/*` branch.)
 
 ## Merging — `--no-ff`, never rewrite
 
-git-flow merges with `--no-ff`: features back into `dev`, and `release/`/`hotfix/`
-into both `main` and `dev`, each leave a merge commit so the grouping stays legible
-and revertible (`git revert -m 1 <merge>`). `main` carries only tagged
-release/hotfix merges. All **additive** — never a history rewrite. We do **not**
-squash, rebase, or reorder anything pushed.
+git-flow merges with `--no-ff`: features back into `dev`, `release/`/`hotfix/` into
+both `main` and `dev`, and a PATCH release `dev → main`, each leave a merge commit so
+the grouping stays legible and revertible (`git revert -m 1 <merge>`). **Every merge
+into `main` is a tagged release.** All **additive** — never a history rewrite. We do
+**not** squash, rebase, or reorder anything pushed.
 
 ## Commit messages
 
@@ -103,9 +115,10 @@ squash, rebase, or reorder anything pushed.
   plain-English entry to the top of `notes/version/YYYY-MM.md` and stage it in the
   **same commit** (no separate "update changelog" commit). See
   [`../version.md`](../version.md).
-- **Keep `VERSION` current** as part of the release (the `release/*`/`hotfix/*`
-  branch is the natural place to bump it) — PATCH default, MINOR milestone, never
-  MAJOR. The release tag on `main` matches it. See [`versioning.md`](versioning.md).
+- **Keep `VERSION` current** as part of the release — bumped on `dev` for a PATCH, or
+  on the `release/*`/`hotfix/*` branch for a milestone/hotfix (PATCH default, MINOR
+  milestone, never MAJOR). The release tag on `main` matches it. See
+  [`versioning.md`](versioning.md).
 
 ## Hard safety rules
 

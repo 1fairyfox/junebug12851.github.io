@@ -26,21 +26,21 @@ git-flow has **two long-lived branches** and **three kinds of short-lived suppor
 branch**. All are first-class — the support branches are the normal way work flows,
 not exceptions.
 
-- **`main`** — production. Every commit on `main` is a **tagged release**. **Never
-  commit directly**, and `dev` is **never merged straight in**: `main` advances
-  *only* by merging a **`release/*`** or **`hotfix/*`** branch (`--no-ff`), then
-  tagging. **The stable branch must be named `main`** — `master` is not used in the
-  mesh (see below).
+- **`main`** — production. Every commit on `main` is a **tagged release**, always by
+  `--no-ff` merge. **Never commit directly.** It advances at a release — a **PATCH**
+  goes **directly from `dev`**; a **MINOR/MAJOR** goes through a **`release/*`** branch
+  (see "Cutting a release") — or by a **`hotfix/*`** merge. **The stable branch must be
+  named `main`** — `master` is not used in the mesh (see below).
 - **`dev`** — the **integration branch** (git-flow's `develop` role; we keep the
   shorter name `dev`). All finished work lands here first. This is the branch the
   hub and other projects track when syncing.
 - **`feature/<name>`** — the **normal unit of work**. Branch from `dev`, build the
   feature, merge **back into `dev`** with `--no-ff`, then delete. Never branch a
   feature off `main`.
-- **`release/<x.y.z>`** — the **release mechanism**. Branch from `dev` when a
-  release is ready to bake; do the release work on it (final polish, version bump,
-  changelog), then merge **into `main`** + tag **and** back **into `dev`**
-  (`--no-ff` both), then delete.
+- **`release/<x.y.0>`** — the **release mechanism for a MINOR or MAJOR release**
+  (a milestone). Branch from `dev` to bake the release (final polish, version bump,
+  changelog), then merge **into `main`** + tag **and** back **into `dev`** (`--no-ff`
+  both), then delete. **PATCH releases skip this** and go straight `dev → main`.
 - **`hotfix/<x.y.z>`** — an **urgent production fix**. Branch from `main`, fix,
   then merge **into `main`** + tag **and** back **into `dev`** (`--no-ff` both),
   then delete.
@@ -66,21 +66,36 @@ the feature is legible in history and revertible in one move
 
 ## Cutting a release
 
-Releases go through a **`release/*`** branch — `main` is only ever updated this way
-(or by a hotfix). This is what keeps a release a deliberate, reviewable event.
+**The release path is set by the SemVer level** (see the versioning standard) — this
+is the compromise that keeps ceremony proportional to the change:
 
-```sh
-git checkout dev
-git checkout -b release/X.Y.Z
-# … finalize: bump VERSION, finish the changelog entry, last polish …
-git checkout main
-git merge --no-ff release/X.Y.Z
-git tag -a vX.Y.Z -m "vX.Y.Z"        # tag matches VERSION
-git checkout dev
-git merge --no-ff release/X.Y.Z      # carry the release finalizations back
-git branch -d release/X.Y.Z
-git push origin main dev --tags
-```
+- **PATCH** (the default — fixes, docs, ordinary changes): release **directly**
+  `dev → main`. No release branch — patches are frequent and low-stakes.
+
+  ```sh
+  git checkout main
+  git merge --no-ff dev
+  git tag -a vX.Y.Z -m "vX.Y.Z"        # tag matches VERSION
+  git push origin main --tags
+  git checkout dev
+  ```
+
+- **MINOR / MAJOR** (a milestone): go through a **`release/X.Y.0`** branch, so the
+  milestone is a deliberate, reviewable event. (MAJOR → `1.0.0` etc. is the project
+  owner's call only.)
+
+  ```sh
+  git checkout dev
+  git checkout -b release/X.Y.0
+  # … finalize: bump VERSION, finish the changelog entry, last polish …
+  git checkout main
+  git merge --no-ff release/X.Y.0
+  git tag -a vX.Y.0 -m "vX.Y.0"         # tag matches VERSION
+  git checkout dev
+  git merge --no-ff release/X.Y.0       # carry the release finalizations back
+  git branch -d release/X.Y.0
+  git push origin main dev --tags
+  ```
 
 ## Hotfixes
 
@@ -102,19 +117,12 @@ git push origin main dev --tags
 
 ## Solo / small-project latitude
 
-git-flow assumes a team; most mesh projects are solo and small, so apply judgement
-(this is *latitude within* the model, not a lighter model):
-
-- A genuinely **trivial** change (a typo, a one-line doc fix) may be committed
-  directly on `dev` rather than via a `feature/*` branch — anything that is really
-  "a feature," or is large/risky, gets its own branch.
-- For a **routine release** of accumulated `dev` work where a `release/*` branch
-  would only hold a version bump for a moment, merging `dev → main` directly
-  (`--no-ff` + tag) is acceptable. Spin up a real `release/*` branch whenever the
-  release needs staging, coordination, or review.
-
-Prefer the full flow for anything substantive; reach for the shortcuts only when the
-ceremony would buy nothing.
+git-flow assumes a team; most mesh projects are solo and small, so one piece of
+judgement applies *within* the model (not a lighter model): a genuinely **trivial**
+change — a typo, a one-line doc fix — may be committed directly on `dev` rather than
+via a `feature/*` branch. Anything that is really "a feature," or is large/risky,
+still gets its own branch. (The release path is **not** latitude — it's fixed by the
+SemVer level above.)
 
 ### `master → main` is mandatory
 
@@ -137,12 +145,13 @@ the explicit references. The registry's `branch` field tracks the **work** branc
 
 ## Merging — `--no-ff`, never rewrite
 
-git-flow merges with `--no-ff`: features back into `dev`, and `release/`/`hotfix/`
-branches into both `main` and `dev`, each create a merge commit, so the
-feature/release grouping stays legible and revertible as a unit. `main` carries
-only release/hotfix merges, each tagged. This is all **additive** — it never
-rewrites history. **Do not** squash, rebase, or reorder anything already pushed;
-every original commit is preserved through every merge.
+git-flow merges with `--no-ff`: features back into `dev`, `release/`/`hotfix/`
+branches into both `main` and `dev`, and a PATCH release `dev → main`, each create a
+merge commit, so the grouping stays legible and revertible as a unit. **Every merge
+into `main` is a tagged release** (a PATCH straight from `dev`, or a `release/`/
+`hotfix/` branch). This is all **additive** — it never rewrites history. **Do not**
+squash, rebase, or reorder anything already pushed; every original commit is
+preserved through every merge.
 
 ## Pushing
 
@@ -159,8 +168,9 @@ tests/checks pass).
 - **Changelog rides inside the commit** (see the versioning + notes-system
   standards): write the entry, stage it in the same commit. No separate
   "document the last commit" commits.
-- **Keep `VERSION` current** as part of the release (a `release/*` or `hotfix/*`
-  branch is the natural place to bump it); the release tag on `main` matches it.
+- **Keep `VERSION` current** as part of the release — bumped on `dev` for a PATCH,
+  or on the `release/*`/`hotfix/*` branch for a milestone/hotfix; the release tag on
+  `main` matches it.
 
 ## Hard safety rules
 

@@ -70,13 +70,13 @@ After making changes, without being asked:
    files (never `git add -A`). The **changelog entry rides inside the commit** (top of
    `notes/version/YYYY-MM.md`, no hash marker); **bump `VERSION`** as part of the
    release (PATCH default, MINOR milestone, never MAJOR).
-3. When the build is green, **release to `main` the git-flow way** (full flow:
-   `hub/standards/git-workflow.md`). Through a `release/<x.y.z>` branch off `dev` for
-   anything substantive — merge `--no-ff` into `main`, tag `vX.Y.Z`, merge back into
-   `dev` — or, for a routine increment, a direct `dev → main` `--no-ff` + tag:
+3. When the build is green, **release to `main` the git-flow way** — path set by the
+   SemVer level (full flow: `hub/standards/git-workflow.md`). A **PATCH** releases
+   **directly** `dev → main`:
    `git checkout main && git merge --no-ff dev && git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags && git checkout dev`
-   (tag matches `VERSION`). Pushing `main` triggers the Pages deploy; `--no-ff` merge
-   commits are additive, **not** a history rewrite.
+   A **MINOR/MAJOR** goes through a `release/<x.y.0>` branch off `dev` (merge `--no-ff`
+   into `main`, tag, merge back into `dev`). Tag matches `VERSION`; pushing `main`
+   triggers the Pages deploy; `--no-ff` merge commits are additive, **not** a rewrite.
 
 **Hard safety rules:** never `push --force` / rewrite pushed history; never
 `reset --hard` / `rebase` / `clean -fd` / delete a branch without an explicit
