@@ -138,7 +138,7 @@ Per the standing maintenance loop:
   for the runbook or standard. This is how the hub learns to improve the procedure —
   [process-reports standard](process-reports.md). A **check-only** run writes one too.
 
-### 5. Commit, push, fast-forward `main`
+### 5. Commit, push, release to `main`
 
 On `dev`, staging specific files:
 
@@ -147,9 +147,14 @@ git add notes <other-touched-files>      # incl. notes/fairyfox-reports/<report>
 git commit -m "chore: adopt hub updates (<what>)"
 git push origin dev
 
-git checkout main && git merge --ff-only dev && git push origin main
+# release dev → main the git-flow way (PATCH: direct, --no-ff, tagged):
+git checkout main && git merge --no-ff dev
+git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags
 git checkout dev
 ```
+
+(A MINOR/MAJOR milestone goes through a `release/*` branch instead — see the
+[git-workflow standard](git-workflow.md#cutting-a-release).)
 
 ## When the project has diverged
 

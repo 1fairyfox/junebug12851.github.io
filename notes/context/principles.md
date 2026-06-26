@@ -25,9 +25,10 @@ specifics live in the reference files.
 - **Self-documenting.** A newcomer (human or AI) gets oriented from
   `README.md` → `CLAUDE.md` → `notes/status.md` with nothing trapped in someone's
   head. The notes are a living document, kept current by default.
-- **Low-risk git.** A clean, faithful, linear history: `dev` for work, `main`
-  fast-forward-only and always deployable. Never rewrite pushed history. Full
-  rules: [`../reference/git-workflow.md`](../reference/git-workflow.md).
+- **Low-risk git.** A clean, faithful history (full git-flow): `dev` for work,
+  `main` advancing only by `--no-ff` **tagged** releases and always deployable.
+  Never rewrite pushed history. Full rules:
+  [`../reference/git-workflow.md`](../reference/git-workflow.md).
 - **One source of truth per fact.** The version number lives only in `VERSION`;
   the project list only in `_data/projects.yml`; shared standards only in `hub/`.
   Don't duplicate — link.

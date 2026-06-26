@@ -40,14 +40,18 @@ follows the shared living-notes standard. Highlights:
 After making changes, run this loop **without being asked**:
 
 1. **Build / check** the change.
-2. **Test** the affected area; full suite/check before FF `main`. Only proceed on
-   green.
+2. **Test** the affected area; full suite/check before releasing to `main`. Only
+   proceed on green.
 3. **Commit + push on `dev`**, staging specific files (never `git add -A`). The
    **changelog entry rides inside the commit** (top of `notes/version/YYYY-MM.md`,
    no hash marker), and **bump `VERSION`** in the same commit when warranted
    (PATCH default, MINOR milestone, never MAJOR).
-4. When green, **fast-forward `main`** and push:
-   `git checkout main && git merge --ff-only dev && git push origin main && git checkout dev`.
+4. When green, **release `dev → main` the git-flow way** — `main` advances only by a
+   `--no-ff`, **tagged** merge, never a fast-forward or a direct commit. A **PATCH**
+   (the default) releases **directly**:
+   `git checkout main && git merge --no-ff dev && git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags && git checkout dev`.
+   A **MINOR/MAJOR** milestone goes through a `release/*` branch, and an urgent
+   production fix through a `hotfix/*` branch — see the `git-workflow` standard.
 
 **Hard safety rules:** never `push --force` / rewrite pushed history; never
 `reset --hard` / `rebase` / `clean -fd` / delete a branch without an explicit

@@ -22,7 +22,7 @@ The end state — tick every box before calling a project done:
 
 | Area | Done when |
 |------|-----------|
-| Repo + branches | The repo exists on GitHub with **`dev`** and **`main`**; work happens on `dev`, `main` only fast-forwards. |
+| Repo + branches | The repo exists on GitHub with **`dev`** and **`main`**; work happens on `dev`, and `main` advances only by `--no-ff` **tagged** releases (full git-flow). |
 | AI entry point | A filled-in `CLAUDE.md` at the root, pointing at `notes/status.md`. |
 | Notes system | A `notes/` tree (from the skeleton), with a real `status.md`. |
 | Versioning | A `VERSION` file at the root (usually `0.1.0`). |
@@ -49,8 +49,9 @@ gh repo create junebug12851/<project> --private --source=. --remote=origin
 git checkout -b dev          # all work lives here
 ```
 
-`main` is created at the first fast-forward (step 7). **Never commit directly to
-`main`** — it only ever moves forward to a green `dev` commit.
+`main` is created at the first release (step 9). **Never commit directly to
+`main`** — it only advances by a `--no-ff`, **tagged** release from a green `dev`
+(see the [git-workflow standard](git-workflow.md)).
 
 ### 2. Pull a read-only copy of the hub
 
@@ -136,7 +137,7 @@ went, which steps were ambiguous or didn't fit a fresh repo, and any suggestion 
 the runbook. This is the feedback the hub uses to improve setup — see the
 [process-reports standard](process-reports.md). It's committed with the rest below.
 
-### 9. First commit, push, fast-forward `main`
+### 9. First commit, push, release to `main`
 
 Inside the project, on `dev`:
 
@@ -145,9 +146,14 @@ git add CLAUDE.md VERSION .gitignore notes        # incl. notes/fairyfox-reports
 git commit -m "chore: adopt hub standards and notes system"
 git push origin dev
 
-git checkout main && git merge --ff-only dev && git push origin main
+# release dev → main the git-flow way (PATCH: direct, --no-ff, tagged):
+git checkout main && git merge --no-ff dev
+git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags
 git checkout dev
 ```
+
+(A MINOR/MAJOR milestone goes through a `release/*` branch instead — see the
+[git-workflow standard](git-workflow.md#cutting-a-release).)
 
 Stage the **reference clone out** — `assets/references/*` is git-ignored and must
 never be committed (committing it nests repos and bloats history).
@@ -179,8 +185,12 @@ name any that don't rather than rounding up.
 
 - **References are read-only and git-ignored.** Pulling the hub never produces a
   commit, so it can't trigger anything downstream.
-- **Branch defaults.** New projects track `dev`. A legacy repo may default to
-  `master` — record the real branch in the registry rather than forcing a rename.
+- **Branch defaults.** New projects track `dev` (work) and release to `main`
+  (tagged); **`master` is never used in the mesh.** Onboarding a *legacy* repo still
+  on `master` renames it to `main` — mandatory, not optional (see
+  [onboarding](onboarding-existing-project.md) and the
+  [git-workflow standard](git-workflow.md#master--main-is-mandatory)). The registry's
+  `branch` field records the **work** branch (`dev`).
 - **One source of truth per fact.** Version → `VERSION`; project list →
   the registries; shared rules → the hub. Don't duplicate; link.
 - **Never bump MAJOR** (`→ 1.0.0`) — Fairy Fox's call only.
