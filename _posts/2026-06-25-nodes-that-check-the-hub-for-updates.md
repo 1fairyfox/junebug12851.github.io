@@ -1,6 +1,6 @@
 ---
 title: "Standards harden, and the projects join the mesh for real"
-subtitle: "A full day across the mesh: nodes learn to check the hub for updates, a docs-site design standard and a full git-flow model are written down, and both Random AI Prompt and Pokered Save Editor 2 fully onboard — themed docs and all — plus an SFW-by-default toggle."
+subtitle: "A full day across the mesh: nodes learn to check the hub for updates, a docs-site design standard and a full git-flow model are written down, the standards gain a feedback loop and a way to check themselves, and both Random AI Prompt and Pokered Save Editor 2 fully onboard — themed docs and all — plus an SFW-by-default toggle."
 date: 2026-06-25
 tags: [fairyfox-io, random-ai-prompt, pokered-save-editor-2, site, standards, update]
 ---
@@ -54,6 +54,31 @@ decision made `main` the mandatory name for the stable branch across the mesh, w
 safe rename path (never a history rewrite) for any repository still on `master`. The
 one everyday solo shortcut — a trivial change committed straight on `dev` — remains,
 as latitude *within* the model rather than a lighter model of its own.
+
+## The mesh learns from being run
+
+The shared procedures are written once and run many times, against repositories that
+differ in ways the author never sees. A new [process-reports
+standard](/docs/process-reports/) closes that gap: every time a project runs a system
+procedure — setup, onboarding, adopting updates, or a hub-side pass — it ends by
+writing an honest report of how the run went, what broke, and what was confusing. The
+reports are plain notes committed in each project's own repository, and the hub reads
+them the same read-only, on-request way it reads everything else about the projects —
+so the feedback travels without coupling the repositories together. The point is
+improvement rather than bookkeeping: a report that only says "it worked" wastes the
+loop, so it records the friction even when the run succeeded.
+
+## Standards that check themselves
+
+A rule is only real when it is both written down consistently *and* actually checked.
+The day's last piece added the second half. Every shared standard gained its own
+short **Verify** check — a pass/fail test for that one rule — and a new [standards
+compliance audit](/docs/compliance/) ties them together: a single on-request pass that
+runs every standard's check at once against the hub or a project and reports, per
+standard, whether it is followed. It is the recurring, whole-set counterpart to the
+join-time onboarding check — onboarding asks whether a project joined the mesh, while
+the compliance audit asks whether it is still following everything. Like every
+cross-repository read here, it reports its findings and changes nothing on its own.
 
 ## Random AI Prompt joins the mesh for real
 

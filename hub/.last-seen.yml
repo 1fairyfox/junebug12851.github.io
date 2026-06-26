@@ -12,21 +12,24 @@
 pokered-save-editor-2:
   commit: f88bbfd5e39c6ec294958e4f93bb17824dcd38a2
   branch: dev
-  seen: 2026-06-25
+  seen: 2026-06-26
   reports_through: null
   # Covered through the project-side fairyfox-mesh onboarding (mesh-aware CLAUDE.md +
   # cross-project-sync adoption) and theming its Doxygen docs site to the fairyfox
   # design system (Case B — themed generator). Folded into the 2026-06-25 day post
   # (_posts/2026-06-25-nodes-that-check-the-hub-for-updates.md). Earlier static-analysis
   # gate / test push was blogged at _posts/2026-06-23-…. (dev was force-pushed; re-cloned.)
+  # 2026-06-26 pass: re-checked — dev still at f88bbfd, no new commits, nothing to blog.
 
 random-ai-prompt:
-  commit: a3cfd150a0121751c552dae7f1fbcfc21dafe6bc
+  commit: 0b64abfba
   branch: dev
-  seen: 2026-06-25
+  seen: 2026-06-26
   reports_through: null
   # Covered through: project-side mesh onboarding + fairyfox-themed JSDoc docs, the
   # SFW-by-default + top-bar NSFW toggle (2.6.1), and adopting the git-flow standard
   # with the master → main rename (CI/Pages/release repointed). All folded into the
-  # 2026-06-25 day post. dev HEAD a3cfd15 (force-pushed; re-cloned). The Linux
-  # visual-baseline regen around the toggle is incremental test plumbing, not a post.
+  # 2026-06-25 day post. (dev was force-pushed; re-cloned.) 2026-06-26 pass: dev
+  # force-pushed again, re-cloned; the only new commit past a3cfd15 was 0b64abf
+  # (drop "expansion" mentions from engine loader-interface code comments) — internal
+  # tidy, no release (still 2.6.1), not blog-notable. Marker advanced to 0b64abf.
