@@ -97,6 +97,22 @@ is the compromise that keeps ceremony proportional to the change:
   git push origin main dev --tags
   ```
 
+### Who creates the tag — CI vs. by hand
+
+The commands above tag by hand. **But if the project's `release.yml` creates the
+version tag itself** — derives `v<VERSION>` and tags on the `main` push, typically
+gating the release on the tag not already existing — then **do not also tag by
+hand.** The merge to `main` *is* the release act; CI applies the tag. A hand-pushed
+tag will make the tag-gated workflow find the tag already present and **skip itself —
+a silent no-op release.** Check `release.yml` before tagging:
+
+- **CI owns tagging** → push `main` (and `dev`) **without** `git tag`/`--tags`; let the
+  pipeline tag. Record this as a deliberate divergence from the hand-tag commands.
+- **No tagging in CI** → tag by hand as shown above.
+
+Either way the invariant holds: every commit on `main` ends up carrying its matching
+`vX.Y.Z` tag — the question is only *which actor* applies it.
+
 ## Hotfixes
 
 A production problem that can't wait for the next `dev` cycle is fixed on a branch

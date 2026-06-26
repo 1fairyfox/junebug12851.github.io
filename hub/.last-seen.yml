@@ -13,7 +13,7 @@ pokered-save-editor-2:
   commit: f88bbfd5e39c6ec294958e4f93bb17824dcd38a2
   branch: dev
   seen: 2026-06-26
-  reports_through: null
+  reports_through: 2026-06-26   # 2026-06-26-adopting-updates.md digested → folded into standards 0.9.1
   # Covered through the project-side fairyfox-mesh onboarding (mesh-aware CLAUDE.md +
   # cross-project-sync adoption) and theming its Doxygen docs site to the fairyfox
   # design system (Case B — themed generator). Folded into the 2026-06-25 day post
@@ -25,7 +25,7 @@ random-ai-prompt:
   commit: 0b64abfba
   branch: dev
   seen: 2026-06-26
-  reports_through: null
+  reports_through: 2026-06-26   # 2026-06-26-adopting-updates.md digested → folded into standards 0.9.1
   # Covered through: project-side mesh onboarding + fairyfox-themed JSDoc docs, the
   # SFW-by-default + top-bar NSFW toggle (2.6.1), and adopting the git-flow standard
   # with the master → main rename (CI/Pages/release repointed). All folded into the
