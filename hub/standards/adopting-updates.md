@@ -89,7 +89,12 @@ authorized here.
 anything or only checked and reported — is a fairyfox system interaction, so it ends
 with a process report in `notes/fairyfox-reports/` (step 4 below). A check-only run
 still produces useful feedback: "I checked the fairyfox system for updates, here's
-what I found and where the diff was painful." See the
+what I found and where the diff was painful." A check that the user then green-lights
+into an adopt *in the same session* is **one run → one combined report**, not two.
+And if this node hasn't adopted the process-reports standard yet (no
+`notes/fairyfox-reports/` folder), a check-only run reports its findings **inline**
+and defers the written file until adoption — creating the folder is itself an act of
+adoption, which a check-only run doesn't do. See the
 [process-reports standard](process-reports.md).
 
 **Why bounded this way (the integration that won't surprise you):** the node can
@@ -106,31 +111,67 @@ zero risk of an unprompted edit or a cross-repo loop.
 git -C assets/references/fairyfox.io pull --depth 1 --ff-only origin dev
 ```
 
-**If the `--ff-only` pull aborts** (the hub's `dev` was force-pushed / rewritten,
-so the shallow clone can't fast-forward), don't fight it — **delete and re-clone
-fresh**:
+**Expect this to abort.** The hub's `dev` is force-pushed routinely (history is
+rewritten when work is squashed), so a `--ff-only` pull failing with
+`fatal: Not possible to fast-forward, aborting` is the *normal* case, not an error
+— don't fight it, fall straight through to the force-push refresh:
 
 ```sh
+# preferred — lighter than a re-clone, keeps the old commit around for the diff in step 2:
+git -C assets/references/fairyfox.io fetch origin dev
+git -C assets/references/fairyfox.io reset --hard origin/dev
+```
+
+```sh
+# heavier equivalent, if the clone is corrupt or missing — delete and re-clone fresh:
 rm -rf assets/references/fairyfox.io
 git -C assets/references clone --depth 1 --branch dev \
     https://github.com/junebug12851/junebug12851.github.io fairyfox.io
 ```
 
-The clone is git-ignored, so re-pulling or re-cloning never produces a commit.
+**`reset --hard` is allowed here and *only* here:** `assets/references/*` is a
+disposable, git-ignored **mirror of the hub**, never project history. This is the
+one carve-out from the "never `reset --hard` without an explicit request" safety
+rule — it can never rewrite your repo, because the clone isn't your repo. Never
+point a `reset --hard` at `main`/`dev` or anything tracked.
+
+The clone is git-ignored, so fetching, resetting, or re-cloning never produces a
+commit.
 
 ### 2. See what changed since you last adopted
 
-Compare the refreshed hub copy against what the project currently mirrors, and
-decide what's worth bringing over:
+**Anchor on the hub VERSION, not a commit.** Because the hub's `dev` is
+force-pushed (step 1), the commit you last cloned may no longer exist, so
+`git log old..new` and a SHA-to-SHA diff are unreliable. The durable anchor is the
+**`hub_version` recorded in this project's most recent adopting-updates process
+report** (`notes/fairyfox-reports/`). That number survives any rewrite — it's your
+"last adopted" mark, no extra marker file needed.
+
+So the primary signal is the **hub's append-only changelog**, read across that span:
 
 ```sh
-# example: how the project's git standard differs from the hub's now
+# what landed in the hub between your last-adopted version and now:
+#   last adopted = hub_version in your newest notes/fairyfox-reports/*-adopting-updates.md
+#   current      = assets/references/fairyfox.io/VERSION
+cat assets/references/fairyfox.io/VERSION
+ls  assets/references/fairyfox.io/notes/version/      # read the entries spanning that range
+```
+
+Read those changelog entries first — they say *what* changed and *why*. Only then,
+if you need the exact wording, open the specific `hub/standards/*.md` files the
+changelog points at.
+
+**Don't lead with a file diff.** Diffing a canonical hub standard against this
+project's adopted copy is dominated by intentional local adaptation (path
+adjustments, project-specific deviations), so the diff is mostly noise and a poor
+"what changed upstream" signal. Reach for it only to confirm a specific passage
+after the changelog has told you where to look:
+
+```sh
+# confirm a specific change after the changelog points you at it — noisy, secondary:
 diff -u notes/reference/git-workflow.md \
         assets/references/fairyfox.io/hub/standards/git-workflow.md
 ```
-
-Skim the hub's recent changelog (`notes/version/`) to understand *why* something
-changed before you adopt it.
 
 ### 3. Apply by hand, per category
 
@@ -180,8 +221,26 @@ git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags
 git checkout dev
 ```
 
+> **Does your `release.yml` create the version tag itself?** Some projects' release
+> pipelines derive `v<VERSION>` and tag on the `main` push, and gate the release on
+> the tag not already existing. **If yours does, do NOT also tag by hand** — the
+> merge to `main` *is* the release act, CI applies the tag, and a hand-pushed tag
+> will make the tag-gated run skip itself (a silent no-op release). In that case drop
+> the `git tag`/`--tags` lines above and just push `main`. Check `release.yml` before
+> tagging; record the choice as a deliberate divergence if you skip the manual tag.
+
 (A MINOR/MAJOR milestone goes through a `release/*` branch instead — see the
 [git-workflow standard](git-workflow.md#cutting-a-release).)
+
+**Close out — say what changed, where (unprompted).** An adoption touches several
+branches and may `reset --hard` the hub mirror; that combination looks alarming
+without a plain summary, so end every run with one — don't wait to be asked:
+
+- `dev`: local vs `origin` — identical? (just pushed, so yes)
+- `main`: untouched except the release merge (or untouched entirely on a check-only run)
+- working tree: clean; `assets/references/` still git-ignored
+- **the only `reset --hard` was on the disposable `assets/references/` hub mirror —
+  project history was never rewritten** (state this explicitly whenever step 1 used it).
 
 ## When the project has diverged
 
@@ -193,12 +252,23 @@ improves the project, on purpose." The hub is the source of truth for the shared
 
 ## Verify
 
-- `git status` is clean; `assets/references/` stayed untracked/ignored.
+- `git status` is clean; `assets/references/` stayed untracked/ignored. Any
+  `reset --hard` during the run targeted **only** the git-ignored hub mirror, never a
+  tracked branch.
 - The adopted change is present in the project's own tree (not just the
   reference clone).
+- "What changed" was scoped from the hub **changelog** across the version span (last
+  adopted `hub_version` → current hub `VERSION`), not from a SHA diff against a
+  force-pushed commit.
 - Changelog + session log + (if bumped) `VERSION` ride in the same commit.
-- A **process report** for this run is in `notes/fairyfox-reports/` and committed
-  (written even on a check-only run) — [process-reports standard](process-reports.md).
+- A **process report** for this run is in `notes/fairyfox-reports/` and committed —
+  written even on a check-only run, **except** a check-only run on a node that hasn't
+  adopted process-reports yet, which reports inline and writes no file
+  ([process-reports standard](process-reports.md)).
+- If `release.yml` owns tagging, the release **did not** hand-push a tag; otherwise the
+  hand tag matches `VERSION`.
+- The run ended with a **close-out** stating `dev`/`main` status and that any
+  `reset --hard` hit the mirror only.
 - If a run **skipped the pause**, an active [`hub/authorizations.yml`](../authorizations.yml)
   entry actually `covers`ed the change (not assumed), and the other safety steps still
   ran — divergence re-prompt, process report, reviewable commit, build-check.

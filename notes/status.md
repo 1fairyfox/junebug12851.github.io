@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.9.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.9.1` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -51,7 +51,10 @@ The rest of the structure is in place end to end:
   and **express authorizations** (`0.9.0`): a tracked ledger
   (`hub/authorizations.yml`) of the user's hub-side go-aheads, so a node adopting a
   change the ledger covers skips its redundant confirmation pause (and only that —
-  all other adoption safety stays).
+  all other adoption safety stays), and a **first fold-back of node feedback** (`0.9.1`):
+  the siblings' process reports drove the force-push-proof refresh, VERSION-anchored
+  change detection, a CI-owns-tagging decision, and report-lifecycle fixes across the
+  adopt/sync/git-flow/process-reports standards.
   **Both siblings are now fully onboarded** (mesh-aware `CLAUDE.md` + a fairyfox-themed
   docs site each): Random AI Prompt (`2.6.1`, which also adopted git-flow and renamed
   its stable branch `master` → `main`) and Pokered Save Editor 2 (`0.14.2-alpha`, themed
@@ -64,7 +67,7 @@ The rest of the structure is in place end to end:
 
 ## In flight / awaiting
 
-- **Warm redesign is shipped (`0.4.x`; the repo is now at `0.9.0`).** The design language, the
+- **Warm redesign is shipped (`0.4.x`; the repo is now at `0.9.1`).** The design language, the
   **portal home** (hero + static activity panel), the **standardized status cards**, the
   **day-centric updates feed**, the **clickable cards / simpler nav** review pass, and the
   **project node pages** (`/projects/<key>/`) are all live — built increment-by-increment,

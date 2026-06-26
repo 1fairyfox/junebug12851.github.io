@@ -31,6 +31,9 @@ The hub keeps read-only shallow clones under `assets/references/<project>/`
 ```sh
 git -C assets/references clone --depth 1 --branch dev <project-url>      # first time
 git -C assets/references/<project> pull --depth 1 --ff-only origin dev   # refresh
+# refresh aborts? dev was force-pushed (routine) — reset the mirror, don't fight it:
+git -C assets/references/<project> fetch origin dev
+git -C assets/references/<project> reset --hard origin/dev               # mirror only — never a tracked branch
 ```
 
 What the hub reads out of these clones: the project's history (for blog round-ups)
@@ -48,7 +51,15 @@ and `hub/templates/` into its own tree, committing *that*:
 ```sh
 git -C assets/references clone --depth 1 --branch dev <hub-url> <hub-name>   # first time
 git -C assets/references/<hub-name> pull --depth 1 --ff-only origin dev      # refresh
+# refresh aborts? hub dev was force-pushed (routine) — reset the mirror, don't fight it:
+git -C assets/references/<hub-name> fetch origin dev
+git -C assets/references/<hub-name> reset --hard origin/dev                  # mirror only — never a tracked branch
 ```
+
+The hub's `dev` is force-pushed routinely, so the `--ff-only` refresh will usually
+abort; the `reset --hard` (or a re-clone) on the **git-ignored mirror** is the
+expected fallback, never a `reset` of project history. Full detail:
+[`adopting-updates.md`](adopting-updates.md) step 1.
 
 Adopting a standard is a **copy committed locally**, not a live link — re-pull
 later and merge changes by hand.
