@@ -55,7 +55,10 @@ Inventory the repo so you adopt onto reality, not over it:
 
 ### 2. Adopt the branch model — `dev` + `main` (rename `master`)
 
-The mesh uses **`dev`** (work) fast-forwarding to **`main`** (stable). **`main` is
+The mesh runs **full git-flow**: work integrates on **`dev`**, and **`main`** holds
+**tagged releases** — `main` advances only by a `--no-ff` merge (a PATCH straight
+from `dev`, a MINOR/MAJOR via a `release/*` branch), never a direct commit or a
+fast-forward (see the [git-workflow standard](git-workflow.md)). **`main` is
 mandatory: a repo still on `master` renames it to `main`** as part of onboarding —
 required, not optional. This is a safe **rename**, not history surgery; follow the
 procedure in the
@@ -158,17 +161,22 @@ to make onboarding smoother. Mark the outcome honestly (`partial` is common and 
 See the [process-reports standard](process-reports.md). It's committed with the rest
 below.
 
-### 9. Commit on the project's working branch, then fast-forward
+### 9. Commit on `dev`, then cut the onboarding release
 
 Stage specific files (never `-A`; never `assets/references/*`):
 
 ```sh
 git add CLAUDE.md VERSION .gitignore notes        # incl. notes/fairyfox-reports/
 git commit -m "chore: onboard into hub mesh (adopt standards + notes)"
-git push origin <work-branch>
-# if on the dev/main model:
-git checkout main && git merge --ff-only dev && git push origin main && git checkout dev
+git push origin dev
+# release dev → main the git-flow way (PATCH: direct, --no-ff, tagged):
+git checkout main && git merge --no-ff dev
+git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags
+git checkout dev
 ```
+
+(A MINOR/MAJOR milestone goes through a `release/*` branch instead — see the
+[git-workflow standard](git-workflow.md#cutting-a-release).)
 
 ## Registered ≠ integrated (read before declaring "done")
 
