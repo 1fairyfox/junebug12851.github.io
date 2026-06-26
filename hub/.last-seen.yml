@@ -10,7 +10,7 @@
 # null = none digested yet.
 
 pokered-save-editor-2:
-  commit: f88bbfd5e39c6ec294958e4f93bb17824dcd38a2
+  commit: ef9578756201426b5815df49db4503265bb43c18
   branch: dev
   seen: 2026-06-26
   reports_through: 2026-06-26   # 2026-06-26-adopting-updates.md digested → folded into standards 0.9.1
@@ -19,17 +19,21 @@ pokered-save-editor-2:
   # design system (Case B — themed generator). Folded into the 2026-06-25 day post
   # (_posts/2026-06-25-nodes-that-check-the-hub-for-updates.md). Earlier static-analysis
   # gate / test push was blogged at _posts/2026-06-23-…. (dev was force-pushed; re-cloned.)
-  # 2026-06-26 pass: re-checked — dev still at f88bbfd, no new commits, nothing to blog.
+  # 2026-06-26 round-up (later pass): new commit ef95787 — adopted the fairyfox git-flow,
+  # process-reports & compliance standards (docs/notes/CI-comment only, no VERSION bump,
+  # still 0.14.2-alpha). Blogged in _posts/2026-06-26-…. Marker advanced f88bbfd → ef95787.
 
 random-ai-prompt:
-  commit: 0b64abfba
+  commit: 53fe12d13aaf8b9666d38ea88753747ced04e93a
   branch: dev
   seen: 2026-06-26
   reports_through: 2026-06-26   # 2026-06-26-adopting-updates.md digested → folded into standards 0.9.1
   # Covered through: project-side mesh onboarding + fairyfox-themed JSDoc docs, the
   # SFW-by-default + top-bar NSFW toggle (2.6.1), and adopting the git-flow standard
   # with the master → main rename (CI/Pages/release repointed). All folded into the
-  # 2026-06-25 day post. (dev was force-pushed; re-cloned.) 2026-06-26 pass: dev
-  # force-pushed again, re-cloned; the only new commit past a3cfd15 was 0b64abf
-  # (drop "expansion" mentions from engine loader-interface code comments) — internal
-  # tidy, no release (still 2.6.1), not blog-notable. Marker advanced to 0b64abf.
+  # 2026-06-25 day post. (dev was force-pushed; re-cloned.)
+  # 2026-06-26 round-up (later pass): dev force-pushed again, re-synced via fetch +
+  # reset --hard on the mirror. Cut 2.7.0 (MINOR) — the repo split into engine-v3 (active)
+  # + engine-v1-2 (frozen pre-revival snapshot), v3-only, legacy <expansion> mechanism
+  # removed end-to-end — and adopted the process-reports + compliance standards (notes-only).
+  # Blogged in _posts/2026-06-26-…. Marker → 53fe12d, VERSION 2.6.1 → 2.7.0.

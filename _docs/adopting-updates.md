@@ -31,6 +31,12 @@ files adopting it would touch — and then wait. Nothing is applied until an
 explicit go-ahead. The node can *discover and explain* updates on its own, but
 never *changes itself* without confirmation.
 
+The one exception is an **express authorization**: a tracked go-ahead the owner
+records at the hub (in `hub/authorizations.yml`) that covers specific artifacts. A
+node adopting a change the ledger covers skips only that redundant confirmation
+pause — every other safety step (copy-not-clobber, divergence re-prompt, a
+reviewable commit, the build-check) still runs.
+
 ## Applying, when asked
 
 Applying brings each kind of change into the project's own tree, per category

@@ -146,21 +146,20 @@
       badge: Recommended
       download: https://github.com/junebug12851/random-ai-prompt/archive/refs/heads/main.zip
       filename: random-ai-prompt — source (.zip)
-      intro: "Download the source, or clone it, then start the web UI with Node."
+      intro: "Download the source, or clone it, then start the web app with Node. As of 2.7.0 the active project lives under <code>engine-v3/</code>."
       steps:
         - "Install <strong>Node.js</strong> (any recent version)."
-        - "Get the code (download the .zip above, or clone), install deps, and run:"
-        - "On Windows you can simply double-click <code>webui.bat</code> instead."
+        - "Get the code (download the .zip above, or clone), then build and run the web app from <code>engine-v3/</code>:"
       code: |
         git clone https://github.com/junebug12851/random-ai-prompt.git
-        cd random-ai-prompt
+        cd random-ai-prompt/engine-v3
         npm install
-        node server
+        npm run web
 
     - label: "Source"
       intro: "Browse the full source, the web app, and the docs in the repository."
       steps:
         - "The README has the complete install, update, and usage guide."
-        - "A modern React + Vite web app also lives under <code>web-app/</code> (deployable to Netlify)."
+        - "The active engine + React/Vite web app live under <code>engine-v3/</code>; the original CLI and classic web UI are preserved, frozen, under <code>engine-v1-2/</code>."
       code: |
         git clone https://github.com/junebug12851/random-ai-prompt.git
