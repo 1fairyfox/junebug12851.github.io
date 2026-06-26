@@ -13,7 +13,7 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: ef9578756201426b5815df49db4503265bb43c18
+  commit: 3ff32c6c025ba263169ff2d05a24730a59ab0158
   branch: dev
   seen: 2026-06-26
   reports_through:             # digested-report filenames (append-only); see header
@@ -27,6 +27,10 @@ pokered-save-editor-2:
   # 2026-06-26 round-up (later pass): new commit ef95787 — adopted the fairyfox git-flow,
   # process-reports & compliance standards (docs/notes/CI-comment only, no VERSION bump,
   # still 0.14.2-alpha). Blogged in _posts/2026-06-26-…. Marker advanced f88bbfd → ef95787.
+  # 2026-06-26 round-up (final pass): commits 593859b/ebb36f0/3ff32c6 — adopted the
+  # express-authorizations standard + the verification-floor clarification (docs/notes only,
+  # still 0.14.2-alpha). Folded into the 2026-06-26 day post ("The loop runs once more").
+  # Marker advanced ef95787 → 3ff32c6.
 
 random-ai-prompt:
   commit: 53fe12d13aaf8b9666d38ea88753747ced04e93a
@@ -43,3 +47,5 @@ random-ai-prompt:
   # + engine-v1-2 (frozen pre-revival snapshot), v3-only, legacy <expansion> mechanism
   # removed end-to-end — and adopted the process-reports + compliance standards (notes-only).
   # Blogged in _posts/2026-06-26-…. Marker → 53fe12d, VERSION 2.6.1 → 2.7.0.
+  # 2026-06-26 round-up (final pass): re-synced (fetch + reset --hard); no new commits past
+  # 53fe12d, still 2.7.0. Nothing to blog. Marker unchanged.

@@ -1,6 +1,6 @@
 ---
 title: "A release splits in two, and the standards start learning from the nodes"
-subtitle: "Random AI Prompt ships 2.7.0 — its repository splits into an active engine and a frozen snapshot — both projects adopt the new process-reports and compliance standards, and the hub folds the first round of that feedback back into the standards (0.9.0–0.9.1)."
+subtitle: "Random AI Prompt ships 2.7.0 — its repository splits into an active engine and a frozen snapshot — both projects adopt the new process-reports and compliance standards, and the hub folds that feedback back into the standards (0.9.0–0.9.3)."
 date: 2026-06-26
 tags: [fairyfox-io, random-ai-prompt, pokered-save-editor-2, site, standards, update]
 ---
@@ -67,3 +67,18 @@ report items — CI-owned release tags, how a check-then-adopt run is reported, 
 chicken-and-egg of a first process report, and an unprompted close-out summary — were
 folded in across the adopt, sync, git-workflow, and process-reports standards. No new
 machinery, just standards that match how the runs actually go.
+
+## The loop runs once more
+
+Later the same loop turned again. Pokered Save Editor 2 adopted the new
+**express-authorizations** standard — the ledger-backed carve-out from earlier in the day
+— and, as the process-reports standard now requires, wrote a report on how that run went.
+The hub read it and folded it straight back (0.9.3). Two things came out of it. First, the
+express-authorization language now states a hard **verification floor**: a pre-authorized
+or otherwise automated adoption skips only the one redundant confirmation pause — never the
+build, the tests, or the standards checks, which run before *and* after, with a fall back to
+check-and-wait if they can't be completed. Skipping a question is not skipping verification.
+Second, the report exposed a gap in how the hub tracks which reports it has already digested:
+a same-day follow-up couldn't be told apart from its sibling by date alone, so the marker
+became an append-only list of report filenames rather than a high-water date. Small, precise
+corrections — the kind the loop exists to surface.
