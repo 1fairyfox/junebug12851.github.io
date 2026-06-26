@@ -36,8 +36,8 @@
   lifecycle: alpha
   version: "0.14.2"
   activity: active
-  updated: "Jun 25, 2026"
-  updated_iso: "2026-06-25"
+  updated: "Jun 26, 2026"
+  updated_iso: "2026-06-26"
   color: "#e6488f"
   icon: pse2
   featured: true
@@ -50,13 +50,13 @@
   notes: https://github.com/junebug12851/random-ai-prompt/tree/main/notes
   blurb: >-
     A generator for random and dynamic text prompts — built around a controllable
-    dynamic-prompt language (DPL), with a CLI and a web UI.
+    dynamic-prompt language (DPL), driven by a React + Vite web app.
   tags: [JavaScript, Node 24, Web UI]
   lifecycle: released
-  version: "2.6.1"
+  version: "2.7.0"
   activity: active
-  updated: "Jun 25, 2026"
-  updated_iso: "2026-06-25"
+  updated: "Jun 26, 2026"
+  updated_iso: "2026-06-26"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -94,7 +94,7 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.8.1"
+  version: "0.9.2"
   activity: active
   updated: "Jun 26, 2026"
   updated_iso: "2026-06-26"
