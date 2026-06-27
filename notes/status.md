@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.9.4` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.9.5` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -56,10 +56,13 @@ The rest of the structure is in place end to end:
   change detection, a CI-owns-tagging decision, and report-lifecycle fixes across the
   adopt/sync/git-flow/process-reports standards.
   **Both siblings are now fully onboarded** (mesh-aware `CLAUDE.md` + a fairyfox-themed
-  docs site each): Random AI Prompt (`2.7.0` — the repo split into an active `engine-v3`
-  + a frozen `engine-v1-2` snapshot, v3-only; earlier adopted git-flow with the `master`
-  → `main` rename) and Pokered Save Editor 2 (`0.14.2-alpha`, themed Doxygen docs; adopted
-  git-flow + process-reports + compliance + express-authorizations on 2026-06-26).
+  docs site each): Random AI Prompt (`2.7.25` — the repo split into an active `engine-v3`
+  + a frozen `engine-v1-2` snapshot, v3-only; the 2.7.x line then built out an
+  image-generation layer in the web app — prompts dispatch to 16+ hosted/local providers,
+  an AI rewrite pass, a central output folder, and a photo gallery + single-image view;
+  earlier adopted git-flow with the `master` → `main` rename) and Pokered Save Editor 2
+  (`0.14.2-alpha`, themed Doxygen docs; adopted git-flow + process-reports + compliance +
+  express-authorizations on 2026-06-26).
 - **Notes:** this living-notes system, mirroring the convention used across my
   projects.
 - **Sync:** the pull-only cross-project model is documented
@@ -68,7 +71,7 @@ The rest of the structure is in place end to end:
 
 ## In flight / awaiting
 
-- **Warm redesign is shipped (`0.4.x`; the repo is now at `0.9.4`).** The design language, the
+- **Warm redesign is shipped (`0.4.x`; the repo is now at `0.9.5`).** The design language, the
   **portal home** (hero + static activity panel), the **standardized status cards**, the
   **day-centric updates feed**, the **clickable cards / simpler nav** review pass, and the
   **project node pages** (`/projects/<key>/`) are all live — built increment-by-increment,

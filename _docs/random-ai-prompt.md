@@ -13,11 +13,13 @@ over the output.
 
 ## What it does
 
-- Generates prompts from curated word lists, expansions, and dynamic-prompt
-  generators — from fully random to tightly controlled.
-- Composes output through the dynamic-prompt language: pick-one groups,
-  expansions, and wildcards that resolve to one concrete result.
-- Provides a CLI and a web UI for driving generation without editing code.
+- Generates prompts from curated word lists and dynamic-prompt generators —
+  from fully random to tightly controlled.
+- Composes output through the dynamic-prompt language (DPL): pick-one groups,
+  weighting, and reusable lists that resolve to one concrete result.
+- Drives generation from a React + Vite web app, and can dispatch the result to
+  a range of image-generation providers, keeping a built-in gallery of what it
+  makes. (The original CLI is preserved, frozen, in the `engine-v1-2` snapshot.)
 
 ## Full documentation
 

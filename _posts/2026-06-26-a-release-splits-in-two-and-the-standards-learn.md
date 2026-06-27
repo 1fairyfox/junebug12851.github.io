@@ -1,6 +1,6 @@
 ---
 title: "A release splits in two, and the standards start learning from the nodes"
-subtitle: "Random AI Prompt ships 2.7.0 — its repository splits into an active engine and a frozen snapshot — both projects adopt the new process-reports and compliance standards, and the hub folds that feedback back into the standards (0.9.0–0.9.3)."
+subtitle: "Random AI Prompt ships 2.7.0 — its repository splits into an active engine and a frozen snapshot — then builds out image generation across many providers with a photo gallery (through 2.7.25); both projects adopt the new process-reports and compliance standards, and the hub folds that feedback back into the standards (0.9.0–0.9.3)."
 date: 2026-06-26
 tags: [fairyfox-io, random-ai-prompt, pokered-save-editor-2, site, standards, update]
 ---
@@ -29,6 +29,31 @@ expansions repointed to their migrated dynamic-prompt equivalents. Removing a wh
 generation of code dropped the lint warnings from 140 to 18 and left the test suites
 green. The downloads page and the project's node here were updated to match the new
 `engine-v3/` layout — running it from source now starts in that folder.
+
+## The prompt tool starts generating images
+
+With the split done, most of the day went into the engine-v3 web app, which moved
+from producing prompt text to producing pictures. Across the **2.7.x** line — from the
+split at 2.7.0 through to **2.7.25** — the app gained an image-generation layer that
+dispatches a finished prompt to whichever backend you point it at. The catalogue grew
+to more than a dozen providers, both hosted APIs and local servers — OpenAI, Stability,
+Replicate, fal.ai, Gemini, Grok, FLUX/BFL, Ideogram, Leonardo, NovelAI, Midjourney,
+ComfyUI, Forge/SD.Next, and a plain copy-out — each described by a small capability
+config so the settings panel adapts to what the provider actually supports. An optional
+AI rewrite pass cleans the generated prompt (and its negative) before it is sent, and
+every provider's images land in one central `output/` folder.
+
+On top of that output sits a **photo gallery**. The top bar now switches between three
+persistent views — Generate, Gallery, and Single — that stay mounted so each keeps its
+own state and scroll position. The gallery is a masonry grid with keyword search over
+everything saved to `output/`; clicking an image opens a dedicated single-image page
+showing the prompt and negative each in their DPL, engine-roll, AI-translation, and
+sent-final layers, a details table over the full settings snapshot, a keyword cloud, and
+prev/next navigation. Each generated image is written with a `.json` metadata sidecar —
+the prompt, the deterministic engine roll, the translation, the source DPL, the provider,
+and a settings snapshot **with API keys stripped**. Because the feed and the on-demand
+ImageMagick conversion both need the dev server's filesystem, the gallery is local by
+nature; a static build simply shows an empty gallery with a note.
 
 ## Both projects adopt process-reports and compliance
 

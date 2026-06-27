@@ -6,4 +6,9 @@ Random AI Prompt turns small, composable rules into rich, varied text prompts. I
 with OR-groups, weighting, and reusable lists. As of 2.7.0 the repository holds two
 separate engines: the active **engine-v3** — an isomorphic core driven by a React + Vite
 web app, with SFW/NSFW gating and a Vitest test suite — and a frozen **engine-v1-2**
-snapshot that preserves the original CommonJS CLI and classic web UI.
+snapshot that preserves the original CommonJS CLI and classic web UI. Through the 2.7.x
+line the web app grew an **image-generation layer**: prompts can be dispatched to a range
+of hosted and local providers (OpenAI, Stability, Replicate, fal.ai, Gemini, Grok,
+FLUX/BFL, Ideogram, Leonardo, NovelAI, ComfyUI, Forge/SD.Next, Midjourney, and a plain
+copy-out), with an optional AI rewrite pass, a central output folder, and a built-in
+photo gallery with per-image metadata and a dedicated single-image view.
