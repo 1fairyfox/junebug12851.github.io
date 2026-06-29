@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
   branch: dev
-  seen: 2026-06-28
+  seen: 2026-06-29
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -38,11 +38,13 @@ pokered-save-editor-2:
   # 2026-06-26-check-for-updates.md — left for the inbound report-review pass, not this one.)
   # 2026-06-28 round-up: no new commits past 1bae326 (still 0.14.2-alpha). Nothing to blog.
   # Marker unchanged; seen advanced to 2026-06-28.
+  # 2026-06-29 round-up: still no new commits past 1bae326 (clean ff "Already up to date",
+  # still 0.14.2-alpha). Nothing to reconcile or blog. Marker unchanged; seen → 2026-06-29.
 
 random-ai-prompt:
-  commit: e491232a7e4a0bdcf01a40583e58b5a3c4845cab
+  commit: ba5b65a6f93d1912f0748045497346e3df72384d
   branch: dev
-  seen: 2026-06-28
+  seen: 2026-06-29
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -82,3 +84,11 @@ random-ai-prompt:
   # auto-scaling) with a content refactor across all five categories (incl. stripping masterpiece/best-
   # quality from the default wrapper). Folded into the 2026-06-27 day post
   # ("A dial for the prompt language, a home for it online…"). Marker → e491232, VERSION 2.7.25 → 2.10.4.
+  # 2026-06-29 round-up: fast-forwarded cleanly e491232 → ba5b65a (no force-push), 33 commits all dated
+  # 2026-06-28, VERSION 2.10.4 → 2.14.0. The 2.10.5–2.14.0 line: browser-direct generation in the now-fully-
+  # static online build (2.11.0); the in-app **Manage tab** — a disk-backed catalog editor (blocks/lists/folders)
+  # with live hot-apply, virtualized list editing, restore-default + ghost pills, external-edit watch (2.12.0,
+  # probe-hardened in 2.12.1); the **focus dial** alongside intensity ({#name i25% f80%}, mandatory i/f prefixes,
+  # $ keyword sigil) + global layer auto-merge (2.13.0); and list Dedupe/Sort + Manage Insert bar + AI Expand +
+  # live DPL-validity lint (2.14.0). Folded into the 2026-06-28 day post ("An editor for the catalog, a second
+  # dial…"). Marker → ba5b65a, VERSION 2.10.4 → 2.14.0.
