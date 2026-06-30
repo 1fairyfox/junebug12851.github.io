@@ -92,3 +92,14 @@ random-ai-prompt:
   # $ keyword sigil) + global layer auto-merge (2.13.0); and list Dedupe/Sort + Manage Insert bar + AI Expand +
   # live DPL-validity lint (2.14.0). Folded into the 2026-06-28 day post ("An editor for the catalog, a second
   # dial…"). Marker → ba5b65a, VERSION 2.10.4 → 2.14.0.
+
+fairyfox-games:
+  commit:                      # null = not yet digested; next round-up blogs from repo start
+  branch: dev
+  seen: 2026-06-29
+  reports_through: []          # digested-report filenames (append-only); see header
+  # 2026-06-29: hub brought the games repo in as a tracked node — full-history dev mirror
+  # cloned under assets/references/fairyfox-games. Repo is at VERSION 0.2.0 (two games:
+  # Ink Bloom + Echo Chamber; themed docs site live, Netlify games.fairyfox.io mirror
+  # pending owner DNS). Not yet blogged — marker left null so the next round-up covers the
+  # full history (af796e2 → 8947a48).

@@ -83,7 +83,7 @@
   featured: true
   reference: false
 
-# Integrated with the site (the /fun/ page embeds it). A real tracked mesh node,
+# Integrated with the site (a /games/ player page will embed it). A real tracked mesh node,
 # but rendered specially — pinned just before the site's own (meta) card, not
 # sorted by date among the others. See the `integrated` tier in index.html /
 # projects.md.
@@ -96,10 +96,10 @@
   blurb: >-
     A collection of small, self-contained canvas games — the one-mechanic,
     beat-your-own-score kind, with a fresh experiment most days. Each game splits
-    pure, tested logic from rendering; play them embedded on the Fun page.
+    pure, tested logic from rendering; play them embedded on the Games page.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.1.2"
+  version: "0.2.0"
   activity: active
   updated: "Jun 29, 2026"
   updated_iso: "2026-06-29"
@@ -120,7 +120,7 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.9.9"
+  version: "0.9.12"
   activity: active
   updated: "Jun 29, 2026"
   updated_iso: "2026-06-29"

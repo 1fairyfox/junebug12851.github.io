@@ -3,8 +3,8 @@ key: fairyfox-games
 ---
 Fairy Fox Games is a collection of small, self-contained **canvas games** — the
 one-mechanic, *beat-your-own-score* kind, with a fresh polished experiment joining
-most days. It is integrated with this site: the [Fun page](/fun/) embeds the games in
-a player you can play without leaving, and each game also lives at
+most days. It is integrated with this site: a **Games page** at `/games/` will embed
+the games in a player you can play without leaving, and each game also lives at
 `fairyfox.io/fairyfox-games/<game>/`.
 
 However simple a game is, it ships to the same bar as the rest of the mesh. Every
@@ -18,4 +18,5 @@ It is a public, contribution-friendly project: bug reports, new-game ideas, and 
 requests are all welcome, and the existing games are maintained as first-class — not
 left to rot. The first game is **Ink Bloom**: steer a steadily growing line, drink
 glowing motes to grow, and don't cross your own trail — the longer you survive, the
-less room you leave yourself.
+less room you leave yourself. **Echo Chamber** followed: a timing game where you catch
+an expanding echo as it crosses the target band, the window tightening with every hit.

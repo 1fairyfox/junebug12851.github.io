@@ -56,9 +56,9 @@ projects:
     notes_system: true
     last_seen: null
 
-  # Integrated with the site (the /fun/ page embeds it). Onboarding in progress:
-  # mesh-aware CLAUDE.md + notes system are in place; themed docs site is the
-  # remaining piece, so adopts_hub stays false until that lands (honesty rule).
+  # Integrated with the site (a /games/ player page will embed it — still to be built
+  # on the hub). Onboarded: mesh-aware CLAUDE.md, notes system, and themed docs site
+  # are all in place, so adopts_hub is true.
   - key: fairyfox-games
     repo: https://github.com/junebug12851/fairyfox-games
     branch: dev
