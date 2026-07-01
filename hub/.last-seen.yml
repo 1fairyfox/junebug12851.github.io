@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
   branch: dev
-  seen: 2026-06-30
+  seen: 2026-07-01
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -42,11 +42,13 @@ pokered-save-editor-2:
   # still 0.14.2-alpha). Nothing to reconcile or blog. Marker unchanged; seen → 2026-06-29.
   # 2026-06-30 round-up: still no new commits past 1bae326 (clean ff "Already up to date",
   # still 0.14.2-alpha). Nothing to reconcile or blog. Marker unchanged; seen → 2026-06-30.
+  # 2026-07-01 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
+  # reconcile or blog. Marker unchanged; seen → 2026-07-01.
 
 random-ai-prompt:
-  commit: 2b6b8e6a95b2ea37f994afc68dac4acd87e83703
+  commit: c38373d75031b29d25cb8be330a9720f80358e49
   branch: dev
-  seen: 2026-06-30
+  seen: 2026-07-01
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -107,11 +109,25 @@ random-ai-prompt:
   # nets landed alongside each extraction), a Lighthouse polish (SEO+A11y 100, Perf 97) + SEO meta + CI gate,
   # and a loader memoization (~280× faster generate(), no behavior change). Folded into the 2026-06-29 day
   # post ("More providers, a deep refactor, and two new games"). Marker → 2b6b8e6, VERSION 2.14.0 → 2.28.18.
+  # 2026-07-01 round-up: clean fast-forward → c38373d, VERSION 2.28.18 → 2.35.1 (all commits dated 2026-06-30).
+  # The 2.29.0–2.35.1 line: a unified versioned cookie-free storage overhaul (2.29.0); GUI polish + header links
+  # menu (2.30.0); in-app **Privacy/Terms/Cookies** pages + **self-hosted fonts** ending the IP-to-Google flow
+  # (2.30.1); the header/provider UX batch — app-settings cog, provider-settings accordion, unified derived grid
+  # (2.31.0) with follow-up polish (2.32.1/2.33.1/2.33.2); the local edition's **real release stage** (`npm start`,
+  # backend factored out of the Vite dev plugin) + full file-watch hot reload + atomic settings writes (2.32.0);
+  # natural-language artists/styles + a `{#styles}` block (2.33.0); a **README revamp + SEO repositioning** away
+  # from SD-first (2.33.3); **in-app dialogs** replacing native alert/confirm/prompt (2.34.0); a **seedable,
+  # deterministic engine** (real threaded PRNG, reproducible-from-seed) + async batch boundary (2.35.0); and a
+  # plain-English **description alignment** everywhere (2.35.1). Plus docs/CI-only, no bump: security & code-health
+  # integrations (Dependabot/CodeQL/Scorecard/Sonar/CodeRabbit) and README badges → shields.io + Codecov. Folded
+  # into the 2026-06-30 day post ("Legal pages, a seedable engine, and a fifth game"). Marker → c38373d.
+  # (New sibling reports 2026-06-30-propose-legal-docs-standard.md + -propose-tooling-standard.md left for the
+  # inbound report-review pass — not this round-up.)
 
 fairyfox-games:
-  commit: f31f45bcd2cf74e09c10bcc424fa3c19a2b0ad57
+  commit: 3cd331456a9a2eb93bede4ac5cc0515e4daa20ad
   branch: dev
-  seen: 2026-06-30
+  seen: 2026-07-01
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -128,3 +144,9 @@ fairyfox-games:
   # were folded into the 2026-06-29 day post ("More providers, a deep refactor, and two new games"); the
   # node's earlier arrival/history is covered by the hub-side integration write-up in that same post.
   # Marker null → f31f45b, VERSION 0.4.0.
+  # 2026-07-01 round-up: clean fast-forward → 3cd3314, VERSION 0.4.0 → 0.5.1 (all commits dated 2026-06-30).
+  # 0.4.1/0.4.2 landing-page polish + retired "Fun" + first-class-games standing rules; 0.5.0 a growth pass
+  # across all games PLUS a mechanically-distinct fifth game **Ricochet** (aim-and-fire one bouncing shot,
+  # pure computeShot core + tests); 0.5.1 one on-mechanic depth/feedback addition to every game (110 tests).
+  # Folded into the 2026-06-30 day post ("Legal pages, a seedable engine, and a fifth game"). Marker → 3cd3314.
+  # (New sibling report 2026-06-30-update-check.md left for the inbound report-review pass — not this round-up.)

@@ -151,11 +151,12 @@
       steps:
         - "Install <strong>Node.js</strong> (any recent version)."
         - "Get the code (download the .zip above, or clone), then build and run the web app from <code>engine-v3/</code>:"
+        - "<code>npm start</code> builds the app and serves it with its local backend (use <code>npm run web</code> for the live-reload dev server instead)."
       code: |
         git clone https://github.com/junebug12851/random-ai-prompt.git
         cd random-ai-prompt/engine-v3
         npm install
-        npm run web
+        npm start
 
     - label: "Source"
       intro: "Browse the full source, the web app, and the docs in the repository."
