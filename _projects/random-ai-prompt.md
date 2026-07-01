@@ -21,3 +21,9 @@ editing surface matured alongside it — CodeMirror DPL editors, a keyword toolb
 Providers dropdown with per-provider keys, and an in-app **Manage tab** that edits the
 prompt catalog (blocks, lists, folders) on disk with live hot-apply — and a stripped,
 generate-only build is hosted online at [prompt.fairyfox.io](https://prompt.fairyfox.io).
+Under the hood, the engine is **seedable and deterministic**: a generation records its
+seed and reproduces byte-for-byte from it. The app is **privacy-respecting by design** —
+no accounts, no analytics or tracking cookies, fonts served locally, and settings and
+BYO API keys kept only on the device; prompts and keys go straight from the browser to
+the provider you pick, with the app's own Privacy, Terms, and Cookies pages stating
+exactly that.

@@ -17,6 +17,7 @@ first).
 
 | Month | Notes |
 |-------|-------|
+| [July 2026](version/2026-07.md) | Maintenance round-ups |
 | [June 2026](version/2026-06.md) | Project created |
 
 ## How this is kept updated (the inline rule)

@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.11.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.11.1` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -67,9 +67,9 @@ The rest of the structure is in place end to end:
   (Remaining follow-up: serving games at `/games/` needs the games repo renamed
   `fairyfox-games → games`, a node-side change — `plans/one-site-and-deployment.md`.)
   **Both siblings are now fully onboarded** (mesh-aware `CLAUDE.md` + a fairyfox-themed
-  docs site each): Random AI Prompt (`2.28.18` — the repo split into an active `engine-v3`
+  docs site each): Random AI Prompt (`2.35.1` — the repo split into an active `engine-v3`
   + a frozen `engine-v1-2` snapshot, v3-only; the 2.7.x line built out an
-  image-generation layer in the web app — prompts dispatch to 16+ hosted/local providers,
+  image-generation layer in the web app — prompts dispatch to 40+ hosted/local providers,
   an AI rewrite pass, a central output folder, and a photo gallery + single-image view;
   the 2.8–2.10 line then matured the editing surface — CodeMirror DPL editors, keyword
   tooling, a redesigned provider header — added a **DPL intensity dial** with a five-category
@@ -79,7 +79,10 @@ The rest of the structure is in place end to end:
   alongside intensity; the 2.15–2.28 line (its biggest day) internationalized the SPA (react-intl),
   gave the single-image view re-roll/variation + tracked ancestry, roughly doubled the provider set
   and added an AI **upscale/enhance** row, then refactored the codebase floor-up into tested modules
-  — capped by a loader memoization (~280× faster generation); earlier adopted git-flow with the
+  — capped by a loader memoization (~280× faster generation); the 2.29–2.35 line then turned the app
+  outward — self-hosted Privacy/Terms/Cookies pages + local fonts (ending the IP-to-Google flow), a real
+  release stage for the local edition, in-app dialogs, a seedable/deterministic engine, and a plain-English
+  repositioning off SD-first; earlier adopted git-flow with the
   `master` → `main` rename) and Pokered Save Editor 2
   (`0.14.2-alpha`, themed Doxygen docs; adopted git-flow + process-reports + compliance +
   express-authorizations on 2026-06-26).

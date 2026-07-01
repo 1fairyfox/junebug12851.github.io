@@ -21,6 +21,10 @@ glowing motes to grow, and don't cross your own trail — the longer you survive
 less room you leave yourself. **Echo Chamber** followed: a timing game where you catch
 an expanding echo as it crosses the target band, the window tightening with every hit.
 Then **Orbit Slingshot**: hold to thrust a probe around a planet, sweep the targets,
-and don't crash or fly off into the void. And **Polarity**: a charge-match runner where
+and don't crash or fly off into the void. **Polarity**: a charge-match runner where
 you flip between cyan and magenta to match each incoming gate — a clash ends the run,
-and it keeps speeding up.
+and it keeps speeding up. And **Ricochet**: aim and fire a single shot that bounces off
+the walls, sweeping up every target in its path — bank chains for bonus calls, three
+misses end it, and the targets shrink as your score climbs. The existing games don't
+stand still either: each daily pass tends to add a little on-mechanic depth — a milestone,
+a combo, a feedback flourish — without cluttering the clean single-screen play.
