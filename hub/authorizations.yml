@@ -65,3 +65,30 @@ authorizations:
       change set — the pre-authorized-adoption rule and this ledger — without the
       check-and-report pause; it is the user's standing go-ahead for the feature
       that lets future go-aheads carry. All other adoption safety steps still apply.
+
+  - id: adopt-standards-by-default
+    date: 2026-07-02
+    authorized_by: Fairy Fox
+    grants: adopt-without-reprompt
+    covers:
+      - hub/standards/     # every shared standard, current and future
+      - hub/templates/     # every shared template (CLAUDE.md, notes-skeleton, gitattributes, SECURITY.md, dependabot.yml, branch-sync.yml, README-badges.md, legal/*, …)
+    expires: null
+    note: >
+      STANDING SCOPE GRANT (explicitly authorized by the owner: "getting the nodes to
+      adopt the standards and policies is very important — it should be default").
+      Adopting a hub STANDARD or TEMPLATE is the default action, not an optional extra:
+      whenever a node runs the fairyfox check/adopt flow, any pending standard/template
+      change is pre-authorized — apply it directly, skip the "report, then wait" pause.
+      This is the deliberate standing scope the ledger's scope-discipline note allows
+      only on the owner's explicit say-so; it is recorded here, once.
+      What this does NOT change (anti-recursion is untouched): adoption still happens
+      ONLY when the node runs the flow — this grants no auto-pull and no scheduled
+      cross-repo sync, and the hub still never pushes into a node. And it removes ONLY
+      the redundant confirmation pause — every other safety step still runs in full:
+      copy-not-clobber, re-prompt before overwriting a deliberate local divergence, the
+      process report, a reviewable commit, and the full verification floor (build/tests
+      + standards `## Verify`/compliance + project-constraint checks, before AND after).
+      If verification can't complete, the node does NOT auto-apply — it falls back to
+      check-report-wait. A node still bootstraps its FIRST adoption of the express-auth
+      machinery under the normal pause (see adopting-updates.md "Bootstrap case").

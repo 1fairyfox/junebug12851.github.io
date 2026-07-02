@@ -119,6 +119,15 @@ compliance checks, and the project's own constraints. If verification can't be
 completed, **do not auto-apply** — fall back to check-report-wait. Nothing in the
 ledger covers it → fall back to check-report-wait.
 
+**Adopting hub standards/templates is the default.** A standing ledger grant
+(`adopt-standards-by-default`) covers **all** of `hub/standards/` and `hub/templates/`,
+so pending standard/template changes are pre-authorized: when you run the fairyfox flow,
+**adopt them by default** — report *and apply* — rather than reporting and waiting. This
+changes nothing about anti-recursion (adoption still happens only when the flow runs; no
+auto-pull, no scheduling) and nothing about the safety floor (reconcile-not-clobber,
+divergence re-prompt, process report, full verification before and after) — it removes
+only the redundant "wait for go-ahead" pause.
+
 **After running any fairyfox system procedure, write a process report.** Every such
 run — setup, onboarding, adopting updates, or just checking for updates — ends with a
 short, honest report in `notes/fairyfox-reports/YYYY-MM-DD-<procedure>.md` (from

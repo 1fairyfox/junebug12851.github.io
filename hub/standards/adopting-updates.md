@@ -70,6 +70,15 @@ go-ahead. When that go-ahead was **already given at the hub**, the pause is
 redundant — re-asking the user for a confirmation they already made here is the
 friction this carve-out removes.
 
+> **Standards/templates adopt by default.** A standing ledger entry
+> (`adopt-standards-by-default`) covers **all** of `hub/standards/` and
+> `hub/templates/`, so in practice *every* standard or template change is
+> pre-authorized: the default on a fairyfox run is to **adopt it** (report *and*
+> apply), not to report-and-wait. The pause remains the default only for things the
+> ledger doesn't cover. This is a confirmation-pause skip only — anti-recursion
+> (on-request, no scheduling, no hub→node push) and the full safety floor are
+> unchanged.
+
 The hub keeps an **express-authorization ledger**,
 [`hub/authorizations.yml`](../authorizations.yml): the on-record go-aheads Fairy
 Fox makes at the system for changes to roll out. Read it from the read-only hub
