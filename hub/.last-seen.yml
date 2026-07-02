@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
   branch: dev
-  seen: 2026-07-01
+  seen: 2026-07-02
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -44,11 +44,13 @@ pokered-save-editor-2:
   # still 0.14.2-alpha). Nothing to reconcile or blog. Marker unchanged; seen → 2026-06-30.
   # 2026-07-01 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
   # reconcile or blog. Marker unchanged; seen → 2026-07-01.
+  # 2026-07-02 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
+  # reconcile or blog. Marker unchanged; seen → 2026-07-02.
 
 random-ai-prompt:
-  commit: c38373d75031b29d25cb8be330a9720f80358e49
+  commit: 2ed57872b18f7e744fbbd414641579aeeea7ab5d
   branch: dev
-  seen: 2026-07-01
+  seen: 2026-07-02
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -123,11 +125,23 @@ random-ai-prompt:
   # into the 2026-06-30 day post ("Legal pages, a seedable engine, and a fifth game"). Marker → c38373d.
   # (New sibling reports 2026-06-30-propose-legal-docs-standard.md + -propose-tooling-standard.md left for the
   # inbound report-review pass — not this round-up.)
+  # 2026-07-02 round-up: clean fast-forward → 2ed5787, VERSION 2.35.1 → 2.38.1 (all commits dated 2026-07-01).
+  # The 2.35.2–2.38.1 line: a full dependency upgrade (2.35.2) + stylelint CSS gate (2.35.3); the floor-up
+  # CSS overhaul + theming framework (Phases 0–7, 2.35.4→2.37.0) — monolithic styles.css split into a modular
+  # styles/ tree on a two-tier token system + cascade layers, a System/Dark/Light theme engine, 9 accent presets,
+  # a header Appearance picker, built-in themes as a folder of JSON files, and user theme import/export; a web-perf
+  # pass — prompt corpus off the first-paint path (2.37.1) then the online build prerendering its first paint to
+  # static HTML + hydration (2.38.0, mobile Lighthouse Perf mid-50s→80s); and a SonarCloud tech-debt sweep — all
+  # 70 code smells cleared incl. 7 ReDoS regex rewrites + 7 complexity refactors (2.38.1) plus the last bug/2 vulns
+  # resolved and the quality-gate coverage measurement fixed; a git-workflow back-merge (main→dev) fix + branch-sync
+  # guard. Folded into the 2026-07-01 day post ("A theming system, a faster first paint, and a sixth game").
+  # Marker → 2ed5787, VERSION 2.35.1 → 2.38.1. (New sibling reports 2026-07-01-gitattributes-eol-standard.md,
+  # -propose-git-workflow-backmerge.md, -upgrade-policy-proposal.md left for the inbound report-review pass.)
 
 fairyfox-games:
-  commit: 3cd331456a9a2eb93bede4ac5cc0515e4daa20ad
+  commit: 58a3bb052fd96a9b91a59d6a6298cff2b38d9bd7
   branch: dev
-  seen: 2026-07-01
+  seen: 2026-07-02
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -150,3 +164,8 @@ fairyfox-games:
   # pure computeShot core + tests); 0.5.1 one on-mechanic depth/feedback addition to every game (110 tests).
   # Folded into the 2026-06-30 day post ("Legal pages, a seedable engine, and a fifth game"). Marker → 3cd3314.
   # (New sibling report 2026-06-30-update-check.md left for the inbound report-review pass — not this round-up.)
+  # 2026-07-02 round-up: clean fast-forward → 58a3bb0, VERSION 0.5.1 → 0.6.0 (commit dated 2026-07-01). A sixth,
+  # mechanically-distinct game **Skyline** (stack-and-slice tower builder; pure core + 18 tests, no timer-driven
+  # death) + grew Polarity with **clutch saves** (isClutch/g.clutch surfaced on the game-over card, +6 tests) +
+  # backfilled the missing Ricochet footer link. 133 tests green. Folded into the 2026-07-01 day post
+  # ("A theming system, a faster first paint, and a sixth game"). Marker → 58a3bb0, VERSION 0.6.0.
