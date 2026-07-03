@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
   branch: dev
-  seen: 2026-07-02
+  seen: 2026-07-03
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -46,11 +46,13 @@ pokered-save-editor-2:
   # reconcile or blog. Marker unchanged; seen → 2026-07-01.
   # 2026-07-02 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
   # reconcile or blog. Marker unchanged; seen → 2026-07-02.
+  # 2026-07-03 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
+  # reconcile or blog. Marker unchanged; seen → 2026-07-03.
 
 random-ai-prompt:
-  commit: 2ed57872b18f7e744fbbd414641579aeeea7ab5d
+  commit: 43f4c2b0184a8aa09afe99ea3ee3ac705715a854
   branch: dev
-  seen: 2026-07-02
+  seen: 2026-07-03
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -143,11 +145,23 @@ random-ai-prompt:
   # guard. Folded into the 2026-07-01 day post ("A theming system, a faster first paint, and a sixth game").
   # Marker → 2ed5787, VERSION 2.35.1 → 2.38.1. (New sibling reports 2026-07-01-gitattributes-eol-standard.md,
   # -propose-git-workflow-backmerge.md, -upgrade-policy-proposal.md left for the inbound report-review pass.)
+  # 2026-07-03 round-up: clean fast-forward 2ed5787 → 43f4c2b, VERSION 2.38.1 → 2.41.0 (all commits dated
+  # 2026-07-02). The 2.40.1–2.41.0 line: a responsive rebuild of the web app — fluid token foundation +
+  # layout cascade layer, overflow menu for the top-bar pile, phone drawers (palette, Manage master/detail),
+  # single-view image-over-metadata stacking, 44px touch targets, full-width bottom-sheet submenus, then a
+  # tablet split-screen tier (769–1024px). Underneath: the repo was FLATTENED (engine-v3/engine-v1-2 split
+  # retired — project now at the root under src/ data/ gui/ tests/; pre-revival CommonJS system removed from
+  # the tree, kept in git history), architecture docs rewritten + stale-ref sweep; main branch-protected
+  # (releases via PR), keyless-signed release assets, repo-hygiene guardrails + dev deletion-protection +
+  # dependabot bumps. Reconciled data: projects.yml (RAP → 2.41.0 / Jul 2), the engine-v3 → repo-root fix in
+  # downloads.yml + _projects/random-ai-prompt.md + _docs/random-ai-prompt.md, responsive note on the node.
+  # Folded into the 2026-07-02 day post ("A responsive rebuild, a seventh game, and six new standards").
+  # Marker → 43f4c2b. (New sibling report 1263fba roundup-proposal left for the inbound report-review pass.)
 
 fairyfox-games:
-  commit: 58a3bb052fd96a9b91a59d6a6298cff2b38d9bd7
+  commit: 3a44d611477dccc8ac5be4cd803ec5950b4a2c33
   branch: dev
-  seen: 2026-07-02
+  seen: 2026-07-03
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -175,3 +189,13 @@ fairyfox-games:
   # death) + grew Polarity with **clutch saves** (isClutch/g.clutch surfaced on the game-over card, +6 tests) +
   # backfilled the missing Ricochet footer link. 133 tests green. Folded into the 2026-07-01 day post
   # ("A theming system, a faster first paint, and a sixth game"). Marker → 58a3bb0, VERSION 0.6.0.
+  # 2026-07-03 round-up: clean fast-forward 58a3bb0 → 3a44d61, VERSION 0.6.0 → 0.11.2 (its busiest day, all
+  # commits dated 2026-07-02). A seventh game **Loft** (keepy-uppy juggle, cluster bonus; v0.7.0) + Ricochet
+  # progression ranks; game icons across the collection + public-copy refresh leading with the AI-experiment
+  # story (0.7.1/0.8.0); adopted fairyfox hub standards 0.9.11 → 0.12.1 (0.9.0); subproject subnav +
+  # project-scoped legal pages + signed releases (0.9.1); the **Growth Architecture** (0.10.0 reference build
+  # + rollout) — every one of the 7 games given a core-fun pass + readable stage arc + meta-progression/badges
+  # (Polarity precision-combo redesign as the reference); landing page ordered by most-recently-updated;
+  # **Netlify retired** (GitHub Pages sole host, 0.11.1) + Actions bumped to Node-24-compatible (0.11.2). 217
+  # tests green. Reconciled: projects.yml (games → 0.11.2 / Jul 2), _projects/fairyfox-games.md (added Loft +
+  # the growth-architecture note). Folded into the 2026-07-02 day post. Marker → 3a44d61, VERSION 0.11.2.

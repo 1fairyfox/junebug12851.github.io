@@ -55,10 +55,10 @@
     models from a React + Vite web app that keeps a built-in photo gallery.
   tags: [JavaScript, Node 24, Web UI]
   lifecycle: released
-  version: "2.38.1"
+  version: "2.41.0"
   activity: active
-  updated: "Jul 1, 2026"
-  updated_iso: "2026-07-01"
+  updated: "Jul 2, 2026"
+  updated_iso: "2026-07-02"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -100,10 +100,10 @@
     pure, tested logic from rendering; play them embedded on the Games page.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.6.0"
+  version: "0.11.2"
   activity: active
-  updated: "Jul 1, 2026"
-  updated_iso: "2026-07-01"
+  updated: "Jul 2, 2026"
+  updated_iso: "2026-07-02"
   integrated: true
   color: "#8b7bff"
   featured: true
@@ -121,10 +121,10 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.11.2"
+  version: "0.12.2"
   activity: active
-  updated: "Jul 2, 2026"
-  updated_iso: "2026-07-02"
+  updated: "Jul 3, 2026"
+  updated_iso: "2026-07-03"
   meta: true
   color: "#ff7a5e"
   icon: fox

@@ -147,14 +147,14 @@
       badge: Recommended
       download: https://github.com/junebug12851/random-ai-prompt/archive/refs/heads/main.zip
       filename: random-ai-prompt — source (.zip)
-      intro: "Download the source, or clone it, then start the web app with Node. As of 2.7.0 the active project lives under <code>engine-v3/</code>."
+      intro: "Download the source, or clone it, then start the web app with Node. As of the 2026-07-02 flatten the project lives at the repo root — all commands run from there."
       steps:
         - "Install <strong>Node.js</strong> (any recent version)."
-        - "Get the code (download the .zip above, or clone), then build and run the web app from <code>engine-v3/</code>:"
+        - "Get the code (download the .zip above, or clone), then build and run the web app from the repo root:"
         - "<code>npm start</code> builds the app and serves it with its local backend (use <code>npm run web</code> for the live-reload dev server instead)."
       code: |
         git clone https://github.com/junebug12851/random-ai-prompt.git
-        cd random-ai-prompt/engine-v3
+        cd random-ai-prompt
         npm install
         npm start
 
@@ -162,6 +162,6 @@
       intro: "Browse the full source, the web app, and the docs in the repository."
       steps:
         - "The README has the complete install, update, and usage guide."
-        - "The active engine + React/Vite web app live under <code>engine-v3/</code>; the original CLI and classic web UI are preserved, frozen, under <code>engine-v1-2/</code>."
+        - "The engine (<code>src/core/</code>), prompt content (<code>data/</code>), and React/Vite web app (<code>gui/</code>) all live at the repo root; the pre-revival CLI and classic web UI are preserved in git history and as a read-only reference clone."
       code: |
         git clone https://github.com/junebug12851/random-ai-prompt.git

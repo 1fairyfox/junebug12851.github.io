@@ -28,6 +28,10 @@ the walls, sweeping up every target in its path — bank chains for bonus calls,
 misses end it, and the targets shrink as your score climbs. And **Skyline**: a
 stack-and-slice tower builder — drop each sliding slab and only its overlap with the one
 below survives, so every sloppy drop narrows the next target while a flush drop keeps the
-full width and pays double. The existing games don't
-stand still either: each daily pass tends to add a little on-mechanic depth — a milestone,
-a combo, a feedback flourish — without cluttering the clean single-screen play.
+full width and pays double. And **Loft**: keep the glowing orbs aloft by tapping each one
+as it *falls* — a rhythm rather than a mash, where reading a cluster and batting several up
+in a row pays a bonus. The existing games don't
+stand still either: every game now shares a **growth architecture** — a readable stage arc,
+persistent meta-progression with skill-safe badges, and its own core-fun hook — and each
+daily pass tends to deepen one a little further without cluttering the clean single-screen
+play.

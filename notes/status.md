@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.12.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.12.2` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -76,7 +76,7 @@ The rest of the structure is in place end to end:
   (Remaining follow-up: serving games at `/games/` needs the games repo renamed
   `fairyfox-games → games`, a node-side change — `plans/one-site-and-deployment.md`.)
   **Both siblings are now fully onboarded** (mesh-aware `CLAUDE.md` + a fairyfox-themed
-  docs site each): Random AI Prompt (`2.38.1` — the repo split into an active `engine-v3`
+  docs site each): Random AI Prompt (`2.41.0` — the repo split into an active `engine-v3`
   + a frozen `engine-v1-2` snapshot, v3-only; the 2.7.x line built out an
   image-generation layer in the web app — prompts dispatch to 40+ hosted/local providers,
   an AI rewrite pass, a central output folder, and a photo gallery + single-image view;
@@ -95,7 +95,10 @@ The rest of the structure is in place end to end:
   tokenized **theming framework** (System/Dark/Light + 9 accents + importable custom themes, Phases 0–7),
   had the online build **prerender its first paint to static HTML + hydrate** for a big mobile-perf gain,
   and drove **SonarCloud tech-debt to zero** (all 70 code smells + the last bug/2 vulns), alongside a full
-  dependency upgrade and a git-workflow back-merge fix; earlier adopted git-flow with the
+  dependency upgrade and a git-workflow back-merge fix; the 2.40–2.41.0 line then rebuilt the
+  web app to be **responsive** across phone/tablet/desktop, **flattened the repo** to a single
+  project at the root — retiring the `engine-v3`/`engine-v1-2` split — and branch-protected
+  `main` with PR releases + signed assets; earlier adopted git-flow with the
   `master` → `main` rename) and Pokered Save Editor 2
   (`0.14.2-alpha`, themed Doxygen docs; adopted git-flow + process-reports + compliance +
   express-authorizations on 2026-06-26).

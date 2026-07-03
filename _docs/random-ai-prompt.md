@@ -19,7 +19,8 @@ over the output.
   weighting, twin intensity and focus dials, and reusable lists that resolve to one concrete result.
 - Drives generation from a React + Vite web app, and can dispatch the result to
   a range of image-generation providers, keeping a built-in gallery of what it
-  makes. (The original CLI is preserved, frozen, in the `engine-v1-2` snapshot.)
+  makes. (The original pre-revival CLI is preserved in git history; the project
+  now lives as one thing at the repository root.)
 
 ## Full documentation
 
