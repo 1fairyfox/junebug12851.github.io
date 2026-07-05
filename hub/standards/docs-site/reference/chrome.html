@@ -29,6 +29,13 @@
       <span></span><span></span><span></span>
     </button>
 
+    <!-- Reader ("Aa") menu button — inserted here (just before .nav) by the reader
+         script on every site; the panel is appended to <body>. See 04-components.md. -->
+    <button class="ff-reader-btn" type="button" aria-label="Reading settings"
+      aria-haspopup="dialog" aria-expanded="false" aria-controls="ff-reader-panel" title="Reading settings">
+      <span class="aa-lg">A</span><span class="aa-sm">a</span>
+    </button>
+
     <nav class="nav" aria-label="Primary">
       <a href="https://fairyfox.io/">Home</a>
       <a href="https://fairyfox.io/projects/">Projects</a>
@@ -73,8 +80,8 @@
     </div>
     <div class="footer-col">
       <h4>This project</h4>
-      <!-- node page, repo, notes for THIS project -->
-      <a href="https://fairyfox.io/projects/&lt;key&gt;/">Node page</a>
+      <!-- this project's own home, repo, notes (no hub-local node page) -->
+      <a href="https://fairyfox.io/&lt;key&gt;/">Project home</a>
       <a href="https://github.com/junebug12851/&lt;key&gt;">Repository ↗</a>
     </div>
     <div class="footer-col">

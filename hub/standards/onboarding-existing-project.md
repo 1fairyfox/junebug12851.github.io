@@ -197,13 +197,13 @@ branch-protected, release via the
 
 **Hub-side registration is the easy half and proves almost nothing about whether
 the project is actually integrated.** A project can be in both registries, have a
-node page, a docs-library entry, and blog posts — and still have done **none** of
-the project-side work (no mesh-awareness in its `CLAUDE.md`, no themed docs site).
-Listing it on the hub is necessary but **not sufficient**.
+card that links to it, a docs-library entry, and blog posts — and still have done
+**none** of the project-side work (no mesh-awareness in its `CLAUDE.md`, no themed
+docs site). Listing it on the hub is necessary but **not sufficient**.
 
 So separate the two when you assess or report:
 
-- **Hub side** — registry entries, node/docs pages, blog. (Steps 7.)
+- **Hub side** — registry entries, card/docs pages, blog. (Steps 7.)
 - **Project side** — the standards actually living in the repo: the mesh-awareness
   `CLAUDE.md` block, the notes system, the git/version model, and a **themed docs
   site**. (Steps 1–6, 8.)

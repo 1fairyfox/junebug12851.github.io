@@ -67,6 +67,21 @@ controls and pills at `999px`. Container: `--maxw 1180px`, `--maxw-text 43rem`,
 | mobile breakpoint | **`max-width:820px`** — nav becomes a `--panel` dropdown, padding `.5rem`, radius `20px`, `--shadow-lg` |
 | header @ `≤540px` | height drops to **`60px`** |
 
+## Reader ("Aa") menu
+
+Inserted into the header just before `.nav`; `margin-left:auto` groups it with the nav
+at the right. Constants (sizes/spacing/width steps + the `fairyfox:reader` key) are in
+[`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component).
+
+| Element | Value |
+|---------|-------|
+| `.ff-reader-btn` | **`height:40px`**, `min-width:46px`, padding `0 .7rem`, radius `999px`, family `--display` weight 700, `1px --line-2`, bg `--panel-2`; `.aa-lg` `1.15rem` / `.aa-sm` `.82rem` |
+| btn hover / open | bg `color-mix(--violet 16–18%, --panel-2)` |
+| `.ff-reader-panel` | fixed, `z-index:1300`, `top:calc(64px + .5rem)`, `right:clamp(.8rem,3vw,1.6rem)`, `width:min(20rem, 100vw − 1.6rem)`, bg `--panel`, `1px --line-2`, radius `--radius`, `--shadow-lg`, padding `1rem 1.05rem 1.1rem` |
+| `.ff-reader-row` | `margin:0 0 1rem` (last `0`); label `.68rem`, weight 700, uppercase, `--text-faint` |
+| `.ff-seg` | flex, `gap:.3rem`, bg `--panel-3`, `1px --line`, radius `11px`, padding `.28rem`; buttons `.82rem` weight 600, radius `8px`; selected (`aria-pressed`) bg `--panel`, `1px --line-2`, `--shadow` |
+| `.ff-hint` | `.72rem`, `--text-faint`, `margin-top:.9rem` |
+
 ## Buttons
 
 | Element | Value |
@@ -165,16 +180,16 @@ left border, right radius `13px`, `.9rem`, `gap:.6rem`.
 | `.footer-bar > .wrap` | padding-block `1.05rem`, flex wrap, `gap:.5rem 1.2rem`, `.83rem` |
 | footer breakpoints | `≤720px` → `1fr 1fr`; `≤460px` → `1fr` |
 
-## Project node page (the `/projects/<key>/` style, for reference)
+## Project cards → the project's own page (node pages retired)
+
+Hub-local per-project **node pages** (`/projects/<key>/`) were **retired in `0.13.0`** —
+a card now links **straight through** to the project's own page on the domain
+(`fairyfox.io/<key>/`), which explains itself and wears the shared chrome. See
+[`05-navigation-and-cross-linking.md`](05-navigation-and-cross-linking.md#the-one-domain-model).
+The `.pulse-row` activity row (still used on the home + updates) is unchanged:
 
 | Element | Value |
 |---------|-------|
-| `.node-wrap` | `max-width:calc(--maxw-text + 14rem)` |
-| `.locator` | `.82rem`, flex, `gap:.5rem`; `.kind` `.72rem`, weight 700, uppercase, color `--pc` |
-| `.np-glyph` | **`60px × 60px`**, radius `16px` |
-| `.np-head h1` | `clamp(2rem,4vw,2.6rem)`, family `--sans` |
-| `.connections` | grid `repeat(auto-fit, minmax(220px,1fr))`, `gap:1rem` |
-| `.conn` | padding `1rem 1.1rem`, `1px --line`, radius `13px`, bg `--panel-2` |
 | `.pulse-row` | flex, `gap:.8rem`, padding `.75rem .2rem`, `1px --line` bottom border |
 
 ## Responsive breakpoints (complete list)

@@ -1,9 +1,18 @@
 {%- comment -%}
   Standardized project card. Pass a project: {% include project-card.html proj=proj %}
   Status taxonomy: lifecycle (alpha/beta/released) · version · activity (active/inactive).
+
+  The whole card links STRAIGHT THROUGH to the project's own page on the domain
+  (its `docs` URL, e.g. fairyfox.io/<key>/) — a page that wears the shared chrome, so
+  it looks like this site with its own sub-navbar. No hub-local node page in between.
+  Projects with no hosted page fall back to the repo; the site's own (meta) card
+  points at the on-site documentation library.
 {%- endcomment -%}
 {%- assign p = include.proj -%}
-{%- if p.doc_url -%}{%- assign docurl = p.doc_url -%}{%- else -%}{%- assign docurl = p.key | prepend: '/docs/' | append: '/' -%}{%- endif -%}
+{%- if p.docs -%}{%- assign target = p.docs -%}
+{%- elsif p.doc_url -%}{%- assign target = p.doc_url -%}
+{%- else -%}{%- assign target = p.repo -%}{%- endif -%}
+{%- if target contains '://' -%}{%- assign target_href = target -%}{%- else -%}{%- assign target_href = target | relative_url -%}{%- endif -%}
 <article class="card proj-card" style="--pc:{{ p.color | default: '#ef6149' }}">
   <div class="proj-top">
     <span class="proj-glyph" aria-hidden="true">{%- if p.icon -%}<img src="{{ '/assets/icons/' | append: p.icon | append: '.png' | relative_url }}" alt="">{%- endif -%}</span>
@@ -23,8 +32,7 @@
       {%- for t in p.tags -%}<span class="tag">{{ t }}</span>{%- endfor -%}
     </div>
     <div class="card-links">
-      <a class="stretch" href="{{ '/projects/' | append: p.key | append: '/' | relative_url }}">More details →</a>
-      <a href="{{ docurl | relative_url }}">Documentation →</a>
+      <a class="stretch" href="{{ target_href }}" aria-label="Open {{ p.name }}">Open&nbsp;→</a>
       <a class="ext" href="{{ p.repo }}">Repository</a>
     </div>
   </div>

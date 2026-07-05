@@ -41,22 +41,22 @@ permalink: /about/
   <p>The projects below are developed in the open, each with its own documentation and
   releases — and the hub itself is listed alongside them:</p>
   <ul>
-    <li><strong><a href="/projects/pokered-save-editor-2/">Pokered Save Editor 2</a></strong>
+    <li><strong><a href="/pokered-save-editor-2/">Pokered Save Editor 2</a></strong>
     — a desktop save-file editor for Pokémon Red &amp; Blue, built in Qt 6 (C++/QML). It
     reads and writes saves byte-for-byte and is the project the shared engineering standards
     originally came from. Currently in alpha.</li>
-    <li><strong><a href="/projects/random-ai-prompt/">Random AI Prompt</a></strong> — a
+    <li><strong><a href="/random-ai-prompt/">Random AI Prompt</a></strong> — a
     generator for random and dynamic text prompts, built around a controllable
     dynamic-prompt language (DPL), driven by a React + Vite web app that can dispatch
     prompts to a range of image-generation providers and keeps a built-in gallery.</li>
-    <li><strong><a href="/projects/pokered-save-editor/">Pokered Save Editor</a></strong> —
+    <li><strong><a href="https://github.com/junebug12851/pokered-save-editor">Pokered Save Editor</a></strong> —
     the predecessor: the original editor, built with Electron and Angular. Complete and
     stable, and the recommended working tool until the Qt 6 rewrite reaches parity.</li>
-    <li><strong><a href="/projects/fairyfox-games/">Fairy Fox Games</a></strong> — a
+    <li><strong><a href="/fairyfox-games/">Fairy Fox Games</a></strong> — a
     collection of small, self-contained canvas games, each splitting pure, tested logic
     from rendering, integrated with this site and playable in the browser. Currently in
     alpha, with a fresh experiment most days.</li>
-    <li><strong><a href="/projects/fairyfox-io/">fairyfox.io</a></strong> — this site: the
+    <li><strong><a href="/docs/">fairyfox.io</a></strong> — this site: the
     hand-built Jekyll hub and documentation library itself, listed as a project like the
     rest.</li>
   </ul>

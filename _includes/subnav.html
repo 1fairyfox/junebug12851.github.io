@@ -15,9 +15,11 @@
 <nav class="subnav" aria-label="Projects">
   <div class="wrap">
     <a href="{{ '/projects/' | relative_url }}"{% if page.url == '/projects/' %} class="active" aria-current="page"{% endif %}>All&nbsp;Projects</a>
+    {%- comment -%} Each name links straight to the project's own page on the domain
+      (docs URL → its site with the shared chrome), repo as the fallback. {%- endcomment -%}
     {%- for proj in site.data.projects -%}
-    {%- assign purl = proj.key | prepend: '/projects/' | append: '/' -%}
-    <a href="{{ purl | relative_url }}"{% if page.url == purl %} class="active" aria-current="page"{% endif %}>{{ proj.name }}</a>
+    {%- if proj.docs -%}{%- assign purl = proj.docs -%}{%- elsif proj.doc_url -%}{%- assign purl = proj.doc_url -%}{%- else -%}{%- assign purl = proj.repo -%}{%- endif -%}
+    {%- if purl contains '://' -%}<a href="{{ purl }}">{{ proj.name }}</a>{%- else -%}<a href="{{ purl | relative_url }}">{{ proj.name }}</a>{%- endif -%}
     {%- endfor -%}
   </div>
 </nav>

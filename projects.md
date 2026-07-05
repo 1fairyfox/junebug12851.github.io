@@ -25,6 +25,8 @@ permalink: /projects/
   which keeps each repository independent. The full model is described under
   <a href="/docs/cross-project-sync/">cross-project sync</a>.</p>
   <p>Because the hub uses a custom domain, the projects' own GitHub Pages sites are
-  served under it too — for example, <code>fairyfox.io/pokered-save-editor-2/</code>
-  — so the navigation can lead straight into a project's documentation.</p>
+  served under it too — for example, <code>fairyfox.io/pokered-save-editor-2/</code>.
+  Each card here opens that page directly: a site that wears the same chrome as this
+  one and adds its own sub-navbar, so a project explains itself in its own words rather
+  than through a copy kept on the hub.</p>
 </div>

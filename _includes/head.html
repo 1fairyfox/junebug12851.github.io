@@ -3,6 +3,17 @@
 <meta name="theme-color" content="#ef6149" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191116" media="(prefers-color-scheme: dark)">
 
+{%- comment -%} Reader ("Aa") menu: apply the saved theme + reading vars before first
+  paint to avoid a flash. Shared origin-wide key with every fairyfox.io site. {%- endcomment -%}
+<script>
+(function(){try{var p=JSON.parse(localStorage.getItem("fairyfox:reader")||"{}"),r=document.documentElement,
+S=[0.92,0.99,1.05,1.14,1.24,1.36],L={tight:1.6,normal:1.8,relaxed:2.05},W={narrow:"38rem",normal:"46rem",wide:"56rem"};
+if(p.theme&&p.theme!=="system")r.setAttribute("data-theme",p.theme);
+if(p.size!=null)r.style.setProperty("--reading-fs",S[Math.max(0,Math.min(S.length-1,p.size|0))]+"rem");
+if(p.lh)r.style.setProperty("--reading-lh",String(L[p.lh]||L.normal));
+if(p.width)r.style.setProperty("--reading-width",W[p.width]||W.normal);}catch(e){}})();
+</script>
+
 <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.tagline }}{% endif %}</title>
 
 {%- comment -%} SEO, Open Graph, Twitter cards, canonical URL {%- endcomment -%}

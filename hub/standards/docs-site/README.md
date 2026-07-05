@@ -43,7 +43,7 @@ Full rule: [`09-adopting-and-maintaining.md`](09-adopting-and-maintaining.md).
 | [`02-design-tokens.md`](02-design-tokens.md) | The exact visual DNA — colour (dark + light), typography, spacing, radii, shadow, motion, backdrop, meta. |
 | [`03-layout-and-structure.md`](03-layout-and-structure.md) | Page anatomy, the documentation layout (sidebar/content/crumbs), the responsive rules. |
 | [`04-components.md`](04-components.md) | The shared UI pieces — brand, nav, buttons, cards, code, callouts, tables, badges, footer. |
-| [`05-navigation-and-cross-linking.md`](05-navigation-and-cross-linking.md) | The seamless transition: how a project links **back** to fairyfox.io and its node page, and how the main site links **in**. |
+| [`05-navigation-and-cross-linking.md`](05-navigation-and-cross-linking.md) | The seamless transition: the shared chrome + reader menu, how a project links **back** to fairyfox.io, and how the main site links **in** (straight to each project — no hub-local node pages). |
 | [`06-content-and-organization.md`](06-content-and-organization.md) | What pages a project docs site has, how they're grouped, and how generated API docs fit in. |
 | [`07-accessibility.md`](07-accessibility.md) | The WCAG 2.1 AA bar, focus, contrast, reduced motion, semantics. |
 | [`08-compliance-checklist.md`](08-compliance-checklist.md) | A concrete checklist to verify a project is compliant. |
@@ -56,7 +56,7 @@ Full rule: [`09-adopting-and-maintaining.md`](09-adopting-and-maintaining.md).
 
 Every project publishes its docs **under the same domain** as the main site
 (`fairyfox.io/<project>/`), wearing the **same design tokens, layout, and
-components**, with a header that always offers the way **back** to fairyfox.io and
-to the project's own node page — and the main site links **into** each project's
-docs. Get those three things right (same skin, same shell, two-way links on one
-domain) and the boundary between "the hub" and "a project" disappears.
+components** (including the shared reader menu), with a header that always offers
+the way **back** to fairyfox.io — and the main site links **into** each project's
+own page directly. Get those three things right (same skin, same shell, two-way links
+on one domain) and the boundary between "the hub" and "a project" disappears.

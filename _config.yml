@@ -25,9 +25,6 @@ collections:
   docs:
     output: true
     permalink: /docs/:path/
-  projects:
-    output: true
-    permalink: /projects/:path/
 
 # ── Build behaviour ─────────────────────────────────────────────────────────
 markdown: kramdown
@@ -49,11 +46,6 @@ defaults:
       type: docs
     values:
       layout: doc
-  - scope:
-      path: ""
-      type: projects
-    values:
-      layout: project
   - scope:
       path: ""
     values:

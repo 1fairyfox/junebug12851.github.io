@@ -12,9 +12,15 @@ meant to be *flat*, not a deep web of mandatory links.
 | URL | What it is |
 |-----|-----------|
 | `fairyfox.io/` | The main site (the hub) |
-| `fairyfox.io/projects/<key>/` | The project's **node page** on the main site (status, what-it-is, connections) |
-| `fairyfox.io/<key>/` | The project's **own docs site** (themed per this standard) |
+| `fairyfox.io/projects/` | The projects **index** (cards) — each links straight to a project |
+| `fairyfox.io/<key>/` | The project's **own docs site / page** (themed per this standard) |
 | `fairyfox.io/<key>/<...>` | Pages within the project docs site |
+
+> **No hub-local node pages.** The hub keeps **no** per-project "node" page
+> (`/projects/<key>/` was retired in `0.13.0`): a re-stated copy of a project's blurb /
+> status / connections goes stale and breaks the seamless feel. A card or link leads
+> **directly** to the project's own page — which already explains itself and wears the
+> shared chrome, so it reads as a page of fairyfox with its own sub-navbar.
 
 `<key>` is the repo slug. Everything is one origin — links between these are plain
 same-domain links; never hard-code a different host. How a project actually lands on
@@ -26,10 +32,9 @@ this domain (GitHub Pages inherits the custom domain; set the base path to
 The main site already points at each project; a compliant project just needs to
 exist at its URL so these resolve. The links the main site provides:
 
-- **Project cards** (home, `/projects/`): a "Documentation →" link to the project's
-  docs, and "More details →" to the node page.
-- **Node page** (`/projects/<key>/`): a **Connections** block linking to the
-  project's docs site, repository, notes, and downloads.
+- **Project cards** (home, `/projects/`): the whole card links **straight through** to
+  the project's own page (`fairyfox.io/<key>/`), with a secondary "Repository ↗" link.
+  Projects with no hosted page fall back to the repo.
 - **Docs library** (`/docs/`): an on-site doc entry per project, plus a link out to
   the project's full docs site.
 
@@ -51,8 +56,7 @@ Home link supersedes it.)
 
 Add these where they fit, but their absence is **not** a compliance failure:
 
-- A **footer** linking the project's node page (`fairyfox.io/projects/<key>/`),
-  repo, notes, and the main-site sections.
+- A **footer** linking the project's own repo, notes, and the main-site sections.
 - A **breadcrumb/locator** near the page top (`Fairy Fox / Projects / <Project>`).
 
 ### Branding: project-forward is fine — the chrome is the tie
@@ -83,7 +87,12 @@ site** so there is no visible "jump":
     Guides · Reference · Changelog …).
 
   The primary nav never changes between pages; the submenu is the part that changes.
-  Mark the current submenu item `.active`. (The shared chrome's submenu row is live on
+  Mark the current submenu item `.active`.
+- **Reader ("Aa") menu (required).** The header also carries the shared Kindle-style
+  reader control, just left of the primary nav — same on every site, wired to the
+  origin-wide `fairyfox:reader` key so a theme/size/spacing/width choice carries across
+  the whole mesh. See [`04-components.md`](04-components.md#reader-menu-ff-reader-btn--ff-reader-panel--required)
+  and [`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component). (The shared chrome's submenu row is live on
   the main site — `.subnav` in [`reference/`](reference/); until a project carries it,
   its section links may live in a project-local nav of the same style.)
 
@@ -103,6 +112,9 @@ shifts:
   force a project to a different default than the main site.
 - **No interstitial** — links between main site and project resolve directly (same
   origin), with no redirect bounce.
+- **Same reader menu + shared key** — the "Aa" control and its `fairyfox:reader`
+  localStorage key are identical everywhere, so the reader's theme/size/spacing/width
+  choice persists unbroken as you cross between the hub and a project.
 
 ## Generated docs (two cases)
 

@@ -3,7 +3,9 @@
 The exact visual DNA of fairyfox.io. Reproduce these values in your stack
 (CSS custom properties, Sass variables, a theme object — whatever fits). **Values
 are normative**: match them, don't approximate. The system is **dark-first**, with
-a fully designed **light** theme that follows `prefers-color-scheme`.
+a fully designed **light** theme that follows `prefers-color-scheme`, plus a manual
+**light / sepia / dark** override chosen in the shared reader menu (see
+[the reader section below](#manual-themes--the-reader-aa-menu)).
 
 ## Colour — dark theme (default)
 
@@ -48,6 +50,58 @@ a fully designed **light** theme that follows `prefers-color-scheme`.
 | `--link-hover` | `#bb3c25` |
 | `--glow` | `rgba(239,97,73,.26)` |
 | `--code-bg` | `#2b2030` |
+
+## Manual themes & the reader ("Aa") menu
+
+The theme applies **two ways**: the OS default via `prefers-color-scheme` (only when
+there's no manual choice) and an explicit pick from the reader menu, set as
+`data-theme` on `<html>`. Guard the OS media query with `:not([data-theme])` so a
+manual choice always wins:
+
+```css
+@media (prefers-color-scheme: light){ :root:not([data-theme]){ /* light tokens */ } }
+:root[data-theme="light"]{ /* same light tokens */ }
+:root[data-theme="sepia"]{ /* sepia tokens */ }
+/* dark is the base :root; data-theme="dark" simply suppresses the OS light query */
+```
+
+### Sepia theme (manual only — warm paper for long reading)
+
+| Token | Value | | Token | Value |
+|-------|-------|-|-------|-------|
+| `--bg` | `#ece0c8` | | `--text` | `#3d3427` |
+| `--bg-grad-top` | `#f3e9d4` | | `--text-soft` | `#63563f` |
+| `--panel` | `#f1e7d3` | | `--text-faint` | `#756445` |
+| `--panel-2` | `#e7dabf` | | `--accent` | `#bb5a3c` |
+| `--panel-3` | `#ddcdac` | | `--accent-ink` | `#8a3a1c` |
+| `--line` | `#dccba9` | | `--on-accent` | `#fdf6ea` |
+| `--line-2` | `#cdb891` | | `--link` | `#8a3a1c` |
+| `--code-bg` | `#33291b` | | `--link-hover` | `#782f14` |
+
+`--glow: rgba(187,90,60,.22)`; shadows as light. Match these **verbatim** — sepia is
+part of the shared origin, so it must look identical on the hub and every project.
+
+### The reader menu (required shared component)
+
+Every fairyfox.io site — the hub **and** every project's docs — carries the same
+Kindle-style **"Aa"** reader menu in the header. It controls four things and
+**remembers the choice under one origin-wide `localStorage` key so the setting is
+shared across every same-origin `fairyfox.io` site**:
+
+- **Key:** `fairyfox:reader` → JSON `{ theme, size, lh, width }`.
+- **Theme:** `system` (default) · `light` · `sepia` · `dark` → drives `data-theme`.
+- **Text size:** index into `[0.92, 0.99, 1.05, 1.14, 1.24, 1.36]rem` (default `2`) → `--reading-fs`.
+- **Line spacing:** `tight 1.6` · `normal 1.8` (default) · `relaxed 2.05` → `--reading-lh`.
+- **Width:** `narrow 38rem` · `normal 46rem` (default) · `wide 56rem` → `--reading-width`.
+
+These constants are **normative** — keep them byte-identical across the mesh so a
+choice made on one site carries to the next. Apply the saved theme + reading vars
+**before first paint** (a tiny inline script in `<head>`) to avoid a flash. The
+`--reading-*` vars drive the reading surfaces (prose / doc content / article body).
+Canonical implementation: the reader module in the bundled reference
+([`reference/main.css`](reference/main.css) for the button/panel styles) and
+fairyfox.io's `assets/js/reader.js`. Component appearance is in
+[`04-components.md`](04-components.md).
 
 ## Fixed status hues (both themes)
 
@@ -108,6 +162,9 @@ on hover underline with `text-underline-offset: 3px`.
 | `--maxw` | `1180px` | Page content max width (`.wrap`) |
 | `--maxw-text` | `43rem` | Reading-measure max width for prose |
 | `--gutter` | `clamp(1.15rem, 4vw, 2.75rem)` | Horizontal page padding |
+| `--reading-fs` | `1.05rem` (default) | Reading font size — set live by the reader menu |
+| `--reading-lh` | `1.8` (default) | Reading line-height — set live by the reader menu |
+| `--reading-width` | `46rem` (default) | Reading measure — set live by the reader menu |
 
 Pill controls (buttons, nav items, chips, badges) use `border-radius: 999px`.
 

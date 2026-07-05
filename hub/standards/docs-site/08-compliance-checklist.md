@@ -9,7 +9,9 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
 
 - [ ] Dark theme uses the exact dark palette from [`02-design-tokens.md`](02-design-tokens.md).
 - [ ] Light theme is implemented (not inverted) and uses the exact light palette.
-- [ ] Colour scheme follows the OS (`prefers-color-scheme`); dark is the default.
+- [ ] Colour scheme follows the OS (`prefers-color-scheme`); dark is the default, and
+      the OS query is guarded with `:not([data-theme])` so a manual pick wins.
+- [ ] **Sepia** theme (`data-theme="sepia"`) is implemented with the exact sepia palette.
 - [ ] Lifecycle status uses the **fixed** hues (red/amber/green), not the accent.
 - [ ] The per-project accent is applied only to brand/links/highlights; surfaces and
       text stay on the shared palette.
@@ -34,6 +36,9 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
 
 - [ ] Buttons, cards, chips, badges, code, blockquote, tables match the component
       specs (shape, radius, border, shadow, hover).
+- [ ] The **reader ("Aa") menu** is present in the header with the four controls
+      (theme/size/spacing/width), saving to the origin-wide `fairyfox:reader` key with
+      the normative constants, applied before first paint.
 - [ ] `:focus-visible` shows the accent outline on every interactive element.
 
 ## Chrome, cross-linking & branding
@@ -52,8 +57,7 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
 
 - [ ] A **submenu** row below the primary nav for section/context links (the project's
       own pages, or the projects list), in the shared pill style.
-- [ ] A footer linking the project's node page, repo, notes, and the main-site
-      sections.
+- [ ] A footer linking the project's repo, notes, and the main-site sections.
 - [ ] A breadcrumb/locator near the page top.
 
 **Branding:** the project may lead with its **own name** in its sub-brand/content.
@@ -64,6 +68,8 @@ the brand/Home way-home — not by brand precedence.
 
 - [ ] Header height/position/blur, fonts, `theme-color` metas, and favicon/manifest
       match the main site (no visible jump crossing the boundary).
+- [ ] The reader menu + its `fairyfox:reader` key are identical to the main site, so a
+      saved theme/size/spacing/width choice persists across the boundary.
 - [ ] Links between the main site and the project resolve directly (same origin, no
       redirect bounce).
 
@@ -86,6 +92,6 @@ the brand/Home way-home — not by brand precedence.
 ## Sign-off
 
 - [ ] Deviations (if any) are recorded with their reason.
-- [ ] Checked in both light and dark, desktop and mobile widths.
+- [ ] Checked in light, dark **and sepia**, desktop and mobile widths.
 - [ ] For the fairyfox.io master copy only: changes went through Fairy Fox's manual
       review — never auto-applied (see [`09-adopting-and-maintaining.md`](09-adopting-and-maintaining.md)).

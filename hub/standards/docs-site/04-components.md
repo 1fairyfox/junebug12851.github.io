@@ -48,6 +48,25 @@ local layer). It localizes the visitor while the primary nav stays constant:
 - It is the shared chrome's section layer — keep it identical in shape across the mesh
   rather than inventing a bespoke per-project secondary nav.
 
+## Reader menu (`.ff-reader-btn` + `.ff-reader-panel`) — required
+
+The Kindle-style **"Aa"** reading-settings control. **Every** fairyfox.io site (hub
+and each project's docs) carries it, wired to the shared origin-wide key — the
+behaviour and constants are normative; see
+[`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component).
+
+- **Button:** a pill sitting in the header just left of the primary nav, showing a
+  large "A" + small "a" (`--display`, weight 700), `--panel-2` fill, `--line-2`
+  border, 40px tall. Kept a direct child of the header wrap so it stays visible when
+  the nav collapses on mobile. `aria-haspopup="dialog"`, `aria-expanded` toggled.
+- **Panel:** a fixed popover (`role="dialog"`), `--panel` on `--line-2`, `--radius`,
+  `--shadow-lg`, opening below the button. Four labelled rows —
+  **Theme** (Auto/Light/Sepia/Dark) · **Text size** (A− / A+) · **Line spacing**
+  (Tight/Normal/Relaxed) · **Width** (Narrow/Normal/Wide) — each a segmented control
+  (`.ff-seg`) whose selected item carries `aria-pressed="true"`. Closes on outside
+  click or Escape; a hint line notes the choice is remembered across Fairy Fox.
+- Changes apply **live** and are saved immediately to `fairyfox:reader`.
+
 ## Buttons (`.btn`)
 
 - Pill (`border-radius: 999px`), inline-flex, `.66rem 1.15rem`, weight 600,
@@ -106,7 +125,9 @@ Full-width, multi-column, on a `.wrap`. The fairyfox.io structure:
 1. **Brand column** — the brand lockup + a one-line description of the site.
 2. **"Explore"** — links to the main site sections (Projects, Documentation,
    Downloads, Updates, About).
-3. **"Projects"** — a link per project (to each project's node page).
+3. **"Projects"** — a link per project, each pointing straight to that project's own
+   page on the domain (`fairyfox.io/<key>/`). The hub keeps **no** local per-project
+   "node" page — a card/link leads directly to the project, which explains itself.
 4. **"Elsewhere"** — GitHub, Atom feed.
 5. **Footer bar** — copyright, "Built with … · deployed on GitHub Pages", the
    GitHub handle.
