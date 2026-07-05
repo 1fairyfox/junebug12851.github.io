@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.13.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.13.1` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -35,7 +35,13 @@ through the `0.4.x` line; it now includes:
   — Theme (Auto/Light/**Sepia**/Dark) · text size · line spacing · width — saved under an
   **origin-wide `fairyfox:reader` key**, so the choice is shared across every fairyfox.io
   site (the hub + each project's docs). Adopted from Random AI Prompt's docs theme and
-  codified as a required shared component in `hub/standards/docs-site/`.
+  codified as a required shared component in `hub/standards/docs-site/`. The button sits
+  at the **far right** of the header (past About).
+- **Trimmed to the projects** (`0.13.1`): removed the **Downloads** section (page, nav,
+  data) and the **duplicated on-site per-project docs** (each project links to its own docs
+  from its card); the Projects submenu no longer auto-enables (reserved for future project
+  categories); the About page's projects list was dropped as a duplicate of `/projects/`.
+  Fixed global nav is now **Home · Projects · Games · Docs · Updates · About**.
 - A plain-link header nav (Projects · Updates · Docs; no dropdowns) and an
   **on-site documentation library** (`/docs/`, the `_docs` collection): the ecosystem
   overview, a **"This site"** group surfacing the whole `notes/` tree, the **shared

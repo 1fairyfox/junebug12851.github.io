@@ -11,14 +11,15 @@
       <h4>Explore</h4>
       <a href="{{ '/projects/' | relative_url }}">Projects</a>
       <a href="{{ '/docs/' | relative_url }}">Documentation</a>
-      <a href="{{ '/downloads/' | relative_url }}">Downloads</a>
       <a href="{{ '/blog/' | relative_url }}">Updates</a>
       <a href="{{ '/about/' | relative_url }}">About</a>
     </div>
     <div class="footer-col">
       <h4>Projects</h4>
+      {%- comment -%} Straight to each project's own page on the domain (repo fallback). {%- endcomment -%}
       {%- for proj in site.data.projects -%}
-      <a href="{{ '/projects/' | append: proj.key | append: '/' | relative_url }}">{{ proj.name }}</a>
+      {%- if proj.docs -%}{%- assign purl = proj.docs -%}{%- elsif proj.doc_url -%}{%- assign purl = proj.doc_url -%}{%- else -%}{%- assign purl = proj.repo -%}{%- endif -%}
+      {%- if purl contains '://' -%}<a href="{{ purl }}">{{ proj.name }}</a>{%- else -%}<a href="{{ purl | relative_url }}">{{ proj.name }}</a>{%- endif -%}
       {%- endfor -%}
     </div>
     <div class="footer-col">

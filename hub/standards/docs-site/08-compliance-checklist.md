@@ -46,7 +46,7 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
 **Required:**
 
 - [ ] The **shared header** is present with the **global primary nav** in the fixed
-      order **Home · Projects · Games · Docs · Downloads · Updates · About** (not
+      order **Home · Projects · Games · Docs · Updates · About** (not
       reordered or trimmed per project).
 - [ ] The **brand mark and `Home` nav item link to `https://fairyfox.io/`** — this is
       the way home. There is **no separate "← Back to Fairy Fox" back-button**.

@@ -29,7 +29,7 @@ A round logo image + the wordmark, used in the header and footer.
 - Hover: `--text` on a `--panel-2` fill. **Active page**: `--text` on a faint
   accent wash (`color-mix(--accent 16%, transparent)`).
 - **No dropdowns.** Plain top-level links in the fixed mesh-wide order
-  **Home · Projects · Games · Docs · Downloads · Updates · About**. This is the
+  **Home · Projects · Games · Docs · Updates · About**. This is the
   **shared global nav** — every project carries the same set in the same order (a
   project's *own* pages go in the submenu below, not in the primary nav).
 - **Mobile (`≤820px`):** the row hides behind a `.nav-toggle` (42px square, `--panel-2`
@@ -55,10 +55,10 @@ and each project's docs) carries it, wired to the shared origin-wide key — the
 behaviour and constants are normative; see
 [`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component).
 
-- **Button:** a pill sitting in the header just left of the primary nav, showing a
-  large "A" + small "a" (`--display`, weight 700), `--panel-2` fill, `--line-2`
-  border, 40px tall. Kept a direct child of the header wrap so it stays visible when
-  the nav collapses on mobile. `aria-haspopup="dialog"`, `aria-expanded` toggled.
+- **Button:** a pill at the **far right of the header, just after the primary nav
+  (past "About")**, showing a large "A" + small "a" (`--display`, weight 700),
+  `--panel-2` fill, `--line-2` border, 40px tall. Kept a direct child of the header
+  wrap so it stays visible when the nav collapses on mobile. `aria-haspopup="dialog"`, `aria-expanded` toggled.
 - **Panel:** a fixed popover (`role="dialog"`), `--panel` on `--line-2`, `--radius`,
   `--shadow-lg`, opening below the button. Four labelled rows —
   **Theme** (Auto/Light/Sepia/Dark) · **Text size** (A− / A+) · **Line spacing**
@@ -124,7 +124,7 @@ Full-width, multi-column, on a `.wrap`. The fairyfox.io structure:
 
 1. **Brand column** — the brand lockup + a one-line description of the site.
 2. **"Explore"** — links to the main site sections (Projects, Documentation,
-   Downloads, Updates, About).
+   Updates, About).
 3. **"Projects"** — a link per project, each pointing straight to that project's own
    page on the domain (`fairyfox.io/<key>/`). The hub keeps **no** local per-project
    "node" page — a card/link leads directly to the project, which explains itself.

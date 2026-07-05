@@ -35,12 +35,11 @@ deployed by GitHub Actions on every push, with no manual publishing step.
 ├─ projects.md          /projects/ — generated from _data/projects.yml
 ├─ blog.html            /blog/ — the updates index
 ├─ about.md             /about/
-├─ downloads.md         /downloads/ — generated from _data/downloads.yml
 ├─ _docs/               the on-site documentation library (a Jekyll collection)
 ├─ _layouts/            default · page · post · doc
 ├─ _includes/           head · header · footer
 ├─ _posts/              update posts (YYYY-MM-DD-title.md)
-├─ _data/               projects.yml · downloads.yml · doc_categories.yml
+├─ _data/               projects.yml · doc_categories.yml · pulse.yml
 ├─ assets/              css · favicon · references/ (read-only clones, ignored)
 ├─ .github/workflows/   pages.yml — build + deploy
 ├─ CLAUDE.md            entry point for an assistant opening the repo

@@ -3,20 +3,22 @@
   Part of the shared chrome (see hub/standards/docs-site/05). The primary nav stays
   constant across the site; this row changes to localize you within a section.
 
-  Auto-enables for the Projects and Docs sections; a page can force a variant with
-  `subnav: projects|docs` or suppress it with `subnav: none` in front matter.
+  Auto-enables for the Docs section only. The Projects submenu is reserved for the
+  future — once there are enough projects to warrant categories it can localize you
+  within them; with today's handful it would only complicate the UX, so it does NOT
+  auto-enable. A page can still force a variant with `subnav: projects|docs` or
+  suppress it with `subnav: none` in front matter.
 {%- endcomment -%}
 {%- assign sub = page.subnav -%}
 {%- if sub == nil -%}
-  {%- if page.url contains '/projects/' -%}{%- assign sub = 'projects' -%}
-  {%- elsif page.url contains '/docs/' -%}{%- assign sub = 'docs' -%}{%- endif -%}
+  {%- if page.url contains '/docs/' -%}{%- assign sub = 'docs' -%}{%- endif -%}
 {%- endif -%}
 {%- if sub == 'projects' -%}
 <nav class="subnav" aria-label="Projects">
   <div class="wrap">
     <a href="{{ '/projects/' | relative_url }}"{% if page.url == '/projects/' %} class="active" aria-current="page"{% endif %}>All&nbsp;Projects</a>
-    {%- comment -%} Each name links straight to the project's own page on the domain
-      (docs URL → its site with the shared chrome), repo as the fallback. {%- endcomment -%}
+    {%- comment -%} Reserved for future project categories. Each name links straight to
+      the project's own page on the domain (docs URL → its site), repo as the fallback. {%- endcomment -%}
     {%- for proj in site.data.projects -%}
     {%- if proj.docs -%}{%- assign purl = proj.docs -%}{%- elsif proj.doc_url -%}{%- assign purl = proj.doc_url -%}{%- else -%}{%- assign purl = proj.repo -%}{%- endif -%}
     {%- if purl contains '://' -%}<a href="{{ purl }}">{{ proj.name }}</a>{%- else -%}<a href="{{ purl | relative_url }}">{{ proj.name }}</a>{%- endif -%}

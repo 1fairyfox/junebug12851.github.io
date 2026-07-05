@@ -69,8 +69,8 @@ controls and pills at `999px`. Container: `--maxw 1180px`, `--maxw-text 43rem`,
 
 ## Reader ("Aa") menu
 
-Inserted into the header just before `.nav`; `margin-left:auto` groups it with the nav
-at the right. Constants (sizes/spacing/width steps + the `fairyfox:reader` key) are in
+Inserted at the far right of the header, just **after** `.nav` (past "About"), with
+`margin-left:.5rem` for spacing from the nav. Constants (sizes/spacing/width steps + the `fairyfox:reader` key) are in
 [`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component).
 
 | Element | Value |
@@ -219,5 +219,5 @@ The `.pulse-row` activity row (still used on the home + updates) is unchanged:
 
 Consult the bundled [`reference/main.css`](reference/main.css) — it is the faithful
 master snapshot. Home-only flourishes (masthead, hero portal, activity panel/ticker,
-charts, downloads tabs) live there for completeness but a project docs site doesn't
+charts) live there for completeness but a project docs site doesn't
 need them.

@@ -2,17 +2,17 @@
 layout: page
 title: Documentation library
 eyebrow: Reference
-subtitle: How the projects fit together, this site's own internals, the shared engineering standards, and an entry point for each project.
+subtitle: How the projects fit together, this site's own internals, and the shared engineering standards.
 permalink: /docs/
 ---
 
 <div class="prose">
 <p>
   This library collects the documentation maintained across Fairy Fox's work: an
-  overview of how the projects fit together, how this site itself is built, the
-  shared engineering standards the repositories follow, and a documentation entry
-  point for each project. Every project also keeps its own full documentation site —
-  linked from its page.
+  overview of how the projects fit together, how this site itself is built, and the
+  shared engineering standards the repositories follow. Every project also keeps its
+  own full documentation site — reached straight from its card on the
+  <a href="{{ '/projects/' | relative_url }}">projects</a> page.
 </p>
 </div>
 
@@ -32,24 +32,3 @@ permalink: /docs/
 </section>
   {%- endif -%}
 {%- endfor -%}
-
-<section style="margin-top:2.8rem">
-  <h2>Project documentation sites</h2>
-  <div class="prose">
-  <p>Each project is also published with its own full documentation site, served
-  under this domain.</p>
-  </div>
-  <div class="grid cols-3" style="margin-top:1rem">
-    {%- for proj in site.data.projects -%}
-    <div class="card">
-      <h3 style="margin:0 0 .5rem">{{ proj.name }}</h3>
-      <div class="card-links">
-        <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">On-site page →</a>
-        {%- if proj.docs -%}<a href="{{ proj.docs }}">Docs site ↗</a>{% endif -%}
-        {%- if proj.notes -%}<a href="{{ proj.notes }}">Notes ↗</a>{% endif -%}
-        <a href="{{ proj.repo }}">Repository ↗</a>
-      </div>
-    </div>
-    {%- endfor -%}
-  </div>
-</section>

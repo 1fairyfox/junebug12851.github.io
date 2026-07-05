@@ -2,7 +2,7 @@
 layout: page
 title: Projects
 eyebrow: The work
-subtitle: Fairy Fox's software projects, each linking into its documentation, downloads, and source.
+subtitle: Fairy Fox's software projects — open a card to go straight to the project's own page.
 permalink: /projects/
 ---
 
