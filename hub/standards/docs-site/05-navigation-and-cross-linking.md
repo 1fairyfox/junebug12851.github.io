@@ -75,7 +75,7 @@ A project does **not** invent its own header. It wears the **same chrome as the 
 site** so there is no visible "jump":
 
 - **Primary nav (global, identical on every page).** Slot order:
-  **Home · Projects · Games · Docs · Downloads · Updates · About** (About last). These
+  **Home · Projects · Games · Docs · Updates · About** (About last). These
   point at the main-site sections (same origin for Pages projects). The set and order
   are fixed across the mesh — don't reorder, drop, or add items per project. The exact
   markup is in [`reference/`](reference/); mark the current top-level section `.active`.
@@ -89,7 +89,7 @@ site** so there is no visible "jump":
   The primary nav never changes between pages; the submenu is the part that changes.
   Mark the current submenu item `.active`.
 - **Reader ("Aa") menu (required).** The header also carries the shared Kindle-style
-  reader control, just left of the primary nav — same on every site, wired to the
+  reader control, at the far right of the header (past the primary nav) — same on every site, wired to the
   origin-wide `fairyfox:reader` key so a theme/size/spacing/width choice carries across
   the whole mesh. See [`04-components.md`](04-components.md#reader-menu-ff-reader-btn--ff-reader-panel--required)
   and [`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component). (The shared chrome's submenu row is live on

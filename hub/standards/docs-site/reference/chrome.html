@@ -7,7 +7,7 @@
   - Verbatim source: the hub's _includes/header.html and _includes/footer.html
     (Liquid resolved to plain links here). Snapshot: 2026-06-30.
   - The PRIMARY nav is the fixed mesh-wide set, identical on every page/project:
-    Home · Projects · Games · Docs · Downloads · Updates · About (About last).
+    Home · Projects · Games · Docs · Updates · About (About last).
   - The brand mark + the Home item ARE the way home — there is no separate
     "← Back to Fairy Fox" button.
   - Use absolute https://fairyfox.io/... URLs (shown) so the chrome works whether the
@@ -29,22 +29,22 @@
       <span></span><span></span><span></span>
     </button>
 
-    <!-- Reader ("Aa") menu button — inserted here (just before .nav) by the reader
-         script on every site; the panel is appended to <body>. See 04-components.md. -->
-    <button class="ff-reader-btn" type="button" aria-label="Reading settings"
-      aria-haspopup="dialog" aria-expanded="false" aria-controls="ff-reader-panel" title="Reading settings">
-      <span class="aa-lg">A</span><span class="aa-sm">a</span>
-    </button>
-
     <nav class="nav" aria-label="Primary">
       <a href="https://fairyfox.io/">Home</a>
       <a href="https://fairyfox.io/projects/">Projects</a>
       <a href="https://fairyfox.io/games/">Games</a>
       <a href="https://fairyfox.io/docs/">Docs</a>
-      <a href="https://fairyfox.io/downloads/">Downloads</a>
       <a href="https://fairyfox.io/blog/">Updates</a>
       <a href="https://fairyfox.io/about/">About</a>
     </nav>
+
+    <!-- Reader ("Aa") menu button — inserted here (at the far right, just AFTER .nav /
+         past "About") by the reader script on every site; the panel is appended to
+         <body>. See 04-components.md. -->
+    <button class="ff-reader-btn" type="button" aria-label="Reading settings"
+      aria-haspopup="dialog" aria-expanded="false" aria-controls="ff-reader-panel" title="Reading settings">
+      <span class="aa-lg">A</span><span class="aa-sm">a</span>
+    </button>
   </div>
 </header>
 
@@ -74,7 +74,6 @@
       <h4>Explore</h4>
       <a href="https://fairyfox.io/projects/">Projects</a>
       <a href="https://fairyfox.io/docs/">Documentation</a>
-      <a href="https://fairyfox.io/downloads/">Downloads</a>
       <a href="https://fairyfox.io/blog/">Updates</a>
       <a href="https://fairyfox.io/about/">About</a>
     </div>

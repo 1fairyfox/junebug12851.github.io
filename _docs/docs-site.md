@@ -39,7 +39,7 @@ reference — to reimplement, not to link.
 Seamlessness rests on three things. Every project publishes its docs **under the
 same domain** as the main site (served at `fairyfox.io/<project>/`); every site wears
 the **same chrome** — the same header, the same global primary nav
-(Home · Projects · Games · Docs · Downloads · Updates · About), an optional submenu for
+(Home · Projects · Games · Docs · Updates · About), an optional submenu for
 section links, and the same footer, tokens, and components; and because that header is
 shared, its **brand/Home link is the way home** — there is no separate back-button.
 Built/runnable apps live on their own host (Netlify) and wear the same chrome; static

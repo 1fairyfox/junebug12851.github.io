@@ -120,11 +120,12 @@
       if (e.key === "Escape" && panel.classList.contains("open")) { setOpen(false); btn.focus(); }
     });
 
-    // Place the button just left of the primary nav (still a direct child of the
-    // header wrap, so it stays visible when the nav collapses on mobile).
+    // Place the button at the far right of the header, just after the primary nav
+    // (past "About"). It's the last child of the header wrap, so it stays visible
+    // when the nav collapses to a dropdown on mobile.
     var wrap = document.querySelector(".site-header .wrap");
     var nav = wrap && wrap.querySelector(".nav");
-    if (wrap && nav) wrap.insertBefore(btn, nav);
+    if (wrap && nav) nav.parentNode.insertBefore(btn, nav.nextSibling);
     else (wrap || document.body).appendChild(btn);
     document.body.appendChild(panel);
   }

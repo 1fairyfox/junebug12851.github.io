@@ -491,7 +491,7 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
    The Kindle-style reading-settings control: theme + text size + line spacing +
    width, remembered under the origin-wide fairyfox:reader key. The button sits in
    the header (inserted by reader.js just before the primary nav). */
-.ff-reader-btn{display:inline-flex;align-items:center;justify-content:center;gap:.15rem;margin-left:auto;flex:none;
+.ff-reader-btn{display:inline-flex;align-items:center;justify-content:center;gap:.15rem;margin-left:.5rem;flex:none;
   height:40px;min-width:46px;padding:0 .7rem;cursor:pointer;border-radius:999px;font-family:var(--display);
   font-weight:700;line-height:1;color:var(--text);background:var(--panel-2);border:1px solid var(--line-2);
   transition:transform .16s var(--ease),background .16s var(--ease),color .16s var(--ease)}
