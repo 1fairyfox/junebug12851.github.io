@@ -59,22 +59,25 @@ behaviour and constants are normative; see
   (past "About")**, showing a large "A" + small "a" (`--display`, weight 700),
   `--panel-2` fill, `--line-2` border, 40px tall. Kept a direct child of the header
   wrap so it stays visible when the nav collapses on mobile. `aria-haspopup="dialog"`, `aria-expanded` toggled.
-- **Panel:** a fixed popover (`role="dialog"`), `--panel` on `--line-2`, `--radius`,
-  `--shadow-lg`, opening below the button. Five labelled rows:
-  - **Theme** — segmented Auto/Light/Sepia/Dark.
-  - **Accent** — a row of colour circles (`.ff-swatch`, 26px), a multi-colour
-    "Default" swatch first (reverts to the theme accent) then the presets. Selected
-    swatch gets a ring; picking one recolours the accent site-wide.
-  - **Text size** — a **5-step segmented scale** (`.ff-seg.ff-size`), each button an
-    "A" at its own increasing size; the active step is highlighted. (Not a `+`/`−`
-    stepper — the scale shows where you are.)
+- **Panel:** a fixed popover (`role="dialog"`) opening below the button — `--panel` on
+  `--line-2`, `16px` radius, `--shadow-lg` — modelled on Apple Books / Kindle appearance
+  menus. A **sticky header** (`.ff-rp-head`: title "Reading settings" + a `×` close),
+  then grouped sections divided by hairlines:
+  - **Theme** — four **preview tiles** (`.ff-theme`), each rendering "Aa" in *that
+    theme's* real colours (Auto = a light/dark split, then Light, Sepia, Dark), so the
+    tile looks like the theme it selects. The active tile gets an `--accent` ring.
+  - **Accent** — a row of colour **dots** (`.ff-swatch`, 27px), a multi-colour "Default"
+    first (reverts to the theme accent) then the presets. Picking one recolours the
+    accent site-wide; the active dot gets a ring.
+  - **Text size** — a **slider** (`.ff-range`, `<input type="range">`) flanked by a small
+    and a large "A". Not a `+`/`−` pair. Scales the document root font-size live.
   - **Line spacing** — segmented Tight/Normal/Relaxed.
   - **Width** — segmented Narrow/Normal/Wide.
+  - A **footer** (`.ff-rp-foot`) with a "saved & shared" hint and a **Reset** button.
 
-  Each segmented item carries `aria-pressed="true"` when active. Closes on outside
-  click or Escape; a hint notes theme/accent/size apply site-wide and the choice is
-  remembered across Fairy Fox.
-- Changes apply **live** and are saved immediately to `fairyfox:reader:b` (see
+  Each tile / dot / segmented item carries `aria-pressed="true"` when active. Closes on
+  the `×`, outside click, or Escape.
+- Changes apply **live** and save immediately to `fairyfox:reader:b` (see
   [`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component)
   for the model + constants).
 
