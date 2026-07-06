@@ -1,23 +1,30 @@
-// reader.js — the reader-settings menu (the "Aa" button + panel): theme, accent
+// reader.js — the reading-appearance menu (the "Aa" button + panel): theme, accent
 // colour, text size, line spacing and reading width, tuned live and remembered.
 //
-// Prefs live under a VERSIONED origin-wide localStorage key ("fairyfox:reader:b"),
-// so the choice is shared across every same-origin fairyfox.io site. The ":b" suffix
-// versions the schema — this is fairyfox.io's own evolved model (root-font-size text
-// scaling + an accent picker); it deliberately does not collide with an older key a
-// sibling project may still be using until it adopts this one.
+// Modelled on Apple Books / Kindle appearance menus: theme PREVIEW TILES (each shows
+// its own colours), accent colour DOTS, and a text-size SLIDER (small A → large A) —
+// not a +/- stepper. Text size scales the document ROOT font-size, so it resizes the
+// whole rem-based UI on every page. Line spacing drives body line-height; width caps
+// the reading measure.
 //
-// Text size scales the document ROOT font-size, so it resizes the whole rem-based UI
-// (visible on every page). Line spacing drives body line-height; width caps the reading
-// measure. The early theme/size/accent apply happens inline in <head> to avoid a flash.
+// Prefs live under a VERSIONED origin-wide localStorage key ("fairyfox:reader:b"), so
+// the choice is shared across every same-origin fairyfox.io site. The early apply
+// happens inline in <head> to avoid a flash; this builds the button + panel.
 (function () {
   "use strict";
 
   var KEY = "fairyfox:reader:b";
-  var SIZES = [15, 16.5, 18, 20, 22];          // root px, 5 steps (A− … A+)
-  var SIZE_GLYPH = [0.82, 0.95, 1.08, 1.22, 1.4]; // rem, the "A" shown on each size button
+  var SIZES = [15, 16.5, 18, 20, 22];          // root px, 5 steps (slider 0..4)
   var LH = { tight: 1.5, normal: 1.65, relaxed: 1.9 };
   var WIDTH = { narrow: "38rem", normal: "46rem", wide: "58rem" };
+  // Theme tiles carry each theme's real preview colours (fixed, independent of the
+  // current theme) so the tile looks like the theme it selects.
+  var THEMES = [
+    ["system", "Auto", "linear-gradient(120deg,#efe4d1 0 50%,#181017 50% 100%)", "#9a8f95"],
+    ["light", "Light", "#efe4d1", "#231a25"],
+    ["sepia", "Sepia", "#e5d6b6", "#2c2411"],
+    ["dark", "Dark", "#181017", "#fbf3ee"],
+  ];
   var ACCENTS = [
     ["#ff8368", "Coral"], ["#f6a13a", "Amber"], ["#57c964", "Green"],
     ["#33c0c9", "Teal"], ["#5aa2f0", "Blue"], ["#c79bf0", "Violet"], ["#ff6a9a", "Rose"],
@@ -38,8 +45,6 @@
 
   function applyAccent(root, hex) {
     if (!hex) { ACCENT_VARS.forEach(function (v) { root.style.removeProperty(v); }); return; }
-    // Derive readable text/link shades by mixing toward the theme's text colour, so a
-    // custom accent stays legible in dark, light AND sepia (recomputed on theme change).
     var ink = "color-mix(in srgb, " + hex + ", var(--text) 42%)";
     root.style.setProperty("--accent", hex);
     root.style.setProperty("--violet", hex);
@@ -49,7 +54,6 @@
     root.style.setProperty("--link-hover", "color-mix(in srgb, " + hex + ", var(--text) 26%)");
     root.style.setProperty("--glow", "color-mix(in srgb, " + hex + " 40%, transparent)");
   }
-
   function apply() {
     var root = document.documentElement;
     if (prefs.theme === "system") root.removeAttribute("data-theme");
@@ -83,10 +87,12 @@
     });
     btn.innerHTML = '<span class="aa-lg">A</span><span class="aa-sm">a</span>';
 
-    var panel = el("div", { id: "ff-reader-panel", class: "ff-reader-panel", role: "dialog", "aria-label": "Reading settings" });
+    var panel = el("div", { id: "ff-reader-panel", class: "ff-reader-panel", role: "dialog", "aria-label": "Reading settings", "aria-modal": "false" });
 
-    var sizeBtns = SIZES.map(function (_, i) {
-      return '<button type="button" data-act="size" data-val="' + i + '" style="font-size:' + SIZE_GLYPH[i] + 'rem" aria-label="Text size ' + (i + 1) + '">A</button>';
+    var tiles = THEMES.map(function (t) {
+      return '<button type="button" class="ff-theme" data-act="theme" data-val="' + t[0] + '">' +
+        '<span class="tile" style="background:' + t[2] + ';color:' + t[3] + '">Aa</span>' +
+        '<span class="cap">' + t[1] + "</span></button>";
     }).join("");
 
     var swatches = '<button type="button" class="ff-swatch ff-swatch-default" data-acc="" aria-label="Default accent"></button>' +
@@ -95,48 +101,57 @@
       }).join("");
 
     panel.innerHTML =
-      '<div class="ff-reader-row"><span class="ff-reader-label" id="ff-rl-theme">Theme</span>' +
-      seg("theme", "ff-rl-theme", [["system", "Auto"], ["light", "Light"], ["sepia", "Sepia"], ["dark", "Dark"]]) + "</div>" +
-      '<div class="ff-reader-row"><span class="ff-reader-label" id="ff-rl-accent">Accent</span>' +
+      '<div class="ff-rp-head"><span class="ff-rp-title">Reading settings</span>' +
+      '<button type="button" class="ff-rp-close" data-act="close" aria-label="Close">×</button></div>' +
+      '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-theme">Theme</span>' +
+      '<div class="ff-themes" role="group" aria-labelledby="ff-rl-theme">' + tiles + "</div></div>" +
+      '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-accent">Accent</span>' +
       '<div class="ff-swatches" role="group" aria-labelledby="ff-rl-accent">' + swatches + "</div></div>" +
-      '<div class="ff-reader-row"><span class="ff-reader-label" id="ff-rl-size">Text size</span>' +
-      '<div class="ff-seg ff-size" role="group" aria-labelledby="ff-rl-size">' + sizeBtns + "</div></div>" +
-      '<div class="ff-reader-row"><span class="ff-reader-label" id="ff-rl-lh">Line spacing</span>' +
+      '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-size">Text size</span>' +
+      '<div class="ff-size-row"><span class="a-end a-min" aria-hidden="true">A</span>' +
+      '<input type="range" class="ff-range" min="0" max="' + (SIZES.length - 1) + '" step="1" value="' + clampSize(prefs.size) + '" aria-label="Text size">' +
+      '<span class="a-end a-max" aria-hidden="true">A</span></div></div>' +
+      '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-lh">Line spacing</span>' +
       seg("lh", "ff-rl-lh", [["tight", "Tight"], ["normal", "Normal"], ["relaxed", "Relaxed"]]) + "</div>" +
-      '<div class="ff-reader-row"><span class="ff-reader-label" id="ff-rl-width">Width</span>' +
+      '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-width">Width</span>' +
       seg("width", "ff-rl-width", [["narrow", "Narrow"], ["normal", "Normal"], ["wide", "Wide"]]) + "</div>" +
-      '<p class="ff-hint">Theme, accent &amp; text size apply site-wide; width applies to reading pages. Remembered across Fairy&nbsp;Fox.</p>';
+      '<div class="ff-rp-foot"><p class="ff-rp-hint">Saved &amp; shared across Fairy Fox.</p>' +
+      '<button type="button" class="ff-rp-reset" data-act="reset">Reset</button></div>';
+
+    var range = panel.querySelector(".ff-range");
 
     function markActive() {
-      panel.querySelectorAll("button[data-act]").forEach(function (b) {
-        var act = b.getAttribute("data-act"), val = b.getAttribute("data-val");
-        var on = act === "size" ? +val === prefs.size : val === prefs[act];
-        b.setAttribute("aria-pressed", on ? "true" : "false");
+      panel.querySelectorAll("[data-act], .ff-swatch").forEach(function (b) {
+        var act = b.getAttribute("data-act"), on = null;
+        if (b.classList.contains("ff-swatch")) on = b.getAttribute("data-acc") === (prefs.accent || "");
+        else if (act === "theme" || act === "lh" || act === "width") on = b.getAttribute("data-val") === prefs[act];
+        if (on !== null) b.setAttribute("aria-pressed", on ? "true" : "false");
       });
-      panel.querySelectorAll(".ff-swatch").forEach(function (b) {
-        b.setAttribute("aria-pressed", b.getAttribute("data-acc") === (prefs.accent || "") ? "true" : "false");
-      });
+      if (range) range.value = clampSize(prefs.size);
     }
     markActive();
 
     panel.addEventListener("click", function (e) {
       var b = e.target.closest("button");
       if (!b || !panel.contains(b)) return;
-      if (b.hasAttribute("data-acc")) {
-        prefs.accent = b.getAttribute("data-acc") || null;
-      } else {
+      if (b.classList.contains("ff-swatch")) { prefs.accent = b.getAttribute("data-acc") || null; }
+      else {
         var act = b.getAttribute("data-act");
-        if (!act) return;
-        if (act === "size") prefs.size = clampSize(+b.getAttribute("data-val"));
-        else prefs[act] = b.getAttribute("data-val");
+        if (act === "close") { setOpen(false); btn.focus(); return; }
+        if (act === "reset") { prefs = Object.assign({}, DEFAULTS); }
+        else if (act === "theme" || act === "lh" || act === "width") prefs[act] = b.getAttribute("data-val");
+        else return;
       }
       apply(); save(); markActive();
+    });
+    range.addEventListener("input", function () {
+      prefs.size = clampSize(+range.value); apply(); save();
     });
 
     function setOpen(open) {
       panel.classList.toggle("open", open);
       btn.setAttribute("aria-expanded", open ? "true" : "false");
-      if (open) { var f = panel.querySelector("button"); if (f) f.focus(); }
+      if (open) { var f = panel.querySelector(".ff-rp-close"); if (f) f.focus(); }
     }
     btn.addEventListener("click", function (e) { e.stopPropagation(); setOpen(!panel.classList.contains("open")); });
     document.addEventListener("click", function (e) {
