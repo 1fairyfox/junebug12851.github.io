@@ -36,8 +36,8 @@
   lifecycle: alpha
   version: "0.14.2"
   activity: active
-  updated: "Jun 26, 2026"
-  updated_iso: "2026-06-26"
+  updated: "Jul 6, 2026"
+  updated_iso: "2026-07-06"
   color: "#e6488f"
   icon: pse2
   featured: true
@@ -56,10 +56,10 @@
     downloadable desktop app, with a built-in photo gallery.
   tags: [JavaScript, Node 24, Web UI, Desktop]
   lifecycle: released
-  version: "2.43.1"
+  version: "2.49.6"
   activity: active
-  updated: "Jul 5, 2026"
-  updated_iso: "2026-07-05"
+  updated: "Jul 6, 2026"
+  updated_iso: "2026-07-06"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -126,10 +126,10 @@
     pure, tested logic from rendering; play them embedded on the Games page.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.16.3"
+  version: "0.19.2"
   activity: active
-  updated: "Jul 5, 2026"
-  updated_iso: "2026-07-05"
+  updated: "Jul 6, 2026"
+  updated_iso: "2026-07-06"
   integrated: true
   color: "#8b7bff"
   featured: true
@@ -147,10 +147,10 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.14.4"
+  version: "0.15.2"
   activity: active
-  updated: "Jul 6, 2026"
-  updated_iso: "2026-07-06"
+  updated: "Jul 7, 2026"
+  updated_iso: "2026-07-07"
   meta: true
   color: "#ff7a5e"
   icon: fox

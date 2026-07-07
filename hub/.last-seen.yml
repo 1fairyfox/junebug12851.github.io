@@ -13,9 +13,9 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
+  commit: acc09b9d88222bf2ca60384ccf19d35c4f89f21e
   branch: dev
-  seen: 2026-07-06
+  seen: 2026-07-07
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -54,11 +54,18 @@ pokered-save-editor-2:
   # reconcile or blog. Marker unchanged; seen → 2026-07-05.
   # 2026-07-06 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
   # reconcile or blog. Marker unchanged; seen → 2026-07-06.
+  # 2026-07-07 round-up: first change in ~10 days — fast-forwarded 1bae326 → acc09b9 (no force-push),
+  # still 0.14.2-alpha (docs-site only, no VERSION bump). The Doxygen docs adopted the hub 0.14 chrome +
+  # shared reader, flattened to match the reference (no gradients, muted rose accent, neutral nav, centred
+  # prose, framed screenshots), rebuilt the Overview into one left-aligned column re-synced to the hub's
+  # exact measures, and added a themed /screenshots/ gallery as an internal subnav item. Mentioned in the
+  # 2026-07-06 day post. Marker → acc09b9; seen → 2026-07-07. (New report 2026-07-06-adopting-updates.md
+  # left for the inbound report-review pass.)
 
 random-ai-prompt:
-  commit: 8f56153c7ae3bea791a694dd6982bae0562e2dbb
+  commit: 5ea076140f61ef7cf5f89ea0b37ff60f5b00b007
   branch: dev
-  seen: 2026-07-06
+  seen: 2026-07-07
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -195,11 +202,21 @@ random-ai-prompt:
   # footer-logo fixes; README + CONTRIBUTING rewritten, screenshots recaptured. Reconciled: projects.yml
   # (RAP → 2.43.1 / Jul 5, blurb notes the desktop edition + Desktop tag). Folded into the 2026-07-05 day
   # post ("A tenth game, a desktop app, and a sharper reader"). Marker → 8f56153, VERSION 2.42.1 → 2.43.1.
+  # 2026-07-07 round-up: clean fast-forward 8f56153 → 5ea0761, VERSION 2.43.1 → 2.49.6 (all commits dated
+  # 2026-07-06). auto-updating — check-and-notify banner + desktop auto-install (2.44.0); a gallery composer
+  # with live placeholders, multi-select delete, a11y + SEO (2.45.0); a repo-root user/ content overlay
+  # beside data/ (2.46.0); a restructure into engine/ + targets/ with targets/desktop → web-shell (2.47.0)
+  # and the "dynamic prompts" → "blocks" rename everywhere (2.48.0); then an interactive DPL editor layer —
+  # hover intensity/focus dials, per-line actions, line numbers, active-line highlight, colouring fixes —
+  # plus a Manage AI-refine toolbar + draft-from-description + free-text modify box (2.49.0–2.49.6).
+  # Reconciled: projects.yml (RAP → 2.49.6 / Jul 6). Folded into the 2026-07-06 day post ("Auto-updating
+  # prompts, an eleventh game, and a shelf of stories"). Marker → 5ea0761, VERSION 2.43.1 → 2.49.6. (New
+  # sibling report 2026-07-05-adopt-docs-chrome-reader.md left for the inbound report-review pass.)
 
 fairyfox-games:
-  commit: 5f908ae1892987a1776f0846c38936fe23a9cf33
+  commit: 71982e52c8fc92cede00ef28707b1817b995db76
   branch: dev
-  seen: 2026-07-06
+  seen: 2026-07-07
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -263,3 +280,28 @@ fairyfox-games:
   # split PLANT/GROW) with the homepage pulse filtered to games and a subnav "Overview" rename (0.16.0–0.16.3).
   # Reconciled: projects.yml (games → 0.16.3 / Jul 5). Folded into the 2026-07-05 day post ("A tenth game, a
   # desktop app, and a sharper reader"). Marker → 5f908ae, VERSION 0.13.1 → 0.16.3.
+  # 2026-07-07 round-up: clean fast-forward 5f908ae → 71982e5, VERSION 0.16.3 → 0.19.2 (all commits dated
+  # 2026-07-06). An eleventh, mechanically-distinct game **Sluice** (colour-sorting — a new verb; v0.18.0) +
+  # white-flash fixes on game-open and nav paint (0.18.1/0.18.2). Then the collection ADOPTED JEKYLL to mesh
+  # its games: landing rendered from a _games collection + shared chrome (phase 1), changelog/legal on the
+  # shared layout with pretty URLs (phase 2), a /tags/ browse-by-mechanic page + shared game-card include
+  # (phase 3a), changelog data → _data/changelog.json single source (phase 3b), deploy flipped to a Jekyll
+  # build + .nojekyll retired (0.19.0, MINOR); an in-place landing tag filter (0.19.1); README game table
+  # generated from _games (0.19.2). Also adopted hub 0.14.3 chrome (Reader menu, no Downloads) + Ink Bloom
+  # varied structure (0.17.0/0.17.1). Reconciled: projects.yml (games → 0.19.2 / Jul 6). Folded into the
+  # 2026-07-06 day post. Marker → 71982e5, VERSION 0.16.3 → 0.19.2. (New sibling report
+  # 2026-07-06-adopting-updates.md left for the inbound report-review pass.)
+
+fairyfox-stories:
+  commit: 803db1ff2b4b57e51783696b62fa08bf2deeef09
+  branch: dev
+  seen: 2026-07-07
+  reports_through: []          # digested-report filenames (append-only); see header
+  # 2026-07-07 round-up: first pass for this newly-registered node — full-history dev mirror cloned fresh
+  # under assets/references/fairyfox-stories (it became reference:true when the site registered it in 0.15.1).
+  # At VERSION 0.2.0, HEAD 803db1f, all history dated 2026-07-06: an AI-managed Jekyll "story farm" whose
+  # 0.1.0 shipped the farm scaffolding (CI/Pages) and 0.2.0 planted a starting shelf of five illustrated
+  # books — distinct genres/styles/authors, cover + chapter art, on a first-class pseudo-author system.
+  # Already mesh-onboarded (notes, mesh-aware CLAUDE.md, shared fairyfox chrome). Folded into the 2026-07-06
+  # day post as a newly-tracked node. Marker set → 803db1f. (New report 2026-07-06-setup.md left for the
+  # inbound report-review pass.)

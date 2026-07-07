@@ -39,12 +39,19 @@ reference — to reimplement, not to link.
 Seamlessness rests on three things. Every project publishes its docs **under the
 same domain** as the main site (served at `fairyfox.io/<project>/`); every site wears
 the **same chrome** — the same header, the same global primary nav
-(Home · Projects · Games · Docs · Updates · About), an optional submenu for
+(Home · Projects · Stories · Games · Docs · Updates · About), an optional submenu for
 section links, and the same footer, tokens, and components; and because that header is
 shared, its **brand/Home link is the way home** — there is no separate back-button.
 Built/runnable apps live on their own host (Netlify) and wear the same chrome; static
 content lives on the shared domain. Get those right and the boundary between the hub
 and a project disappears.
+
+The one exception to reimplement-don't-copy is that shared chrome itself. Because the
+header, submenu, footer, and reader menu were the parts most prone to drift when each
+project rebuilt them by hand, they are now shipped as a **vendored bundle** that
+projects copy verbatim and refresh over git at build time — a decoupled exact copy,
+never a runtime hot-link. Tokens, layout, and page components are still specified and
+reimplemented per stack.
 
 ## fairyfox.io is the master copy
 
