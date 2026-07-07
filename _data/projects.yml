@@ -85,6 +85,31 @@
   featured: true
   reference: false
 
+# Integrated with the site (its own top-level "Stories" nav slot → /stories/ →
+# /fairyfox-stories/, parallel to Games). Pinned in the integrated tier, not
+# date-sorted among the others.
+- name: Fairy Fox Stories
+  key: fairyfox-stories
+  repo: https://github.com/junebug12851/fairyfox-stories
+  docs: https://fairyfox.io/fairyfox-stories/
+  doc_url: "https://fairyfox.io/fairyfox-stories/"
+  notes: https://github.com/junebug12851/fairyfox-stories/tree/main/notes
+  blurb: >-
+    An AI-managed story farm: a growing library of short, pre-planned interactive
+    books — genuine fiction written a chapter at a time — set in living, cross-linked
+    universes, with new books sown regularly and the ones already growing deepened
+    over time. Each book ships a public blueprint you can read before you start.
+  tags: [Jekyll, Ruby, Web]
+  lifecycle: alpha
+  version: "0.2.0"
+  activity: active
+  updated: "Jul 6, 2026"
+  updated_iso: "2026-07-06"
+  integrated: true
+  color: "#b06ad0"
+  featured: true
+  reference: true
+
 # Integrated with the site (a /games/ player page will embed it). A real tracked mesh node,
 # but rendered specially — pinned just before the site's own (meta) card, not
 # sorted by date among the others. See the `integrated` tier in index.html /

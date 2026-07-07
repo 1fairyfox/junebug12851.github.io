@@ -65,3 +65,13 @@ projects:
     adopts_hub: true
     notes_system: true
     last_seen: null
+
+  # Integrated with the site (its own top-level "Stories" nav slot → /stories/ →
+  # /fairyfox-stories/). A Jekyll "story farm" node — mesh-aware CLAUDE.md, notes
+  # system, and the shared fairyfox chrome are all in place, so adopts_hub is true.
+  - key: fairyfox-stories
+    repo: https://github.com/junebug12851/fairyfox-stories
+    branch: dev
+    adopts_hub: true
+    notes_system: true
+    last_seen: null
