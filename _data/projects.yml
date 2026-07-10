@@ -51,7 +51,7 @@
     An open-source AI prompt generator built on a controllable dynamic-prompt
     language (DPL) that runs prompts through 40+ image and text models — as a
     hosted site, desktop app, or CLI.
-  tags: [JavaScript, Node 24, Web UI, Desktop]
+  tags: [JavaScript, Node 24, Web UI, Desktop, CLI]
   lifecycle: released
   version: "2.50.1"
   activity: active
@@ -138,9 +138,9 @@
   blurb: >-
     The project hub and documentation library itself — a custom Jekyll build
     carrying the shared engineering standards and the cross-project sync model.
-  tags: [Jekyll, Ruby, GitHub Pages]
+  tags: [Jekyll, Ruby, Web]
   lifecycle: beta
-  version: "0.15.6"
+  version: "0.15.7"
   activity: active
   updated: "Jul 10, 2026"
   updated_iso: "2026-07-10"
