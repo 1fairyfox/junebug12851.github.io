@@ -3,7 +3,7 @@
 ## What It Is
 
 `fairyfox.io` — the personal home page and project **hub** of Fairy Fox
-(GitHub `junebug12851`). It is two things at once:
+(GitHub `1fairyfox`). It is two things at once:
 
 1. **A website** — a clean, fast Jekyll site that serves as the front door to my
    work: a home page, a generated projects list, a blog, and an about page.
@@ -44,15 +44,17 @@ in [`../plans/future.md`](../plans/future.md).
 
 ## Hosting
 
-- **Repo:** `junebug12851.github.io` (a GitHub *user site* — the repo name is
-  literally `<username>.github.io`, so it serves at the root).
+- **Repo:** `1fairyfox/junebug12851.github.io` — created as a GitHub *user site*
+  under the old account name; the account is now **`1fairyfox`** and the repo kept
+  its name, so it serves the root through the custom domain rather than through a
+  `<username>.github.io` host.
 - **Custom domain:** `fairyfox.io` via the committed `CNAME` (DNS → GitHub Pages).
 - **Build/deploy:** GitHub Actions (`.github/workflows/pages.yml`) builds with
   Bundler + Jekyll and deploys to Pages on every push to `main`.
 
 ## Repository
 
-https://github.com/junebug12851/junebug12851.github.io  (served at https://fairyfox.io)
+https://github.com/1fairyfox/junebug12851.github.io  (served at https://fairyfox.io)
 
 ## Related projects (referenced by the hub)
 
@@ -61,7 +63,7 @@ The canonical list lives in [`../../hub/registry.yml`](../../hub/registry.yml)
 — keep those in step; this is the narrative view, pulled from each project's own
 `notes/`. Three projects sit around the hub:
 
-- **[pokered-save-editor-2](https://github.com/junebug12851/pokered-save-editor-2)**
+- **[pokered-save-editor-2](https://github.com/1fairyfox/pokered-save-editor-2)**
   — a desktop save-file editor for Pokémon Red & Blue, built in **Qt 6 (C++/QML)**
   over a four-layer architecture (`common → db → savefile → app`) with byte-exact
   save read/write as its prime value. Originated 2019–2020 (~592 commits, last
@@ -71,7 +73,7 @@ The canonical list lives in [`../../hub/registry.yml`](../../hub/registry.yml)
   **This is where the hub's shared conventions came from** — it adopts the hub,
   uses the shared living-notes system, and is pulled into `assets/references/`.
 
-- **[pokered-save-editor](https://github.com/junebug12851/pokered-save-editor)**
+- **[pokered-save-editor](https://github.com/1fairyfox/pokered-save-editor)**
   — the **predecessor** (v1): the original editor in **Electron + Angular
   (TypeScript)**, Apache-2.0. Complete and stable (final release **`2.0.1`**, last
   active 2019), no longer developed — but the **recommended working tool until the
@@ -79,7 +81,7 @@ The canonical list lives in [`../../hub/registry.yml`](../../hub/registry.yml)
   default branch `master`, does not adopt the hub, no shared notes system, and is
   **not** cloned into `assets/references/`. Listed for completeness and linking.
 
-- **[random-ai-prompt](https://github.com/junebug12851/random-ai-prompt)**
+- **[random-ai-prompt](https://github.com/1fairyfox/random-ai-prompt)**
   — a **Node.js** generator of random/dynamic text prompts for **Stable Diffusion**
   that can also drive the SD WebUI `--api` to produce images, animations, and
   upscales. It runs as a CLI and an Express + Pug web UI over one shared core, plus

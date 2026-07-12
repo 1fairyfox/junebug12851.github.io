@@ -61,7 +61,7 @@ The end state — tick every box before calling a project done:
 
 ```sh
 # if it doesn't exist yet
-gh repo create junebug12851/<project> --private --source=. --remote=origin
+gh repo create 1fairyfox/<project> --private --source=. --remote=origin
 git checkout -b dev          # all work lives here
 ```
 
@@ -77,7 +77,7 @@ submodule, never a dependency. An ordinary clone refreshes by fast-forward every
 ```sh
 mkdir -p assets/references
 git -C assets/references clone --branch dev --single-branch \
-    https://github.com/junebug12851/junebug12851.github.io fairyfox.io
+    https://github.com/1fairyfox/junebug12851.github.io fairyfox.io
 ```
 
 ### 3. Copy the templates into the project

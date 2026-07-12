@@ -11,13 +11,13 @@ description: >-
   index of projects, the documentation behind them, and a log of what's changing.
 
 # Public site identity. baseurl is empty because this is served at the domain
-# root: the user site junebug12851.github.io and the custom domain fairyfox.io.
+# root: the fairyfox.io custom domain on this repo's GitHub Pages.
 url: "https://fairyfox.io"
 baseurl: ""
 
 author:
   name: Fairy Fox
-  github: junebug12851
+  github: 1fairyfox
 
 # ── Collections ──────────────────────────────────────────────────────────────
 # The on-site documentation library.

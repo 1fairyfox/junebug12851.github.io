@@ -1,6 +1,6 @@
 <!--
   README badge block — copy the applicable lines to the top of the project README,
-  replacing `OWNER/REPO` (e.g. junebug12851/random-ai-prompt) and the project-specific
+  replacing `OWNER/REPO` (e.g. 1fairyfox/random-ai-prompt) and the project-specific
   parameters. Show AS MANY AS APPLY; drop the ones a project doesn't have (a library
   with no deploy has no Netlify badge, etc.). Grouped by row. Standard: hub/standards/badges.md.
   Keep `?style=flat-square` on every badge so the row is visually consistent.

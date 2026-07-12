@@ -8,7 +8,7 @@ permalink: /about/
 
 <div class="prose">
   <p>fairyfox.io is the project hub and documentation library for the software work
-  of Fairy Fox (<a href="https://github.com/junebug12851">@junebug12851</a> on
+  of Fairy Fox (<a href="https://github.com/1fairyfox">@1fairyfox</a> on
   GitHub). It exists to be a single, current front door to that work — somewhere that
   says what is being built and links straight to it, instead of a scatter of
   repositories with no index. The site is written as documentation: a neutral, plain

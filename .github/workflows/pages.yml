@@ -4,9 +4,9 @@ name: pages
 # Because we build with our own `bundle exec jekyll build` (not GitHub's built-in
 # Pages-gem build), we are free to use any Jekyll version / plugins — see Gemfile.
 #
-# Site identity: served at the user-site root (junebug12851.github.io) and at the
-# custom domain fairyfox.io (CNAME). The version-number scheme is unrelated to
-# deployment — see notes/reference/versioning.md.
+# Site identity: served at the custom domain fairyfox.io (committed CNAME). The
+# version-number scheme is unrelated to deployment — see
+# notes/reference/versioning.md.
 
 on:
   push:

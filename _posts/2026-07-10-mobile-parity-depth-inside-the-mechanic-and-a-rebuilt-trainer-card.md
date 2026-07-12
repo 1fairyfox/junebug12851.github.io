@@ -2,7 +2,7 @@
 title: "Mobile parity, depth inside the mechanic, and a rebuilt trainer card"
 subtitle: "Random AI Prompt takes the Android app to feature parity and ships it as 2.52.0. Fairy Fox Games diagnoses why its games go stale after five minutes and builds a fix into Polarity. Pokered Save Editor 2 rebuilds the trainer card and gains a debug harness that hot-reloads without losing your place."
 date: 2026-07-10
-tags: [random-ai-prompt, fairyfox-games, pokered-save-editor-2, site, update]
+tags: [random-ai-prompt, fairyfox-games, pokered-save-editor-2, fairyfox-stories, site, update]
 ---
 
 Every node moved on 2026-07-10, and two of them shipped something they had been building
@@ -80,6 +80,10 @@ overlapping the trainer artwork, and every field's action buttons were aligned i
 columns (`0.14.4`–`0.14.6`). Underneath, a second save-file fix: `copyFrom` had been writing
 Speed stat experience into the special field.
 
+The Market screen also gained an **Exchange** with sub-tabs — currency, healing, and a custom
+item-for-item trade, the last of which lets any owned item be given for any other item in the
+game (Potion ↔ Fresh Water by default).
+
 Two of the day's changes were about *how* the work gets done. A **debug-only automation
 harness** — command-line flags, a live control channel, and QML hot-reload — now lets the
 app be driven and screenshotted while it runs, and the hot-reload was taught to put you back
@@ -87,6 +91,22 @@ on the screen you were editing instead of dumping you at the home screen on ever
 project also made **manual screenshot review a standing default** for interface work: the
 clock/artwork overlap above was only caught because a human looked at the picture, which is
 a fair verdict on trusting a green test suite for visual work.
+
+## Fairy Fox Stories: a sixth book
+
+[Fairy Fox Stories](/fairyfox-stories/) planted its first new book since the starting shelf
+(`0.3.0`). **Every Lock but Hers** is a novella of magical realism by Del Marsh, and it does
+something the farm's rules deliberately allow: rather than opening a seventh universe, it
+*joins* the thinnest existing one — the Hollow Hours, previously a single short story — and
+pairs it with an author persona built for hard-boiled capers. Nell Corrigan is a night
+locksmith who can open any door in the city and has bolted the one she shut on her brother.
+As always the complete public blueprint ships with chapter one: the magic's exact rule, the
+wound, all eleven chapters, and who is behind the last door.
+
+The cover followed within the day (`0.3.1`) — art is part of a plant, and shipping the
+title-fallback had been a shortcut worth correcting. And the shelf cards adopted this site's
+project-card pattern (`0.3.2`): each logline moved out of the card body and behind a corner
+**"?"**, so the shelf reads as covers, titles, and progress, with the pitch on demand.
 
 ## The site
 

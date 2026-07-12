@@ -39,7 +39,7 @@ your build already uses:
 
 ```sh
 # sparse/partial checkout of just the assets you need, into a build folder
-git clone --no-checkout --depth 1 https://github.com/junebug12851/junebug12851.github.io _ff && \
+git clone --no-checkout --depth 1 https://github.com/1fairyfox/junebug12851.github.io _ff && \
 cd _ff && git sparse-checkout set assets/css/main.css assets/js/reader.js assets/js/nav.js \
   hub/standards/docs-site/chrome && git checkout
 # → copy assets/css/main.css, assets/js/{reader,nav}.js, and the chrome/*.html partials
