@@ -30,7 +30,7 @@ The hub keeps read-only, single-branch clones of each registered project under
 ```sh
 # first time
 git -C assets/references clone --branch dev --single-branch \
-    https://github.com/junebug12851/<project>
+    https://github.com/1fairyfox/<project>
 
 # refresh — always a clean fast-forward (dev is never force-pushed)
 git -C assets/references/<project> fetch origin dev
@@ -52,7 +52,7 @@ Each project keeps its own read-only, single-branch clone of this hub under *its
 ```sh
 # inside some-project, first time
 git -C assets/references clone --branch dev --single-branch \
-    https://github.com/junebug12851/junebug12851.github.io fairyfox.io
+    https://github.com/1fairyfox/junebug12851.github.io fairyfox.io
 
 # refresh — always a clean fast-forward (dev is never force-pushed)
 git -C assets/references/fairyfox.io fetch origin dev

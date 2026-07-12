@@ -16,8 +16,8 @@ The static site, built on every push to `main` with no manual publish step.
 ```
 authored content                 GitHub Actions                 GitHub Pages
 (_config, _layouts,   ──push──>  setup-ruby                     served at
- _includes, pages,    to main    bundle exec jekyll build  ──>  junebug12851.github.io
- _posts, _data, css)             upload-pages-artifact          + fairyfox.io (CNAME)
+ _includes, pages,    to main    bundle exec jekyll build  ──>  fairyfox.io
+ _posts, _data, css)             upload-pages-artifact          (committed CNAME)
                                  deploy-pages
 ```
 

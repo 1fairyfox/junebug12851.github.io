@@ -1,7 +1,7 @@
 # <PROJECT NAME> — AI Context
 
 <One-line description. What it is, who builds it, current state.>
-Built by Fairy Fox (github.com/junebug12851).
+Built by Fairy Fox (github.com/1fairyfox).
 
 ## Start Here
 

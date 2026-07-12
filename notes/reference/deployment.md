@@ -20,22 +20,29 @@ version and any plugin in the `Gemfile` works.
 
 ## One-time setup on GitHub
 
-- **Repo:** `junebug12851/junebug12851.github.io` (a user site — repo name =
-  `<username>.github.io`).
+- **Repo:** `1fairyfox/junebug12851.github.io`. The repo was created as a GitHub
+  **user site** back when the account was named `junebug12851`; the account has
+  since been renamed **`1fairyfox`**, and the repo kept its old name, so it no
+  longer matches the `<username>.github.io` pattern. It still serves correctly —
+  the Pages API reports `https://fairyfox.io/` with HTTPS enforced, and the
+  project sites still resolve at `fairyfox.io/<key>/` — because everything is
+  reached through the **custom domain**, not the `<username>.github.io` host.
+  (Renaming the repo to `1fairyfox.github.io` would restore the user-site shape;
+  that's Fairy Fox's call, not a maintenance change.)
 - **Settings → Pages → Build and deployment → Source = "GitHub Actions"** (not
   "Deploy from a branch"). This is required for the workflow above to publish.
 - **Custom domain:** the committed `CNAME` (`fairyfox.io`) plus DNS:
   - Apex `fairyfox.io` → A/AAAA records to GitHub Pages' IPs
     (`185.199.108–111.153` and the IPv6 equivalents), **or** an `ALIAS/ANAME`
-    to `junebug12851.github.io`.
-  - `www.fairyfox.io` → `CNAME` to `junebug12851.github.io` (optional).
+    to the Pages host.
+  - `www.fairyfox.io` → `CNAME` to the Pages host (optional).
   - In Settings → Pages set the custom domain and enable **Enforce HTTPS** once
     the certificate issues.
 
 ## Verifying a deploy
 
 - Watch the run: `gh run list --workflow pages.yml -L 1` then
-  `gh run watch <id>` (the GitHub CLI is installed + authed as `junebug12851`).
+  `gh run watch <id>` (the GitHub CLI is installed + authed as `1fairyfox`).
 - A failed build publishes nothing (the previous deploy stays live) — fix forward
   and push again.
 

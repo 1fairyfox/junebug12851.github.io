@@ -13,9 +13,9 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: 43effcfc9aeb6e0ad7721f8b311566181e1de762
+  commit: 93756b74c456fad4bf6b44aeaf3b2b11bcdfd693
   branch: dev
-  seen: 2026-07-11
+  seen: 2026-07-12
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -63,6 +63,19 @@ pokered-save-editor-2:
   # left for the inbound report-review pass.)
   # 2026-07-08 round-up: "Already up to date" at acc09b9 (still 0.14.2-alpha). Nothing to reconcile or blog.
   # Marker unchanged; seen → 2026-07-08.
+  # 2026-07-12 round-up: clean fast-forward 43effcf → 93756b7, 14 commits dated 2026-07-10/11,
+  # VERSION 0.14.6-alpha → 0.16.6-alpha. Two threads, both on 2026-07-11 apart from the Exchange
+  # sub-tabs (dated the 10th). (1) The Market gained an **Exchange** — Currency / Healing / a custom
+  # item-for-item trade (give any owned item, get any item; Potion ↔ Fresh Water default) — then a
+  # real fix: the exchange had been priced per step, minting phantom refunds; it now prices the whole
+  # trade once, pinned by a new tst_item_exchange. (2) The name-entry screen was rebuilt from a
+  # character grid into an **actual ASDF keyboard deck** (0.16.0 → 0.16.6): lowercase base layer, a
+  # real Caps Lock that locks the shift PAGE (Shift inverts it), punctuation on its own keys (36 → 47),
+  # two explicit modes, no invented modifier chords, box-drawing glyphs laid out AS the box (QWE/ASD/ZXC),
+  # corner legends dropped where the key already types what a real keyboard would, no text field in
+  # keyboard mode, and a real modifier now drops a latched page. Reconciled: projects.yml (PSE2 →
+  # 0.16.6 / Jul 11). The Exchange strand was folded into the existing 2026-07-10 day post; the keyboard
+  # rebuild into the new 2026-07-11 day post. Marker → 93756b7; seen → 2026-07-12.
   # 2026-07-11 round-up (three-day catch-up): clean fast-forward acc09b9 → 43effcf, 9 commits dated
   # 2026-07-09/10, VERSION 0.14.2-alpha → 0.14.6-alpha. Two save-file truth fixes (single-type mons write
   # duplicate-of-type1; copyFrom wrote Speed stat-exp to spExp), then the trainer card rebuilt to the
@@ -75,9 +88,9 @@ pokered-save-editor-2:
   # 2026-07-06-adopting-updates.md still pending for the inbound report-review pass.)
 
 random-ai-prompt:
-  commit: 3686435b4a5282331ebf531a9411a606a4052255
+  commit: 20e36af                                  # last commit dated 2026-07-11 (see the 07-12 note)
   branch: dev
-  seen: 2026-07-11
+  seen: 2026-07-12
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -236,6 +249,28 @@ random-ai-prompt:
   # now share (groundwork for the PLANNED-not-built ComfyUI target). Reconciled: projects.yml (RAP → 2.50.1
   # / Jul 7, blurb editions list gains the command-line tool). Folded into the 2026-07-07 day post ("A
   # command-line prompt tool, and a fifth game onto varied structure"). Marker → 3147535, VERSION 2.49.6 → 2.50.1.
+  # 2026-07-12 round-up: clean fast-forward 3686435 → 2f48135 (17 commits), VERSION 2.52.0 → 2.58.0.
+  # The marker is deliberately set to 20e36af — the LAST commit dated 2026-07-11 — not to HEAD: the tip
+  # commit 2f48135 (2.58.0, "the mobile app was never in CI") is dated 2026-07-12, i.e. TODAY, a day
+  # still in progress. Blogging it now would half-cover the day, so it is left for the next pass, which
+  # will see it as new. (projects.yml still carries the true current state, 2.58.0 / Jul 12 — data
+  # reconciliation and blogging are separate duties.)
+  # Blogged through 2026-07-11 (2.53.0 → 2.57.1), the day RAP stopped being two apps. The DE-DUPLICATION
+  # campaign, Phases B–E: one GENERATED provider registry importable by all three runtimes (Vite/Node/Metro)
+  # + an injectable transport, which let the 892-line mobile provider hand-port be deleted for a 268-line
+  # adapter with no provider/transport logic of its own; the nine hand-transcribed accent themes and the
+  # duplicated list ops promoted to shared/engine. FIVE of the seven mobile drift checks were deleted with
+  # them ("you cannot drift from yourself"); the surface-parity gate stays. Then three findings, each about
+  # a check that was built wrong: the SHUFFLE control was missing on mobile entirely (found by running the
+  # visual harness and LOOKING — its parity marker had been satisfiable by an unrelated identifier sharing a
+  # word); the WEB BUILD had been broken on dev for four commits while every gate read the working tree
+  # instead of the committed one (2.57.1, new `check:committed` gate — "a working tree is not evidence"); and
+  # the app had been silently CAPPING users (2.57.0) — a web roll truncated to 50 prompts, a mobile clamp at
+  # 1000 — with a test asserting the cap as a specification. All caps removed (25k prompts now generate in
+  # full, linearly). Also on the 11th: the GitHub owner rename junebug12851 → 1fairyfox swept across RAP's
+  # current-state files, which is what surfaced it for the hub (see this repo's 0.15.9). Reconciled:
+  # projects.yml (RAP → 2.58.0 / Jul 12). Folded into the new 2026-07-11 day post. Marker → 20e36af;
+  # seen → 2026-07-12.
   # 2026-07-11 round-up (three-day catch-up): clean fast-forward 3147535 → 3686435, 84 commits dated
   # 2026-07-07 → 2026-07-10, VERSION 2.50.1 → 2.52.0. Two threads. (1) A **ComfyUI target** (2.51.0):
   # targets/comfyui/ custom nodes (generator + batch/combine/show, example workflow, status sidebar) fed by
@@ -255,9 +290,9 @@ random-ai-prompt:
   # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
 fairyfox-games:
-  commit: e7d27681a086def0639a83128b1e62a9f1a387b2
+  commit: d5611b8c621946f0f54d69de6219c9b80766ee1f
   branch: dev
-  seen: 2026-07-11
+  seen: 2026-07-12
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -340,6 +375,19 @@ fairyfox-games:
   # own core (self-contained); +8 pure-core tests (23 → 31), collection 369/369 green; Chrome-previewed.
   # Reconciled: projects.yml (games → 0.19.3 / Jul 7). Folded into the 2026-07-07 day post. Marker → 2411178,
   # VERSION 0.19.2 → 0.19.3.
+  # 2026-07-12 round-up: clean fast-forward e7d2768 → d5611b8, VERSION 0.20.2 → 0.21.0 (all commits dated
+  # 2026-07-11). A GROW then a PLANT. Ricochet's targets became named, stage-gated layouts, bringing the
+  # 8th of the collection onto varied structure (0.20.3). Then **Tether** (0.21.0, MINOR) — the 12th game
+  # and a genuinely new verb: hold to rope onto the nearest anchor and swing beneath it on a real pendulum,
+  # release to fly. Exit velocity is the swing's TANGENTIAL velocity, so the release angle IS the launch
+  # angle (low = fast but flat, high = stalled; the ~45° sweet spot both grows the multiplier and boosts
+  # the launch — skill and survival are the same act). Ships with varied structure + the full growth stack
+  # + the "depth inside the mechanic" layer from birth (hidden snap window, Slipstream double-score,
+  # a secret Zenith stage). Two physics bugs were caught and pinned: an angular-speed clamp let a fast
+  # catch swing OVER the anchor (the cap is now on energy, so amplitude is bounded by construction), and
+  # applying that cap in the wrong place froze the pendulum solid mid-air. 32 tests; collection 435/435
+  # green across 12 games. Reconciled: projects.yml (games → 0.21.0 / Jul 11). Folded into the 2026-07-11
+  # day post. Marker → d5611b8; seen → 2026-07-12.
   # 2026-07-11 round-up (three-day catch-up): clean fast-forward 2411178 → e7d2768, VERSION 0.19.3 → 0.20.2
   # (commits dated 2026-07-08 and 2026-07-10). GROW: Orbit Slingshot (0.19.4, the 6th of 11) then Arc (0.19.5,
   # the 7th — completing the aim/precision line) onto varied structure. The collection got its own emblem —
@@ -356,9 +404,9 @@ fairyfox-games:
   # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: 05b46f00e52e3770bf78a564ec2f8cd719a46fbb
+  commit: 112f9a7cc9afd29923b954ef821742881b2df032
   branch: dev
-  seen: 2026-07-11
+  seen: 2026-07-12
   reports_through: []          # digested-report filenames (append-only); see header
   # 2026-07-07 round-up: first pass for this newly-registered node — full-history dev mirror cloned fresh
   # under assets/references/fairyfox-stories (it became reference:true when the site registered it in 0.15.1).
@@ -370,6 +418,19 @@ fairyfox-stories:
   # inbound report-review pass.)
   # 2026-07-08 round-up: "Already up to date" at 803db1f (still 0.2.0). Nothing to reconcile or blog.
   # Marker unchanged; seen → 2026-07-08.
+  # 2026-07-12 round-up: clean fast-forward 05b46f0 → 112f9a7, VERSION 0.2.2 → 0.3.3 (commits dated
+  # 2026-07-10 and 2026-07-11). The 07-10 work arrived after the previous pass had already run, so it was
+  # folded back into the EXISTING 2026-07-10 day post rather than given a post of its own (day-centric
+  # rule: one post per day; be faithful to the day it happened on). 0.3.0 PLANTED the first new book since
+  # the starting shelf — *Every Lock but Hers*, a magical-realism novella by Del Marsh (Nell Corrigan, a
+  # night locksmith who can open any door and has bolted the one she shut on her brother) — which JOINS the
+  # thinnest existing universe (Hollow Hours) rather than opening a seventh, with the complete public
+  # blueprint + chapter 1 shipped. 0.3.1 gave it its cover (art is part of a plant; the title-fallback had
+  # been a shortcut). 0.3.2 adopted THIS site's project-card pattern on the shelf: loglines tuck behind a
+  # corner "?" tooltip. 0.3.3 (07-11) was a pure grow day — Cinderwick, Launderette and Every Lock but Hers
+  # each advance a chapter — and closed a planting gap by writing the new book's missing book-notes bible.
+  # Reconciled: projects.yml (stories → 0.3.3 / Jul 11). Folded into the 2026-07-10 (amended) and 2026-07-11
+  # day posts. Marker → 112f9a7; seen → 2026-07-12.
   # 2026-07-11 round-up (three-day catch-up): clean fast-forward 803db1f → 05b46f0, VERSION 0.2.0 → 0.2.2
   # (both commits dated 2026-07-09). 0.2.1 made the farm actually RUN: a scheduled daily job grows 2 books a
   # day and plants a new one once 3 days have passed, then auto-publishes (the cadence had been written down

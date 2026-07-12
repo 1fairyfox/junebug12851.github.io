@@ -7,8 +7,8 @@ The machine, end to end. Four cooperating systems live in one repo.
 ```
 authored content                 GitHub Actions                 GitHub Pages
 (_config, _layouts,   ──push──>  ruby/setup-ruby                served at
- _includes, pages,    to main    bundle exec jekyll build  ──>  junebug12851.github.io
- _posts, _data, css)             upload-pages-artifact          + fairyfox.io (CNAME)
+ _includes, pages,    to main    bundle exec jekyll build  ──>  fairyfox.io
+ _posts, _data, css)             upload-pages-artifact          (committed CNAME)
                                  deploy-pages
 ```
 

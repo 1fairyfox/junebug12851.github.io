@@ -10,20 +10,21 @@
 #           Per-project colour: green = Random AI Prompt · amber = Fairy Fox Games
 #           plum = Fairy Fox Stories · pink = Pokered Save Editor 2 · coral = this site
 
-bars: [14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44, 18, 29, 49]
+bars: [6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44, 18, 29, 49, 38]
 
 changes:
-  - { c: "var(--green)", text: "Random AI Prompt 2.52.0 — an Android app: the prompt tool as a native mobile build (Expo/React Native), with the same engine, catalog, and providers as the web app", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt — the mobile Manage tab reaches parity: a folder tree, block and list editors, AI refine/expand, and a live overlay so your own content feeds generation on-device", when: "1d" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.20.0 — depth inside the mechanic: Polarity gains a hidden snap-timing window, an earned overcharge bloom, and a secret sixth stage, all on the same single flip", when: "1d" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.14.4–0.14.6 — the trainer card rebuilt: [dice | trash] action groups on Money/Coins/Playtime, a titled Playtime box, and Enabled/Paused as real toggles", when: "1d" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 — a debug-only automation harness: CLI flags, a live control channel, and QML hot-reload that keeps you on the screen you're editing", when: "1d" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.19.5–0.19.6 — Arc grown onto varied structure (the aim line is fully converted) and the collection gets its own emblem: favicon, social card, masthead", when: "1d" }
-  - { c: "var(--coral)", text: "Site 0.15.5–0.15.7 — project cards trade text tags for a row of platform/language icons, grouped by kind, with the Updated date moved to the card's base", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt — the mobile foundation: a Metro catalog generator and a parity-proven loader, so the phone build draws from byte-identical content (89 blocks, 88 lists)", when: "2d" }
-  - { c: "var(--plum)", text: "Fairy Fox Stories 0.2.1–0.2.2 — the farm actually runs now: a daily job grows two books and plants a new one every third day; the shelf gets its emblem and social cards", when: "2d" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 — save-file truth fixes: single-type Pokémon now write a duplicate type-2, and copyFrom writes Speed stat-exp to the right field", when: "2d" }
-  - { c: "var(--coral)", text: "Site 0.15.4 — a project card's description moves into a corner \"?\" so the card itself stays a clean read", when: "2d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.51.0 — a ComfyUI target: the prompt engine as custom Comfy nodes (batch, combine, show), plus headless /api/prompt routes behind them", when: "3d" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.19.4 — Orbit Slingshot grown onto varied structure: its runs become a seeded sequence of named formations", when: "3d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.51.1 — the DPL editor's gutter and active line stop leaking CodeMirror's light defaults into dark mode", when: "3d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.58.0 — the mobile app joins CI: every control is pressed by a test rather than merely rendered, with coverage gates; two accessibility defects fell out of writing them", when: "today" }
+  - { c: "var(--coral)", text: "Site — the GitHub account is renamed junebug12851 → 1fairyfox; every repository and profile link across the hub, the standards, and the shared chrome bundle re-points", when: "today" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.57.0 — the app was capping the user: a web roll silently truncated to 50 prompts. Every cap removed; 25,000 prompts now generate in full, and linearly", when: "1d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.16.0–0.16.6 — the name keyboard rebuilt as a real ASDF deck: 47 keys, a true Caps Lock, two explicit modes, and no key that pretends to be one it isn't", when: "1d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.21.0 — Tether, the twelfth game and a genuinely new verb: rope onto an anchor, swing beneath it, and let go at the launch angle you chose", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.53.0–2.55.0 — one generated provider registry for all three runtimes; the mobile app's 892-line provider hand-port is deleted, and five drift checks go with it", when: "1d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 — a Market exchange: currency, healing, and item-for-item trading, priced once per trade instead of per step (no more phantom refunds)", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.57.1 — the web build had been broken on dev for four commits while every local gate reported green: a working tree is not evidence, so a check:committed gate now says so", when: "1d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.20.3 — Ricochet's targets arrive as named, stage-gated layouts, bringing the eighth game onto varied structure", when: "1d" }
+  - { c: "var(--plum)", text: "Fairy Fox Stories 0.3.3 — a grow day: Cinderwick, the Launderette, and Every Lock but Hers each advance a chapter", when: "1d" }
+  - { c: "var(--plum)", text: "Fairy Fox Stories 0.3.0–0.3.2 — a sixth book planted (Every Lock but Hers) and given its cover; the shelf tucks each logline behind a \"?\" corner control", when: "2d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.52.0 — an Android app: the prompt tool as a native mobile build (Expo/React Native), with the same engine, catalog, and providers as the web app", when: "2d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.20.0 — depth inside the mechanic: Polarity gains a hidden snap-timing window, an earned overcharge bloom, and a secret sixth stage, all on the same single flip", when: "2d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.14.4–0.14.6 — the trainer card rebuilt: [dice | trash] action groups on Money/Coins/Playtime, a titled Playtime box, and Enabled/Paused as real toggles", when: "2d" }
+  - { c: "var(--coral)", text: "Site 0.15.5–0.15.7 — project cards trade text tags for a row of platform/language icons, grouped by kind, with the Updated date moved to the card's base", when: "3d" }

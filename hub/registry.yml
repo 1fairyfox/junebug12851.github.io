@@ -26,13 +26,13 @@
 # to remember where the previous diff stopped.
 
 hub:
-  repo: https://github.com/junebug12851/junebug12851.github.io
+  repo: https://github.com/1fairyfox/junebug12851.github.io
   branch: dev
   role: hub            # this very repo — the source of shared standards
 
 projects:
   - key: pokered-save-editor-2
-    repo: https://github.com/junebug12851/pokered-save-editor-2
+    repo: https://github.com/1fairyfox/pokered-save-editor-2
     branch: dev
     adopts_hub: true
     notes_system: true
@@ -43,14 +43,14 @@ projects:
   # false in ../_data/projects.yml). Listed here only to keep the two registries
   # in step. Default branch is `master`.
   - key: pokered-save-editor
-    repo: https://github.com/junebug12851/pokered-save-editor
+    repo: https://github.com/1fairyfox/pokered-save-editor
     branch: master
     adopts_hub: false
     notes_system: false
     last_seen: null
 
   - key: random-ai-prompt
-    repo: https://github.com/junebug12851/random-ai-prompt
+    repo: https://github.com/1fairyfox/random-ai-prompt
     branch: dev
     adopts_hub: true
     notes_system: true
@@ -60,7 +60,7 @@ projects:
   # on the hub). Onboarded: mesh-aware CLAUDE.md, notes system, and themed docs site
   # are all in place, so adopts_hub is true.
   - key: fairyfox-games
-    repo: https://github.com/junebug12851/fairyfox-games
+    repo: https://github.com/1fairyfox/fairyfox-games
     branch: dev
     adopts_hub: true
     notes_system: true
@@ -70,7 +70,7 @@ projects:
   # /fairyfox-stories/). A Jekyll "story farm" node — mesh-aware CLAUDE.md, notes
   # system, and the shared fairyfox chrome are all in place, so adopts_hub is true.
   - key: fairyfox-stories
-    repo: https://github.com/junebug12851/fairyfox-stories
+    repo: https://github.com/1fairyfox/fairyfox-stories
     branch: dev
     adopts_hub: true
     notes_system: true

@@ -27,12 +27,16 @@ any Jekyll version and any plugin listed in the `Gemfile` works.
 
 ## Hosting and the custom domain
 
-The repository is a GitHub **user site** (`junebug12851.github.io`, where the
-repository name is literally `<username>.github.io`), so it serves at the domain
-root. The committed `CNAME` points the `fairyfox.io` custom domain at it. Because
-the custom domain is set on the user site, each project's own GitHub Pages site is
-served under the same domain — for example, `fairyfox.io/pokered-save-editor-2/` —
-so navigation can lead straight into a project's documentation.
+The site is served at **`fairyfox.io`**, the custom domain pointed at this
+repository's GitHub Pages by the committed `CNAME`. Each project's own Pages site
+is served under the same domain — for example, `fairyfox.io/pokered-save-editor-2/`
+— so navigation can lead straight into a project's documentation.
+
+The repository is named `junebug12851.github.io`: it was created as a GitHub *user
+site* when the account carried that name. The account has since been renamed
+**`1fairyfox`**, and the repository kept its original name, so it no longer matches
+the `<username>.github.io` pattern. Nothing about serving changed — the domain, not
+the `<username>.github.io` host, is what everything is reached through.
 
 One-time setup, for reference: the Pages source is set to "GitHub Actions" (not
 "deploy from a branch"); DNS points the apex domain at GitHub Pages; and HTTPS is

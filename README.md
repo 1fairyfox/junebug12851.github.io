@@ -1,11 +1,11 @@
 # fairyfox.io
 
-The personal home page and project **hub** of Fairy Fox ([@junebug12851](https://github.com/junebug12851)).
+The personal home page and project **hub** of Fairy Fox ([@1fairyfox](https://github.com/1fairyfox)).
 A clean, custom [Jekyll](https://jekyllrb.com/) site — home, projects, blog, about
 — deployed to GitHub Pages by GitHub Actions, plus the shared standards and
 templates that tie my repositories together.
 
-Live at **https://fairyfox.io** (and `junebug12851.github.io`).
+Live at **https://fairyfox.io**.
 
 ## What's in this repo
 

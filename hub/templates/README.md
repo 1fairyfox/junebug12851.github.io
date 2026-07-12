@@ -22,7 +22,7 @@ in [`../standards/`](../standards/) for the *why* behind each.
 
 ```sh
 git -C assets/references clone --branch dev --single-branch \
-    https://github.com/junebug12851/junebug12851.github.io fairyfox.io
+    https://github.com/1fairyfox/junebug12851.github.io fairyfox.io
 H=assets/references/fairyfox.io/hub/templates
 
 cp $H/CLAUDE.md ./CLAUDE.md

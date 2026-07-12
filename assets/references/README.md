@@ -34,7 +34,7 @@ round-ups can report the newest changes, not just what's been promoted to
 ```sh
 # First time — single-branch clone of a project's dev branch (full history, not shallow):
 git -C assets/references clone --branch dev --single-branch \
-    https://github.com/junebug12851/pokered-save-editor-2
+    https://github.com/1fairyfox/pokered-save-editor-2
 
 # Later — refresh it (a clean fast-forward; dev is never force-pushed):
 git -C assets/references/pokered-save-editor-2 fetch origin dev

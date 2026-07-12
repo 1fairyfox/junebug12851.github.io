@@ -2,6 +2,24 @@
 
 Key structural choices and why. Newest on top.
 
+### The GitHub account is `1fairyfox`; the hub repo keeps its old name (2026-07-12)
+
+The account was renamed **`junebug12851` → `1fairyfox`**. Every current-state reference across
+the hub — links, handles, standards, templates, and the shared chrome bundle — now uses the new
+owner; **dated history is left intact**, because it records what was true on the day (the same
+convention the siblings adopted).
+
+The hub repo, however, is still *named* `junebug12851.github.io`. It was created as a GitHub
+**user site** under the old account name, and a user site's repo must be named
+`<username>.github.io` — which it no longer is. **Nothing broke**: the Pages API reports the
+site at `https://fairyfox.io/` with HTTPS enforced, and the project paths (`fairyfox.io/<key>/`)
+still resolve, because the mesh is reached through the **custom domain**, never through a
+`<username>.github.io` host. So the correct posture is: fix the *claims* (the docs said "user
+site"; they now say "the hub repo, served at the custom domain"), and leave the repo name
+alone. **Renaming the repo to `1fairyfox.github.io` is Fairy Fox's call** — a rename touches
+Pages, the remote, and every sibling's vendored chrome-pull URL, which is not a maintenance
+change.
+
 ### One seamless site: nodes are pages of fairyfox, not similar sites (2026-06-30)
 
 Chosen direction (owner, this session): rather than each node building a *similar*

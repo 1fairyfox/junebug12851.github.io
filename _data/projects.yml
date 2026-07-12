@@ -25,18 +25,18 @@
 
 - name: Pokered Save Editor 2
   key: pokered-save-editor-2
-  repo: https://github.com/junebug12851/pokered-save-editor-2
+  repo: https://github.com/1fairyfox/pokered-save-editor-2
   docs: https://fairyfox.io/pokered-save-editor-2/
-  notes: https://github.com/junebug12851/pokered-save-editor-2/tree/main/notes
+  notes: https://github.com/1fairyfox/pokered-save-editor-2/tree/main/notes
   blurb: >-
     A Qt 6 (C++/QML) desktop save-file editor for Pokémon Red & Blue — byte-exact
     read/write with full team, box, item, and randomiser editing.
   tags: [Qt 6, C++, QML, Desktop]
   lifecycle: alpha
-  version: "0.14.6"
+  version: "0.16.6"
   activity: active
-  updated: "Jul 10, 2026"
-  updated_iso: "2026-07-10"
+  updated: "Jul 11, 2026"
+  updated_iso: "2026-07-11"
   color: "#e6488f"
   icon: pse2
   featured: true
@@ -44,19 +44,19 @@
 
 - name: Random AI Prompt
   key: random-ai-prompt
-  repo: https://github.com/junebug12851/random-ai-prompt
+  repo: https://github.com/1fairyfox/random-ai-prompt
   docs: https://fairyfox.io/random-ai-prompt/
-  notes: https://github.com/junebug12851/random-ai-prompt/tree/main/notes
+  notes: https://github.com/1fairyfox/random-ai-prompt/tree/main/notes
   blurb: >-
     An open-source AI prompt generator built on a controllable dynamic-prompt
     language (DPL) that runs prompts through 40+ image and text models — as a
     hosted site, desktop app, Android app, CLI, or ComfyUI node.
   tags: [JavaScript, Node 24, Web UI, Desktop, Android, CLI]
   lifecycle: released
-  version: "2.52.0"
+  version: "2.58.0"
   activity: active
-  updated: "Jul 10, 2026"
-  updated_iso: "2026-07-10"
+  updated: "Jul 12, 2026"
+  updated_iso: "2026-07-12"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -64,9 +64,9 @@
 
 - name: Pokered Save Editor
   key: pokered-save-editor
-  repo: https://github.com/junebug12851/pokered-save-editor
+  repo: https://github.com/1fairyfox/pokered-save-editor
   docs: null
-  notes: https://github.com/junebug12851/pokered-save-editor#readme
+  notes: https://github.com/1fairyfox/pokered-save-editor#readme
   blurb: >-
     The stable Electron/Angular/TypeScript predecessor to Pokered Save Editor 2 —
     the recommended tool until the Qt 6 rewrite reaches parity.
@@ -86,20 +86,20 @@
 # date-sorted among the others.
 - name: Fairy Fox Stories
   key: fairyfox-stories
-  repo: https://github.com/junebug12851/fairyfox-stories
+  repo: https://github.com/1fairyfox/fairyfox-stories
   docs: https://fairyfox.io/fairyfox-stories/
   doc_url: "https://fairyfox.io/fairyfox-stories/"
-  notes: https://github.com/junebug12851/fairyfox-stories/tree/main/notes
+  notes: https://github.com/1fairyfox/fairyfox-stories/tree/main/notes
   blurb: >-
     An AI-managed story farm: a growing library of short, pre-planned interactive
     books set in living, cross-linked universes, each shipping a public blueprint
     you can read before you start.
   tags: [Jekyll, Ruby, Web]
   lifecycle: alpha
-  version: "0.2.2"
+  version: "0.3.3"
   activity: active
-  updated: "Jul 9, 2026"
-  updated_iso: "2026-07-09"
+  updated: "Jul 11, 2026"
+  updated_iso: "2026-07-11"
   integrated: true
   color: "#b06ad0"
   featured: true
@@ -111,19 +111,19 @@
 # projects.md.
 - name: Fairy Fox Games
   key: fairyfox-games
-  repo: https://github.com/junebug12851/fairyfox-games
+  repo: https://github.com/1fairyfox/fairyfox-games
   docs: https://fairyfox.io/fairyfox-games/
   doc_url: "https://fairyfox.io/fairyfox-games/"
-  notes: https://github.com/junebug12851/fairyfox-games/tree/main/notes
+  notes: https://github.com/1fairyfox/fairyfox-games/tree/main/notes
   blurb: >-
     A collection of small, self-contained canvas games — the one-mechanic,
     beat-your-own-score kind, each splitting pure, tested logic from rendering.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.20.2"
+  version: "0.21.0"
   activity: active
-  updated: "Jul 10, 2026"
-  updated_iso: "2026-07-10"
+  updated: "Jul 11, 2026"
+  updated_iso: "2026-07-11"
   integrated: true
   color: "#8b7bff"
   featured: true
@@ -131,19 +131,19 @@
 
 - name: fairyfox.io
   key: fairyfox-io
-  repo: https://github.com/junebug12851/junebug12851.github.io
+  repo: https://github.com/1fairyfox/junebug12851.github.io
   docs: null
   doc_url: "/docs/"
-  notes: https://github.com/junebug12851/junebug12851.github.io/tree/main/notes
+  notes: https://github.com/1fairyfox/junebug12851.github.io/tree/main/notes
   blurb: >-
     The project hub and documentation library itself — a custom Jekyll build
     carrying the shared engineering standards and the cross-project sync model.
   tags: [Jekyll, Ruby, Web]
   lifecycle: beta
-  version: "0.15.8"
+  version: "0.15.9"
   activity: active
-  updated: "Jul 11, 2026"
-  updated_iso: "2026-07-11"
+  updated: "Jul 12, 2026"
+  updated_iso: "2026-07-12"
   meta: true
   color: "#ff7a5e"
   icon: fox

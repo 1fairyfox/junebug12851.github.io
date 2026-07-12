@@ -78,7 +78,7 @@ the rename.
 ```sh
 mkdir -p assets/references
 git -C assets/references clone --branch dev --single-branch \
-    https://github.com/junebug12851/junebug12851.github.io fairyfox.io
+    https://github.com/1fairyfox/junebug12851.github.io fairyfox.io
 ```
 
 An ordinary single-branch clone refreshes by fast-forward every time.

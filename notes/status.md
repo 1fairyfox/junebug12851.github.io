@@ -3,17 +3,25 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.15.8` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.15.9` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
 
-**The site is live** at https://junebug12851.github.io/ and at the **`fairyfox.io`
-custom domain** (2026-06-22) — the domain now resolves and **serves over HTTPS**
-(the GitHub-issued certificate has provisioned; `https://fairyfox.io/` returns 200).
-Confirm **Enforce HTTPS** is enabled in Settings → Pages. It's a
-clean, custom Jekyll build — no external theme — deployed to GitHub Pages by
-GitHub Actions on every push to `main`.
+**The site is live** at the **`fairyfox.io`** custom domain (2026-06-22), served over
+HTTPS with **Enforce HTTPS on** (the Pages API reports `html_url: https://fairyfox.io/`,
+`https_enforced: true`). It's a clean, custom Jekyll build — no external theme — deployed
+to GitHub Pages by GitHub Actions on every push to `main`.
+
+**The GitHub account is now `1fairyfox`** (renamed from `junebug12851`, swept through every
+current-state file in `0.15.9`; dated history left as it was). One consequence is open, and
+it is **Fairy Fox's call, not a maintenance change**: the hub repo is still *named*
+`junebug12851.github.io`, so it no longer matches `<username>.github.io` and is no longer a
+GitHub "user site" in the strict sense. **Nothing is broken** — everything is reached through
+the custom domain, and `fairyfox.io/<key>/` still resolves for every project — but renaming
+the repo to `1fairyfox.github.io` would restore the user-site shape. It would touch Pages, the
+git remote, and every sibling's vendored chrome-pull URL. See
+[`decisions/architecture.md`](decisions/architecture.md).
 
 The site is framed as a **project hub + documentation library** for Fairy Fox's
 work, written in a neutral documentation voice (not first-person, not glorifying;
@@ -116,13 +124,17 @@ The rest of the structure is in place end to end:
   `master` → `main` rename. The 2.50–2.52 line then multiplied its **targets**: a `prompt`
   **CLI**, a **ComfyUI** custom-node target with headless `/api/prompt` routes behind it, and a
   native **Android** app built to strict, gated parity with the web — every edition on the same
-  engine, catalog, and store) and Pokered Save Editor 2
-  (`0.14.6-alpha`, themed Doxygen docs; the trainer card rebuilt onto the shared control
-  language, on a new debug automation harness; adopted git-flow + process-reports + compliance +
-  express-authorizations on 2026-06-26). The two integrated nodes are Fairy Fox Games
-  (`0.20.2` — eleven games; the current growth lever is **depth inside the mechanic**, Polarity
-  the reference build) and Fairy Fox Stories (`0.2.2` — the daily grow/plant automation now
-  actually runs).
+  engine, catalog, and store. The 2.53–2.58 line then **de-duplicated** those targets — one
+  generated provider registry every runtime imports, the mobile app's 892-line hand-port and five
+  drift checks deleted — removed the caps it had been quietly imposing on its own users, and put
+  the mobile app in CI) and Pokered Save Editor 2
+  (`0.16.6-alpha`, themed Doxygen docs; a Market **Exchange** — currency/healing/item-for-item —
+  and the name entry rebuilt from a character grid into a real **ASDF keyboard deck**; adopted
+  git-flow + process-reports + compliance + express-authorizations on 2026-06-26). The two
+  integrated nodes are Fairy Fox Games
+  (`0.21.0` — twelve games, the newest being **Tether**, a swing/grapple pendulum; the current
+  growth lever is **depth inside the mechanic**, Polarity the reference build) and Fairy Fox
+  Stories (`0.3.3` — six books; the daily grow/plant automation now actually runs).
 - **Notes:** this living-notes system, mirroring the convention used across my
   projects.
 - **Sync:** the pull-only cross-project model is documented
@@ -143,11 +155,16 @@ The rest of the structure is in place end to end:
   layer that generates `_data/pulse.yml` from the projects' real history (it's hand-kept
   for now), and Web-Component live examples (built with Fairy Fox).
 
-- **HTTPS for `fairyfox.io`.** The custom domain is **live over HTTPS** — the
-  GitHub-issued certificate has provisioned and `https://fairyfox.io/` returns 200.
-  Remaining nicety: confirm **Enforce HTTPS** is toggled on in Settings → Pages so
-  HTTP redirects up. Both project Pages sites are served under the domain too
-  (`fairyfox.io/pokered-save-editor-2/`, `fairyfox.io/random-ai-prompt/`).
+- **HTTPS for `fairyfox.io`: done.** The custom domain serves over HTTPS with **Enforce
+  HTTPS on** (confirmed against the Pages API, 2026-07-12). Every project Pages site is
+  served under the domain too (`fairyfox.io/pokered-save-editor-2/`,
+  `fairyfox.io/random-ai-prompt/`, …) — re-verified live after the account rename.
+
+- **Open, for Fairy Fox: rename the hub repo?** The account is now `1fairyfox` but the repo
+  is still named `junebug12851.github.io`, so it is no longer a GitHub *user site* in the
+  strict sense. Nothing is broken (the custom domain carries everything), but a rename to
+  `1fairyfox.github.io` would restore the shape — at the cost of touching Pages, the git
+  remote, and every sibling's vendored chrome-pull URL. Not taken as a maintenance change.
 
 ## Next
 
@@ -162,5 +179,6 @@ first real "what changed in my projects" round-up once there's a diff to report.
 | Jekyll config + layouts | ✅ Scaffolded |
 | Content pages (home/projects/blog/about) | ✅ Live |
 | Pages deploy workflow | ✅ First run green; site live |
-| Custom domain | ✅ Live over HTTPS (cert provisioned; confirm Enforce HTTPS) |
+| Custom domain | ✅ Live over HTTPS, Enforce HTTPS on (re-verified 2026-07-12) |
+| GitHub owner | ✅ `1fairyfox` — swept through every current-state link (0.15.9) |
 | Local build verification | ✅ `bundle install` + `jekyll build` green (Ruby 3.3.11) |
