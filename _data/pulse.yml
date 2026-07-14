@@ -10,21 +10,22 @@
 #           Per-project colour: green = Random AI Prompt · amber = Fairy Fox Games
 #           plum = Fairy Fox Stories · pink = Pokered Save Editor 2 · coral = this site
 
-bars: [11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44, 18, 29, 49, 38, 64]
+bars: [20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44, 18, 29, 49, 38, 64, 24]
 
 changes:
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.17.0–0.21.0 — the map stops being a picture: the editor now runs the game's own overworld pipeline, and the real cartridge (in an emulator) checks every buffer byte for byte", when: "today" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.22.0–0.23.0 — a Game Boy sound chip and Gen 1's sequencer, in C++: 46 tracks and their 105 inner voices play from the Map screen, and the console agrees frame by frame", when: "today" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.60.0 — the 1000-prompt promise, measured on a real Android runtime rather than asserted: 253 ms to render, memory flat as the list grows 50×", when: "today" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.22.0 — Brim, the thirteenth game and a new verb: one pour, a fill line to reach and a rim not to cross — and a stream that keeps arriving after you close the spout", when: "today" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.60.1 — a critical command injection in the local backend: a filename could close the quote and run the rest. No more shell — the program and its arguments go to the OS separately", when: "today" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.20.0 — the six glitch palettes are real and they render: the game subtracts a save byte from a table pointer, so landing between entries yields a palette that exists nowhere in the game", when: "today" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.24.4 — the water moves: the console rolls the water tile sideways every twenty frames, and two long-standing errors in how we drew it fall out of writing the loop properly", when: "today" }
-  - { c: "var(--plum)", text: "Fairy Fox Stories 0.3.4 — a grow day: The Wintering House, The Cartographer of Decks, and The Cinderwick Job each gain a third chapter", when: "today" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.21.1 — the wind arrives in Skyline: slabs come as named, stage-gated patterns rather than textureless drift", when: "today" }
-  - { c: "var(--coral)", text: "Site — the GitHub account is renamed junebug12851 → 1fairyfox; every repository and profile link across the hub, the standards, and the shared chrome bundle re-points", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.57.0 — the app was capping the user: a web roll silently truncated to 50 prompts. Every cap removed; 25,000 prompts now generate in full, and linearly", when: "2d" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.16.0–0.16.6 — the name keyboard rebuilt as a real ASDF deck: 47 keys, a true Caps Lock, two explicit modes, and no key that pretends to be one it isn't", when: "2d" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.21.0 — Tether, the twelfth game and a genuinely new verb: rope onto an anchor, swing beneath it, and let go at the launch angle you chose", when: "2d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.53.0–2.55.0 — one generated provider registry for all three runtimes; the mobile app's 892-line provider hand-port is deleted, and five drift checks go with it", when: "2d" }
-  - { c: "var(--plum)", text: "Fairy Fox Stories 0.3.0–0.3.2 — a sixth book planted (Every Lock but Hers) and given its cover; the shelf tucks each logline behind a \"?\" corner control", when: "3d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.25.1–0.26.0 — the towns have people in them: all 72 overworld sprites imported, and four inverted enums fixed that had been writing the opposite of what they said", when: "today" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.32.0 — indoors there is no sprite set: the game loads each character's own artwork, so the warning we were showing was answering the wrong question", when: "today" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.34.0 — the music ships as the game's own sheet music: 376 .asm files vendored verbatim, parsed on first use, with the binary we used to ship demoted to a test fixture", when: "today" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.22.1 — Loft gets weather: the thing that varies is the air, not the orbs, so a run is a seeded sequence of thermals, gusts and downdrafts", when: "today" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.27.0–0.31.0 — a town's cast, built with the mouse: drag a character in, drag them out to delete, and edit every byte behind a control that fits the byte", when: "today" }
+  - { c: "var(--plum)", text: "Fairy Fox Stories 0.3.5 — a grow day: The Wintering House and The Cartographer of Decks reach chapter four, and The Girl Who Sold the Wind chapter three", when: "today" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.33.0 — the drop-downs were dead to clicks and too short to read: one binding loop, two symptoms, and a test harness that could not send a real click", when: "today" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.17.0–0.21.0 — the map stops being a picture: the editor now runs the game's own overworld pipeline, and the real cartridge (in an emulator) checks every buffer byte for byte", when: "1d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.22.0–0.23.0 — a Game Boy sound chip and Gen 1's sequencer, in C++: 46 tracks and their 105 inner voices play from the Map screen, and the console agrees frame by frame", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.60.0 — the 1000-prompt promise, measured on a real Android runtime rather than asserted: 253 ms to render, memory flat as the list grows 50×", when: "1d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.22.0 — Brim, the thirteenth game and a new verb: one pour, a fill line to reach and a rim not to cross — and a stream that keeps arriving after you close the spout", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.60.1 — a critical command injection in the local backend: a filename could close the quote and run the rest. No more shell — the program and its arguments go to the OS separately", when: "1d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.24.0 — a save-corrupting bug, found and pinned: shared collision lists walked one step out of phase, so a Poké Mart was getting a bedroom's walls", when: "1d" }
+  - { c: "var(--coral)", text: "Site — the GitHub account is renamed junebug12851 → 1fairyfox; every repository and profile link across the hub, the standards, and the shared chrome bundle re-points", when: "2d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.16.0–0.16.6 — the name keyboard rebuilt as a real ASDF deck: 47 keys, a true Caps Lock, two explicit modes, and no key that pretends to be one it isn't", when: "3d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.21.0 — Tether, the twelfth game and a genuinely new verb: rope onto an anchor, swing beneath it, and let go at the launch angle you chose", when: "3d" }

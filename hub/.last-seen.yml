@@ -13,13 +13,50 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: 0686b588af66156adbefe835931dd0c6a60e5318
+  commit: dc1f21bdb130713f73e0a70f2cfca77854fa546d
   branch: dev
-  seen: 2026-07-13
+  seen: 2026-07-14
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
     - 2026-06-26-check-for-updates.md            # digested 2026-06-28 report-review (0.9.8) — no-change confirming pass, nothing to fold
+  # 2026-07-14 round-up: clean fast-forward 0686b58 → dc1f21b, 20 commits ALL dated 2026-07-13,
+  # VERSION 0.24.4-alpha → 0.34.0-alpha. One theme, and it is narrower than yesterday's oracle:
+  # LOOK AT WHAT YOU ACTUALLY SHIPPED — five review passes in a day, each of which found that the
+  # INSTRUMENT was blind, not only the code. (1) Every screenshot the map screen had been reviewed
+  # with was TOFU BOXES (--shot never set QT_QPA_FONTDIR): the layout was reviewed, the screen was
+  # not (0.28.0). With text on, the first honest look found two identical ▶ buttons, dead zoom
+  # controls, and a menu off the bottom of the window. The zoom was then rebuilt as a shader (snap
+  # to texel centre, one-screen-pixel ramp via fwidth) — which caught its own trap: ShaderEffect
+  # does not run on the software backend every headless test uses, so the first capture came back
+  # black; falls back to nearest. (2) A SPRITE RESEARCH pass (0.25.1) found four model bugs, three
+  # proven on the console: SpriteMobility and SpriteGrass INVERTED, setTo() writing WALK for a STAY
+  # sprite, and face/range being ONE byte scattered into two fields. Every fix negative-controlled.
+  # It also overruled a confident source-reading: LoadMapHeader zeroes and reloads the sprite tables,
+  # so sprite edits "must" be erased on boot — the cartridge, booted headless with three edited saves,
+  # says the edits SURVIVE (the continue path sets BIT_CUR_MAP_LOADED_1, so the header is never
+  # re-read). (3) The towns FILL: all 72 overworld sprites imported (the repo had carried only red.png),
+  # the importer refusing its own first version because a third art shape exists — the 20 "still" people
+  # with no walking art (0.26.0). Then the cast becomes editable with the mouse (0.27.0–0.31.0): drag in,
+  # drag out to delete, and a details panel where every field declares a KIND and the kind picks the
+  # control — the raw byte box appears ONLY when the combo cannot name the value. Two "warnings" deleted
+  # as noise (a scratch byte the game zeroes; a ROM-vs-save cast diff that fires on every real save
+  # because WALK sprites walk): a warning that always fires is a bug. (4) INDOORS THERE IS NO SPRITE SET
+  # (0.32.0) — the game loads each character's own art, the cast IS the set, bounded only by VRAM (10
+  # walking + 2 still slots); outdoors the NPC→VRAM lookup has NO BOUNDS CHECK and runs off the table into
+  # WRAM, so "drawn as garbage" is literal. The editor had been asking the save's cached list (bytes the
+  # game throws away). (5) The dev HARNESS could not send a real click — its `click` emitted a clicked()
+  # SIGNAL, exercising none of the pointer-delivery machinery the bug was about; `tap` (a real QMouseEvent)
+  # reproduced it first try: floating docks sit over the canvas and both TapHandlers fired (0.33.0). The
+  # dead-and-squashed drop-downs were ONE binding loop. (6) The MUSIC now ships as the game's own SHEET
+  # MUSIC (0.34.0): the importer always read .asm, but what SHIPPED was an invented bank image whose .asm
+  # was not in the repo at all — 376 .asm vendored verbatim, parsed on first use (85 ms), the .bin demoted
+  # to a test fixture (cartridge → importer → fixture → parser). Plus a claim CORRECTED: glitch tracks do
+  # not need bytes — a header is 3 bytes PER CHANNEL and ids multiply by 3, so a misaligned id always lands
+  # on a whole, well-formed entry (which is why it plays a clean bassline, not noise). Also: CI had been RED
+  # on every push for a week (Qt Multimedia never installed after the music landed); with the gate open,
+  # clang-tidy produced 9 findings it had been unable to see. Reconciled: projects.yml (PSE2 → 0.34.0 / Jul 13;
+  # blurb notes the map's editable cast). Folded into the new 2026-07-13 day post. Marker → dc1f21b; seen → 2026-07-14.
   # 2026-07-13 round-up: clean fast-forward 93756b7 → 0686b58, 23 commits ALL dated 2026-07-11/12,
   # VERSION 0.16.6-alpha → 0.24.4-alpha — the project's single biggest day so far, and one long theme:
   # THE ORACLE. (1) The MAP is now genuinely emulated (0.17.0) — the game's own overworld pipeline
@@ -119,7 +156,7 @@ pokered-save-editor-2:
 random-ai-prompt:
   commit: 2f1459ff0d2eba7deba7e5396cefbec363d3ab4b
   branch: dev
-  seen: 2026-07-13
+  seen: 2026-07-14
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -132,6 +169,9 @@ random-ai-prompt:
     - 2026-07-01-propose-git-workflow-backmerge.md # digested 0.12.0 — git-workflow dev-contains-main invariant + branch-sync.yml
     - 2026-07-01-upgrade-policy-proposal.md      # digested 0.12.0 — new dependencies.md standard
     - 2026-07-02-propose-scorecard-hardening.md  # digested 0.12.0 — new supply-chain-hardening.md (mandatory branch protection, reconciled release flow)
+  # 2026-07-14 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-13.
+  # Nothing to reconcile or blog; RAP is absent from the 2026-07-13 day post's tags. Marker unchanged;
+  # seen → 2026-07-14.
   # 2026-07-13 round-up: clean fast-forward 20e36af → 2f1459f (36 commits), VERSION 2.58.0 → 2.60.1 — all
   # commits dated 2026-07-12 by author date, so the marker now goes to HEAD (the previous pass had parked it
   # at 20e36af because the tip was dated a day still in progress; that day is now complete). NOTE: RAP's own
@@ -341,13 +381,27 @@ random-ai-prompt:
   # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
 fairyfox-games:
-  commit: e3f9a7fc5e6e36897f6672fe166deeb17712e77e
+  commit: dda05a9f34e08b486dd67aedc097fa779951ec09
   branch: dev
-  seen: 2026-07-13
+  seen: 2026-07-14
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
     - 2026-06-30-docs-site-feedback.md    # digested 0.10.0 — one-seamless-site model (no back-button, shared chrome + submenu, Games nav slot); tags kept games-local
+  # 2026-07-14 round-up: clean fast-forward e3f9a7f → dda05a9, VERSION 0.22.0 → 0.22.1 (commits dated
+  # 2026-07-13). A pure GROW day: **Loft** onto varied structure — and the write-up is honest about why
+  # it needed a different answer. Every other game reached the pattern by varying its SPAWN generator;
+  # Loft can't (its orbs are permanent, nothing spawns but an 8-point top-up capped at six), so varying
+  # the spawn would have been a no-op no player could feel. The varied unit is therefore **the AIR**: a
+  # run is a seeded sequence of named currents (Still / Drift / Thermal — the greed window / Gust /
+  # Downdraft / The Vortex), each a queue of {ticks, grav, drift} beats, minStage-gated. The real growth
+  # is the plateau fix: gravity rides a smooth asymptote on the score (×1 → ×1.30, never arriving), with
+  # a guardrail — a current is only a MULTIPLIER on the earned ramp, band-clamped and hard-capped, so no
+  # weather can spike past the difficulty the score earned (a test asserts even a rogue out-of-band current
+  # can't break the cap). Legibility: notable currents flash #formCue; the shell draws dust motes carried by
+  # the live current, so a Thermal is visible before it's named. Loft 31 → 43 tests; collection 493/493.
+  # Reconciled: projects.yml (games → 0.22.1 / Jul 13). Folded into the new 2026-07-13 day post.
+  # Marker → dda05a9; seen → 2026-07-14.
   # 2026-07-13 round-up: clean fast-forward d5611b8 → e3f9a7f, VERSION 0.21.0 → 0.22.0 (all commits dated
   # 2026-07-12). A GROW then a PLANT. Skyline got **the wind** (0.21.1) — its slabs now arrive as named,
   # stage-gated patterns instead of textureless drift, bringing the 9th of the collection onto varied
@@ -470,10 +524,19 @@ fairyfox-games:
   # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: 17fc7f300118c6478545ccc7d92ce224b09c7dde
+  commit: a5ddca6c32a3222f288fba06b6a5946696b141e0
   branch: dev
-  seen: 2026-07-13
+  seen: 2026-07-14
   reports_through: []          # digested-report filenames (append-only); see header
+  # 2026-07-14 round-up: clean fast-forward 17fc7f3 → a5ddca6, VERSION 0.3.4 → 0.3.5 (commits dated
+  # 2026-07-13). A pure GROW day — The Wintering House ch.4, The Cartographer of Decks ch.4, The Girl Who
+  # Sold the Wind ch.3. No plant (that is the sibling plant job's call) and no sequel roll (nothing on the
+  # shelf is complete yet). The notable part is the AUDIT TRAIL: picks blend ½ least-complete + ½
+  # least-recently-grown, with a ~18% random override per slot — and today it fired on TWO of three slots
+  # (~1-in-30), recorded exactly as it fell, rolls included, with the consequence flagged (Every Lock but
+  # Hers, the least-complete book, has now been passed over twice and is the runaway next pick). Nothing
+  # re-rolled, nothing fudged. Reconciled: projects.yml (stories → 0.3.5 / Jul 13). Folded into the new
+  # 2026-07-13 day post. Marker → a5ddca6; seen → 2026-07-14.
   # 2026-07-13 round-up: clean fast-forward 112f9a7 → 17fc7f3, VERSION 0.3.3 → 0.3.4 (all commits dated
   # 2026-07-12). A pure GROW day — The Wintering House, The Cartographer of Decks and The Cinderwick Job
   # each gain a third chapter. No plant: the farm's own 3-day cadence gate said the next one was not due
