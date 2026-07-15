@@ -13,13 +13,36 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: dc1f21bdb130713f73e0a70f2cfca77854fa546d
+  commit: ff38b46090819832178a7598ab10cc7d87b24281
   branch: dev
-  seen: 2026-07-14
+  seen: 2026-07-15
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
     - 2026-06-26-check-for-updates.md            # digested 2026-06-28 report-review (0.9.8) — no-change confirming pass, nothing to fold
+  # 2026-07-15 round-up: clean fast-forward dc1f21b → ff38b460, 12 commits ALL dated 2026-07-14,
+  # VERSION 0.34.0-alpha → 0.39.0-alpha. The map screen gained its object types — doors, signs, the player —
+  # each preceded by console-verified research, plus a firm scope-control lesson. (1) WARPS (Phase 5, 0.36.0):
+  # warps placeable/draggable/re-aimable on the sprite machinery; research against the cartridge OVERRULED one
+  # field (wStatusFlags3's alias wCableClubDestinationMap is zeroed whole every Continue) and confirmed ten;
+  # two v1 fields (From Warp/From Map) proven DEAD (written, never read anywhere in the disassembly); wLastMap
+  # surfaced in the toolbar as [ Outside is: … ] (relabels every $FF door at once); two loaded guns (Fly/dungeon
+  # dest — unbounded table lookups) offered only legal values, the old randomiser's illegal fills fixed pre-UI;
+  # a cry-wolf ! caught in screenshot review (fires only when legal-false AND armed). (2) "ADJACENCY IS NOT A
+  # BRIEF": signs had walked into the warps phase (same ROM block + shape) — CUT back out, and a new CLAUDE.md
+  # rule written (a feature gets its own conversation → research → design → code; a phase can't absorb a
+  # neighbour; a briefed feature that needs an unbriefed one READS it, doesn't build a UI for it) + "research
+  # lands in the notes, every time". (3) SIGNS (Phase 6, 0.38.0), built on their own: save model already
+  # correct (rare — no bug first); a self-validating importer extracts the real text from pret/pokered
+  # ADDITIVELY (strip it → byte-identical), so a sign resolves to its real words on screen. (4) The PLAYER
+  # details panel (Phase 5f, 0.39.0): all 26 map-state bytes, ten rewritten on load (facing forced DOWN, a
+  # status byte zeroed, Strength reset unless battle-over, door/ledge/jump bits cleared), three dead —
+  # gathered behind a Reloaded-values switch, filtered in the model; five misnamed fields corrected; a
+  # movement byte shown cleared bit-by-bit not whole (the sprite-pass mistake avoided). Plus the tile-anim +
+  # walk controls merged into one Simulation button/panel (0.37.2). ctest green throughout (tst_warps 24,
+  # tst_signs 15, tst_player 7). Reconciled: projects.yml (PSE2 → 0.39.0 / Jul 14; blurb now notes doors +
+  # signs + player state on the map view). Folded into the new 2026-07-14 day post. Marker → ff38b460;
+  # seen → 2026-07-15.
   # 2026-07-14 round-up: clean fast-forward 0686b58 → dc1f21b, 20 commits ALL dated 2026-07-13,
   # VERSION 0.24.4-alpha → 0.34.0-alpha. One theme, and it is narrower than yesterday's oracle:
   # LOOK AT WHAT YOU ACTUALLY SHIPPED — five review passes in a day, each of which found that the
@@ -156,7 +179,7 @@ pokered-save-editor-2:
 random-ai-prompt:
   commit: 2f1459ff0d2eba7deba7e5396cefbec363d3ab4b
   branch: dev
-  seen: 2026-07-14
+  seen: 2026-07-15
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -169,6 +192,9 @@ random-ai-prompt:
     - 2026-07-01-propose-git-workflow-backmerge.md # digested 0.12.0 — git-workflow dev-contains-main invariant + branch-sync.yml
     - 2026-07-01-upgrade-policy-proposal.md      # digested 0.12.0 — new dependencies.md standard
     - 2026-07-02-propose-scorecard-hardening.md  # digested 0.12.0 — new supply-chain-hardening.md (mandatory branch protection, reconciled release flow)
+  # 2026-07-15 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-14.
+  # Nothing to reconcile or blog; RAP is absent from the 2026-07-14 day post's tags. Marker unchanged;
+  # seen → 2026-07-15.
   # 2026-07-14 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-13.
   # Nothing to reconcile or blog; RAP is absent from the 2026-07-13 day post's tags. Marker unchanged;
   # seen → 2026-07-14.
@@ -381,13 +407,23 @@ random-ai-prompt:
   # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
 fairyfox-games:
-  commit: dda05a9f34e08b486dd67aedc097fa779951ec09
+  commit: 3c4855adb00e2e1fb0a9da87c9bc0899b39871a5
   branch: dev
-  seen: 2026-07-14
+  seen: 2026-07-15
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
     - 2026-06-30-docs-site-feedback.md    # digested 0.10.0 — one-seamless-site model (no back-button, shared chrome + submenu, Games nav slot); tags kept games-local
+  # 2026-07-15 round-up: clean fast-forward dda05a9 → 3c4855a, VERSION 0.22.1 → 0.22.2 (commits dated
+  # 2026-07-14). A GROW day that COMPLETES the varied-structure rollout — **Poise** was the last flat game,
+  # now on the pattern, so 13 of 13 are done. Poise couldn't vary its spawn (only one target is ever alive),
+  # so the varied unit is the PATH the targets walk you along the beam: a seeded sequence of named routes
+  # (Scatter/Pendulum on-ramps · Cradle the greed window, shortest hop always inward · Feint reversals ·
+  # Creep out to the lip · The Brink's fatal hover · The Reel's full-beam swings), minStage-gated so climbing
+  # opens the pool (calm share >75% → <40%, pinned). A new pure placeSpec resolves absolute {f} and relative
+  # {mode:'near'} specs (Poise's own flavour, not a copy of Polarity's). Poise 31 → 43 tests; collection
+  # 493/493. Reconciled: projects.yml (games → 0.22.2 / Jul 14). Folded into the new 2026-07-14 day post.
+  # Marker → 3c4855a; seen → 2026-07-15.
   # 2026-07-14 round-up: clean fast-forward e3f9a7f → dda05a9, VERSION 0.22.0 → 0.22.1 (commits dated
   # 2026-07-13). A pure GROW day: **Loft** onto varied structure — and the write-up is honest about why
   # it needed a different answer. Every other game reached the pattern by varying its SPAWN generator;
@@ -524,10 +560,18 @@ fairyfox-games:
   # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: a5ddca6c32a3222f288fba06b6a5946696b141e0
+  commit: 2e953aed140112a74dc6e736c751a94e96c02c97
   branch: dev
-  seen: 2026-07-14
+  seen: 2026-07-15
   reports_through: []          # digested-report filenames (append-only); see header
+  # 2026-07-15 round-up: clean fast-forward a5ddca6 → 2e953ae, VERSION 0.3.5 → 0.3.6 (commits dated
+  # 2026-07-14). A pure GROW day with a MILESTONE: **The Two-O'Clock Launderette is complete** — the first
+  # book on the farm to reach the end of its plan (3/3; the "complete" shelf state — "Complete · 3 ch", full
+  # bar — renders for the first time, no template/CSS change needed). Also Cinderwick ch.4 and Every Lock but
+  # Hers ch.3; two new characters (kit-sorrel, sully-ilesanmi) tagged onto their books. The random override
+  # did NOT fire on any of three slots (rolls 48/27/70; ≤18 fires), so the blend ran clean and picked exactly
+  # the two books status.md had flagged as owed. Reconciled: projects.yml (stories → 0.3.6 / Jul 14). Folded
+  # into the new 2026-07-14 day post. Marker → 2e953ae; seen → 2026-07-15.
   # 2026-07-14 round-up: clean fast-forward 17fc7f3 → a5ddca6, VERSION 0.3.4 → 0.3.5 (commits dated
   # 2026-07-13). A pure GROW day — The Wintering House ch.4, The Cartographer of Decks ch.4, The Girl Who
   # Sold the Wind ch.3. No plant (that is the sibling plant job's call) and no sequel roll (nothing on the
