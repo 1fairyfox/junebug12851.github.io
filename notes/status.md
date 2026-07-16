@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.15.12` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.15.13` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -143,9 +143,11 @@ The rest of the structure is in place end to end:
   and reshipped the soundtrack as the game's own `.asm` sheet music; adopted
   git-flow + process-reports + compliance + express-authorizations on 2026-06-26). The two
   integrated nodes are Fairy Fox Games
-  (`0.22.1` — thirteen games, the newest being **Brim**, a pour/fill game built on a delay line; the
-  current growth lever is **depth inside the mechanic**, Polarity the reference build) and Fairy Fox
-  Stories (`0.3.5` — six books; the daily grow/plant automation now actually runs, and holds its plant
+  (`0.23.0` — fourteen games, the newest being **Reprise**, a call-and-response memory game and the
+  collection's first non-reflex verb; with the varied-structure rollout complete at 13/13, the current
+  growth lever is **depth inside the mechanic**, Polarity the reference build) and Fairy Fox
+  Stories (`0.4.0` — seven books, the newest being **The Blindfold Act**, the shelf's first mystery and
+  first non-magical realm; the daily grow/plant automation now actually runs, and holds its plant
   when the cadence gate says it isn't due).
 - **Notes:** this living-notes system, mirroring the convention used across my
   projects.

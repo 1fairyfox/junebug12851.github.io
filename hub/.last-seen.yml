@@ -13,13 +13,39 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: ff38b46090819832178a7598ab10cc7d87b24281
+  commit: 9d0fdbd4d68da45299026744f086377210120114
   branch: dev
-  seen: 2026-07-15
+  seen: 2026-07-16
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
     - 2026-06-26-check-for-updates.md            # digested 2026-06-28 report-review (0.9.8) — no-change confirming pass, nothing to fold
+  # 2026-07-16 round-up: clean fast-forward ff38b460 → 9d0fdbd4, VERSION 0.39.0-alpha → 0.40.4-alpha, ~39
+  # commits ALL dated 2026-07-15. (Marker parked at the last 07-15 commit 9d0fdbd4, NOT at HEAD 69e1ef16 —
+  # that tip is a 07-16 test-wrapper commit, no VERSION bump, a day still in progress, left for the next
+  # pass.) The day the Map screen got its last big object type AND opened the project's largest feature.
+  # (1) CONNECTIONS (Phase 7, 0.39.1→0.39.8) — the four edge joins, the last object type the map couldn't
+  # yet edit. Two human inputs (neighbour map + one signed offset); the other nine bytes macro-derived, so
+  # editing derives them too. The neighbour renders FULL, bleeding off the edge, dragged to set the offset
+  # (snaps to landmarks); add by ghost-arrow-pick or drag-a-map-on; rotation not representable → offer
+  # re-home instead. The render is reframed as a CONTINUE-LOAD (ring drawn from the SAVE's own connection
+  # bytes, edits included — the BIT_NO_PREVIOUS_MAP linchpin again); neighbour sprites shown static.
+  # tst_connections 17. (2) WILD ENCOUNTERS panel (0.40.1) — research-first caught a real model bug: the
+  # slot bytes are stored LEVEL-then-SPECIES, the model read species-first, inverting every save's table;
+  # fixed as a model change + pinned before any UI. Plus a 0-based artwork +1 fix (box precedent). (3) Three
+  # more state panels, each research→probe→model-fix→UI: AREA STATE (v1's "Map" page fields — nothing lost,
+  # a UI just never built; curMapScript + its auto-run bit are one feature in two bytes), CHARACTER STATE
+  # (nine transient NPC flags, three v1 labels corrected, no hidden fields), MAP STORAGE (six gym/safari
+  # bytes incl. a big-endian step word). Doctrine sharpened out loud: derived values KEPT IN SYNC BY DEFAULT
+  # + raw-edit + deliberate break-sync; every panel marks which bytes the console keeps vs wipes on load.
+  # (4) EVENTS — the largest feature yet BEGINS: name/classify all 2,560 wEventFlags. Count pinned to source
+  # ($A00 = 2,560 bits = 320 bytes); 507 named, 30 block-swept, ~2,023 placeholders (alignment padding). An
+  # earlier "flags can't crash" claim CORRECTED (bad script-pointer → jp hl → crash), so the plan warns
+  # before any bulk-set. Groundwork only — no editor UI yet, on purpose. Plus a dev-harness upgrade (reach
+  # anything by name/path, trigger anything, component-cropped shots) and a CI fix (qtshadertools genuinely
+  # needed for the pixel-art shader; the reflex to drop it as unused was wrong, caught by local build).
+  # ctest green throughout. Reconciled: projects.yml (PSE2 → 0.40.4 / Jul 15; blurb gains edge connections +
+  # wild encounters). Folded into the new 2026-07-15 day post. Marker → 9d0fdbd4; seen → 2026-07-16.
   # 2026-07-15 round-up: clean fast-forward dc1f21b → ff38b460, 12 commits ALL dated 2026-07-14,
   # VERSION 0.34.0-alpha → 0.39.0-alpha. The map screen gained its object types — doors, signs, the player —
   # each preceded by console-verified research, plus a firm scope-control lesson. (1) WARPS (Phase 5, 0.36.0):
@@ -179,7 +205,7 @@ pokered-save-editor-2:
 random-ai-prompt:
   commit: 2f1459ff0d2eba7deba7e5396cefbec363d3ab4b
   branch: dev
-  seen: 2026-07-15
+  seen: 2026-07-16
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -192,6 +218,9 @@ random-ai-prompt:
     - 2026-07-01-propose-git-workflow-backmerge.md # digested 0.12.0 — git-workflow dev-contains-main invariant + branch-sync.yml
     - 2026-07-01-upgrade-policy-proposal.md      # digested 0.12.0 — new dependencies.md standard
     - 2026-07-02-propose-scorecard-hardening.md  # digested 0.12.0 — new supply-chain-hardening.md (mandatory branch protection, reconciled release flow)
+  # 2026-07-16 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-15.
+  # Nothing to reconcile or blog; RAP is absent from the 2026-07-15 day post's tags. Marker unchanged;
+  # seen → 2026-07-16.
   # 2026-07-15 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-14.
   # Nothing to reconcile or blog; RAP is absent from the 2026-07-14 day post's tags. Marker unchanged;
   # seen → 2026-07-15.
@@ -407,13 +436,27 @@ random-ai-prompt:
   # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
 fairyfox-games:
-  commit: 3c4855adb00e2e1fb0a9da87c9bc0899b39871a5
+  commit: ebc896c6f5feb9c225dbe96699865880be16e4e7
   branch: dev
-  seen: 2026-07-15
+  seen: 2026-07-16
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
     - 2026-06-30-docs-site-feedback.md    # digested 0.10.0 — one-seamless-site model (no back-button, shared chrome + submenu, Games nav slot); tags kept games-local
+  # 2026-07-16 round-up: clean fast-forward 3c4855a → ebc896c, VERSION 0.22.2 → 0.23.0 (commits dated
+  # 2026-07-15). With the varied-structure rollout complete (13/13), the day went in two directions.
+  # (1) GROW (0.22.3): Echo Chamber gets DEPTH INSIDE THE MECHANIC — the second lever now that breadth is
+  # done (Polarity = reference). A hidden razor dead-centre window (taught nowhere) pays a bonus + builds a
+  # streak; 3 in a row open a ~5s double-score wave; the difficulty is a score-asymptote not a plateau; a
+  # secret 5th stage past Overtone revealed only on reaching it. All on the one press-to-catch verb, all
+  # safe to not know — precise play becomes greedy play. 3 of 13 games now carry the depth layer (Polarity,
+  # Brim, Echo Chamber). (2) PLANT (0.23.0, MINOR): the 14th game **Reprise** on a genuinely new verb —
+  # call-and-response / RECALL (memory), the first non-real-time-reflex game in the collection. Four pads
+  # flash a call, you echo it; land it → +1 length + faster, miss → −1 life + the call replays. Depth = TEMPO
+  # (on-beat echo = rising multiplier, off-beat-correct still scores, breaks streak); stage-gated phrases
+  # with a mirror greed window; endless ramp carried by tempo not length. Pure reprise.core.js (39 tests) +
+  # shell; collection 552/552. Reconciled: projects.yml (games → 0.23.0 / Jul 15). Folded into the new
+  # 2026-07-15 day post. Marker → ebc896c; seen → 2026-07-16.
   # 2026-07-15 round-up: clean fast-forward dda05a9 → 3c4855a, VERSION 0.22.1 → 0.22.2 (commits dated
   # 2026-07-14). A GROW day that COMPLETES the varied-structure rollout — **Poise** was the last flat game,
   # now on the pattern, so 13 of 13 are done. Poise couldn't vary its spawn (only one target is ever alive),
@@ -560,10 +603,23 @@ fairyfox-games:
   # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: 2e953aed140112a74dc6e736c751a94e96c02c97
+  commit: 86c5ffc1bae91905617f3871016936f7b4977bca
   branch: dev
-  seen: 2026-07-15
+  seen: 2026-07-16
   reports_through: []          # digested-report filenames (append-only); see header
+  # 2026-07-16 round-up: clean fast-forward 2e953ae → 86c5ffc, VERSION 0.3.6 → 0.4.0 (commits dated
+  # 2026-07-15). A GROW then a PLANT. Grow (0.3.7): whole chapters for The Wintering House (ch.5), The Girl
+  # Who Sold the Wind (ch.4), and The Cartographer of Decks (ch.5); the random-override held off on all three
+  # slots again (2nd clean draw running), and a first-eyeballed pick was HONESTLY WALKED BACK when the ½/½
+  # blend ranked Cartographer 3rd over Every Lock but Hers — the discarded draft never shipped (no thumb on
+  # the scale). Then PLANT (0.4.0, MINOR): the 7th book **The Blindfold Act** — a 1926 carnival murder
+  # mystery, the shelf's FIRST mystery and FIRST grounded non-magical realm (new universe the-sawdust-circuit
+  # + new author roan-cassady). Madame Sonora, a cold-reading fraud, reads her found-family to keep the law
+  # off them and refuses the comfortable-monstrous choice at full cost. Restraint held (death accidental,
+  # off-page, un-lurid; the minor apprentice handled non-graphically). Also the FIRST sequel-lock exercise
+  # (roll came up locked): sequelLock:true rides the manifest, inert while growing, "complete · no sequel"
+  # shelf state already renders. npm test 5/5; text-only, cover art budget-deferred. Reconciled: projects.yml
+  # (stories → 0.4.0 / Jul 15). Folded into the new 2026-07-15 day post. Marker → 86c5ffc; seen → 2026-07-16.
   # 2026-07-15 round-up: clean fast-forward a5ddca6 → 2e953ae, VERSION 0.3.5 → 0.3.6 (commits dated
   # 2026-07-14). A pure GROW day with a MILESTONE: **The Two-O'Clock Launderette is complete** — the first
   # book on the farm to reach the end of its plan (3/3; the "complete" shelf state — "Complete · 3 ch", full
