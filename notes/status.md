@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.15.13` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.15.14` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -131,7 +131,7 @@ The rest of the structure is in place end to end:
   Android runtime rather than asserting it — 253 ms to render, memory flat as the list grows 50× —
   and closed a **critical command injection** in the local backend, found by CodeQL: a filename could
   close the quote in a shell string, so the shell is gone entirely) and Pokered Save Editor 2
-  (`0.34.0-alpha`, themed Doxygen docs; a Market **Exchange** and the name entry rebuilt into a real
+  (`0.41.8-alpha`, themed Doxygen docs; a Market **Exchange** and the name entry rebuilt into a real
   **ASDF keyboard deck**, then its biggest day yet — the map screen is now **genuinely emulated** (the
   game's own overworld pipeline, with a legally backed-up cartridge in a headless emulator grading every
   buffer byte for byte), the six **glitch palettes** render as the real article, a **Game Boy sound chip
@@ -140,15 +140,21 @@ The rest of the structure is in place end to end:
   lists walked one step out of phase — a Poké Mart got a bedroom's walls) was found and pinned; then a
   day of **review** (2026-07-13) that filled the towns with people — all 72 overworld sprites, a cast you
   drag in and edit — fixed four inverted sprite enums, established that **indoors there is no sprite set**,
-  and reshipped the soundtrack as the game's own `.asm` sheet music; adopted
-  git-flow + process-reports + compliance + express-authorizations on 2026-06-26). The two
-  integrated nodes are Fairy Fox Games
-  (`0.23.0` — fourteen games, the newest being **Reprise**, a call-and-response memory game and the
-  collection's first non-reflex verb; with the varied-structure rollout complete at 13/13, the current
-  growth lever is **depth inside the mechanic**, Polarity the reference build) and Fairy Fox
-  Stories (`0.4.0` — seven books, the newest being **The Blindfold Act**, the shelf's first mystery and
-  first non-magical realm; the daily grow/plant automation now actually runs, and holds its plant
-  when the cadence gate says it isn't due).
+  and reshipped the soundtrack as the game's own `.asm` sheet music; then the map's remaining object types
+  (edge connections, wild encounters, per-map script progress) and, on 2026-07-16, the **Event Flags UI**
+  over all 2,560 world-event flags — a day that also **refuted its own founding crash case** on the
+  cartridge (Route 22's two rivals are masked by an ordered if/else, not conflicting), failed to reproduce
+  the "all flags on crashes" claim, found **33 maps with no editor page at all**, built a **dev autopilot**
+  that plays the real game, and caught a **release build that had been red since `0.29.0`** on a Qt 6.9-only
+  call the local kit always compiles; adopted git-flow + process-reports + compliance +
+  express-authorizations on 2026-06-26). The two integrated nodes are Fairy Fox Games
+  (`0.23.1` — fourteen games; with the varied-structure rollout complete at 13/13, the current growth lever
+  is **depth inside the mechanic** (Polarity the reference build), now on 4 of 13 after **Ink Bloom** gained
+  a hidden graze band, a doubling window and a secret stage) and Fairy Fox
+  Stories (`0.4.1` — seven books, the newest being **The Blindfold Act**, the shelf's first mystery and
+  first non-magical realm; the daily grow/plant automation now actually runs, holds its plant
+  when the cadence gate says it isn't due, and lets its random override overrule the blend ranking and
+  stand).
 - **Notes:** this living-notes system, mirroring the convention used across my
   projects.
 - **Sync:** the pull-only cross-project model is documented

@@ -13,13 +13,47 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: 9d0fdbd4d68da45299026744f086377210120114
+  commit: cb8b1d7947f1f31617e772eb349af19699ec9d68
   branch: dev
-  seen: 2026-07-16
+  seen: 2026-07-17
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
     - 2026-06-26-check-for-updates.md            # digested 2026-06-28 report-review (0.9.8) — no-change confirming pass, nothing to fold
+  # 2026-07-17 round-up: clean fast-forward 9d0fdbd4 → cb8b1d79, VERSION 0.40.4-alpha → 0.41.8-alpha, 29
+  # commits ALL dated 2026-07-16 (a complete day — today is 07-17, tip cb8b1d79 is a 07-16 commit). The day
+  # the project put its own confident claims in front of the cartridge and lost four of them. (1) ROUTE 22
+  # REFUTED — the founding case of the Phase 11 conflicting-flags system (two SPRITE_BLUE objects on one
+  # tile, both battle flags on "must" collide), recorded suspected-strong on 07-15, is WRONG:
+  # Route22DefaultScript is an ordered if/else (1ST set → first battle, 2ND never read) = MASKED, not
+  # conflicting; console-armed (WANTS+1ST, script=DEFAULT, rival shown, upper 29,4 trigger — geometry
+  # matters) → clean trainer battle. Three rules banked: suspected is a LEAD not a risk (only confirmed
+  # warns); refuted is KEPT (negative knowledge, generator defers via REFUTED_SUBJECTS); adjudicate on the
+  # console. A real candidate fell out: route22-rival-armed-but-hidden (suspected/softlock). (2) "ALL FLAGS
+  # ON CRASHES" UNREPRODUCED — all 2,560 set → healthy boot, Oak's Lab clean, ~12 map transitions healthy;
+  # a slice not a proof, but the notes/plan corrected: mechanism real (bad script ptr → jp hl), all-on crash
+  # UNVERIFIED; bulk-set warning kept but reworded to "unpredictable and unverified", never "this crashes".
+  # (3) EVENT FLAGS UI shipped (0.41.7) — and reading the map dropdown found storagePages() never considered
+  # events: 33 maps (Celadon, Lavender, Route 1, Fuchsia, Indigo Plateau, Mt Moon B1F, 5 S.S. Anne decks,
+  # both elevators, ~20 more) had NO page → their flags unreachable. 108 → 141 pages. Descriptions took 3
+  # passes (v1 leaked the research log, v2 vague) → v3 names the places; rule: a description must ADD what
+  # the row doesn't say, telemetry is not context. Model verified byte-perfect (508/508 byte==0x29F3+ind/8)
+  # but 14 bits MISLABELLED in the Pokémon Tower block (~2-bit shift; "Beat Pokemontower 7 Trainer 0" is
+  # really EVENT_BEAT_GHOST_MAROWAK) → events.json regenerated from pret, 508 → 2,560. (4) DEV AUTOPILOT
+  # (0.41.3–0.41.5) — pathfind + auto-navigate the real game over the new pokered-dev MCP; three same-day
+  # briefs (navigation → progression: guards/elevators/surf/cut/spinners/bike/win-on-request → game-life:
+  # train/menus/new game), natural drop-in the default, 16/16 console-verified. Traps: held direction = a
+  # DOUBLE step; wCurMap updates FIRST in a transition; a warp square can be solid and still warp;
+  # wXCoord/wYCoord update at step START (wWalkCounter==0 is the real signal). (5) CI RED SINCE 0.29.0
+  # (0.41.8) — QImage::flipped is Qt 6.9+; kit is 6.11, CI pins 6.8.3, so it compiled locally every time and
+  # never remotely. release.yml builds the same appcore on 6.8.3 and hadn't run since v0.16.6 — the pending
+  # Events ship would have merged to main and failed to build the downloads. Guarded; the #else branch
+  # force-compiled + tst_map run on it (27 passed) BEFORE the push. Finding: no local way to catch this class
+  # — the remote is the project's only 6.8 compiler. Flagged for leadership: align dev/ship Qt, or keep
+  # guarding. Also: map scripts (97) + missables (228) on the Map Storage panel, forged saves at ANY map
+  # (the console authors them), the PyBoy wedge root-caused (chimera forge → STOP → tick() never returns;
+  # kill the TREE). Reconciled: projects.yml (PSE2 → 0.41.8 / Jul 16; blurb gains per-map script progress +
+  # the 2,560 event flags). Folded into the new 2026-07-16 day post. Marker → cb8b1d79; seen → 2026-07-17.
   # 2026-07-16 round-up: clean fast-forward ff38b460 → 9d0fdbd4, VERSION 0.39.0-alpha → 0.40.4-alpha, ~39
   # commits ALL dated 2026-07-15. (Marker parked at the last 07-15 commit 9d0fdbd4, NOT at HEAD 69e1ef16 —
   # that tip is a 07-16 test-wrapper commit, no VERSION bump, a day still in progress, left for the next
@@ -205,7 +239,7 @@ pokered-save-editor-2:
 random-ai-prompt:
   commit: 2f1459ff0d2eba7deba7e5396cefbec363d3ab4b
   branch: dev
-  seen: 2026-07-16
+  seen: 2026-07-17
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -218,6 +252,11 @@ random-ai-prompt:
     - 2026-07-01-propose-git-workflow-backmerge.md # digested 0.12.0 — git-workflow dev-contains-main invariant + branch-sync.yml
     - 2026-07-01-upgrade-policy-proposal.md      # digested 0.12.0 — new dependencies.md standard
     - 2026-07-02-propose-scorecard-hardening.md  # digested 0.12.0 — new supply-chain-hardening.md (mandatory branch protection, reconciled release flow)
+  # 2026-07-17 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-16; the
+  # tip is still the 07-12 session-log commit. Five quiet days now. Nothing to reconcile (projects.yml left
+  # at 2.60.1 / Jul 12) or blog; RAP is absent from the 2026-07-16 day post's tags. It is also the mesh's
+  # only standards-bearing sibling, so an unchanged RAP means no hub standard could have moved this pass.
+  # Marker unchanged; seen → 2026-07-17.
   # 2026-07-16 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-15.
   # Nothing to reconcile or blog; RAP is absent from the 2026-07-15 day post's tags. Marker unchanged;
   # seen → 2026-07-16.
@@ -436,13 +475,34 @@ random-ai-prompt:
   # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
 fairyfox-games:
-  commit: ebc896c6f5feb9c225dbe96699865880be16e4e7
+  commit: 450db5d80dd599b782096e387c33afd7c227fae3
   branch: dev
-  seen: 2026-07-16
+  seen: 2026-07-17
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
     - 2026-06-30-docs-site-feedback.md    # digested 0.10.0 — one-seamless-site model (no back-button, shared chrome + submenu, Games nav slot); tags kept games-local
+  # 2026-07-17 round-up: clean fast-forward ebc896c → 450db5d, VERSION 0.23.0 → 0.23.1 (commits dated
+  # 2026-07-16). A pure GROW run, no plant: **Ink Bloom gets the depth layer** — the OLDEST game without it,
+  # and it carried the exact plateau the status sweep flags (speedOf = SPEED + score·0.012, hard-capped 4.4
+  # at score ~117 → the one felt axis flat forever, and nothing under its five minutes). Four items, all on
+  # the one steer verb, all safe to not know: (1) NO PLATEAU — speedOf is now a smooth score asymptote (Echo
+  # Chamber's exact shape), gentler early, still climbing at 400+, old flat-line pinned by a regression test.
+  # (2) THE GRAZE (hidden tech) — surviving inside a 9px band JUST OUTSIDE the kill radius of your own trail
+  # pays +1 and builds a streak; the game's whole hazard becomes its score source (the Pac-Man reversal); a
+  # 60-tick cooldown stops band-parking from machine-gunning; new pure minSelfDist2 uses the SAME collidable
+  # set as hitSelf so the neck/frame-one geometry can't phantom-graze (pinned). (3) IRIDESCENCE — 3 grazes
+  # chained within 300 ticks → ~5s where every point doubles (motes/prisms/grazes; trail growth deliberately
+  # NOT doubled — the window is pure profit); announced only when earned; hue-cycling frame + halo, COLOUR
+  # ONLY (reduced-motion friendly). (4) SECRET STAGE ECLIPSE at score 260 — unlisted (the printed stage list
+  # came OFF the start screen so the "end" stays uncertain), revealed by toast on reaching it. Meta:
+  # totals.grazes (legacy blobs upgrade losslessly), 8 → 11 badges. +10 pure-core tests (44 → 54);
+  # collection 562/562. Depth-layer rollout now 4 of 13 (Polarity, Brim, Echo Chamber, Ink Bloom); Tether +
+  # Reprise carry it from birth. Preview: Chrome MCP unavailable on the automated run → headless Chrome
+  # render of the live shell (forced Eclipse + live Iridescence) instead; a live play-feel eyeball still
+  # owed (GRAZE_BAND 9 / GRAZE_COOLDOWN 60 / IRI_TRIGGER 3). Dependabot #31 still deliberately deferred.
+  # Reconciled: projects.yml (games → 0.23.1 / Jul 16). Folded into the new 2026-07-16 day post.
+  # Marker → 450db5d; seen → 2026-07-17.
   # 2026-07-16 round-up: clean fast-forward 3c4855a → ebc896c, VERSION 0.22.2 → 0.23.0 (commits dated
   # 2026-07-15). With the varied-structure rollout complete (13/13), the day went in two directions.
   # (1) GROW (0.22.3): Echo Chamber gets DEPTH INSIDE THE MECHANIC — the second lever now that breadth is
@@ -603,10 +663,36 @@ fairyfox-games:
   # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: 86c5ffc1bae91905617f3871016936f7b4977bca
+  commit: 6e78be52f692d1c170a15fc79aee172885180f52
   branch: dev
-  seen: 2026-07-16
+  seen: 2026-07-17
   reports_through: []          # digested-report filenames (append-only); see header
+  # 2026-07-17 round-up: clean fast-forward 86c5ffc → 6e78be5, VERSION 0.4.0 → 0.4.1 (commits dated
+  # 2026-07-16). A pure GROW run, no plant (the sibling -new job owns that; next plant eligible on/after
+  # 07-18). Three chapters, one each: **Every Lock but Hers ch.4 "The Bolt"** (~1,600w) — the wound named in
+  # Nell's voice, not through the magic: Theo, the brother "born without a door", the rainy night she threw
+  # the bolt on him, and the sweet-cut lie *he left* that has come true in the one direction she can't stand
+  # (she genuinely can't find him). The hollow-hour test lands in a parked van and she does NOT say it; ch.9's
+  # payoff unspent. **The Cinderwick Job ch.5 "The Auction"** (~1,840w) — the heist under the auction's roar;
+  # the Nightingale sings UNBIDDEN in Crane's own voice, proving the score was bait and Juno the catch, and
+  # riffles one older voice from forty years down (*deliver her Tuesday* — the man who sold her; NOT resolved,
+  # ch.7 wins by trusting a person). **The Wintering House ch.6 "The Woman in the Ground"** (~1,915w) — Agnes
+  # walks out of the house's reach and weeps like a kept creature let into the cold; the grave reads *HONORIA
+  # RAVENSCAR … She is not here*, twelve years dead, moss kept off the letters by a faithful hand; the
+  # companions' fate stays deliberately unanswered. New canon: the mistress's name is Honoria (from the
+  # stone). THE MECHANICAL NOTE — the random override (threshold ≤18/100) FIRED for the first time in three
+  # runs: slot 1 rolled exactly 18 → pure-random draw from the incomplete shelf → The Wintering House (blend
+  # 0.523, ranked 3rd of the eligible). Honest consequence recorded, not papered over: by blend the slot would
+  # have gone to The Blindfold Act (0.667), so the LEAST-COMPLETE book was not grown at all this run and stays
+  # 1/6. The draw stands; nothing re-picked after the fact, and a pre-rolled spare tiebreak that turned out
+  # unneeded was logged anyway. Sequel roll not due (first weekly roll anchored 2026-07-21). npm test 5/5;
+  # jekyll build clean, the three chapter pages verified in the built HTML. No browser eyeball (prose +
+  # front-matter only, zero template/CSS change) — eyeball debt now ~18 grown chapter pages deep.
+  # CARRIED, needs Fairy Fox (no change): the grow-count reconciliation (operating-model says exactly 2/day,
+  # CLAUDE.md/serialization/the scheduled task say up to 5; six runs have grown 3) — 6th run flagged; the
+  # sequel-lock consuming half still owed before 07-21; five Dependabot Actions PRs held.
+  # Reconciled: projects.yml (stories → 0.4.1 / Jul 16). Folded into the new 2026-07-16 day post.
+  # Marker → 6e78be5; seen → 2026-07-17.
   # 2026-07-16 round-up: clean fast-forward 2e953ae → 86c5ffc, VERSION 0.3.6 → 0.4.0 (commits dated
   # 2026-07-15). A GROW then a PLANT. Grow (0.3.7): whole chapters for The Wintering House (ch.5), The Girl
   # Who Sold the Wind (ch.4), and The Cartographer of Decks (ch.5); the random-override held off on all three
