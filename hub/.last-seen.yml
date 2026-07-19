@@ -13,13 +13,24 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: 1679d2f058ce6bd2b973aaf4133909a41fc76f24
+  commit: 4d2ffc8c63c3d8e0e60d65ddccee448a67bd1950
   branch: dev
-  seen: 2026-07-18
+  seen: 2026-07-19
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
     - 2026-06-26-check-for-updates.md            # digested 2026-06-28 report-review (0.9.8) — no-change confirming pass, nothing to fold
+  # 2026-07-19 round-up: clean fast-forward 1679d2f0 → 4d2ffc8c, VERSION 0.42.13-alpha → 0.43.4-alpha, 5
+  # commits ALL dated 2026-07-18 (a complete day — today is 07-19). Map states went LIVE, then a consistency
+  # overhaul of the map screen. (1) 0.43.0 — the 07-17 progression blueprints become a live picker: roll a map
+  # fwd/back one story stage, build a proper destination on map change; "map script" renamed "map state" on the
+  # screen. (2) 0.43.1–0.43.4 the map screen learns ONE language: one canonical ink table (three disagreeing
+  # palettes collapsed, keyed to the Layers panel), a hidden sprite ALWAYS shown as a recognisable dimmer ghost
+  # (silhouette served by the image provider so even the offscreen renderer can see it — "a fix you can't
+  # capture is a fix you haven't verified"), ONE "useless edits" gate on the top toolbar (only values the game
+  # overwrites/never reads), event flags grouped by stage, "Map Storage" panel renamed "World", outline-only
+  # door/sign boxes. ctest 92/92 throughout. Reconciled: projects.yml (PSE2 → 0.43.4 / Jul 18). Folded into the
+  # new 2026-07-18 day post. Marker → 4d2ffc8c; seen → 2026-07-19.
   # 2026-07-18 round-up: clean fast-forward cb8b1d79 → 1679d2f0, VERSION 0.41.8-alpha → 0.42.13-alpha, 37
   # commits ALL dated 2026-07-17 (a complete day — today is 07-18). The project's single biggest day yet, and
   # a day about naming/measuring the right thing. (1) MAP STATES as DATA (0.42.13) — every map's default states
@@ -268,7 +279,7 @@ pokered-save-editor-2:
 random-ai-prompt:
   commit: 2f1459ff0d2eba7deba7e5396cefbec363d3ab4b
   branch: dev
-  seen: 2026-07-18
+  seen: 2026-07-19
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -281,6 +292,10 @@ random-ai-prompt:
     - 2026-07-01-propose-git-workflow-backmerge.md # digested 0.12.0 — git-workflow dev-contains-main invariant + branch-sync.yml
     - 2026-07-01-upgrade-policy-proposal.md      # digested 0.12.0 — new dependencies.md standard
     - 2026-07-02-propose-scorecard-hardening.md  # digested 0.12.0 — new supply-chain-hardening.md (mandatory branch protection, reconciled release flow)
+  # 2026-07-19 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-18; seven
+  # quiet days now. Nothing to reconcile (projects.yml left at 2.60.1 / Jul 12) or blog; RAP is absent from the
+  # new 2026-07-18 day post's tags. As the mesh's only standards-bearing sibling, an unchanged RAP means no hub
+  # standard moved this pass. Marker unchanged; seen → 2026-07-19.
   # 2026-07-18 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-17; the
   # tip is still the 07-12 session-log commit. Six quiet days now. Nothing to reconcile (projects.yml left at
   # 2.60.1 / Jul 12) or blog; RAP is absent from the 2026-07-17 day post's tags. It is also the mesh's only
@@ -509,13 +524,25 @@ random-ai-prompt:
   # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
 fairyfox-games:
-  commit: 728a76fc51f3bd1b888cfa17ddaab79c6b3753fc
+  commit: 5d89b0cc2d2557013af01741507335327b840a97
   branch: dev
-  seen: 2026-07-18
+  seen: 2026-07-19
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
     - 2026-06-30-docs-site-feedback.md    # digested 0.10.0 — one-seamless-site model (no back-button, shared chrome + submenu, Games nav slot); tags kept games-local
+  # 2026-07-19 round-up: clean fast-forward 728a76f → 5d89b0c, VERSION 0.23.2 → 0.24.2 (commits dated
+  # 2026-07-18). A PLANT + a GROW + housekeeping. (1) PLANT 0.24.0 (MINOR) — Ward, the 15th game and the
+  # collection's FIRST defence verb: orbit one shield around a core and parry converging shards (turn-rate cap
+  # makes opposite threats a real read); a precise parry pays a rising mult over a safe block; depth from birth
+  # (Surge on 5 parries, secret Aegis stage) + varied structure from birth; 49 pure-core tests, collection
+  # 630/630. (2) GROW 0.23.3 — Ricochet gets the depth layer (dead-centre tech, the Blaze doubling window,
+  # no-plateau shrink, secret Legend stage); depth rollout now 6 of 13. (3) Housekeeping 0.24.1 — owner rename
+  # → 1fairyfox on live refs, 3 missing game icons (Ward/Reprise/Brim) code-rendered + an onerror fallback so
+  # no icon-less game shows a broken image; a fairyfox check (hub 0.14.3 → 0.16.0). (4) 0.24.2 — adopted the hub
+  # shared-chrome header: the Farms nav dropdown (chrome bundle v2.0.0), a two-file change (most already
+  # vendored). Reconciled: projects.yml (games → 0.24.2 / Jul 18). Folded into the new 2026-07-18 day post.
+  # Marker → 5d89b0c; seen → 2026-07-19.
   # 2026-07-18 round-up: clean fast-forward 450db5d → 728a76f, VERSION 0.23.1 → 0.23.2 (commits dated
   # 2026-07-17). A pure GROW run, no plant: **Orbit Slingshot gets the depth layer** — the oldest game
   # without it (5th of 13), carrying the same plateau symptom the sweep flags (its pickup radius shrank
@@ -710,10 +737,22 @@ fairyfox-games:
   # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: c677b3f5acf3a0987eee18664cd3ef3724134492
+  commit: 82b5a5b8c566536a50013b62247749fd096acb3f
   branch: dev
-  seen: 2026-07-18
+  seen: 2026-07-19
   reports_through: []          # digested-report filenames (append-only); see header
+  # 2026-07-19 round-up: clean fast-forward c677b3f → 82b5a5b, VERSION 0.4.2 → 0.5.3 (commits dated 2026-07-18).
+  # A GROW, a PLANT, a hub-adopt, and two owner-directed fixes. (1) GROW 0.4.3 — Every Lock but Hers ch.5, The
+  # Wintering House ch.7, The Cinderwick Job ch.6; no override (clean blend, top three straight down). (2) PLANT
+  # 0.5.0 (MINOR) — The Hundredth Wind, the 8th book: TWO farm-firsts in one draw — the first UNIVERSE-JOIN and
+  # the first AUTHOR-REUSE (Amara Okri returns to the Salt Road with a new, unrelated desert fable; no cast/plot
+  # overlap, recorded exactly as the rolls fell). (3) 0.5.1 — adopted hub 0.16.0 (owner rename + Farms nav +
+  # story-only reader). (4) 0.5.2 — grow cadence settled to 1 book/day (resolves the 2-vs-up-to-5 discrepancy the
+  # runs kept flagging); the PLANT task now auto-generates cover+header art (Blindfold + Hundredth Wind
+  # backfilled). (5) 0.5.3 — reader story controls enabled on the legal pages. NOTE — the account-rename 404 on
+  # fairyfox.io/fairyfox-stories/ surfaced here and was fixed by Fairy Fox renaming the user-site repo →
+  # 1fairyfox.github.io (reconciled hub-side in this repo's 0.16.1). Reconciled: projects.yml (stories → 0.5.3 /
+  # Jul 18). Folded into the new 2026-07-18 day post. Marker → 82b5a5b; seen → 2026-07-19.
   # 2026-07-18 round-up: clean fast-forward 6e78be5 → c677b3f, VERSION 0.4.1 → 0.4.2 (commits dated
   # 2026-07-17). A pure GROW run, no plant (next plant eligible on/after 07-18, the sibling -new job's call).
   # TWO books finished on one run — the shelf goes from one completed book to THREE. Blindfold ch.2, **The

@@ -37,10 +37,10 @@
     soundtrack played by a Game Boy sound chip in C++.
   tags: [Qt 6, C++, QML, Desktop]
   lifecycle: alpha
-  version: "0.42.13"
+  version: "0.43.4"
   activity: active
-  updated: "Jul 17, 2026"
-  updated_iso: "2026-07-17"
+  updated: "Jul 18, 2026"
+  updated_iso: "2026-07-18"
   color: "#e6488f"
   icon: pse2
   featured: true
@@ -100,10 +100,10 @@
     you can read before you start.
   tags: [Jekyll, Ruby, Web]
   lifecycle: alpha
-  version: "0.4.2"
+  version: "0.5.3"
   activity: active
-  updated: "Jul 17, 2026"
-  updated_iso: "2026-07-17"
+  updated: "Jul 18, 2026"
+  updated_iso: "2026-07-18"
   integrated: true
   color: "#b06ad0"
   featured: true
@@ -124,10 +124,10 @@
     beat-your-own-score kind, each splitting pure, tested logic from rendering.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.23.2"
+  version: "0.24.2"
   activity: active
-  updated: "Jul 17, 2026"
-  updated_iso: "2026-07-17"
+  updated: "Jul 18, 2026"
+  updated_iso: "2026-07-18"
   integrated: true
   color: "#8b7bff"
   featured: true
@@ -135,19 +135,19 @@
 
 - name: fairyfox.io
   key: fairyfox-io
-  repo: https://github.com/1fairyfox/junebug12851.github.io
+  repo: https://github.com/1fairyfox/1fairyfox.github.io
   docs: null
   doc_url: "/docs/"
-  notes: https://github.com/1fairyfox/junebug12851.github.io/tree/main/notes
+  notes: https://github.com/1fairyfox/1fairyfox.github.io/tree/main/notes
   blurb: >-
     The project hub and documentation library itself — a custom Jekyll build
     carrying the shared engineering standards and the cross-project sync model.
   tags: [Jekyll, Ruby, Web]
   lifecycle: beta
-  version: "0.15.14"
+  version: "0.16.1"
   activity: active
-  updated: "Jul 17, 2026"
-  updated_iso: "2026-07-17"
+  updated: "Jul 19, 2026"
+  updated_iso: "2026-07-19"
   meta: true
   color: "#ff7a5e"
   icon: fox

@@ -6,15 +6,14 @@ infrastructure that makes the one-domain model in
 
 ## How the shared domain works (the key fact)
 
-`fairyfox.io` is the **custom domain on the hub repo** (`1fairyfox/junebug12851.github.io`
-— created as a user site when the account was named `junebug12851`; the account
-rename to `1fairyfox` left the repo name behind, and it serves the apex all the
-same). Because of that, GitHub Pages **serves every other repo's Pages site under
+`fairyfox.io` is the **custom domain on the hub repo** (`1fairyfox/1fairyfox.github.io`
+— a user site: created as `junebug12851.github.io`, renamed to match the account
+after it moved to `1fairyfox`). Because of that, GitHub Pages **serves every other repo's Pages site under
 the same domain** at the path `/<repo>/`:
 
 | Repo | Served at |
 |------|-----------|
-| `1fairyfox/junebug12851.github.io` (the hub) | `fairyfox.io/` |
+| `1fairyfox/1fairyfox.github.io` (the hub) | `fairyfox.io/` |
 | `1fairyfox/<project>` (any project with Pages on) | `fairyfox.io/<project>/` |
 
 So a project **joins the domain just by enabling Pages** — it inherits the custom
@@ -29,7 +28,7 @@ inherits it:
 
 - The apex `fairyfox.io` points at GitHub Pages (A/ALIAS records to GitHub's
   published Pages addresses), and `www` is a `CNAME` to the Pages host.
-- The **`CNAME` file lives only in the hub repo** (`junebug12851.github.io`),
+- The **`CNAME` file lives only in the hub repo** (`1fairyfox.github.io`),
   which is this repo.
 
 **A new project needs no DNS changes at all.**

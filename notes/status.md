@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.16.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.16.1` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -13,15 +13,16 @@ HTTPS with **Enforce HTTPS on** (the Pages API reports `html_url: https://fairyf
 `https_enforced: true`). It's a clean, custom Jekyll build — no external theme — deployed
 to GitHub Pages by GitHub Actions on every push to `main`.
 
-**The GitHub account is now `1fairyfox`** (renamed from `junebug12851`, swept through every
-current-state file in `0.15.9`; dated history left as it was). One consequence is open, and
-it is **Fairy Fox's call, not a maintenance change**: the hub repo is still *named*
-`junebug12851.github.io`, so it no longer matches `<username>.github.io` and is no longer a
-GitHub "user site" in the strict sense. **Nothing is broken** — everything is reached through
-the custom domain, and `fairyfox.io/<key>/` still resolves for every project — but renaming
-the repo to `1fairyfox.github.io` would restore the user-site shape. It would touch Pages, the
-git remote, and every sibling's vendored chrome-pull URL. See
-[`decisions/architecture.md`](decisions/architecture.md).
+**The GitHub account is `1fairyfox`** (renamed from `junebug12851`, swept through every
+current-state file in `0.15.9`; dated history left as it was). The follow-on that had been
+left open — **renaming the hub repo to match** — was taken by Fairy Fox on **2026-07-18**:
+`junebug12851.github.io` is now **`1fairyfox.github.io`**, a GitHub *user site* again. This
+resolved a **site-wide 404** (`fairyfox.io/fairyfox-stories/` had gone dark after the account
+rename, with the apex sitting on a repo that was no longer a user site). Everything is reached
+through the custom domain, and `fairyfox.io/<key>/` resolves for every project. The site's
+data, docs and standards were reconciled to the new name in `0.16.1`; the local git remote may
+still use the redirecting old URL, and each sibling repoints its vendored chrome-pull URL as it
+re-adopts. See [`decisions/architecture.md`](decisions/architecture.md).
 
 The site is framed as a **project hub + documentation library** for Fairy Fox's
 work, written in a neutral documentation voice (not first-person, not glorifying;
@@ -186,11 +187,12 @@ The rest of the structure is in place end to end:
   served under the domain too (`fairyfox.io/pokered-save-editor-2/`,
   `fairyfox.io/random-ai-prompt/`, …) — re-verified live after the account rename.
 
-- **Open, for Fairy Fox: rename the hub repo?** The account is now `1fairyfox` but the repo
-  is still named `junebug12851.github.io`, so it is no longer a GitHub *user site* in the
-  strict sense. Nothing is broken (the custom domain carries everything), but a rename to
-  `1fairyfox.github.io` would restore the shape — at the cost of touching Pages, the git
-  remote, and every sibling's vendored chrome-pull URL. Not taken as a maintenance change.
+- **Done: the hub repo is renamed.** Fairy Fox renamed `junebug12851.github.io` →
+  `1fairyfox.github.io` on **2026-07-18**, restoring the user-site shape and resolving the
+  site-wide 404. The hub's own current-state references (projects/registry data, the site
+  docs, the docs-site standard + templates) were reconciled to the new name in `0.16.1`; each
+  sibling repoints its vendored chrome-pull URL as it re-adopts (the old URL redirects in the
+  meantime).
 
 ## Next
 
@@ -206,5 +208,5 @@ first real "what changed in my projects" round-up once there's a diff to report.
 | Content pages (home/projects/blog/about) | ✅ Live |
 | Pages deploy workflow | ✅ First run green; site live |
 | Custom domain | ✅ Live over HTTPS, Enforce HTTPS on (re-verified 2026-07-12) |
-| GitHub owner | ✅ `1fairyfox` — swept through every current-state link (0.15.9) |
+| GitHub owner + repo | ✅ `1fairyfox`; hub repo renamed → `1fairyfox.github.io` (2026-07-18), refs reconciled (0.16.1) |
 | Local build verification | ✅ `bundle install` + `jekyll build` green (Ruby 3.3.11) |

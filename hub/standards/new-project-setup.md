@@ -77,7 +77,7 @@ submodule, never a dependency. An ordinary clone refreshes by fast-forward every
 ```sh
 mkdir -p assets/references
 git -C assets/references clone --branch dev --single-branch \
-    https://github.com/1fairyfox/junebug12851.github.io fairyfox.io
+    https://github.com/1fairyfox/1fairyfox.github.io fairyfox.io
 ```
 
 ### 3. Copy the templates into the project

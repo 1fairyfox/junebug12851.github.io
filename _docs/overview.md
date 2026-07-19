@@ -12,7 +12,7 @@ shared engineering standards those projects follow.
 
 ## The pieces
 
-- **The hub** — this repository (`junebug12851.github.io`, served at fairyfox.io).
+- **The hub** — this repository (`1fairyfox.github.io`, served at fairyfox.io).
   It holds the website, this documentation library, and the canonical shared
   standards in its `hub/` directory.
 - **The projects** — independent repositories, each with its own code, its own

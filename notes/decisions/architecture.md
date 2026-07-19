@@ -2,6 +2,22 @@
 
 Key structural choices and why. Newest on top.
 
+### The hub repo is renamed `→ 1fairyfox.github.io` (2026-07-18) — supersedes the 07-12 "keep the old name"
+
+Fairy Fox took the rename the 2026-07-12 decision below had parked as "Fairy Fox's call":
+`junebug12851.github.io` → **`1fairyfox.github.io`**. What forced it was not tidiness but a
+**site-wide 404** — `fairyfox.io/fairyfox-stories/` served empty after the account rename,
+because the apex domain sat on a repo that was no longer a `<username>.github.io` user site,
+compounded by an in-flight DNS move. Renaming the repo to match the account restored the
+user-site shape, and after a redeploy + DNS re-check the domain resolves every project again.
+
+The maintenance follow-through (this repo, `0.16.1`): reconcile the hub's own **current-state**
+references to the new name — the projects/registry data, the About/overview/deployment docs, and
+the docs-site standard + templates' clone URLs — while leaving **dated history** (blog posts,
+session logs, this file's 07-12 entry) intact. The local git remote may still use the redirecting
+old URL; each sibling repoints its vendored chrome-pull URL as it re-adopts. The 07-12 entry
+below stands as the record of why it was deferred, not a live open question.
+
 ### The GitHub account is `1fairyfox`; the hub repo keeps its old name (2026-07-12)
 
 The account was renamed **`junebug12851` → `1fairyfox`**. Every current-state reference across

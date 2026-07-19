@@ -3,9 +3,11 @@
 Project hub, **documentation library**, and home page for Fairy Fox's software work
 (github.com/1fairyfox). A clean, custom Jekyll site deployed to GitHub Pages by
 GitHub Actions, plus the shared standards/templates that tie the repositories
-together. Served at the `fairyfox.io` custom domain. (The repo is still *named*
-`junebug12851.github.io` — it was created as a user site under the account's old
-name; the account is now `1fairyfox` and the repo name was left alone.)
+together. Served at the `fairyfox.io` custom domain. (The repo was created as
+`junebug12851.github.io`, a user site under the account's old name; after the account
+was renamed to `1fairyfox`, the repo was renamed to `1fairyfox.github.io` on
+2026-07-18 — restoring the user-site shape, which resolved a site-wide 404. The local
+git remote may still use the redirecting old URL.)
 
 **Voice:** the site is written in a neutral, professional documentation voice —
 not first-person-as-Fairy-Fox, and not glorifying. Refer to Fairy Fox by name for

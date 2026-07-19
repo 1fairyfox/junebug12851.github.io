@@ -32,11 +32,12 @@ repository's GitHub Pages by the committed `CNAME`. Each project's own Pages sit
 is served under the same domain — for example, `fairyfox.io/pokered-save-editor-2/`
 — so navigation can lead straight into a project's documentation.
 
-The repository is named `junebug12851.github.io`: it was created as a GitHub *user
-site* when the account carried that name. The account has since been renamed
-**`1fairyfox`**, and the repository kept its original name, so it no longer matches
-the `<username>.github.io` pattern. Nothing about serving changed — the domain, not
-the `<username>.github.io` host, is what everything is reached through.
+The repository is named **`1fairyfox.github.io`**: it was created as a GitHub *user
+site* as `junebug12851.github.io` when the account carried that name, and after the
+account was renamed **`1fairyfox`** the repository was renamed to match (2026-07-18),
+restoring the `<username>.github.io` user-site shape. Serving is unchanged — the
+domain is what everything is reached through — but the repo name now lines up with
+the account again, and the custom domain resolves every project under it.
 
 One-time setup, for reference: the Pages source is set to "GitHub Actions" (not
 "deploy from a branch"); DNS points the apex domain at GitHub Pages; and HTTPS is

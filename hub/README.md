@@ -32,7 +32,7 @@ track the **`dev`** branch. Full write-up:
 ```sh
 # inside the project, pull a read-only copy of this hub (one branch)
 git -C assets/references clone --branch dev --single-branch \
-    https://github.com/1fairyfox/junebug12851.github.io fairyfox.io
+    https://github.com/1fairyfox/1fairyfox.github.io fairyfox.io
 
 # copy what you need into the project's own tree, then commit it there
 cp assets/references/fairyfox.io/hub/templates/CLAUDE.md ./CLAUDE.md
