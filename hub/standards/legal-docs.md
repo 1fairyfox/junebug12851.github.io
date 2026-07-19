@@ -62,7 +62,9 @@ The brand minimum — true for every project unless the project's code makes a c
 3. **Disclose the shared browser state.** Every project that wears the chrome carries the shared
    **reader preferences** and the **Fairy Fox coins** counter in local storage. Both must be
    disclosed as device-only, never-transmitted state in Privacy + Cookies (the
-   [templates](../templates/legal/) carry the line).
+   [templates](../templates/legal/) carry the line). Also state the **easy in-app clear/reset
+   controls** (the reader's **Reset**, the coins panel's small **Clear my data** link) beside
+   the browser-clear option — an accessible way for a user to clear/reset their data.
 4. **Coins are transparently not money.** Disclose that coins have **no monetary value**, cannot
    be bought or sold, and are cosmetic — and link the single shared explainer at
    **`https://fairyfox.io/legal/coins/`** (projects link it, they don't re-host it). The Terms
