@@ -47,7 +47,9 @@ or social widgets. The only other third party involved is our hosting provider (
 which processes basic request data to deliver the site.</p>
 
 <h2>Managing local storage</h2>
-<p>You can clear the data the Site stores at any time by clearing your browser&rsquo;s site data /
+<p><strong>We provide an easy way to clear or reset your data:</strong> the reading menu has a
+<strong>Reset</strong> and the coins panel has a <strong>Clear my data</strong> link. You can also
+clear the data the Site stores at any time by clearing your browser&rsquo;s site data /
 local storage for the Site. Your browser&rsquo;s help pages explain how (for example,
 <a href="https://support.google.com/chrome/answer/2392709">Chrome</a>,
 <a href="https://support.mozilla.org/en-US/kb/cookies-and-site-data-firefox">Firefox</a>,

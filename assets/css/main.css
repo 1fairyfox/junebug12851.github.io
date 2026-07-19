@@ -654,6 +654,11 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
 .ff-rp-reset{flex:none;border:none;background:none;cursor:pointer;font:inherit;font-size:.75rem;font-weight:650;
   color:var(--accent-ink)}
 .ff-rp-reset:hover{text-decoration:underline}
+/* "Clear my data" — a small, soft link (not a button), bottom-right of the coins panel. */
+.ff-rp-clear{flex:none;border:none;background:none;padding:0;cursor:pointer;font:inherit;font-size:.7rem;
+  font-weight:500;color:var(--text-faint);text-decoration:underline;text-underline-offset:2px;
+  text-decoration-color:color-mix(in srgb,var(--text-faint) 45%,transparent)}
+.ff-rp-clear:hover{color:var(--text-soft);text-decoration-color:currentColor}
 
 /* ── Coins ("◎") ─────────────────────────────────────────────────────────────
    A light reading-engagement counter next to the reader button. Reading a page

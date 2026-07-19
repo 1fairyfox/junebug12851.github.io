@@ -48,9 +48,11 @@ once a day). This resets its daily record each day; the balance carries over.</l
 <p>Both are kept in your browser&rsquo;s <strong>local storage</strong> and stay on your
 device; they are never transmitted to us. They are saved under shared keys so a single choice
 and one coin balance carry across the same-origin <a href="https://fairyfox.io/">fairyfox.io</a>
-site in the same browser — still local to your device only. You can delete any of it at any
-time by clearing your browser&rsquo;s site data for the Site, which simply resets your saved
-preferences and coins.</p>
+site in the same browser — still local to your device only. <strong>We provide an easy way to
+clear or reset this data:</strong> the reading menu has a <strong>Reset</strong>, the coins panel
+has a <strong>Clear my data</strong> link, and you can also clear it any time from your
+browser&rsquo;s site-data settings for the Site — any of which simply resets your saved preferences
+and coins.</p>
 
 <h2>Hosting and server logs</h2>
 <p>The Site is served as static files by GitHub Pages. Like virtually all web hosting, the
