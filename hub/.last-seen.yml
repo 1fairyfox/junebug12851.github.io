@@ -20,6 +20,13 @@ pokered-save-editor-2:
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
     - 2026-06-26-check-for-updates.md            # digested 2026-06-28 report-review (0.9.8) — no-change confirming pass, nothing to fold
+    - 2026-06-28-check-for-updates.md            # 2026-07-19 report-review — check-only, no-change confirming pass
+    - 2026-06-29-check-for-updates.md            # 2026-07-19 report-review — check-only, no-change confirming pass
+    - 2026-06-30-check-for-updates.md            # 2026-07-19 report-review — check-only, no-change confirming pass
+    - 2026-07-01-check-for-updates.md            # 2026-07-19 report-review — check-only, no-change confirming pass
+    - 2026-07-02-check-for-updates.md            # 2026-07-19 report-review — check-only, no-change confirming pass
+    - 2026-07-06-adopting-updates.md             # 2026-07-19 report-review — run feedback (successful adopt), no standalone standard change
+    - 2026-07-19-adopting-updates.md             # 2026-07-19 report-review — run feedback (successful adopt), no standalone standard change
   # 2026-07-19 round-up: clean fast-forward 1679d2f0 → 4d2ffc8c, VERSION 0.42.13-alpha → 0.43.4-alpha, 5
   # commits ALL dated 2026-07-18 (a complete day — today is 07-19). Map states went LIVE, then a consistency
   # overhaul of the map screen. (1) 0.43.0 — the 07-17 progression blueprints become a live picker: roll a map
@@ -545,6 +552,13 @@ fairyfox-games:
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
     - 2026-06-30-docs-site-feedback.md    # digested 0.10.0 — one-seamless-site model (no back-button, shared chrome + submenu, Games nav slot); tags kept games-local
+    - 2026-06-30-update-check.md          # 2026-07-19 report-review — check-only; anchor/shallow-mirror friction already addressed (0.9.6/0.9.8)
+    - 2026-07-01-update-check.md          # 2026-07-19 report-review — check-only report of hub 0.11.0 deltas; adoption is the node's, no standard change
+    - 2026-07-02-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
+    - 2026-07-02-update-check.md          # 2026-07-19 report-review — check-only, no standard change
+    - 2026-07-06-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
+    - 2026-07-18-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
+    - 2026-07-18-update-check.md          # 2026-07-19 report-review — check-only, no standard change
   # 2026-07-19 round-up: clean fast-forward 728a76f → 5d89b0c, VERSION 0.23.2 → 0.24.2 (commits dated
   # 2026-07-18). A PLANT + a GROW + housekeeping. (1) PLANT 0.24.0 (MINOR) — Ward, the 15th game and the
   # collection's FIRST defence verb: orbit one shield around a core and parry converging shards (turn-rate cap
@@ -754,7 +768,9 @@ fairyfox-stories:
   commit: 82b5a5b8c566536a50013b62247749fd096acb3f
   branch: dev
   seen: 2026-07-19
-  reports_through: []          # digested-report filenames (append-only); see header
+  reports_through:             # digested-report filenames (append-only); see header
+    - 2026-07-06-setup.md                 # 2026-07-19 report-review — setup run feedback, no standalone standard change
+    - 2026-07-18-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
   # 2026-07-19 round-up: clean fast-forward c677b3f → 82b5a5b, VERSION 0.4.2 → 0.5.3 (commits dated 2026-07-18).
   # A GROW, a PLANT, a hub-adopt, and two owner-directed fixes. (1) GROW 0.4.3 — Every Lock but Hers ch.5, The
   # Wintering House ch.7, The Cinderwick Job ch.6; no override (clean blend, top three straight down). (2) PLANT

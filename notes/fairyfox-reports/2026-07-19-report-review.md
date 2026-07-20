@@ -57,3 +57,20 @@ owner call on clearing the inbox.
 New standard consistent (spec + Verify + compliance row + README); markers advanced append-only with
 honest dispositions; nothing marked digested that wasn't handled. Acted on the hub side only, per the
 owner's ingest directive.
+
+## Follow-up — completed the same day (0.20.1)
+
+Owner: "ship these changes." Closed the two loose ends:
+
+- **All sibling markers advanced.** Read the pse2 / games / stories reports past their markers: every
+  one is a **run report** (check-only / adopting-updates / setup / update-check) — run feedback whose
+  frictions (shallow-mirror, no durable anchor) were already fixed in 0.9.6 / 0.9.8, no standalone
+  standard change. Advanced all three `reports_through` lists with per-report dispositions. Note: the
+  games **docs-site-feedback** tags request was already digested and deferred at 0.10.0 ("tags kept
+  games-local") — a system-wide clickable-tag model remains a **deferred candidate** (a feature needing
+  its own design), not stranded.
+- **Inbox cleared.** Removed the seven superseded `notes/fairyfox-reports/inbound/INBOX-*.md` automated
+  briefings (findings-only, never committed; all folded into 0.12.0 + 0.18.0 + 0.20.0). The committed
+  record is `.last-seen.yml` + this report.
+
+Every sibling's `reports_through` is now caught up through its 2026-07-19 mirror state.
