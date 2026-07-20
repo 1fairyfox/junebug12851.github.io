@@ -708,6 +708,16 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
 .ff-coin-more{display:inline-block;margin-top:.5rem;font-size:.8rem;font-weight:650;color:var(--accent-ink);text-decoration:none}
 .ff-coin-more:hover{text-decoration:underline}
 
+/* Reading pages — the estimated read-time chip + the very-subtle hidden-coin word. */
+.ff-readtime{margin:0 0 1.1rem;font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--text-faint);display:inline-flex;align-items:center;gap:.4rem}
+.ff-hidden-coin{cursor:pointer;border-radius:3px;
+  border-bottom:1px dotted color-mix(in srgb,var(--accent) 45%,transparent);
+  transition:color .15s var(--ease),background .15s var(--ease),border-color .15s var(--ease)}
+.ff-hidden-coin:hover,.ff-hidden-coin:focus-visible{color:var(--accent-ink);
+  border-bottom-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);outline:none}
+.ff-hidden-claimed{color:var(--accent-ink);transition:color .5s var(--ease)}
+
 @media (prefers-reduced-motion:reduce){
   .ff-coin-btn.is-earned{animation:none}
   .ff-coin-pop{animation:ff-coin-fade 1.05s linear forwards}

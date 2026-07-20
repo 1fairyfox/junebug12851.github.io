@@ -37,8 +37,13 @@ Earning is owned by the shared `coins.js`; a project does **not** re-implement o
 - **First view of a page today:** **+1**, with a **10%** chance of **+2** instead.
 - **Repeat view of a page already seen today:** a **1%** chance of a **+1** bonus, capped at
   **10** such bonuses per day.
-- At most one automatic grant per page load. "Today" is the local calendar day; the day's
-  seen-set resets at midnight, the balance carries over.
+- **Reading pages** (`data-read` / `data-story`) show an estimated **read time** and add two
+  reader-earned sources: a **read-through bonus** (+1) for genuinely reading a page longer than
+  ~2 minutes to the end (reached the end + a fair dwell; once per page/day), and a rare **hidden
+  coin** — a word marked *very* subtly, rolled **<2%** per page/day, claimable up to **3 per day**.
+- At most one automatic grant per page load (the hidden coin is claimed by the reader, not
+  automatic). "Today" is the local calendar day; the day's per-page sets + counters reset at
+  midnight, the balance carries over.
 - State is stored under the versioned origin-wide key **`fairyfox:coins:a`** — a spendable
   `coins` balance, a lifetime `earned`, the day's `seen` set, the day's `bonus` count, and
   `todayEarned`. It lives only in the browser and is never sent to a server (disclose it in the

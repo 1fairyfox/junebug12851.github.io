@@ -34,9 +34,13 @@ you earn <strong>a coin</strong>.</li>
 <li>Every so often (about one time in ten) a fresh page is worth <strong>two</strong> instead.</li>
 <li>Re-opening a page you've already read today has a small chance of a little bonus coin, up to a
 handful of times a day.</li>
+<li>On a longer reading page (more than a couple of minutes), <strong>reading it through</strong>
+earns an extra coin. Pages that involve reading show an estimated <strong>read time</strong>.</li>
+<li>Every so often a reading page <strong>hides a coin</strong> in a word, marked very subtly —
+click it to claim the coin (a few a day at most).</li>
 </ul>
-<p>That's the whole system. There's no daily "claim" to grind, no streak to protect, and no
-pressure — you earn simply by reading.</p>
+<p>There's no daily "claim" to grind, no streak to protect, and no pressure — you earn simply by
+reading and exploring.</p>
 
 <h2>How it works across the site and its projects</h2>
 <p>You have <strong>one coin balance</strong> shared across everything served under

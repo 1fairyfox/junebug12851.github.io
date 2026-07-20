@@ -110,7 +110,9 @@ behaviour and constants are normative; see
 - Reading a page you haven't opened **today** (anywhere same-origin under fairyfox.io)
   earns a coin — a playful coin-pop + floating `+1`/`+2` marks it (reduced-motion guarded).
 - Clicking opens a mini popover (reuses `.ff-reader-panel` positioning): balance, earned
-  today, lifetime, and a one-line "how it works". Only one popover open at a time.
+  today, total, and a one-line "how it works". Only one popover open at a time. Reading pages
+  (`data-read`/`data-story`) also show an estimated read time, a read-through bonus, and a rare
+  hidden-coin word.
 - State saves to the versioned origin-wide key **`fairyfox:coins:a`**; projects read/spend
   it via `window.FairyFoxCoins` (`get` · `onChange` · `spend` · `reward`) and the
   `fairyfox:coins` DOM event. Use it for **extra** reward only — never to lock the core

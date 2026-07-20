@@ -10,9 +10,14 @@
 // EARNING RULES
 //   - First view of a page today: +1, with a 10% chance of +2 instead.
 //   - Repeat view of a page already seen today: 1% chance of +1, capped at 10 such
-//     bonuses per day. At most one grant per page load.
-//   - "Today" is the local calendar day; at rollover the day's seen-set + bonus
-//     counter reset, the balance carries over.
+//     bonuses per day. At most one automatic grant per page load.
+//   - READING PAGES (`data-read`/`data-story`) also show an estimated "X min read", and:
+//       * a read-through bonus (+1) once you've genuinely read a long page (> ~2 min)
+//         through — reached the end and dwelled a fair fraction of the estimate; once/page/day.
+//       * a rare (<2%/page/day) HIDDEN COIN: a word marked very subtly; clicking it claims
+//         a coin, up to 3 per day.
+//   - "Today" is the local calendar day; at rollover the day's per-page sets + counters
+//     reset, the balance carries over.
 //
 // SCOPE
 //   Prefs + wallet live under a VERSIONED origin-wide key ("fairyfox:coins:a"),
@@ -38,7 +43,12 @@
   var P_DOUBLE = 0.10;   // chance a first-view earns 2 instead of 1
   var P_BONUS = 0.01;    // chance a repeat-view earns a bonus coin
   var MAX_BONUS = 10;    // max repeat-view bonuses per day
-  var DEFAULTS = { coins: 0, earned: 0, day: "", seen: {}, bonus: 0, todayEarned: 0 };
+  var READ_WPM = 200;    // words-per-minute for the reading-time estimate
+  var READ_MIN = 2;      // a page longer than this many minutes can earn a read-through coin
+  var P_HIDDEN = 0.018;  // chance a reading page hides a coin word (rolled once/page/day)
+  var MAX_HIDDEN = 3;    // max hidden coins that can be claimed per day
+  var DEFAULTS = { coins: 0, earned: 0, day: "", seen: {}, bonus: 0, todayEarned: 0,
+                   read: {}, hidRolled: {}, hidClaimed: 0 };
 
   var state = null;
   var subs = [];
@@ -55,16 +65,22 @@
     try { s = Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem(KEY) || "{}")); }
     catch (e) { s = Object.assign({}, DEFAULTS); }
     if (!s.seen || typeof s.seen !== "object") s.seen = {};
+    if (!s.read || typeof s.read !== "object") s.read = {};
+    if (!s.hidRolled || typeof s.hidRolled !== "object") s.hidRolled = {};
     // integer hygiene
     s.coins = Math.max(0, s.coins | 0); s.earned = Math.max(0, s.earned | 0);
     s.bonus = Math.max(0, s.bonus | 0); s.todayEarned = Math.max(0, s.todayEarned | 0);
+    s.hidClaimed = Math.max(0, s.hidClaimed | 0);
     return s;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* ignore */ } }
 
   function rollover() {
     var t = today();
-    if (state.day !== t) { state.day = t; state.seen = {}; state.bonus = 0; state.todayEarned = 0; }
+    if (state.day !== t) {
+      state.day = t; state.seen = {}; state.bonus = 0; state.todayEarned = 0;
+      state.read = {}; state.hidRolled = {}; state.hidClaimed = 0;
+    }
   }
   function pathKey() {
     var p = location.pathname || "/";
@@ -124,21 +140,28 @@
     return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
-  function showPop(amount, lucky) {
-    if (!btn) return;
+  // Spawn a floating "+n" chip at a viewport point.
+  function spawnPop(x, y, amount, lucky) {
     var chip = el("span", { class: "ff-coin-pop" + (lucky ? " is-lucky" : ""), "aria-hidden": "true" }, "+" + amount);
     document.body.appendChild(chip);
-    var r = btn.getBoundingClientRect();
-    chip.style.left = (r.left + r.width / 2) + "px";
-    chip.style.top = (r.bottom - 2) + "px";
-    // A quick coin-button pulse.
-    btn.classList.remove("is-earned");
-    // force reflow so re-adding the class restarts the animation
-    void btn.offsetWidth;
-    btn.classList.add("is-earned");
+    chip.style.left = x + "px";
+    chip.style.top = y + "px";
     var life = prefersReducedMotion() ? 900 : 1100;
     setTimeout(function () { if (chip.parentNode) chip.parentNode.removeChild(chip); }, life);
+  }
+  // A quick pulse of the coin button.
+  function pulseButton() {
+    if (!btn) return;
+    btn.classList.remove("is-earned");
+    void btn.offsetWidth; // reflow so the animation restarts
+    btn.classList.add("is-earned");
     setTimeout(function () { btn && btn.classList.remove("is-earned"); }, 460);
+  }
+  function showPop(amount, lucky) {
+    if (!btn) return;
+    var r = btn.getBoundingClientRect();
+    spawnPop(r.left + r.width / 2, r.bottom - 2, amount, lucky);
+    pulseButton();
   }
 
   function updatePanel() {
@@ -160,7 +183,7 @@
       '<span class="ff-coin-big" data-ff-balance>0</span><span class="ff-coin-unit">coins</span></div>' +
       '<div class="ff-coin-stats">' +
       '<div class="ff-coin-stat"><span class="ff-coin-k">Earned today</span><span class="ff-coin-v" data-ff-today>0</span></div>' +
-      '<div class="ff-coin-stat"><span class="ff-coin-k">Lifetime</span><span class="ff-coin-v" data-ff-life>0</span></div>' +
+      '<div class="ff-coin-stat"><span class="ff-coin-k">Total</span><span class="ff-coin-v" data-ff-life>0</span></div>' +
       "</div>" +
       '<div class="ff-rp-sec"><p class="ff-coin-how">Navigating around and using fairyfox.io lets you earn and use coins.</p>' +
       '<a class="ff-coin-more" href="https://fairyfox.io/legal/coins/">How coins work →</a></div>' +
@@ -233,6 +256,115 @@
     }
   }
 
+  // ── Reading pages: reading time, a read-through bonus, and a hidden coin ─────
+  function isReadablePage() {
+    var r = document.documentElement;
+    return r.hasAttribute("data-read") || r.hasAttribute("data-story");
+  }
+  function contentEl() {
+    // Prefer the inner content column; fall back to <main>. (A combined selector list would
+    // return <main> itself, since an ancestor precedes its descendants in document order.)
+    return document.querySelector("main .content") || document.querySelector("main .prose") ||
+      document.querySelector("main article") || document.querySelector("main");
+  }
+  function wordCount(node) {
+    var t = (node.innerText || node.textContent || "").trim();
+    return t ? t.split(/\s+/).length : 0;
+  }
+  function showReadTime(el2, mins) {
+    if (el2.querySelector(".ff-readtime")) return;
+    var chip = el("p", { class: "ff-readtime", "aria-label": mins + " minute read" }, mins + " min read");
+    el2.insertBefore(chip, el2.firstChild);
+  }
+
+  // Award a coin once a long page (> READ_MIN minutes) is genuinely read through: the end
+  // reached AND a fair fraction of the estimate spent on it. Once per page per day.
+  function setupReadThrough(el2, mins) {
+    var key = pathKey();
+    var start = Date.now();
+    var need = Math.max(45000, Math.round(mins * 60 * 1000 * 0.5)); // >=45s, ~half the estimate
+    var done = false, iv = null;
+    function finish() {
+      if (done || state.read[key]) { if (iv) clearInterval(iv); window.removeEventListener("scroll", finish); return; }
+      if (Date.now() - start < need) return;
+      if (el2.getBoundingClientRect().bottom > window.innerHeight + 40) return; // end not reached
+      done = true;
+      window.removeEventListener("scroll", finish);
+      if (iv) clearInterval(iv);
+      state.read[key] = 1; save();
+      grant(1, "read", true);
+    }
+    window.addEventListener("scroll", finish, { passive: true });
+    iv = setInterval(finish, 3000); // also catches a slow read with little scrolling
+  }
+
+  // Once per page per day, a <2% roll may hide a coin in a word of the content; clicking
+  // that (very subtly marked) word claims a coin, up to MAX_HIDDEN per day.
+  function maybeHiddenCoin(el2) {
+    var key = pathKey();
+    if (state.hidRolled[key] || state.hidClaimed >= MAX_HIDDEN) return;
+    state.hidRolled[key] = 1; save();
+    if (Math.random() >= P_HIDDEN) return;
+    placeHiddenCoin(el2);
+  }
+  function placeHiddenCoin(root) {
+    var SKIP = /^(A|CODE|PRE|H1|H2|H3|H4|H5|H6|BUTTON|SCRIPT|STYLE|SUP)$/;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue || !/[A-Za-z]{4,}/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+        var p = n.parentNode;
+        while (p && p !== root) {
+          if (SKIP.test(p.nodeName) || (typeof p.className === "string" && /ff-readtime|ff-hidden/.test(p.className))) return NodeFilter.FILTER_REJECT;
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+    var nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    if (!nodes.length) return;
+    var node = nodes[Math.floor(Math.random() * nodes.length)];
+    var words = [], re = /[A-Za-z]{4,}/g, m;
+    while ((m = re.exec(node.nodeValue))) words.push([m.index, m[0]]);
+    if (!words.length) return;
+    var w = words[Math.floor(Math.random() * words.length)];
+    var before = node.nodeValue.slice(0, w[0]), after = node.nodeValue.slice(w[0] + w[1].length);
+    var span = el("span", { class: "ff-hidden-coin", role: "button", tabindex: "0", title: "A hidden coin — click to claim", "aria-label": "Hidden coin: click to claim a coin" }, w[1]);
+    var frag = document.createDocumentFragment();
+    if (before) frag.appendChild(document.createTextNode(before));
+    frag.appendChild(span);
+    if (after) frag.appendChild(document.createTextNode(after));
+    node.parentNode.replaceChild(frag, node);
+
+    function claim(e) {
+      if (e) e.preventDefault();
+      span.removeEventListener("click", claim);
+      span.removeEventListener("keydown", onKey);
+      if (state.hidClaimed < MAX_HIDDEN) {
+        state.hidClaimed += 1;
+        grant(1, "hidden", false);         // count it; the pop happens at the word, below
+        var r = span.getBoundingClientRect();
+        spawnPop(r.left + r.width / 2, r.top, 1, true);
+        pulseButton();
+      }
+      span.className = "ff-hidden-claimed";
+      span.removeAttribute("role"); span.removeAttribute("tabindex"); span.removeAttribute("title");
+      setTimeout(function () { if (span.parentNode) span.parentNode.replaceChild(document.createTextNode(span.textContent), span); }, 800);
+    }
+    function onKey(e) { if (e.key === "Enter" || e.key === " ") claim(e); }
+    span.addEventListener("click", claim);
+    span.addEventListener("keydown", onKey);
+  }
+
+  function setupReading() {
+    var elc = contentEl();
+    if (!elc) return;
+    var mins = wordCount(elc) / READ_WPM;
+    if (mins > READ_MIN && !state.read[pathKey()]) setupReadThrough(elc, mins);
+    maybeHiddenCoin(elc);
+    showReadTime(elc, Math.max(1, Math.round(mins)));
+  }
+
   function init() {
     state = load();
     rollover();
@@ -260,6 +392,7 @@
 
     if (document.querySelector(".site-header .wrap")) { buildButton(); buildPanel(); }
     earnForThisPage();
+    if (isReadablePage()) setupReading();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
