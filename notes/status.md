@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.20.5` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.20.6` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -81,7 +81,7 @@ through the `0.4.x` line; it now includes:
   About** (**Stories** added `0.15.0`, left of Games — a `/stories/` stub →
   `/fairyfox-stories/`; **Stories + Games grouped under the "Farms" dropdown** in `0.16.0`).
   The first **project category** landed in `0.20.4`: **DespawnedItems** — a Paper/Minecraft
-  server plugin (`v1.3.4`, Paper 1.21.11 / Java 21) — joined the hub in a dedicated **"PaperMC
+  server plugin (`v1.4.8`, Paper 1.21.11 / Java 21) — joined the hub in a dedicated **"PaperMC
   Plugins"** section on `/projects/` (a new `category` field; categorized projects are excluded
   from the flat grid there, but appear in the home grid in normal recent-update order), with more
   PaperMC plugins expected under the same heading. The Projects submenu stays dormant.
@@ -164,7 +164,7 @@ The rest of the structure is in place end to end:
   Android runtime rather than asserting it — 253 ms to render, memory flat as the list grows 50× —
   and closed a **critical command injection** in the local backend, found by CodeQL: a filename could
   close the quote in a shell string, so the shell is gone entirely) and Pokered Save Editor 2
-  (`0.41.8-alpha`, themed Doxygen docs; a Market **Exchange** and the name entry rebuilt into a real
+  (`0.43.6-alpha`, themed Doxygen docs; a Market **Exchange** and the name entry rebuilt into a real
   **ASDF keyboard deck**, then its biggest day yet — the map screen is now **genuinely emulated** (the
   game's own overworld pipeline, with a legally backed-up cartridge in a headless emulator grading every
   buffer byte for byte), the six **glitch palettes** render as the real article, a **Game Boy sound chip
@@ -181,13 +181,15 @@ The rest of the structure is in place end to end:
   that plays the real game, and caught a **release build that had been red since `0.29.0`** on a Qt 6.9-only
   call the local kit always compiles; adopted git-flow + process-reports + compliance +
   express-authorizations on 2026-06-26). The two integrated nodes are Fairy Fox Games
-  (`0.23.1` — fourteen games; with the varied-structure rollout complete at 13/13, the current growth lever
-  is **depth inside the mechanic** (Polarity the reference build), now on 4 of 13 after **Ink Bloom** gained
-  a hidden graze band, a doubling window and a secret stage) and Fairy Fox
-  Stories (`0.4.1` — seven books, the newest being **The Blindfold Act**, the shelf's first mystery and
-  first non-magical realm; the daily grow/plant automation now actually runs, holds its plant
-  when the cadence gate says it isn't due, and lets its random override overrule the blend ranking and
-  stand).
+  (`0.25.1` — **sixteen** games; the varied-structure rollout is complete and the current growth lever is
+  **depth inside the mechanic** (Polarity the reference build), now on 8 of 13 after **Loft**; the newest
+  game, **Drove**, is the collection's first *indirect-control* verb — you never touch the quarry, you
+  move the thing it flees from — and the reading-coin rollout is closed at 15/15) and Fairy Fox
+  Stories (`0.7.0` — **nine** books; the weekly sequel roll fired for the first time (twice in one draw),
+  and **The One-O'Clock Bus** planted as the farm's first sequel, making *The Hollow Hours* its first
+  three-book realm under a different author than the parent book; the daily grow/plant automation runs
+  unattended, holds its plant when the cadence gate says it isn't due, and lets its random override
+  overrule the blend ranking and stand).
 - **Notes:** this living-notes system, mirroring the convention used across my
   projects.
 - **Sync:** the pull-only cross-project model is documented
