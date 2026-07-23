@@ -81,6 +81,32 @@ fold → release → advance markers, in one session, under an upfront go-ahead 
 - An auto-generated one-page index of every `## Verify` table (the standards-audit stretch)
   — the `hub/standards/CHANGELOG.md` shipped; the generated Verify index did not.
 
+## Addendum (same session) — Phase A: the retroactive claims-vs-tree spot-check
+
+The main report flagged that the new step-3a spot-check "had no manifest to check against".
+On reflection it can be run **without** a manifest — diff each report's adoption *claims*
+directly against the node's tree — so it was run this session across all five clones (the
+S4 "run once retroactively mesh-wide" ask, hub-executable half). **Read-only; anti-recursion
+held — no node was edited.**
+
+Findings — **every node's adoption claims hold against its tree**:
+
+- **pokered-save-editor-2:** `docs/fairyfox/coins.js` present, `CHROME_VERSION` = 2.2.1. ✔ matches the chrome-2.2.1/coins adopt report.
+- **random-ai-prompt:** all six claimed standard notes (`engineering-quality`, `planning`, `research-capture`, `working-rhythm`, `self-hosted-assets`, `agent-tooling`) + `coins.md` present; `assets/docs-theme/modules/coins.js` present. ✔
+- **fairyfox-games:** `assets/coins.js` + the shared `coins-earn.core.js` (with its `.test.js` + `coins-game.js` bridge) present; 29 `notes/reference/*.md`. ✔ — **one cosmetic inaccuracy:** the report cites the path as `games/_shared/…`; the file actually lives at **`games/shared/…`** (no underscore). Artifact real, path mis-typed in the node's report. Not an adoption gap; worth a node-side note-fix on the node's next pass (not the hub's to edit).
+- **fairyfox-stories:** `assets/coins.js` present; 31 `notes/reference/*.md`. ✔ (Phase-2 coins shipped as claimed.)
+- **papermc-despawned-items:** the S1/S6/S7 reference implementations are genuinely present — `notes/reference/adoption-manifest.md`, the "Checklists are contracts" instruction in `CLAUDE.md`, and a manifest-linked `status.md` Health row. ✔ (This is why the fold could lift working copy rather than a sketch.)
+
+**Out of tree-scope:** live GitHub config claims (e.g. despawned-items' own finding that
+supply-chain was "adopted" with branch protection off) can't be verified from the tree —
+they need `gh api` — and that one was the node's own already-closed finding. A future pass
+with repo-admin reads could confirm branch-protection/required-status-check state mesh-wide.
+
+**Net:** the new spot-check *works* (it caught a small report inaccuracy on first run) and,
+more importantly, confirms the nodes' reported adoptions are **real, not narrative-only** —
+the reassuring result. The full manifest-backed version becomes available once the nodes
+adopt `adoption-manifest.md` (this release), at which point the diff is a row-by-row read.
+
 ## Environment
 
 Windows + PowerShell (Windows-MCP) + the file tools; never the bash sandbox. Hub on `dev`,

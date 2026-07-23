@@ -8,7 +8,7 @@ read: true
 ---
 
 <div class="prose">
-<p><em>Last updated: July 19, 2026</em></p>
+<p><em>Last updated: July 23, 2026</em></p>
 
 <p><strong>The short version.</strong> The <strong>fairyfox.io</strong> hub uses no cookies —
 none at all, and no tracking. It saves your reading preferences and your Fairy&nbsp;Fox coins in
@@ -39,10 +39,10 @@ your device; we never receive it. For more, see our
 <a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>.</p>
 
 <h2>Third-party requests</h2>
-<p>The Site loads its typefaces from Google Fonts and its icon font from cdnjs (Cloudflare). Those
-requests deliver files to your browser and expose your IP address to those providers, as described
-in our <a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>; they set no cookies on
-our behalf and carry no tracking on our behalf. The Site embeds no ad networks, analytics scripts,
+<p>The Site's typefaces are self-hosted (no font-provider request); it still loads one icon font
+from cdnjs (Cloudflare). That request delivers a file to your browser and exposes your IP address to
+Cloudflare, as described in our <a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>;
+it sets no cookies on our behalf and carries no tracking on our behalf. The Site embeds no ad networks, analytics scripts,
 or social widgets. The only other third party involved is our hosting provider (GitHub Pages),
 which processes basic request data to deliver the site.</p>
 

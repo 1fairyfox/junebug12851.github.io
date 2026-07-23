@@ -8,14 +8,14 @@ read: true
 ---
 
 <div class="prose">
-<p><em>Last updated: July 19, 2026</em></p>
+<p><em>Last updated: July 23, 2026</em></p>
 
 <p><strong>The short version.</strong> This is the privacy policy for the
 <strong>fairyfox.io</strong> hub — the project home and documentation library. It has no
 accounts and collects no personal information about you. Your reading preferences and your
 Fairy&nbsp;Fox coins are saved only in your own browser. The site sets no cookies and runs
-no analytics or tracking. It does load fonts and icons from third-party services, which is
-disclosed below. Each linked project has its own policy.</p>
+no analytics or tracking. Its fonts are self-hosted; it still loads one icon font from a
+third-party CDN, which is disclosed below. Each linked project has its own policy.</p>
 
 <h2>What this covers</h2>
 <p>This policy explains how the <strong>fairyfox.io</strong> site
@@ -64,13 +64,13 @@ as our hosting provider under its own privacy policy. We add no analytics, profi
 database on top of it.</p>
 
 <h2>Fonts, icons, and third-party requests</h2>
-<p>The Site currently loads its typefaces from <strong>Google Fonts</strong>
-(<code>fonts.googleapis.com</code> / <code>fonts.gstatic.com</code>) and its icon font from
-<strong>cdnjs</strong>, operated by Cloudflare. When a page loads, your browser requests those
-resources directly from those providers, which means your IP address and basic request data are
-visible to Google and Cloudflare for the purpose of serving the files. We send them no other
-information about you, and the Site embeds no ad networks, analytics scripts, or social widgets.
-We may move to self-hosting these assets to remove that third-party exposure.</p>
+<p>The Site's <strong>typefaces are self-hosted</strong> — served from fairyfox.io's own origin,
+with no request to Google Fonts or any other font provider. It still loads one <strong>icon
+font</strong> (Font Awesome) from <strong>cdnjs</strong>, operated by Cloudflare. When a page loads,
+your browser requests that icon font directly from Cloudflare, which means your IP address and basic
+request data are visible to Cloudflare for the purpose of serving the file. We send them no other
+information about you, and the Site embeds no ad networks, analytics scripts, or social widgets. We
+intend to self-host the icon set as well to remove that remaining third-party exposure.</p>
 
 <h2>Cookies</h2>
 <p>The Site sets <strong>no cookies</strong>. It uses your browser&rsquo;s local storage for the
@@ -93,7 +93,7 @@ reading preferences and coins) is on your own device and fully under your contro
 &ldquo;share&rdquo; (for cross-context behavioral advertising) your personal information, and we
 use no sensitive personal information.</p>
 <p><strong>For users in the EEA/UK (GDPR):</strong> where any limited processing occurs (such as
-the hosting logs and the third-party font/icon requests described above), it is based on our
+the hosting logs and the third-party icon-font request described above), it is based on our
 legitimate interest in operating and securing the Site. You have the right to lodge a complaint
 with your local data protection authority.</p>
 

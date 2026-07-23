@@ -8,7 +8,21 @@ notes (and manifest) so a later refresh is a clean diff.
 Newest on top. A node re-adopting the bundle should read every entry newer than the
 version it currently carries, then re-run the [compliance checklist](../08-compliance-checklist.md).
 
-## 2.2.1 — coin-counter polish (current)
+## 2.3.0 — self-hosted fonts (current)
+
+- The bundle now ships **self-hosted fonts** instead of hot-linking Google Fonts: pull the
+  three OFL variable subsets (`fraunces/inter/jetbrains-mono-latin.woff2`) + `fonts.css` from
+  the hub master `assets/fonts/` alongside `main.css`, vendor them, and point the new
+  `{{FF_FONTS_HREF}}` / `{{FF_FONTS_DIR}}` slots at them. `head.html` no longer references
+  `fonts.googleapis.com` / `fonts.gstatic.com` — no visitor IP leaks to Google on load
+  (self-hosted-assets standard). This removes the per-node font deviation nodes like pse2 had
+  been carrying by hand.
+- **Adopter action:** add `assets/fonts/*` to whatever pulls the bundle; fill the two new
+  font slots; drop any remaining Google Fonts `<link>`/preconnect. Re-verify type renders
+  (Fraunces display, Inter body, JetBrains Mono code) with the network panel showing **no**
+  `fonts.g*` requests.
+
+## 2.2.1 — coin-counter polish
 
 - `coins.js` reading-engagement counter shipped and stabilized: the coin button injects
   into the header just left of the reader "Aa" button; first-view-per-day earn; the mini

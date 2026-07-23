@@ -19,6 +19,7 @@ footer and each one drifted. Now there is a single source, and adopting it is a 
 | **Reader menu** behaviour | the live master `assets/js/reader.js` | **pull over git** |
 | **Nav** behaviour (hamburger, dropdowns) | the live master `assets/js/nav.js` | **pull over git** |
 | **Coins** behaviour (reading-engagement counter) | the live master `assets/js/coins.js` | **pull over git** |
+| **Fonts** (3 OFL variable subsets + `fonts.css`) | the live master `assets/fonts/` | **pull over git** (self-hosted, never Google Fonts) |
 | **`<head>` chrome** (theme metas + pre-paint script + fonts) | [`head.html`](head.html) | copy verbatim |
 | **Header** (brand + fixed primary nav) | [`header.html`](header.html) | copy verbatim |
 | **Subnav** (section row) | [`subnav.html`](subnav.html) | copy, fill `{{FF_SUBNAV_ITEMS}}` |
@@ -44,9 +45,10 @@ your build already uses:
 # sparse/partial checkout of just the assets you need, into a build folder
 git clone --no-checkout --depth 1 https://github.com/1fairyfox/1fairyfox.github.io _ff && \
 cd _ff && git sparse-checkout set assets/css/main.css assets/js/reader.js assets/js/nav.js \
-  assets/js/coins.js hub/standards/docs-site/chrome && git checkout
-# → copy assets/css/main.css, assets/js/{reader,nav,coins}.js, and the chrome/*.html partials
-#   into your project's build output / static dir.
+  assets/js/coins.js assets/fonts hub/standards/docs-site/chrome && git checkout
+# → copy assets/css/main.css, assets/js/{reader,nav,coins}.js, assets/fonts/* (the 3 woff2 +
+#   fonts.css — SELF-HOSTED, never Google Fonts), and the chrome/*.html partials into your
+#   project's build output / static dir.
 ```
 
 or a git submodule / subtree pinned to the hub, or your generator's own fetch step —
@@ -76,6 +78,8 @@ The only slots you fill:
 | Token | Meaning |
 |-------|---------|
 | `{{FF_CSS_HREF}}` | path to your pulled copy of `main.css` |
+| `{{FF_FONTS_HREF}}` | path to your pulled copy of `fonts.css` (self-hosted `@font-face`) |
+| `{{FF_FONTS_DIR}}` | dir holding the pulled `*-latin.woff2` (for the preload hints) |
 | `{{FF_SUBNAV_ITEMS}}` | this project's own section links (subnav only) |
 | `{{FF_PROJECT_KEY}}` | repo slug, e.g. `random-ai-prompt` |
 | `{{FF_PROJECT_NAME}}` | display name, e.g. `Random AI Prompt` |
