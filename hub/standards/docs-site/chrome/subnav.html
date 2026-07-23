@@ -5,27 +5,54 @@
   style as the primary nav; it's the layer that CHANGES between pages while the primary nav
   stays constant. Mark the current one class="active" aria-current="page".
 
-  CANONICAL PROJECT SUBNAV — a fixed three-zone shape (see 05-navigation-and-cross-linking.md):
-    [ <Project name> = overview/home ] · Notes · Tutorials · Changelog · API · Download · [ Repository ↗ ]
-    - LEFT  : the project name, doubling as the overview/home link (.subnav-home).
-    - CENTRE: the project's own doc pages — include the ones it has, in this order.
-              A project that offers downloads MUST include "Download".
-    - RIGHT : "Repository ↗", right-aligned (.subnav-repo).
+  CANONICAL PROJECT SUBNAV — ADAPTIVE three-zone contract (see 05-navigation-and-cross-linking.md).
+  The three ZONES are fixed; the CENTRE MEMBERSHIP is a function of what the project actually has,
+  so nodes converge instead of diverging (one project shipped a bare "Notes" while a sibling shipped
+  broken-out section doors — both claiming "canonical"). Latitude is on MEMBERSHIP, not SHAPE.
 
-  The wrapper (nav.subnav > div.wrap) and the pill style are fixed — copy them. Only the
-  links inside {{FF_SUBNAV_ITEMS}} are yours to fill; keep the three-zone order.
+    [ Name=home ] · Overview · Project Notes · <section doors…> · Tutorials? · Changelog · API? · Download? · Legal? · [ Repository ↗ ] · [ Notes ↗ ]
+
+    - LEFT  : the project name, doubling as overview/home (.subnav-home).
+    - CENTRE, in this order:
+        • Overview — an explicit pill also targeting the home/overview page (reads as the first section).
+        • Project Notes — the notes landing, PLUS one door per NON-EMPTY notes section the project has
+          (Systems, Reference, Context, Decisions, Plans…). Expose exactly the sections that exist;
+          never a door to an empty section (no 404s). Generate a section landing page per section that
+          has notes (see the adapters).
+        • The project's own pages that EXIST, in order: Tutorials? · Changelog · API? · Download? · Legal?
+          ( ? = include only if the page exists. ) A project that offers downloads MUST include Download
+          (06 §Downloads); Legal is mandatory per legal-docs. Read "include the ones that exist"
+          AMBITIOUSLY — build the overview/section pages a documented, releasing project is expected to
+          have; do NOT satisfy the rule by shrinking the subnav to whatever pages happen to exist
+          (that is a gap, not a pass — checklists-are-contracts rule 3).
+        • Every centre link is a CHROME-WEARING page, never a raw generated index or a raw GitHub link.
+    - RIGHT : "Repository ↗" AND "Notes ↗" (→ …/tree/main/notes) as a fixed pair (.subnav-repo).
+
+  ACTIVE-STATE RULE (do not fill by intuition): the PRIMARY nav's active item on a sub-project docs
+  page is ALWAYS "Projects" — every project's docs live under the site's Projects section (05). It is
+  NOT "Docs". Set the subnav's own active pill to the current section here; set the PRIMARY nav active
+  item in header.html to Projects.
+
+  The wrapper (nav.subnav > div.wrap) and the pill style are fixed — copy them. Only the links inside
+  {{FF_SUBNAV_ITEMS}} are yours to fill; keep the zone order. Finish by running 08-compliance-checklist
+  and recording the result in the node's adoption manifest — chrome adoption is not complete until then.
 -->
 <nav class="subnav" aria-label="Section">
   <div class="wrap">
     {{FF_SUBNAV_ITEMS}}
-    <!-- Example — replace with this project's real pages (drop any it doesn't have):
+    <!-- Example — replace with this project's real pages/sections (drop any it doesn't have):
     <a href="./" class="subnav-home active" aria-current="page">{{FF_PROJECT_NAME}}</a>
-    <a href="./notes/">Notes</a>
+    <a href="./overview/">Overview</a>
+    <a href="./notes/">Project Notes</a>
+    <a href="./notes/systems/">Systems</a>
+    <a href="./notes/reference/">Reference</a>
     <a href="./tutorials/">Tutorials</a>
     <a href="./changelog/">Changelog</a>
     <a href="./api/">API</a>
     <a href="./download/">Download</a>
+    <a href="./legal/">Legal</a>
     <a href="https://github.com/1fairyfox/{{FF_PROJECT_KEY}}" class="subnav-repo">Repository ↗</a>
+    <a href="https://github.com/1fairyfox/{{FF_PROJECT_KEY}}/tree/main/notes" class="subnav-repo">Notes ↗</a>
     -->
   </div>
 </nav>

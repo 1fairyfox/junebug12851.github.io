@@ -40,3 +40,10 @@ its own `<head>`/layout. (The main site itself is Jekyll — this is how it's wi
 - Point `{{FF_CSS_HREF}}` at your pulled `main.css`.
 - This is the reference wiring; the other adapters are the same idea in a stack that
   gives you less control over the page shell.
+
+## Finish: run the compliance checklist
+
+Chrome adoption is complete when [`../../08-compliance-checklist.md`](../../08-compliance-checklist.md)
+passes and the result is recorded in the node's `notes/reference/adoption-manifest.md` — not
+when the bundle renders (active nav = Projects; the adaptive subnav; a releasing project's
+required Downloads page all live in module 05/06, one link from the slot you just filled).

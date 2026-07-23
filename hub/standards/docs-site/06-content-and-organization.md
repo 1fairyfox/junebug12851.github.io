@@ -46,7 +46,7 @@ page should carry the equivalent of:
 This is what powers the grouped, ordered sidebar and the breadcrumb. Keep titles
 short and consistent in voice.
 
-## Generated docs (Doxygen, JSDoc, TypeDoc, Sphinx, …)
+## Generated docs (Doxygen, JSDoc, TypeDoc, Sphinx, Dokka, …)
 
 **Most projects should ship API docs** — if a project has a public API, surface, or
 codebase worth referencing, it should generate reference docs and link them as **API** in the

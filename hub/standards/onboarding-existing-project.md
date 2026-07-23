@@ -193,6 +193,29 @@ git checkout dev && git merge --ff-only main && git push origin dev   # back-mer
 branch-protected, release via the
 [PR-based path](git-workflow.md#releasing-when-main-is-branch-protected-pr-based).)
 
+## JVM / Gradle (and other non-web) projects
+
+The runbook's examples are web/npm-shaped (npm, JSDoc/Doxygen, Netlify, a `package.json`
+version badge). A JVM server plugin or CLI translates each one — don't read the npm example
+as the requirement:
+
+- **Build/version:** Maven → **Gradle** (Kotlin DSL); `VERSION` seeded from the project's
+  **real** number (a `gradle` property or the latest tag), never a `package.json` field and
+  never reset to `0.1.0`.
+- **Docs generator:** **Dokka** (Kotlin) or **Javadoc** is the "generator *is* the site" case —
+  see [`docs-site/chrome/adapters/dokka.md`](docs-site/chrome/adapters/dokka.md).
+- **"Deploy" analogue:** a `.jar` published to **Hangar/Modrinth** (or a server's `plugins/`),
+  not Pages/Netlify — a server plugin has no web deploy target. The badge/deploy standards read
+  accordingly (version badge → `github/v/tag`, not `package-json/v`; distribution badges enabled
+  once published).
+- **Templates:** `dependabot.yml` defaults to the **`gradle`** ecosystem (the template ships
+  commented ecosystem variants); the README version badge uses `github/v/tag`.
+- **Who owns the live publish:** per the mesh model a project only writes its **own** repo, so
+  the actual Pages/domain wiring at `fairyfox.io/<key>/` is a **hub-side** act. The project's
+  docs-site duty ends at "themed generator output, verified locally"; the live-served-page check
+  (onboarding Row 6) is met after the hub-side publish. Don't mark it a project-side gap when it's
+  a hub step that hasn't run yet.
+
 ## Registered ≠ integrated (read before declaring "done")
 
 **Hub-side registration is the easy half and proves almost nothing about whether
@@ -217,9 +240,18 @@ An established repo rarely adopts everything on day one — it might take the no
 system now and the full git model later. That's expected: onboard incrementally
 and tighten over subsequent passes via [`adopting-updates.md`](adopting-updates.md).
 But "partial" is only acceptable when it is **reported as partial, with the
-specific gaps named.** Mark the registry flags honestly, and never round a
-partially-integrated project up to "done." Joining the mesh is a direction, not a
-single switch — say where on the path it actually is.
+specific gaps named — in the manifest, not just in prose.** Mark the registry flags
+honestly, and never round a partially-integrated project up to "done." Joining the mesh
+is a direction, not a single switch — say where on the path it actually is.
+
+**Every skipped standard lands in [`notes/reference/adoption-manifest.md`](../templates/notes-skeleton/reference/adoption-manifest.md)
+as a dated `gap` row.** A narrative "we did 6 of 27" evaporates the moment the report is
+filed; the manifest is the artifact that carries the remainder, owned and due. Onboarding
+seeds the manifest (every standard as `copied-only`/`gap`/`N-A`) and **runs the full
+[compliance matrix](compliance.md) once** so the day-one state is a recorded pass/gap per
+standard, not an unbacked ✅. Copying a standard's file in is `copied-only`; it becomes
+`implemented` only when its `## Verify` has been run and recorded. Full rule:
+[`checklists-are-contracts`](checklists-are-contracts.md).
 
 ## Verify — the completeness audit
 
@@ -245,8 +277,9 @@ gate; the recurring whole-set check (every standard, re-runnable anytime) is the
 | 6 | **Docs site is a page of fairyfox** | `fairyfox.io/<key>/` serves a site **wearing the shared fairyfox chrome** (header, nav + submenu, footer) so it reads as a page of the site, with the **brand/Home link as the way home** and **no separate back-button** (project-forward branding is fine). **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Deploy target matches the project's kind ([deployment](deployment.md)). Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
 | 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. |
 | 8 | Process report | `notes/fairyfox-reports/` holds this onboarding's report, committed, with the reconcile friction and an honest outcome — [process-reports](process-reports.md). |
+| 9 | **Adoption manifest seeded + first compliance pass** | `notes/reference/adoption-manifest.md` exists with a row per hub standard (`implemented`/`copied-only`/`gap(due)`/`N-A(reason)`), and the full [compliance matrix](compliance.md) was run once — so the day-one state is a recorded per-standard result, and every not-yet-adopted standard is a **dated `gap`**, not prose. No `Standards adopted ✅` without backing rows ([checklists-are-contracts](checklists-are-contracts.md)). |
 
-**Reporting rule:** only call a project **"fully onboarded" when rows 1–8 are all
+**Reporting rule:** only call a project **"fully onboarded" when rows 1–9 are all
 `done`.** If any row is `partial` or `missing`, say exactly which — e.g. "registered
 and noted, but the docs site is unthemed JSDoc and the `CLAUDE.md` mesh block is
 missing." A clean hub-side registration is **not** a green light.

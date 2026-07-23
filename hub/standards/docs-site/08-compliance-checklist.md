@@ -70,9 +70,13 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
 
 **Recommended (absence is not a failure), but when present follow the canonical shape:**
 
-- [ ] A **submenu** row below the primary nav following the **canonical three-zone
-      structure** — `[Project name = overview] · Notes · Tutorials · Changelog · API ·
-      Download · [Repository ↗]` — in the shared pill style, current item `.active`
+- [ ] A **submenu** row below the primary nav following the **adaptive three-zone
+      contract** — `[Name=home] · Overview · Project Notes · <section doors…> · Tutorials? ·
+      Changelog · API? · Download? · Legal? · [Repository ↗ · Notes ↗]` — centre membership
+      built from the pages/sections the project actually has (one door per non-empty notes
+      section; existing pages only; read optionality ambitiously, not by shrinking to what
+      exists), in the shared pill style, current item `.active`, every centre link a
+      chrome-wearing page (no raw GitHub links in the centre)
       ([`05-navigation-and-cross-linking.md`](05-navigation-and-cross-linking.md#the-canonical-project-subnav-structure)).
 - [ ] A footer linking the project's repo, notes, and the main-site sections.
 - [ ] A breadcrumb/locator near the page top.
@@ -130,6 +134,10 @@ the brand/Home way-home — not by brand precedence.
 
 ## Sign-off
 
+- [ ] **This checklist was actually run and its result recorded in the node's
+      `notes/reference/adoption-manifest.md`** — chrome adoption is complete only when the
+      checklist passes and the manifest row is updated, not when the bundle renders
+      ([`../checklists-are-contracts.md`](../checklists-are-contracts.md)).
 - [ ] Deviations (if any) are recorded with their reason.
 - [ ] Checked in light, dark **and sepia**, desktop and mobile widths.
 - [ ] For the fairyfox.io master copy only: changes went through Fairy Fox's manual

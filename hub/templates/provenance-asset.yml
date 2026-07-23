@@ -1,0 +1,31 @@
+# Reusable release-workflow snippet — attach SLSA build provenance AS a release asset.
+#
+# WHY: `actions/attest-build-provenance` stores the attestation in GitHub's attestation
+# API, which OpenSSF Scorecard's Signed-Releases check does NOT read — so attestation
+# alone scores 0. Copy the attest step's bundle to a `*.intoto.jsonl` file and attach it
+# to the GitHub Release so the check sees a signed asset. (See supply-chain-hardening §4.)
+#
+# Drop these steps into your existing release job (which builds the artifact first).
+# The job needs, at job scope:
+#   permissions: { contents: write, id-token: write, attestations: write }
+# Pin every `uses:` to a full commit SHA in your repo (shown here by version for clarity).
+
+steps:
+  # 1) Attest the built artifact(s). Emits a bundle at `bundle-path`.
+  - name: Attest build provenance
+    id: attest
+    uses: actions/attest-build-provenance@v1
+    with:
+      subject-path: <path/to/your/built-artifact>   # e.g. build/libs/*.jar, dist/*.tgz
+
+  # 2) Copy the attestation bundle to a release-asset filename.
+  - name: Stage provenance as a release asset
+    run: cp "${{ steps.attest.outputs.bundle-path }}" provenance.intoto.jsonl
+
+  # 3) Attach it (alongside your real artifacts) to the GitHub Release.
+  - name: Publish release with provenance asset
+    uses: softprops/action-gh-release@v2
+    with:
+      files: |
+        <path/to/your/built-artifact>
+        provenance.intoto.jsonl

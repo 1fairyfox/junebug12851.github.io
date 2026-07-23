@@ -52,7 +52,9 @@ Then, after making changes, run this loop **without being asked**:
 
 1. **Build / check** the change.
 2. **Test** the affected area; full suite/check before releasing to `main`. Only
-   proceed on green.
+   proceed on green. **Before a release, read `notes/reference/adoption-manifest.md`:**
+   an overdue `gap` row on a *mandatory* standard (supply-chain-hardening, git-workflow,
+   testing, ship-contract) **holds the release** the same way a red build does.
 3. **Commit + push on `dev`**, staging specific files (never `git add -A`). The
    **changelog entry rides inside the commit** (top of `notes/version/YYYY-MM.md`,
    no hash marker), and **bump `VERSION`** in the same commit when warranted
@@ -73,6 +75,37 @@ Then, after making changes, run this loop **without being asked**:
 `reset --hard` / `rebase` / `clean -fd` / delete a branch without an explicit
 request. Inspect `git status` before and after. Full rules: the shared
 `git-workflow` standard (pulled into `notes/reference/git-workflow.md`).
+
+## Checklists Are Contracts (a standing instruction)
+
+The mesh's anti-drift rule — full standard: `checklists-are-contracts` (in
+`hub/standards/`). When work touches a standard's `## Verify` table, a runbook, a
+docs-site module, or any checklist:
+
+- **Enumerate every item** in the plan — mechanically, the *full* table, never
+  "the important ones", never a table-level summary row. Copying a standard in is
+  `copied-only`, **not** adoption; only a recorded Verify pass makes it adopted.
+- **Record each item's outcome individually** — pass / fixed / N-A-with-reason /
+  gap-with-due — **before** any done-mark exists. **Never compress a list into a single
+  done-mark**; a bare `✅` over a multi-item set is banned — link the record
+  (`notes/reference/adoption-manifest.md`, an audit, the Verify results).
+- **Read optional items ambitiously** ("include the ones that exist", "recommended",
+  "where possible" → *build the thing*); descope only explicitly, never by silent
+  omission — a silent omission is a `gap`, not a pass.
+- **Deferral requires falsification:** no `⏳`/`⛔` without an attempt log (command,
+  error, version) + a retest trigger. Probe a "can't" for a bounded hour before parking it.
+- **End every pass with a disclosed not-done list** — "NOT done / read leniently / needs
+  your eyes" — volunteered, never extracted by challenge.
+
+## Owner Mandates Become Ledgers (a standing instruction)
+
+A multi-part owner request is a checklist too — full standard: `mandate-ledger`. Transcribe
+a multi-clause directive **verbatim** into `notes/plans/<date>-mandate.md`, one row per
+clause (quote · interpretation · `done`/`blocked-with-evidence`/`awaiting-owner`).
+Completion claims cite rows, not a paraphrase. A repeated mandate escalates every
+`awaiting-owner` row to do-now; a second repetition of the same item is itself a reportable
+process failure. A release may ship mid-mandate, but the claim states "mandate rows
+remaining: N" — a green release never implies the mandate is done.
 
 ## Maintaining the Notes — Your Responsibility
 

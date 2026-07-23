@@ -107,6 +107,26 @@ Anti-patterns (do not do these): daily "log in for coins" grinds; coins required
 paywall-shaped "spend to unlock"; nagging the user to earn; inflating grants so coins feel
 worthless; any coin UI that competes with the project's own content for attention.
 
+## Coins off the shared chrome (game pages, custom layouts)
+
+`coins.js` is written for the shared docs chrome (the header coin button). On a page that
+loads it **without** that chrome — a canvas game, a bespoke reading layout — the behaviour
+differs, and a node must handle it:
+
+- **The API + first-view earn still run; the button UI does not build.** On a chrome-less
+  page `coins.js` self-guards on `.site-header .wrap` (no header → no button) but the
+  `window.FairyFoxCoins` API and the first-view-today earn still fire. So a **game draws its
+  own coin affordance** (and guards its start-on-interaction against the coin control — e.g.
+  a `closest('#coinrow')` check, or `stopPropagation`, depending on whether the game starts
+  on pointer *move* vs *down*).
+- **Read-time chip placement is layout-fragile.** The read-time chip anchors via
+  `main .content` → `.prose` → `article` → `main`. If the readable column is a **nested**
+  element under a full-width `<article>`, the chip lands at the page edge with no error —
+  add the preferred `.content`/`.prose` hook to the centered column so it anchors correctly.
+- **Keep a drop-cap clear of the injected `.ff-readtime`.** Injecting a leading `.ff-readtime`
+  node makes it the `:first-child`/`:first-of-type`, killing any drop-cap `::first-letter`
+  flourish — target the first *real* paragraph (exclude `.ff-readtime`).
+
 ## Verify (is it being followed?)
 
 The per-standard slice the [compliance audit](compliance.md) aggregates — report

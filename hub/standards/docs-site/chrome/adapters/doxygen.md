@@ -44,3 +44,13 @@ and [`../../09-adopting-and-maintaining.md`](../../09-adopting-and-maintaining.m
   would fight the shared theme; the bundle's CSS + reader own light/sepia/dark.
 - Re-check the header/footer templates after a Doxygen major upgrade — the
   `<!--BEGIN/END-->` block set can change.
+- **A new bundle behaviour file (e.g. a future JS) must be added to `HTML_EXTRA_FILES`**,
+  or its `<script>` tag 404s (`coins.js` hit this on the first rebuild).
+
+## Finish: run the compliance checklist
+
+Chrome adoption is complete when [`../../08-compliance-checklist.md`](../../08-compliance-checklist.md)
+passes and the result is recorded in the node's `notes/reference/adoption-manifest.md` —
+**not** when the bundle renders. Injecting the chrome without running module 05's rules
+(active nav = Projects; the adaptive subnav; a releasing project's required Downloads page)
+is how a chrome-adopted site ships with the wrong active nav and a missing page.

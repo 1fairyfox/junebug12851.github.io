@@ -5,6 +5,13 @@
 # day instead of at the next release: it fails whenever `main` has any commit not in
 # `dev`. Copy to `.github/workflows/branch-sync.yml`.
 #
+# PR-PATH RACE (why the grace window exists): on a protected repo the release is a PR
+# merge to `main`, and this guard's `push: [main]` trigger fires at merge time —
+# necessarily BEFORE the back-merge push exists. Without a grace window it goes red on
+# EVERY compliant release (~60s before the back-merge lands), and a guard that's red on
+# every correct release trains people to ignore it, which un-guards it. So on a push it
+# retries over a short window and only fails if `dev` is STILL behind after it.
+#
 # Adjust the branch names only if a project deviates (it shouldn't — the mesh is dev/main).
 
 name: branch-sync
@@ -28,10 +35,23 @@ jobs:
           fetch-depth: 0
       - name: dev must contain every commit on main
         run: |
-          git fetch origin main dev
-          behind="$(git rev-list --count origin/dev..origin/main)"
+          # On a main push (a release merge), give the back-merge a grace window to land
+          # before failing — otherwise the guard is red on every compliant PR release.
+          if [ "${{ github.event_name }}" = "push" ]; then
+            tries=6; sleep_s=30      # ~3 min total
+          else
+            tries=1; sleep_s=0
+          fi
+          behind=1
+          for i in $(seq 1 "$tries"); do
+            git fetch --quiet origin main dev
+            behind="$(git rev-list --count origin/dev..origin/main)"
+            [ "$behind" -eq 0 ] && break
+            echo "dev is $behind commit(s) behind main (attempt $i/$tries) — waiting ${sleep_s}s for the back-merge…"
+            [ "$i" -lt "$tries" ] && sleep "$sleep_s"
+          done
           if [ "$behind" -ne 0 ]; then
-            echo "::error::dev is missing $behind commit(s) that are on main — the release back-merge was skipped."
+            echo "::error::dev is still missing $behind commit(s) that are on main after the grace window — the release back-merge was skipped."
             git log --oneline origin/dev..origin/main
             exit 1
           fi

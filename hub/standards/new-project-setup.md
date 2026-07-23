@@ -102,6 +102,14 @@ cp -r $H/legal                  ./public/legal       # legal-docs — place per 
 Then, still part of setup: enable **branch protection** on `main` (solo config) and wire
 **signed releases** per [supply-chain-hardening](supply-chain-hardening.md); the release
 flow is the **PR-based** path in [git-workflow](git-workflow.md#releasing-when-main-is-branch-protected-pr-based).
+**Populate `main`'s required-status-check contexts with the full CI suite by job name** —
+branch protection existing is not enough; empty contexts make "full CI before `main`"
+documentation without teeth (a merge slips through while a smoke job is red). Set them per
+this repo's actual job names ([git-workflow → Full CI before `main`](git-workflow.md#full-ci-before-main--platform-enforced-every-job)).
+For a **JVM/Gradle or other non-web** project, translate the npm-shaped template defaults
+(Gradle ecosystem in `dependabot.yml`, `github/v/tag` version badge, Dokka/Javadoc docs, a
+`.jar` + Hangar/Modrinth as the "deploy" — see the aside in
+[onboarding-existing-project.md](onboarding-existing-project.md#jvm--gradle-and-other-non-web-projects)).
 
 ### 4. Fill in the templates for this project
 

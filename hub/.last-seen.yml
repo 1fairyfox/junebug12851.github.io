@@ -27,6 +27,8 @@ pokered-save-editor-2:
     - 2026-07-02-check-for-updates.md            # 2026-07-19 report-review — check-only, no-change confirming pass
     - 2026-07-06-adopting-updates.md             # 2026-07-19 report-review — run feedback (successful adopt), no standalone standard change
     - 2026-07-19-adopting-updates.md             # 2026-07-19 report-review — run feedback (successful adopt), no standalone standard change
+    - 2026-07-19-check-for-updates.md            # 2026-07-23 report-review (0.21.0) — run feedback; recurring asks folded (chrome CHANGELOG, standards CHANGELOG)
+    - 2026-07-19-adopting-updates-chrome-2.2.1.md # 2026-07-23 report-review (0.21.0) — chrome-2.2.1/coins adopt; Doxygen HTML_EXTRA_FILES note + chrome CHANGELOG folded
   # 2026-07-22 round-up: "Already up to date" at b3128652 (still 0.43.6-alpha) — no commits dated 2026-07-21;
   # the tip is still the 07-20 de-personalization commit. Nothing to reconcile (projects.yml left at 0.43.6 /
   # Jul 20) or blog; PSE2 is absent from the new 2026-07-21 day post's tags. Marker unchanged; seen → 2026-07-22.
@@ -332,6 +334,8 @@ random-ai-prompt:
     - 2026-07-04-propose-regression-testing-standard.md # digested 0.18.0 testing.md; demonstrate-fail-then-pass + right-home nuance folded 0.20.0
     - 2026-07-05-adopt-docs-chrome-reader.md     # 2026-07-19 report-review — node docs-chrome/reader adoption feedback, already reflected
     - 2026-07-09-propose-maintenance-sweep-standard.md # digested 0.20.0 — new maintenance-sweep.md
+    - 2026-07-19-check-for-updates.md            # 2026-07-23 report-review (0.21.0) — run feedback; per-standard version-stamp ask folded (hub/standards/CHANGELOG.md)
+    - 2026-07-19-adopting-updates.md             # 2026-07-23 report-review (0.21.0) — run feedback; "already-practiced now-filed" + coins-is-chrome folded into adopting-updates.md
   # 2026-07-22 round-up: "Already up to date" at 35b1370 (still 2.60.1) — no commits dated 2026-07-21; the tip
   # is still the 07-19 docs-adoption commit, two quiet days now. Nothing to reconcile (projects.yml left at
   # 2.60.1 / Jul 12) or blog; RAP is absent from the new 2026-07-21 day post's tags. As the mesh's only
@@ -589,7 +593,15 @@ papermc-despawned-items:
   commit: 2cb470d04f4d34f8afc2df1c7e04b6746d067e26
   branch: dev
   seen: 2026-07-22
-  reports_through: []          # digested-report filenames (append-only); see header — none yet
+  reports_through:             # digested-report filenames (append-only); see header
+    - 2026-07-19-onboarding.md                                 # 2026-07-23 report-review (0.21.0) — JVM/Gradle/Dokka aside + publish-ownership folded into onboarding/new-project-setup
+    - 2026-07-20-adopt-docs-chrome.md                          # 2026-07-23 report-review (0.21.0) — new chrome/adapters/dokka.md + main.css load-order note
+    - 2026-07-20-standards-audit.md                            # 2026-07-23 report-review (0.21.0) — rules-on-slots + per-standard CHANGELOG; onboarding manifest-seed + full-compliance-once
+    - 2026-07-20-checklist-noncompliance-failure-analysis.md   # 2026-07-23 report-review (0.21.0) — THE HEADLINE: S1-S9 → checklists-are-contracts + adoption-manifest + enforcement pulse + report-review spot-check + check-standards.mjs
+    - 2026-07-21-mandate-execution-failure-analysis.md         # 2026-07-23 report-review (0.21.0) — new mandate-ledger.md standard + template
+    - 2026-07-21-ship-contract-and-repo-hardening-proposal.md  # 2026-07-23 report-review (0.21.0) — ship-contract (engineering-quality) + full-CI-before-main + provenance-asset + dep guardrails + badges
+    - 2026-07-21-subnav-standard-proposal.md                   # 2026-07-23 report-review (0.21.0) — adaptive three-zone subnav (docs-site 05 + chrome/subnav.html)
+    - 2026-07-21-testing-and-quality-gap-analysis.md           # 2026-07-23 report-review (0.21.0) — testing coverage floor + probe-the-mock + gate-the-gates + SAST-outlives-toolchain
   # 2026-07-22 round-up: clean fast-forward 2e24083 → 2cb470d, 44 commits ALL dated 2026-07-21 (a complete day
   # — today is 07-22), VERSION 1.3.4 → 1.4.8 — ten passes in one day, and the plugin's biggest by far.
   # (1) THE COVERAGE NUMBER WAS THE BUG (1.4.0): the health line claimed "~49 tests ✅"; Kover measured 44.2%
@@ -655,6 +667,8 @@ fairyfox-games:
     - 2026-07-06-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
     - 2026-07-18-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
     - 2026-07-18-update-check.md          # 2026-07-19 report-review — check-only, no standard change
+    - 2026-07-19-update-check.md          # 2026-07-23 report-review (0.21.0) — run feedback; coins-is-chrome + applicability-hint folded (adopting-updates, coins.md)
+    - 2026-07-20-adopting-updates.md      # 2026-07-23 report-review (0.21.0) — run feedback; agent-tooling .NET-abs-path + jekyll-serve-baseurl + coins off-chrome (games) folded
   # 2026-07-22 round-up: clean fast-forward 015a421 → 793c32b (HEAD), 8 commits ALL dated 2026-07-21 (a
   # complete day — today is 07-22), VERSION 0.24.12 → 0.25.1. Four pieces. (1) 0.24.13 — adopted the hub's
   # repo-hygiene scripts (check-links as a CI gate + check-tidy). (2) 0.24.14 GROW — Loft joins the depth
@@ -909,6 +923,7 @@ fairyfox-stories:
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-07-06-setup.md                 # 2026-07-19 report-review — setup run feedback, no standalone standard change
     - 2026-07-18-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
+    - 2026-07-19-adopting-updates.md      # 2026-07-23 report-review (0.21.0) — run feedback (+Phase 2 coins); repo-hygiene SKIP classes + code-span fix, phasing-a-mixed-adoption, legal-coins-timing, coins read-time/drop-cap folded
   # 2026-07-22 round-up: clean fast-forward 6e25309 → 7a1951d (HEAD), 4 commits ALL dated 2026-07-21 (a
   # complete day — today is 07-22), VERSION 0.6.0 → 0.7.0, shelf 8 → 9 books. Two strands, and the farm's
   # first sequel. (1) 0.6.1 GROW — *Every Lock but Hers* ch.6 "The Job She Can't Do" (~2,600w, 6/11): the

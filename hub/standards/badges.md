@@ -23,12 +23,14 @@ that *can* apply, does.
 
 | Group | Badges |
 |-------|--------|
-| **Project / community** | contributors, stars, forks |
-| **Activity / release** | last-commit, version (from `package.json` or latest tag) |
-| **Build / quality** | CI (Actions workflow), coverage (Codecov), code quality (CodeFactor), quality gate (SonarCloud) |
+| **Project / community** | contributors, stars, forks, **watchers** |
+| **Activity / release** | last-commit, **commit-activity/total commits**, version (from `package.json` or latest tag) |
+| **Runtime** | **language/platform** *(e.g. Java, Paper, Node — if it identifies the project)* |
+| **Build / quality** | CI (Actions workflow), coverage (Codecov), code quality (CodeFactor), quality gate (SonarCloud), **tech debt (SonarCloud)** |
 | **Security** | OpenSSF Scorecard |
-| **Docs / deploy** | docs (→ `fairyfox.io/<key>/`), Netlify/Pages deploy *(if deployed)* |
-| **Issues / PRs / license** | open issues, open PRs, license |
+| **Docs / deploy** | docs (→ `fairyfox.io/<key>/`), **Pages** and/or **Netlify** deploy *(whichever applies)* |
+| **Issues / PRs / license** | open **and closed** issues, open **and closed** PRs, license |
+| **Distribution** *(commented until published)* | Hangar / Modrinth / npm / crates.io — enable per project once it ships to that registry |
 
 Link each badge to the thing it reports (the Actions tab, the Codecov project, the
 releases page, the LICENSE), so a click goes somewhere useful. The **docs** badge always

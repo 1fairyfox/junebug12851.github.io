@@ -59,12 +59,16 @@ The brand minimum — true for every project unless the project's code makes a c
 2. **Honest baseline defaults**: no accounts / no server-side personal data / no analytics / no
    tracking / no cookies **where that's true** (it usually is) — stated plainly, not padded with
    boilerplate the project doesn't earn.
-3. **Disclose the shared browser state.** Every project that wears the chrome carries the shared
-   **reader preferences** and the **Fairy Fox coins** counter in local storage. Both must be
-   disclosed as device-only, never-transmitted state in Privacy + Cookies (the
-   [templates](../templates/legal/) carry the line). Also state the **easy in-app clear/reset
-   controls** (the reader's **Reset**, the coins panel's small **Clear my data** link) beside
-   the browser-clear option — an accessible way for a user to clear/reset their data.
+3. **Disclose the shared browser state — *when the code actually carries it*.** A project that
+   wears the chrome carries the shared **reader preferences** and the **Fairy Fox coins** counter
+   in local storage; both are disclosed as device-only, never-transmitted state in Privacy +
+   Cookies (the [templates](../templates/legal/) carry the line), alongside the **easy in-app
+   clear/reset controls** (the reader's **Reset**, the coins panel's **Clear my data** link).
+   **Timing (accuracy rule 2 wins):** the coins disclosure ships **with the coins feature**, not
+   with the *standard*. A node that has adopted the standard but hasn't yet shipped `coins.js`
+   must **not** disclose a feature it doesn't run — the standard and the legal pages adopt at
+   different times, and the page edit belongs in the same change that ships coins. Disclose reader
+   prefs as soon as the reader ships; disclose coins as soon as coins ship.
 4. **Coins are transparently not money.** Disclose that coins have **no monetary value**, cannot
    be bought or sold, and are cosmetic — and link the single shared explainer at
    **`https://fairyfox.io/legal/coins/`** (projects link it, they don't re-host it). The Terms

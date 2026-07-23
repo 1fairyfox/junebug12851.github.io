@@ -6,9 +6,10 @@
 
 version: 2
 updates:
-  # App/library dependencies. Adjust `package-ecosystem` + `directory` per project
-  # (npm/pip/cargo/…; monorepos list one block per package dir).
-  - package-ecosystem: "npm"
+  # App/library dependencies. Set `package-ecosystem` to YOUR stack (this default is npm;
+  # a JVM/Rust/Python project edits it — see the commented variants below). Monorepos list
+  # one block per package dir.
+  - package-ecosystem: "npm"        # ← gradle | maven | cargo | pip | gomod | … per stack
     directory: "/"
     schedule:
       interval: "weekly"
@@ -18,6 +19,12 @@ updates:
       minor-and-patch:
         update-types: ["minor", "patch"]
     labels: ["dependencies"]
+  # Non-npm variants (uncomment the one that matches; delete the npm block above):
+  #   - package-ecosystem: "gradle"   # Kotlin/Java Gradle
+  #   - package-ecosystem: "maven"    # Java Maven
+  #   - package-ecosystem: "cargo"    # Rust
+  #   - package-ecosystem: "pip"      # Python
+  # (same directory/schedule/target-branch/groups/labels block as above)
 
   # GitHub Actions — required so SHA-pinned Actions stay current (Scorecard
   # Pinned-Dependencies stays green without going stale).

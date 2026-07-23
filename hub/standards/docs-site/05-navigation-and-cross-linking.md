@@ -102,30 +102,46 @@ visible "jump":
 
 ### The canonical project subnav structure
 
-Inside a project, the subnav has a **fixed three-zone shape** so every project's docs site
-localizes the same way. Left → the project; centre → its pages; right → its repo:
+Inside a project, the subnav has **fixed zones** but **adaptive centre membership** — the
+three zones are constant; *which* centre pills appear is a function of what the project
+actually has. This is deliberate: a fixed *example* read two ways produced divergence (one
+project shipped a bare `Notes` pill while a sibling broke Notes into per-section doors, both
+claiming "canonical"). The latitude is on **membership, not shape**.
 
 ```
-[ <Project name> ]   Notes · Tutorials · Changelog · API · Download   [ Repository ↗ ]
-   (overview/home)            (the project's own doc pages)              (right-aligned)
+[ Name=home ]  Overview · Project Notes · <section doors…> · Tutorials? · Changelog · API? · Download? · Legal?  [ Repository ↗ · Notes ↗ ]
+  (overview/home)                    (the project's own doc pages — ? = include if it exists)                          (right-aligned pair)
 ```
 
-- **Left — the project name**, which doubles as the **overview / home** link (the project's
-  README-equivalent landing page). This is the project's sub-brand locator; it is *not* a
-  replacement for the global brand/Home mark in the header above it.
-- **Centre — the project's own doc pages**, in a consistent order. The canonical set, include
-  the ones the project actually has: **Notes**, **Tutorials**, **Changelog**, **API**
-  (generated reference), **Download**. Name them consistently; don't invent parallel names for
-  the same role. A project with downloads **must** include **Download** here (see the
-  downloads requirement in
-  [`06-content-and-organization.md`](06-content-and-organization.md#downloads-a-real-page-when-a-project-offers-downloads)).
-- **Right — `Repository ↗`**, right-aligned (`.subnav-repo`, pushed over with
-  `margin-left:auto`), linking the project's GitHub repo.
+- **Left — the project name**, doubling as the **overview / home** link (the project's
+  README-equivalent landing page). The project sub-brand locator; *not* a replacement for the
+  global brand/Home mark in the header above it.
+- **Centre — in this order:**
+  - **Overview** — an explicit pill also targeting the home/overview page (redundant with Home
+    by design; it reads as the first "section" and matches the sibling convention).
+  - **Project Notes** — the notes landing, **plus one door per NON-EMPTY notes section** the
+    project has (`Systems`, `Reference`, `Context`, `Decisions`, `Plans`…). Expose exactly the
+    sections that exist; an empty section is omitted, **never** a door to a 404. The generator
+    emits a section landing page per section that has notes (see the adapters).
+  - **The project's own pages that exist**, in order: `Tutorials?` · `Changelog` · `API?` ·
+    `Download?` · `Legal?`. Name them consistently; **don't invent parallel names** for the
+    same role. `Download` is **mandatory** for any project that offers downloads
+    ([06 §Downloads](06-content-and-organization.md#downloads-a-real-page-when-a-project-offers-downloads));
+    `Legal` is mandatory per [legal-docs](../legal-docs.md).
+  - Read "include the ones that exist" **ambitiously** — build the overview/section pages a
+    documented, releasing project is expected to have; do **not** satisfy the rule by shrinking
+    the subnav to whatever pages happen to exist (a silent descope is a `gap`, not a pass —
+    [`checklists-are-contracts`](../checklists-are-contracts.md)).
+- **Right — `Repository ↗` and `Notes ↗`** as a fixed pair (`.subnav-repo`, pushed over with
+  `margin-left:auto`): the GitHub repo, and a direct link to `…/tree/main/notes` (both nodes
+  keep living notes in-repo).
 
-Mark the current centre item `.active aria-current="page"`. Every centre link must go to a
-real, chrome-wearing, comfortably-formatted page — never a raw generated index dumped outside
-the theme (see the quality bar in
+Mark the current centre item `.active aria-current="page"`. **Every centre link must go to a
+real, chrome-wearing, comfortably-formatted page** — never a raw generated index dumped
+outside the theme, and never a raw GitHub link in the centre zone (see the quality bar in
 [`06-content-and-organization.md`](06-content-and-organization.md#page-quality-comfortable-formatted-connected)).
+A tiny conformance check — assert the subnav has a door for every non-empty notes section —
+is the machine check that catches this divergence before a human has to.
 - **Reader ("Aa") menu (required).** The header also carries the shared Kindle-style
   reader control, at the far right of the header (past the primary nav) — same on every site, wired to the
   origin-wide `fairyfox:reader` key so a theme/size/spacing/width choice carries across

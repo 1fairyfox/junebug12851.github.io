@@ -44,3 +44,10 @@ base template, the chrome goes there once.
 - **Don't edit the fixed parts** (primary nav, reader button, palette). Fill only the
   `{{FF_*}}` slots + `.active`.
 - **Keep the pre-paint script in `<head>`**, before anything renders.
+
+## Finish: run the compliance checklist
+
+Chrome adoption is complete when [`../../08-compliance-checklist.md`](../../08-compliance-checklist.md)
+passes and the result is recorded in the node's `notes/reference/adoption-manifest.md` — not
+when the bundle renders (active nav = Projects; the adaptive subnav; a releasing project's
+required Downloads page all live in module 05/06, one link from the slot you just filled).

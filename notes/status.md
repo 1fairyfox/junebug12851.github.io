@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.20.7` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.21.0` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -58,6 +58,14 @@ through the `0.4.x` line; it now includes:
   "Enables when reading a story." note and reading uses the designed defaults. Text size,
   theme and accent apply on every page. On the hub nothing sets `data-story`, so the two
   stay locked here — the sibling reading sites un-lock them when they re-adopt the chrome.
+- **The "done means verified" fold** (`0.21.0`): the biggest process-report review pass yet folded
+  15 node reports into the standards, answering the owner-confirmed, mesh-wide *"whole checklists get
+  skipped while marked done"* — two new standards (**checklists-are-contracts**, **mandate-ledger**),
+  a per-standard **adoption manifest** with an enforcement pulse (adopt/onboard record `## Verify`
+  results; the release reads the manifest as a gate; the report-review pass spot-checks claims against
+  the tree), a **ship contract** in engineering-quality, coverage-floor/SAST/dependency/ship hardening,
+  the **adaptive docs-site subnav** + a Dokka adapter + a chrome CHANGELOG, and a `hub/standards/CHANGELOG.md`.
+  Report: [`fairyfox-reports/2026-07-23-report-review.md`](fairyfox-reports/2026-07-23-report-review.md).
 - **Nine cross-brand standards** (`0.18.0`): promoted from an owner-directed deep-read of the
   siblings' `CLAUDE.md` + notes — eight new `hub/standards/` (**testing**, **engineering-quality**,
   **repo-hygiene**, **docs-lifecycle**, **research-capture**, **working-rhythm**,

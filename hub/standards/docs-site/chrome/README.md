@@ -6,8 +6,10 @@ reimplements. This is what makes the mesh actually seamless instead of
 almost-seamless: before this bundle, each project hand-rebuilt the header/reader/
 footer and each one drifted. Now there is a single source, and adopting it is a copy.
 
-> **Bundle version:** see [`VERSION`](VERSION). Pin the version you adopted in the
-> project's notes so a later refresh is a clean diff.
+> **Bundle version:** see [`VERSION`](VERSION); what changed between versions is in
+> [`CHANGELOG.md`](CHANGELOG.md). Pin the version you adopted in the project's notes
+> (and adoption manifest) so a later refresh is a clean diff — read the CHANGELOG entries
+> newer than your pinned version, then re-run the [compliance checklist](../08-compliance-checklist.md).
 
 ## What's in the bundle
 
@@ -89,6 +91,8 @@ won't let you wrap it needs an adapter. See [`adapters/`](adapters/):
 - [`adapters/jekyll.md`](adapters/jekyll.md) — includes + `relative_url`
 - [`adapters/doxygen.md`](adapters/doxygen.md) — `HTML_HEADER` / `HTML_FOOTER` /
   `HTML_EXTRA_STYLESHEET`, and the generated-reference boundary
+- [`adapters/dokka.md`](adapters/dokka.md) — Kotlin/Dokka via FreeMarker `templatesDir`
+  + a Gradle Copy task (the Doxygen case with a different injection mechanism)
 - [`adapters/static-and-spa.md`](adapters/static-and-spa.md) — hand-rolled HTML,
   React/Vite, and other generators
 
