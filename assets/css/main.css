@@ -282,6 +282,11 @@ th{font-weight:700;color:var(--text)}
 .grid{display:grid;gap:1.2rem}
 .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
 .grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+/* `.lean` — for small sections (a category with only 1–2 projects): auto-FILL keeps
+   the empty tracks so a lone card holds its normal width and aligns left, instead of
+   auto-fit stretching it across the whole row. */
+.grid.cols-2.lean{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.grid.cols-3.lean{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 .card{position:relative;display:block;background:var(--panel);background-image:var(--card-grad);
   border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem 1.6rem;box-shadow:var(--shadow);
   transition:transform .18s var(--ease),box-shadow .2s,border-color .2s}

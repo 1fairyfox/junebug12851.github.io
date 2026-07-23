@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.20.6` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.20.7` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -80,11 +80,16 @@ through the `0.4.x` line; it now includes:
   Fixed global nav is now **Home · Projects · Farms (Stories · Games) · Docs · Updates ·
   About** (**Stories** added `0.15.0`, left of Games — a `/stories/` stub →
   `/fairyfox-stories/`; **Stories + Games grouped under the "Farms" dropdown** in `0.16.0`).
-  The first **project category** landed in `0.20.4`: **DespawnedItems** — a Paper/Minecraft
-  server plugin (`v1.4.8`, Paper 1.21.11 / Java 21) — joined the hub in a dedicated **"PaperMC
-  Plugins"** section on `/projects/` (a new `category` field; categorized projects are excluded
-  from the flat grid there, but appear in the home grid in normal recent-update order), with more
-  PaperMC plugins expected under the same heading. The Projects submenu stays dormant.
+  The first **project category** landed in `0.20.4` and broadened to **"Minecraft Projects"**
+  in `0.20.7` (renamed from "PaperMC Plugins"). It now holds two members: **DespawnedItems** —
+  a Paper server plugin (`v1.4.8`, Paper 1.21.11 / Java 21) — and **Minecraft Automated Driver**
+  (`v0.1.2`, pre-alpha), an MCP server that drives the whole Minecraft dev loop (build/boot/drive/
+  watch) using client- and server-side in-game agents. A `category` field drives the section;
+  categorized projects are excluded from the flat `/projects/` grid but still appear in the home
+  grid in normal recent-update order. `0.20.7` also **fixed the category grid** so a one- or
+  two-card section keeps normal card width instead of stretching a lone card full-bleed (a `.lean`
+  modifier switching that grid from `auto-fit` to `auto-fill`). More Minecraft projects are expected
+  under the same heading; the Projects submenu stays dormant.
 - A plain-link header nav (Projects · Updates · Docs; no dropdowns) and an
   **on-site documentation library** (`/docs/`, the `_docs` collection): the ecosystem
   overview, a **"This site"** group surfacing the whole `notes/` tree, the **shared

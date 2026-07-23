@@ -69,10 +69,10 @@
   featured: true
   reference: true
 
-# ── PaperMC plugins ──────────────────────────────────────────────────────────
-# Server-side Minecraft plugins for Paper. `category: papermc` groups them into
-# their own section on /projects/ (see projects.md); they still appear in the
-# home grid in the normal recent-order flow. More of these are on the way.
+# ── Minecraft projects ───────────────────────────────────────────────────────
+# Minecraft-related work — server plugins and dev tooling. `category: minecraft`
+# groups them into their own section on /projects/ (see projects.md); they still
+# appear in the home grid in the normal recent-order flow. More are on the way.
 - name: DespawnedItems
   key: papermc-despawned-items
   repo: https://github.com/1fairyfox/papermc-despawned-items
@@ -92,9 +92,36 @@
   activity: active
   updated: "Jul 21, 2026"
   updated_iso: "2026-07-21"
-  category: papermc
+  category: minecraft
   color: "#2f9bd4"
   icon: despi
+  featured: true
+  reference: true
+
+- name: Minecraft Automated Driver
+  key: minecraft-automated-driver
+  repo: https://github.com/1fairyfox/minecraft-automated-driver
+  docs: null
+  notes: https://github.com/1fairyfox/minecraft-automated-driver/tree/main/notes
+  blurb: >-
+    An MCP server that puts the whole Minecraft development loop behind one tool
+    surface an AI assistant can drive: clean/build/test plugins and mods, boot
+    local Paper servers, spawn or attach Minecraft clients, take OS-level and
+    in-process screenshots, run Mineflayer protocol bots, and — through
+    loopback-only, token-gated in-game Kotlin agents on both the client and
+    server side — control a live game semantically (menus and widgets by name,
+    movement, teleports, state queries). Targets Minecraft 1.21.11 / Java 21 /
+    Node 20; agents ship disabled by default and are distributed via GitHub
+    releases only. Pre-alpha: an MCP skeleton today, with the quality gates
+    (≥90% coverage, CI, CodeQL, Scorecard) already wired in.
+  tags: [MCP, JavaScript, Node, Kotlin]
+  lifecycle: alpha
+  version: "0.1.2"
+  activity: active
+  updated: "Jul 22, 2026"
+  updated_iso: "2026-07-22"
+  category: minecraft
+  color: "#43a047"
   featured: true
   reference: true
 
@@ -178,7 +205,7 @@
     carrying the shared engineering standards and the cross-project sync model.
   tags: [Jekyll, Ruby, Web]
   lifecycle: beta
-  version: "0.20.6"
+  version: "0.20.7"
   activity: active
   updated: "Jul 22, 2026"
   updated_iso: "2026-07-22"

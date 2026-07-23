@@ -9,11 +9,12 @@
 #           c = a CSS colour var so it adapts to light/dark
 #           Per-project colour: green = Random AI Prompt · amber = Fairy Fox Games
 #           plum = Fairy Fox Stories · pink = Pokered Save Editor 2 · coral = this site
-#           sky = DespawnedItems (PaperMC plugin)
+#           sky = DespawnedItems (Minecraft plugin)
 
 bars: [28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44, 18, 29, 49, 38, 64, 24, 22, 50, 31, 44, 47, 60, 55, 59]
 
 changes:
+  - { c: "var(--coral)", text: "fairyfox.io 0.20.7 — Minecraft Automated Driver joins the hub: a pre-alpha MCP server that drives the whole Minecraft dev loop. The project category broadens from \"PaperMC Plugins\" to \"Minecraft Projects\" (now holding the driver alongside DespawnedItems), and the category grid is fixed so a one- or two-card section keeps normal card width", when: "today" }
   - { c: "var(--sky)", text: "DespawnedItems 1.3.5 → 1.4.8 — the plugin's tests go from covering 44% of it to about 95%, gated in CI, and the new ones immediately find three shipped bugs; the suite now boots a real Paper server and sends a bot in to play the plugin in-game, alongside a 123-node permission matrix, load and throughput proofs, and self-hosted legal pages", when: "today" }
   - { c: "var(--amber)", text: "Fairy Fox Games 0.24.13 → 0.25.1 — Drove, the 16th game and the first with an indirect verb: you never touch the fireflies, you move the fox-glow they flee from, herding them into a lantern ring. Loft joins the depth layer (8 of 13) with a razor floor-graze rescue and a doubling Tailwind", when: "today" }
   - { c: "var(--plum)", text: "Fairy Fox Stories 0.6.1 → 0.7.0 — the weekly sequel roll fires for the first time, and fires twice; The One-O'Clock Bus plants into The Hollow Hours as the farm's first sequel, and Every Lock but Hers reaches its moral hinge in ch.6", when: "today" }

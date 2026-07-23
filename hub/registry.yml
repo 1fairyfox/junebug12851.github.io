@@ -56,15 +56,29 @@ projects:
     notes_system: true
     last_seen: null
 
-  # First PaperMC plugin (Kotlin/Gradle, Paper 1.21.11 / Java 21) — a modern rewrite
-  # of a 2021 Java/Maven plugin, resurfaced and fully onboarded: mesh-aware
-  # CLAUDE.md, the shared notes system, and a fairyfox-themed docs site are all in
-  # place, so adopts_hub is true. Category `papermc` in ../_data/projects.yml; more
-  # PaperMC plugins are expected under the same category.
+  # First Minecraft-category member (Kotlin/Gradle Paper plugin, Paper 1.21.11 /
+  # Java 21) — a modern rewrite of a 2021 Java/Maven plugin, resurfaced and fully
+  # onboarded: mesh-aware CLAUDE.md, the shared notes system, and a fairyfox-themed
+  # docs site are all in place, so adopts_hub is true. Category `minecraft` in
+  # ../_data/projects.yml; more Minecraft projects are expected under the same category.
   - key: papermc-despawned-items
     repo: https://github.com/1fairyfox/papermc-despawned-items
     branch: dev
     adopts_hub: true
+    notes_system: true
+    last_seen: null
+
+  # Minecraft dev-loop MCP server (Node/JS host + Kotlin in-game agents on both the
+  # client and server side) — greenfield, scaffolded straight onto the mesh standards
+  # (seeded from the despawned-items node). Mesh-aware CLAUDE.md, the shared notes
+  # system, the git model, and the quality gates are all in place, but the
+  # fairyfox-themed docs site is still pending (planned Phase 7), so adopts_hub is
+  # left FALSE — partial, honestly. Category `minecraft` in ../_data/projects.yml.
+  # Pre-alpha (v0.1.2, Phase 0 scaffold).
+  - key: minecraft-automated-driver
+    repo: https://github.com/1fairyfox/minecraft-automated-driver
+    branch: dev
+    adopts_hub: false
     notes_system: true
     last_seen: null
 
