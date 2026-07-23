@@ -3,10 +3,18 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `1.0.0` — **first stable release** (Fairy Fox's call; a MAJOR bump is never automatic).
-The `0.x` "in development" line is closed: the site + the shared-standards hub have matured into a
-coherent, enforced whole, so changes from here are SemVer-meaningful against a real baseline. Single
-source of truth: repo-root `VERSION`; see [`reference/versioning.md`](reference/versioning.md).
+**Version:** `1.1.0` — **compliance procedure modes + hub self-hardening** (first MINOR past
+the `1.0.0` stable line). Single source of truth: repo-root `VERSION`; see
+[`reference/versioning.md`](reference/versioning.md).
+
+`1.0.0` was the **first stable release** (Fairy Fox's call; a MAJOR bump is never automatic) —
+the `0.x` "in development" line closed once the site + shared-standards hub matured into a
+coherent, enforced whole. `1.1.0` then gave the compliance audit **invocation modes**
+(`full` / `partial` / `last N days` — [`../hub/standards/compliance.md`](../hub/standards/compliance.md))
+and closed the hub's own supply-chain gaps found by a full audit of itself: root `.gitattributes`
++ `SECURITY.md` + `.github/dependabot.yml`, a hardened `pages.yml` (per-job write perms,
+SHA-pinned actions), and a README badge block. Report:
+[`fairyfox-reports/2026-07-23-compliance-audit.md`](fairyfox-reports/2026-07-23-compliance-audit.md).
 
 ## Current state (read this first)
 

@@ -72,11 +72,29 @@ index that drives the pass.
 | [maintenance-sweep](maintenance-sweep.md) | a documented audit-first whole-repo tidy composing git-workflow/repo-hygiene/versioning/docs-lifecycle/testing stated in spec | [maintenance-sweep `## Verify`](maintenance-sweep.md#verify-is-it-being-followed) — sweep procedure exists; branch state clean; `dev` contains `main` + green; current-state docs match the code; sweeps surface (not auto-act) |
 | lifecycle runbooks ([setup](new-project-setup.md) · [onboard](onboarding-existing-project.md) · [adopt](adopting-updates.md)) | each runbook's release path matches git-workflow | their own `Verify`/checklist rows; no stale release wording |
 
+## Invocation & modes
+
+The procedure has a stable name — **"fairyfox compliance check"** (or "…​audit") — and
+three **modes**, so a request can pick the depth. Every mode keeps the gate below and the
+report-first / fix-on-go-ahead posture; only the breadth of the pass changes. A mode word
+is optional — **`full` is the default** when none is given.
+
+| Mode | Say | What it does |
+|------|-----|--------------|
+| **full** | "fairyfox compliance check — **full**" | Every standard's `## Verify`, **every item**, per-row `done`/`partial`/`missing` with the exact gap named and evidence gathered from the tree (git state, file reads, built output). The complete pass. |
+| **partial** | "…​ **partial**" (or "quick") | The fast pass: read [`VERIFY-INDEX.md`](VERIFY-INDEX.md) and report **row-level** status per standard without the deep per-item evidence dig. A triage sweep, not the full record. |
+| **last N days** | "…​ **last 7 days**" (N defaults to 7) | Scope to the standards **touched by activity in the window** — use the changelog (`notes/version/`) + session logs (`notes/sessions/`) as the diff, and run the full per-item `## Verify` only for the standards those changes plausibly affect. Audit what moved. |
+
+**Target** is the hub itself or any node read out of its read-only
+`assets/references/<project>/` clone — name it in the request ("…​ on random-ai-prompt"),
+else the hub. The modes compose with the target: "fairyfox compliance check, last 7 days,
+on fairyfox-games".
+
 ## How to run it (on request only)
 
 Gated like every cross-repo read here: an explicit request paired with the intent —
 "audit the fairyfox standards", "are the standards being followed", "run a compliance
-pass". A bare "check things" doesn't qualify (see the gate in
+pass", "fairyfox compliance check". A bare "check things" doesn't qualify (see the gate in
 [`adopting-updates.md`](adopting-updates.md)).
 
 1. **Pick the target.** The hub itself, or a node read out of the read-only

@@ -1,0 +1,37 @@
+# Line-ending normalization — see hub/standards/agent-tooling.md (line-ending hygiene).
+# Git stores LF; the working tree checks out LF on every platform regardless of each
+# machine's core.autocrlf, so LF-expecting tooling stops flagging phantom "modified"
+# files. This repo authors from Windows (PowerShell), so the guard matters here.
+
+# Default: auto-detect text vs binary; force LF in the working tree everywhere.
+* text=auto eol=lf
+
+# Windows scripts must stay CRLF or they break.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# SVG is text (diff/merge it), but keep it explicit.
+*.svg text
+
+# Binary assets — never touch EOLs (belt-and-suspenders; text=auto already detects most).
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.icns binary
+*.woff  binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.pdf binary
+*.zip binary
+*.gz  binary
+*.mp4  binary
+*.webm binary
+*.mov  binary
+*.mp3  binary
+*.wav  binary

@@ -1,5 +1,18 @@
 # fairyfox.io
 
+<!-- Badge block — grouped, flat-square. Standard: hub/standards/badges.md. Only
+     services this repo actually wires are shown (no Codecov/Sonar/Scorecard: a static
+     Jekyll site has no such service). -->
+
+<!-- Activity / release -->
+[![Last commit](https://img.shields.io/github/last-commit/1fairyfox/1fairyfox.github.io?style=flat-square)](https://github.com/1fairyfox/1fairyfox.github.io/commits)
+[![Commit activity](https://img.shields.io/github/commit-activity/t/1fairyfox/1fairyfox.github.io?style=flat-square&label=commits)](https://github.com/1fairyfox/1fairyfox.github.io/commits)
+[![Version](https://img.shields.io/github/v/tag/1fairyfox/1fairyfox.github.io?style=flat-square&label=version)](https://github.com/1fairyfox/1fairyfox.github.io/releases)
+
+<!-- Build / deploy / docs -->
+[![Pages](https://img.shields.io/github/actions/workflow/status/1fairyfox/1fairyfox.github.io/pages.yml?branch=main&style=flat-square&logo=githubpages&logoColor=white&label=pages)](https://github.com/1fairyfox/1fairyfox.github.io/deployments)
+[![Site](https://img.shields.io/badge/site-fairyfox.io-4c9?style=flat-square&logo=readthedocs&logoColor=white)](https://fairyfox.io/)
+
 The personal home page and project **hub** of Fairy Fox ([@1fairyfox](https://github.com/1fairyfox)).
 A clean, custom [Jekyll](https://jekyllrb.com/) site — home, projects, blog, about
 — deployed to GitHub Pages by GitHub Actions, plus the shared standards and
