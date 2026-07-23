@@ -3,8 +3,10 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.21.0` (single source of truth: repo-root `VERSION`; see
-[`reference/versioning.md`](reference/versioning.md)).
+**Version:** `1.0.0` — **first stable release** (Fairy Fox's call; a MAJOR bump is never automatic).
+The `0.x` "in development" line is closed: the site + the shared-standards hub have matured into a
+coherent, enforced whole, so changes from here are SemVer-meaningful against a real baseline. Single
+source of truth: repo-root `VERSION`; see [`reference/versioning.md`](reference/versioning.md).
 
 ## Current state (read this first)
 
