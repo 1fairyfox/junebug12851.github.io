@@ -82,16 +82,17 @@
     A Paper (Minecraft) server plugin that catches items about to despawn on the
     ground and relocates them into a network of nearby containers, cookers,
     entities, or empty space instead of deleting them — with player-managed
-    despawn locations and a /recycle command. A modern Kotlin rewrite for
-    Paper 1.21.11 / Java 21, with pluggable YAML/SQLite/MySQL storage, per-user
-    limits, renameable commands, and a CI-gated test suite covering ~95% of the
-    code — including a real server boot and an in-game bot that plays the plugin.
+    despawn locations, per-target controls, and a /recycle command. A modern
+    Kotlin rewrite for Paper 1.21.11 / Java 21, with pluggable YAML/SQLite/MySQL
+    storage, per-user throttling, renameable commands, an optional client
+    companion mod, and a CI-gated test suite covering ~95% of the code —
+    including a real server boot and an in-game bot that plays the plugin.
   tags: [Kotlin, Java 21, Gradle, Paper 1.21.11, Server]
   lifecycle: released
-  version: "1.4.8"
+  version: "1.5.0"
   activity: active
-  updated: "Jul 21, 2026"
-  updated_iso: "2026-07-21"
+  updated: "Jul 22, 2026"
+  updated_iso: "2026-07-22"
   category: minecraft
   color: "#2f9bd4"
   icon: despi
@@ -159,10 +160,10 @@
     you can read before you start.
   tags: [Jekyll, Ruby, Web]
   lifecycle: alpha
-  version: "0.7.0"
+  version: "0.7.2"
   activity: active
-  updated: "Jul 21, 2026"
-  updated_iso: "2026-07-21"
+  updated: "Jul 23, 2026"
+  updated_iso: "2026-07-23"
   integrated: true
   color: "#b06ad0"
   icon: stories
@@ -184,10 +185,10 @@
     beat-your-own-score kind, each splitting pure, tested logic from rendering.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.25.1"
+  version: "0.25.3"
   activity: active
-  updated: "Jul 21, 2026"
-  updated_iso: "2026-07-21"
+  updated: "Jul 23, 2026"
+  updated_iso: "2026-07-23"
   integrated: true
   color: "#8b7bff"
   icon: games
@@ -204,11 +205,11 @@
     The project hub and documentation library itself — a custom Jekyll build
     carrying the shared engineering standards and the cross-project sync model.
   tags: [Jekyll, Ruby, Web]
-  lifecycle: beta
-  version: "0.20.7"
+  lifecycle: released
+  version: "1.5.1"
   activity: active
-  updated: "Jul 22, 2026"
-  updated_iso: "2026-07-22"
+  updated: "Jul 24, 2026"
+  updated_iso: "2026-07-24"
   meta: true
   color: "#ff7a5e"
   icon: fox
