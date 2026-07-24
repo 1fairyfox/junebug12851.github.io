@@ -3,12 +3,16 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `1.5.0` — **Docker standard**: `hub/standards/docker.md` — use Docker locally
+**Version:** `1.5.1` — a **maintenance round-up** (2026-07-24): reconciled the data files to three
+siblings' new releases (DespawnedItems `1.5.0`, Fairy Fox Games `0.25.3`, Fairy Fox Stories `0.7.2`),
+brought the site's own meta card current (`0.20.7 → 1.5.1`, `beta → released`), surfaced four new
+standards in the docs library (docker · ci-secrets · checklists-are-contracts · mandate-ledger), and
+blogged the 22nd + 23rd. Prior: `1.5.0` — **Docker standard**: `hub/standards/docker.md` — use Docker locally
 whenever possible (Linux-only build/test/setup runs on the desktop, not deferred to online CI;
 fix Docker issues, don't write them off), wired into `compliance.md` + the CLAUDE template.
-**Pending (owner):** retire the `fairyfox.io` custom domain for the free `1fairyfox.github.io`
-URL — scoped and recommended to run as one migration when the replacement domain + email land
-([`plans/2026-07-23-mandate.md`](plans/2026-07-23-mandate.md)). Prior: `1.4.0`
+The `fairyfox.io` custom domain is **kept** (a year's renewal was covered, 2026-07-24) — the
+earlier "retire it for the free github.io URL" idea is **cancelled**, so all `fairyfox.io/<key>/`
+references stay canonical and correct. Prior: `1.4.0`
 **complete-by-default + phase-by-default + web-interface enforcement**:
 an owner directive folded into the standards — the **full 20-badge set required by default in a
 fixed order** (swap the equivalent, never drop; omit only on a recorded **user** exception) and
