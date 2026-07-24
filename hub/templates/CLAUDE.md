@@ -42,9 +42,21 @@ follows the shared living-notes standard. Highlights:
 
 ## Default Workflow — Do These By Default (a standing instruction)
 
-**Plan before you execute.** For non-trivial work (multiple files/steps, a real
-decision), write a short structured plan **first** — decisions, work breakdown by
-file/area, open items, release shape — in `notes/plans/`, then execute against it.
+**Plan before you execute — and break the work into as many phases as it needs.** For
+non-trivial work (multiple files/steps, a real decision), write a short structured plan
+**first** — decisions, work breakdown by file/area, open items, release shape — in
+`notes/plans/`, then execute against it. **Decompose any non-trivial request into phases
+across three levels — research · planning · implementation — with as many phases as the work
+needs, by default:**
+
+- **Research** is a real phase, not a formality — understand before building. Go to the
+  primary source **locally (the real code) and online (upstream docs/spec)** as the question
+  needs; **don't skip or rush it**, and land what you learn in `notes/` the same session.
+- **Plan as often as needed** — re-plan whenever a phase changes the shape. Planning is
+  **primarily for you (the executor)**: it keeps a long, multi-part change coherent.
+- **Implement in coherent, shippable phases**, each one built/tested/previewed and leaving
+  the tree working — not one big-bang push. Err toward more, smaller phases.
+
 This is for execution reliability, not paperwork; trivial one-step changes are exempt.
 Full rule: the shared `planning` standard (in `hub/standards/`).
 

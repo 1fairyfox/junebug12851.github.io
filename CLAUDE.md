@@ -66,10 +66,15 @@ Deploy is automatic: every push to `main` runs `.github/workflows/pages.yml`
 
 ## Default Workflow — Do These By Default (a standing instruction)
 
-**Plan before you execute.** For non-trivial work (multiple files/steps, a real
-decision), write a short structured plan **first** — decisions, work breakdown by
-file/area, open items, release shape — in `notes/plans/`, then execute against it
-(for execution reliability, not paperwork; trivial one-step changes are exempt). See
+**Plan before you execute — and break the work into as many phases as it needs.** For
+non-trivial work (multiple files/steps, a real decision), write a short structured plan
+**first** — decisions, work breakdown by file/area, open items, release shape — in
+`notes/plans/`, then execute against it (for execution reliability, not paperwork; trivial
+one-step changes are exempt). **Decompose non-trivial work into phases across three levels —
+research · planning · implementation — as many as it needs, by default:** research is a real
+phase (primary sources, local + online; don't skip or rush it, capture it in `notes/`);
+re-plan whenever a phase changes the shape (planning is mainly for the executor); implement
+in coherent, shippable, verified phases, not one big-bang push. See
 `hub/standards/planning.md`.
 
 After making changes, without being asked:

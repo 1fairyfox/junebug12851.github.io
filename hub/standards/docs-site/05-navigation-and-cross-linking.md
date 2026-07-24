@@ -134,7 +134,32 @@ claiming "canonical"). The latitude is on **membership, not shape**.
     [`checklists-are-contracts`](../checklists-are-contracts.md)).
 - **Right — `Repository ↗` and `Notes ↗`** as a fixed pair (`.subnav-repo`, pushed over with
   `margin-left:auto`): the GitHub repo, and a direct link to `…/tree/main/notes` (both nodes
-  keep living notes in-repo).
+  keep living notes in-repo). These two `↗` links are the **only** GitHub links in the subnav
+  — the **centre `Project Notes` item is an on-site, themed page, never a GitHub link** (see
+  the firm rule below).
+
+**The subnav has a firm baseline — a bare subnav is a failure.** "Adaptive membership" sets
+*which optional pages* appear; it is **not** licence to ship a near-empty subnav. Read it as a
+floor: a documented, releasing project's subnav has, at minimum, **Overview · Project Notes
+(+ a door per non-empty notes section) · Changelog · [API if the project has any API/surface —
+most do] · [Download if it offers downloads] · Legal**, plus the right-hand `Repository ↗ ·
+Notes ↗` pair. Shipping a subnav with one or two pills when the project plainly has notes,
+a changelog, and an API is a `gap`, not a pass — **build the pages a real project should have**
+rather than shrinking the subnav to whatever happens to exist. If you're unsure of the exact
+markup, **copy a sibling's working subnav** (e.g. Random AI Prompt's) and adapt the items —
+don't hand-invent the structure. The primary nav is fixed mesh-wide; only the subnav's centre
+items are yours to fill.
+
+**Dividers separate the three zones, not every pill.** Use the shared pill style with a divider
+(or the designed spacing) **between zones** — left name │ centre pills │ right `↗` pair — not a
+divider crammed between every centre item. Match the sibling markup; getting dividers "creative"
+is a common way the bar ends up looking wrong.
+
+**Active state, restated because it's still missed:** on every page of a standalone project the
+active **primary-nav** item is **`Projects`** — never `Docs`, `Home`, `Updates`, or `About`
+(those are the hub's own sections). Marking `Docs` active because the page is documentation is
+the exact, recurring mistake — the whole project lives under `Projects`. The active **subnav**
+item is the current centre pill.
 
 Mark the current centre item `.active aria-current="page"`. **Every centre link must go to a
 real, chrome-wearing, comfortably-formatted page** — never a raw generated index dumped

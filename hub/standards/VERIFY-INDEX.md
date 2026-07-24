@@ -73,11 +73,13 @@ The per-standard slice the [compliance audit](compliance.md) aggregates — repo
 
 | Passes only when… | How to check |
 |-------------------|--------------|
-| The README opens with a badge block in the grouped rows, consistent `flat-square` style | open the README |
-| Every **applicable** badge is present (no wired service left un-badged) | cross-check services (CI, Codecov, Sonar, Scorecard, deploy) against the badges |
-| No badge for a service the project doesn't use (nothing renders "unknown" permanently) | look for grey/unknown badges |
+| The README opens with the badge block, consistent `flat-square` style | open the README |
+| **All 20 required badges are present, in the canonical order** (§The required order) | walk the block top-to-bottom against the numbered list |
+| Each slot is filled by the **right source for this project** (version tag vs package-json; deploy = Pages vs Netlify; CI/coverage wired) — a swap, never a silent drop | cross-check the project's actual services against each slot |
+| **Any omitted slot has a recorded user exception** in `adoption-manifest.md` — no badge dropped on the AI's own "doesn't apply" call | diff present badges vs the required 20; for each missing one, find the dated user-granted exception row (none → `missing`) |
 | The **docs** badge points at `fairyfox.io/<key>/` | click/inspect the docs badge |
 | Each badge links to its source | inspect the badge links |
+| A permanently "unknown"/grey required badge is treated as a **gap to wire the service**, not left as-is | look for grey badges; confirm the backing service is wired (or a recorded exception) |
 
 ## Standard: Checklists Are Contracts  
 <sub>[`checklists-are-contracts.md`](checklists-are-contracts.md#verify-is-it-being-followed)</sub>
@@ -114,6 +116,7 @@ The per-standard slice the [compliance audit](compliance.md) aggregates — repo
 
 | Passes only when… | How to check |
 |-------------------|--------------|
+| **The coin button is present on every chrome-wearing page (MANDATORY)** — never omitted as "not needed" | load any page; the coin button sits beside the "Aa" button. Missing → `missing`, not a judgment call |
 | The coin counter comes from the **shared chrome** (`coins.js` pulled from master), not a re-implementation | diff against master `assets/js/coins.js`; confirm it's loaded after `reader.js` |
 | **Persistence — enforced.** Neither the hub nor any sub-project loses a user's coins or reader prefs through carelessness: the store is read-and-merged (not replaced) on load, a key-version change migrates the old data forward (doesn't orphan a key), and nothing clears the wallet except the user (their `spend`, the **Clear my data** button, or a browser reset) | read every place the project touches `fairyfox:coins:a` / `fairyfox:reader:b`; confirm no reset/overwrite-on-load and any migration carries data |
 | The project **gates nothing** on coins — the full experience works at zero balance | use/read the project with an empty wallet |
@@ -220,7 +223,9 @@ The per-standard slice the [compliance audit](compliance.md) aggregates — repo
 | Privacy, Terms, and Cookies pages exist in-repo, self-hosted (not generator links) | `ls` the legal pages; confirm same-origin |
 | Each page is **accurate to the code** — no clauses for accounts/cookies/tracking the app lacks | read the pages against the source |
 | Pages carry a current **"Last updated"** date | open each page |
-| A user-facing app links them from its **primary menu** | look at the served app |
+| A user-facing app links them from its **primary menu / the `Legal` subnav item** | look at the served app |
+| Each page **covers the right content for its kind** (Privacy = what data/none; Terms = as-is/licence/coins-not-money; Cookies = cookies-vs-local-storage) with no boilerplate the project doesn't earn | read each page against the per-page breakdown |
+| The **footer legal links come from the vendored chrome footer** (project/legal column), not a hand-built or restructured/derailed footer | diff the footer against [`chrome/footer.html`](docs-site/chrome/footer.html) |
 | Defaults honored where applicable (18+ for adult content, honest no-cookies, processors named, third-party IP flagged/removed, project-owned contact) | read the pages |
 | The **brand minimum** is met — the shared floor above, not less | check each brand-minimum item against the pages |
 | The shared **reader prefs + coins** local storage is disclosed (Privacy + Cookies), coins stated as no-monetary-value, and the shared `/legal/coins/` explainer linked | read the pages |
@@ -261,12 +266,19 @@ The per-standard slice the [compliance audit](compliance.md) aggregates — repo
   instruction** (confirm the text is present, not just that the file exists).
 - `VERSION` reads a sane starting number.
 - The project resolves in **both** registries (`hub/registry.yml` and
-  `_data/projects.yml`) with matching `key` and `branch`.
+  `_data/projects.yml`) with matching `key` and `branch`, and the `_data/projects.yml` row
+  has its **project details filled by default** (blurb/tags/lifecycle/version/activity/links/
+  accent/icon) — blanks only on a recorded user exception; social/preview image exempt.
+- The README opens with the **full 20-badge set in the canonical order** ([badges](badges.md)),
+  each slot the right per-project source; omissions only on a recorded user exception.
 - The docs site loads at `fairyfox.io/<key>/`, **wears the shared fairyfox chrome**
   (header, nav + submenu, footer) so it reads as a page of the site, with the
   **brand/Home link as the way home** and **no separate back-button** — **look at the
-  served page**; default-theme JSDoc/Doxygen output or a merely-resolving `docs:` URL is
-  a miss. If the docs are generator-produced, theme the generator itself
+  served page**; default-theme JSDoc/Doxygen output, **any stack's default theme with only
+  cosmetic changes (a couple colours + a footer mention)**, or a merely-resolving `docs:` URL
+  is a miss. The coin + reader buttons are present, the subnav is not bare, and the tool's own
+  default chrome (footer/header/sidebar/CSS) is removed, not left alongside. If the docs are
+  generator-produced, theme the generator itself
   ([`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)).
   Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
 - The deploy target matches the project's kind (static → Pages on the shared domain;
@@ -315,8 +327,9 @@ gate; the recurring whole-set check (every standard, re-runnable anytime) is the
 | 3 | Branch model | Stable branch is **`main`** (a repo on `master` has been renamed — mandatory; Pages/CI/URL refs fixed). Registry `branch` is the **sync-tracking work branch** (`dev` by default), honest — it is *not* the repo's default branch. |
 | 4 | Notes system | The `notes/` tree exists with a real `status.md`; existing docs mapped in, not duplicated. |
 | 5 | **Mesh-awareness in `CLAUDE.md`** | The project's `CLAUDE.md` **actually contains** the "Cross-project standards & checking the fairyfox system for updates" standing instruction. **Open the file and confirm the text is there** — don't infer it from the project being registered. |
-| 6 | **Docs site is a page of fairyfox** | `fairyfox.io/<key>/` serves a site **wearing the shared fairyfox chrome** (header, nav + submenu, footer) so it reads as a page of the site, with the **brand/Home link as the way home** and **no separate back-button** (project-forward branding is fine). **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Deploy target matches the project's kind ([deployment](deployment.md)). Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
-| 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. |
+| 6 | **Docs site is a page of fairyfox** | `fairyfox.io/<key>/` serves a site **wearing the shared fairyfox chrome** (header, nav + submenu, footer) so it reads as a page of the site, with the **brand/Home link as the way home** and **no separate back-button** (project-forward branding is fine). **Look at the actual page.** Default-theme JSDoc/Doxygen output — **or any stack's default theme with only cosmetic changes (a couple recoloured variables + one footer mention)** — or a `docs:` URL that merely resolves, is `missing`, not `partial`; the tool's own default chrome must be removed, not left meshing with the fairyfox chrome. Deploy target matches the project's kind ([deployment](deployment.md)). Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
+| 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. The `_data/projects.yml` row has its **project details filled by default** (blurb/tags/lifecycle/version/activity/links/accent/icon) — blanks only on a recorded user exception; social/preview image exempt. |
+| 7b | README badges | README opens with the **full 20-badge set in the canonical order** ([badges](badges.md)), each slot the right per-project source; any omission carries a recorded user exception (not an AI call). |
 | 8 | Process report | `notes/fairyfox-reports/` holds this onboarding's report, committed, with the reconcile friction and an honest outcome — [process-reports](process-reports.md). |
 | 9 | **Adoption manifest seeded + first compliance pass** | `notes/reference/adoption-manifest.md` exists with a row per hub standard (`implemented`/`copied-only`/`gap(due)`/`N-A(reason)`), and the full [compliance matrix](compliance.md) was run once — so the day-one state is a recorded per-standard result, and every not-yet-adopted standard is a **dated `gap`**, not prose. No `Standards adopted ✅` without backing rows ([checklists-are-contracts](checklists-are-contracts.md)). |
 
@@ -338,7 +351,11 @@ Row 6 still gets its real look at a rendered page.
 - Substantive work (a multi-file change, a release-worthy feature, a standards pass)
   has a **written plan that predates the execution** — typically a file in
   `notes/plans/`, or an in-thread plan agreed before edits began.
-- The Default Workflow in the project's `CLAUDE.md` states plan-before-execute.
+- The plan **breaks the work into phases** across research / planning / implementation, with
+  as many as the work needs — not one undifferentiated push. Research phases went to the
+  primary source (local + online) rather than being skipped or rushed.
+- The Default Workflow in the project's `CLAUDE.md` states plan-before-execute **and
+  phase-by-default**.
 - Trivial one-step changes are not gratuitously bureaucratized — the rule is applied
   with judgment, not as paperwork for its own sake.
 

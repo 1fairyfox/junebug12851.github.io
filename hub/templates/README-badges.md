@@ -1,9 +1,19 @@
 <!--
-  README badge block — copy the applicable lines to the top of the project README,
-  replacing `OWNER/REPO` (e.g. 1fairyfox/random-ai-prompt) and the project-specific
-  parameters. Show AS MANY AS APPLY; drop the ones a project doesn't have (a library
-  with no deploy has no Netlify badge, etc.). Grouped by row. Standard: hub/standards/badges.md.
-  Keep `?style=flat-square` on every badge so the row is visually consistent.
+  README badge block — copy ALL of this to the top of the project README, replacing
+  `OWNER/REPO` (e.g. 1fairyfox/random-ai-prompt) and the project-specific parameters.
+
+  ALL 20 badges are REQUIRED BY DEFAULT, in the order below (Contributors · Stars · Forks ·
+  Watchers · Last commit · Commits · Version · CI · Coverage · Code quality · Quality gate ·
+  Tech debt · OpenSSF Scorecard · Docs · Deploy · Open issues · Closed issues · Open PRs ·
+  Closed PRs · License). Standard: hub/standards/badges.md.
+
+  You do NOT drop badges. Where a project differs you SWAP the equivalent source (version:
+  package-json vs tag; deploy: Netlify vs Pages) or ADD (distribution badges for a published
+  package). A slot is OMITTED only when the USER grants the exception at onboarding (recorded
+  in the adoption manifest) — never on the AI's own "doesn't apply" call. The one automatic
+  exemption is the social/preview image (can't be automated; out of scope).
+
+  Keep `?style=flat-square` on every badge so the rows are visually consistent.
 -->
 
 <!-- Project / community -->
@@ -32,12 +42,14 @@
 <!-- Security -->
 [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/OWNER/REPO?style=flat-square&label=scorecard)](https://securityscorecards.dev/viewer/?uri=github.com/OWNER/REPO)
 
-<!-- Docs / deploy -->
+<!-- Docs / deploy (slots 14–15, both REQUIRED). Docs always points at the shared domain.
+     Deploy is ONE required slot with two sources — keep the line that matches this project
+     (Netlify for a built app, Pages for a static site), delete the other. Drop the deploy
+     slot only via a recorded user exception (e.g. a server plugin with no web deploy). -->
 [![Docs](https://img.shields.io/badge/docs-fairyfox.io-4c9?style=flat-square&logo=readthedocs&logoColor=white)](https://fairyfox.io/REPO/)
-<!-- Pages-deployed site:
+[![Netlify](https://img.shields.io/github/actions/workflow/status/OWNER/REPO/netlify-deploy.yml?branch=main&style=flat-square&logo=netlify&logoColor=white&label=netlify)](https://app.netlify.com/projects/PROJECT/deploys)
+<!-- …or, for a static Pages site, use this instead of the Netlify line:
 [![Pages](https://img.shields.io/github/actions/workflow/status/OWNER/REPO/pages.yml?branch=main&style=flat-square&logo=githubpages&logoColor=white&label=pages)](https://github.com/OWNER/REPO/deployments) -->
-<!-- Netlify-deployed apps only:
-[![Netlify](https://img.shields.io/github/actions/workflow/status/OWNER/REPO/netlify-deploy.yml?branch=main&style=flat-square&logo=netlify&logoColor=white&label=netlify)](https://app.netlify.com/projects/PROJECT/deploys) -->
 
 <!-- Issues / PRs / license -->
 [![Open issues](https://img.shields.io/github/issues/OWNER/REPO?style=flat-square)](https://github.com/OWNER/REPO/issues)

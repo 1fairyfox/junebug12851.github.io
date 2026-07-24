@@ -98,7 +98,7 @@ Fold each template in around what's there — never a straight overwrite:
 | `notes/` skeleton | Drop the skeleton in and seed `status.md` from reality. | Add the skeleton *alongside* existing docs; migrate them in over time, not big-bang. |
 | `SECURITY.md`, `dependabot.yml`, `branch-sync.yml` | Copy in; enable branch protection on `main` (solo config) + signed releases ([supply-chain-hardening](supply-chain-hardening.md)). | Reconcile with existing workflows/policy; add least-privilege `permissions:` + SHA-pins to existing workflows. |
 | `legal/` pages | Copy the templates in and **rewrite to match the code** ([legal-docs](legal-docs.md)). | Replace any third-party generator links with self-hosted, accurate pages. |
-| README badges | Paste the applicable block from `README-badges.md` ([badges](badges.md)). | Reconcile with any existing badges; show all that apply, drop stale ones. |
+| README badges | Paste the **full ordered block** from `README-badges.md` ([badges](badges.md)); swap the per-project equivalents (version tag/package-json; deploy Pages/Netlify). | Reconcile with existing badges toward the full required 20, in order; **swap** equivalents, don't drop — a slot is omitted only on a **user-granted** exception recorded in the manifest, never the AI's own call. |
 
 > **The mesh-awareness block is required — and it's the easiest thing to skip when
 > reconciling an existing `CLAUDE.md`.** The project's `CLAUDE.md` must carry the
@@ -160,7 +160,13 @@ A commit **in the hub repo**, not the project:
   normal for an existing repo; mark what's actually true today. **Never pre-set them
   `true` before the project-side work exists** — an optimistic flag seeds exactly the
   false "registered = done" signal this runbook warns against.
-- Add the companion row to the site's `_data/projects.yml`.
+- Add the companion row to the site's `_data/projects.yml`, **with its project details
+  filled in by default** — `name`, `blurb` (description), `tags`, `lifecycle`, `version`,
+  `activity`, `updated`, `color`, `icon`, `docs`, `notes`, and the rest of the schema at the
+  top of that file. **Complete-by-default, same governance as the badges:** a detail is left
+  blank only when the **user** grants that exception at onboarding (recorded), never on the
+  AI's own call. **The one automatic exemption is the social/preview image** — it can't be
+  generated automatically, so its absence is never a gap; everything else is filled.
 
 ### 8. Write the onboarding process report
 
@@ -274,8 +280,9 @@ gate; the recurring whole-set check (every standard, re-runnable anytime) is the
 | 3 | Branch model | Stable branch is **`main`** (a repo on `master` has been renamed — mandatory; Pages/CI/URL refs fixed). Registry `branch` is the **sync-tracking work branch** (`dev` by default), honest — it is *not* the repo's default branch. |
 | 4 | Notes system | The `notes/` tree exists with a real `status.md`; existing docs mapped in, not duplicated. |
 | 5 | **Mesh-awareness in `CLAUDE.md`** | The project's `CLAUDE.md` **actually contains** the "Cross-project standards & checking the fairyfox system for updates" standing instruction. **Open the file and confirm the text is there** — don't infer it from the project being registered. |
-| 6 | **Docs site is a page of fairyfox** | `fairyfox.io/<key>/` serves a site **wearing the shared fairyfox chrome** (header, nav + submenu, footer) so it reads as a page of the site, with the **brand/Home link as the way home** and **no separate back-button** (project-forward branding is fine). **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Deploy target matches the project's kind ([deployment](deployment.md)). Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
-| 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. |
+| 6 | **Docs site is a page of fairyfox** | `fairyfox.io/<key>/` serves a site **wearing the shared fairyfox chrome** (header, nav + submenu, footer) so it reads as a page of the site, with the **brand/Home link as the way home** and **no separate back-button** (project-forward branding is fine). **Look at the actual page.** Default-theme JSDoc/Doxygen output — **or any stack's default theme with only cosmetic changes (a couple recoloured variables + one footer mention)** — or a `docs:` URL that merely resolves, is `missing`, not `partial`; the tool's own default chrome must be removed, not left meshing with the fairyfox chrome. Deploy target matches the project's kind ([deployment](deployment.md)). Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
+| 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. The `_data/projects.yml` row has its **project details filled by default** (blurb/tags/lifecycle/version/activity/links/accent/icon) — blanks only on a recorded user exception; social/preview image exempt. |
+| 7b | README badges | README opens with the **full 20-badge set in the canonical order** ([badges](badges.md)), each slot the right per-project source; any omission carries a recorded user exception (not an AI call). |
 | 8 | Process report | `notes/fairyfox-reports/` holds this onboarding's report, committed, with the reconcile friction and an honest outcome — [process-reports](process-reports.md). |
 | 9 | **Adoption manifest seeded + first compliance pass** | `notes/reference/adoption-manifest.md` exists with a row per hub standard (`implemented`/`copied-only`/`gap(due)`/`N-A(reason)`), and the full [compliance matrix](compliance.md) was run once — so the day-one state is a recorded per-standard result, and every not-yet-adopted standard is a **dated `gap`**, not prose. No `Standards adopted ✅` without backing rows ([checklists-are-contracts](checklists-are-contracts.md)). |
 

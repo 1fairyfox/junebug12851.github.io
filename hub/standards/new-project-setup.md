@@ -42,7 +42,8 @@ The end state — tick every box before calling a project done:
 | Line endings | A root `.gitattributes` (`* text=auto eol=lf` + `.bat`/`.cmd` CRLF, binaries) — [agent-tooling](agent-tooling.md). |
 | Security | `SECURITY.md`, least-privilege + SHA-pinned workflows, signed releases, `main` branch-protected (solo config), Dependabot — [supply-chain-hardening](supply-chain-hardening.md). |
 | Legal | Self-hosted, code-accurate Privacy/Terms/Cookies — [legal-docs](legal-docs.md). |
-| Badges | The README opens with the applicable badge block — [badges](badges.md). |
+| Badges | The README opens with the **full 20-badge set in the canonical order** (swap per-project equivalents; omit only on a recorded user exception) — [badges](badges.md). |
+| Project details | The `_data/projects.yml` row is **filled by default** — blurb/tags/lifecycle/version/activity/links/accent/icon; blanks only on a recorded user exception; social/preview image exempt. |
 | Standards adopted | The project follows the hub's git, versioning, notes, AI-context, supply-chain, dependencies, legal-docs, agent-tooling, and badges standards (copied in, not linked). |
 | Registered | The project is listed in the hub's [`registry.yml`](../registry.yml) **and** the site's `_data/projects.yml`. |
 | Docs site | A documentation site published at `fairyfox.io/<key>/`, built to the [docs-site design system](docs-site/) so it **appears as a page of fairyfox.io** (shared chrome; brand/Home is the way home). For a **static** project the published site can double as the docs site — one surface, not two. |
@@ -96,7 +97,7 @@ mkdir -p .github/workflows
 cp    $H/dependabot.yml         .github/dependabot.yml            # dependencies + supply-chain
 cp    $H/branch-sync.yml        .github/workflows/branch-sync.yml # git-workflow back-merge guard
 cp -r $H/legal                  ./public/legal       # legal-docs — place per the app's origin
-# README badges: paste the applicable block from $H/README-badges.md into the README (badges standard)
+# README badges: paste the FULL ordered block from $H/README-badges.md (all 20, swap equivalents; badges standard)
 ```
 
 Then, still part of setup: enable **branch protection** on `main` (solo config) and wire
@@ -167,7 +168,11 @@ commit **in the hub repo**, not the project:
 - Add an entry to [`hub/registry.yml`](../registry.yml) — `key`, `repo`,
   `branch`, `adopts_hub`, `notes_system`, `last_seen: null`.
 - Add the human-facing companion entry to the site's `_data/projects.yml`
-  (keep the two registries in step).
+  (keep the two registries in step), **with its project details filled in by default** —
+  `name`, `blurb`, `tags`, `lifecycle`, `version`, `activity`, `updated`, `color`, `icon`,
+  `docs`, `notes`, per the schema at the top of that file. Complete-by-default: a field is
+  left blank only on a **user-granted** exception (recorded), never the AI's own call; the
+  **social/preview image is the one automatic exemption**.
 
 ### 8. Write the setup process report
 
@@ -209,12 +214,19 @@ never be committed (committing it nests repos and bloats history).
   instruction** (confirm the text is present, not just that the file exists).
 - `VERSION` reads a sane starting number.
 - The project resolves in **both** registries (`hub/registry.yml` and
-  `_data/projects.yml`) with matching `key` and `branch`.
+  `_data/projects.yml`) with matching `key` and `branch`, and the `_data/projects.yml` row
+  has its **project details filled by default** (blurb/tags/lifecycle/version/activity/links/
+  accent/icon) — blanks only on a recorded user exception; social/preview image exempt.
+- The README opens with the **full 20-badge set in the canonical order** ([badges](badges.md)),
+  each slot the right per-project source; omissions only on a recorded user exception.
 - The docs site loads at `fairyfox.io/<key>/`, **wears the shared fairyfox chrome**
   (header, nav + submenu, footer) so it reads as a page of the site, with the
   **brand/Home link as the way home** and **no separate back-button** — **look at the
-  served page**; default-theme JSDoc/Doxygen output or a merely-resolving `docs:` URL is
-  a miss. If the docs are generator-produced, theme the generator itself
+  served page**; default-theme JSDoc/Doxygen output, **any stack's default theme with only
+  cosmetic changes (a couple colours + a footer mention)**, or a merely-resolving `docs:` URL
+  is a miss. The coin + reader buttons are present, the subnav is not bare, and the tool's own
+  default chrome (footer/header/sidebar/CSS) is removed, not left alongside. If the docs are
+  generator-produced, theme the generator itself
   ([`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)).
   Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
 - The deploy target matches the project's kind (static → Pages on the shared domain;

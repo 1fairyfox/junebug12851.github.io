@@ -5,6 +5,16 @@ match to fairyfox.io as the stack allows**, with the required two-way links and
 accessibility bar met. Where a check can't be met for a real, documented reason,
 record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-maintaining.md)).
 
+> **The disqualifying anti-pattern — read first.** A stack's **default-theme build** with
+> only cosmetic changes (a couple of accent colours swapped, one "fairyfox.io" mention in the
+> footer) is **NOT compliant, and not "partial" — it's `missing`.** Wearing the shared chrome
+> means the *actual* bundle (header, primary nav, subnav, footer, palette, type, reader + coin
+> buttons) on every page, with the tool's own default chrome removed. Two recoloured variables
+> over a default template is the exact failure this checklist exists to catch. **Actually look
+> at the rendered page** (light, dark, sepia; desktop + mobile) and walk every box below —
+> don't self-certify "done to spec" from a diff. Claiming done without running this is a
+> [checklists-are-contracts](../checklists-are-contracts.md) violation.
+
 ## Tokens & colour
 
 - [ ] Dark theme uses the exact dark palette from [`02-design-tokens.md`](02-design-tokens.md).
@@ -39,12 +49,14 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
 - [ ] The **reader ("Aa") menu** is present in the header with its controls
       (theme / accent / size / spacing / width), saving to the origin-wide
       `fairyfox:reader` key with the normative constants, applied before first paint.
-      **Line spacing + width are story-only** — locked (disabled + "reading a story" note)
-      unless the page carries `data-story` on `<html>`; text size / theme / accent stay
-      live everywhere.
-- [ ] The **coin button** is present in the header (injected by the shared `coins.js`,
-      just left of the "Aa" button), counting to the origin-wide `fairyfox:coins:a` key.
-      Nothing in the project is gated on coins; any project-added coin moments are subtle
+      **Line spacing + width are reading-page only** — locked (disabled + "Enables on reading
+      pages" note) unless the page carries `data-read` (or `data-story`) on `<html>`; text size
+      / theme / accent stay live everywhere. **On a readable page the reader actually reflows
+      the content column** — verify it works, don't just confirm the menu renders.
+- [ ] The **coin button** is present in the header — **MANDATORY**, injected by the shared
+      `coins.js`, just left of the "Aa" button, counting to the origin-wide `fairyfox:coins:a`
+      key. It is **never omitted as "not needed"** (that's a `missing`, not a judgment call).
+      Nothing in the project is gated on coins; any project-*added* coin moments are subtle
       and optional (see [`../coins.md`](../coins.md#verify-is-it-being-followed)).
 - [ ] `:focus-visible` shows the accent outline on every interactive element.
 
@@ -57,6 +69,11 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
       the `main.css`/`reader.js`/`nav.js`/`coins.js` match the master; only `{{FF_*}}` slots +
       `.active` differ; no runtime hot-link to fairyfox.io; the adopted `chrome/VERSION`
       is recorded. Full check: [`12-shared-chrome.md`](12-shared-chrome.md#verify-is-it-being-followed).
+- [ ] **The whole bundle is adopted** (all four HTML parts + `main.css`/`reader.js`/`nav.js`/
+      `coins.js` + fonts on every page) and **none of the tool's own default chrome remains** —
+      no double footer/header, no default sidebar entries, no default stylesheet overriding the
+      chrome's links/type/palette (the tool's CSS was **replaced, not overridden**). A link and
+      a heading render in the chrome's styling, not the tool's defaults.
 - [ ] The **shared header** is present with the **global primary nav** in the fixed
       order **Home · Projects · Farms (Stories · Games) · Docs · Updates · About** (not
       reordered or trimmed per project; Stories + Games under the **Farms** dropdown).
@@ -78,6 +95,11 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
       exists), in the shared pill style, current item `.active`, every centre link a
       chrome-wearing page (no raw GitHub links in the centre)
       ([`05-navigation-and-cross-linking.md`](05-navigation-and-cross-linking.md#the-canonical-project-subnav-structure)).
+      **Not a bare subnav** — a documented, releasing project shows at least Overview · Project
+      Notes (+ section doors) · Changelog · API (most projects) · Legal + the `↗` pair; one or
+      two lonely pills is a `gap`. **Dividers go between the three zones, not every pill.** The
+      centre **`Project Notes` is the on-site notes interface, never a GitHub link** (only the
+      right-hand `Notes ↗` may go to GitHub). If unsure of the markup, copy a sibling's subnav.
 - [ ] A footer linking the project's repo, notes, and the main-site sections.
 - [ ] A breadcrumb/locator near the page top.
 
@@ -106,10 +128,14 @@ the brand/Home way-home — not by brand precedence.
       hand-authored pages leaked in (audit regularly; generators re-add them).
 - [ ] The generator's **own footer is gone** — the shared chrome footer is the only footer
       (no Doxygen/JSDoc generated footer rendering).
-- [ ] If the project renders its `notes/` on the site, it's under a **single `Notes`**
-      subnav item and **fully navigable**: a landing (root intro + section cards), a left
-      sidebar listing **every note** organised by section, the sidebar **excluding the
-      README/overview** and any non-note pages (not scattered across links, none unreachable).
+- [ ] The project's `notes/` are a **fully navigable, polished on-site interface — never an
+      external GitHub link**: under a **single `Notes`** subnav item, a landing that opens with
+      the **root note prose then section cards/buttons**, a **persistent scrolling sidebar**
+      listing **every note by category** with **nested drill-in *and* back-out** navigation, the
+      sidebar **excluding the README/overview** and any non-note pages (not scattered, none
+      unreachable). Individual note pages carry `data-read` and the **reader controls actually
+      reflow the content pane**; the landing/sidebar do not. It **looks designed** (themed cards,
+      readable measure), not a raw link pile.
       See [`06`](06-content-and-organization.md#notes-on-the-site-a-landing--a-sidebar).
 - [ ] **Reader reading-controls follow readability** — readable pages (notes, legal, guides,
       articles) carry `data-read`/`data-story` so line-spacing + width apply; index/list,
@@ -122,6 +148,10 @@ the brand/Home way-home — not by brand precedence.
       page is reachable, comfortably formatted, and its living parts (version, latest
       download, changelog, status) are kept current
       ([`06`](06-content-and-organization.md#page-quality-comfortable-formatted-connected)).
+- [ ] **Legal pages** (Privacy · Terms · Cookies) are self-hosted, accurate to the code, dated,
+      reachable from the **`Legal`** subnav item / primary menu, and linked from the **vendored
+      chrome footer's legal column** (not a hand-built/derailed footer) — full breakdown +
+      maintenance in [`../legal-docs.md`](../legal-docs.md#verify-is-it-being-followed).
 - [ ] Public/website voice; refers to the parent as Fairy Fox / fairyfox.io.
 
 ## Accessibility (WCAG 2.1 AA)

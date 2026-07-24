@@ -3,11 +3,18 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `1.3.0` — **CI service secrets**: a new [`ci-secrets`](../hub/standards/ci-secrets.md)
-standard + the shared [`hub/tools/repo-tokens.ps1`](../hub/tools/repo-tokens.ps1) provisioning
-tool (the "fairyfox repo tokens" trigger), following `1.2.0`'s full supply-chain hardening (CI
-gate + CodeQL + branch protection). Single source of truth: repo-root `VERSION`; see
-[`reference/versioning.md`](reference/versioning.md).
+**Version:** `1.4.0` — **complete-by-default + phase-by-default + web-interface enforcement**:
+an owner directive folded into the standards — the **full 20-badge set required by default in a
+fixed order** (swap the equivalent, never drop; omit only on a recorded **user** exception) and
+**project details complete by default**; **phase-by-default** work (research · planning ·
+implementation) in `planning.md` + the CLAUDE template; and a hardened docs-site web interface
+(coins **mandatory**, whole-bundle chrome + remove the tool's default chrome, a firm subnav
+baseline, a polished on-site **Notes** interface, the **cosmetic-only build = `missing`**
+anti-pattern) plus a broken-down `legal-docs`. Held for owner detail: the `*.github.io` docs-URL
+switch + a replacement contact email ([`plans/2026-07-23-mandate.md`](plans/2026-07-23-mandate.md)).
+Prior: `1.3.0` **CI service secrets** ([`ci-secrets`](../hub/standards/ci-secrets.md) +
+[`hub/tools/repo-tokens.ps1`](../hub/tools/repo-tokens.ps1)). Single source of truth: repo-root
+`VERSION`; see [`reference/versioning.md`](reference/versioning.md).
 
 `1.0.0` was the **first stable release** (Fairy Fox's call; a MAJOR bump is never automatic) —
 the `0.x` "in development" line closed once the site + shared-standards hub matured into a

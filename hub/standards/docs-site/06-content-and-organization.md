@@ -159,24 +159,43 @@ A project with no downloads simply omits it.
 
 ## Notes on the site — a landing + a sidebar {#notes-on-the-site-a-landing--a-sidebar}
 
-Most projects publish their living `notes/` on the site. When they do, it follows one shape,
-reached from the single **Notes** subnav item and **fully navigable**:
+**A project's notes are published as a fully navigable, polished on-site interface — never an
+external GitHub link.** This is one of the most-botched sections, so it's spelled out hard.
+Making the **Project Notes** subnav item point at `github.com/…/tree/main/notes` is a
+**failure**: that raw file tree is not themed, not readable, and dumps the visitor out of the
+site. (The subnav's right-hand `Notes ↗` link may go to GitHub as a *supplement*; the **centre
+Project Notes item must be the on-site interface.**) A disconnected pile of links is equally a
+failure — the whole point is that it's comfortable to read and easy to move around.
 
-- **A landing page = the root note, then section entries.** The Notes landing opens with a short
-  intro (e.g. *"Living documentation for the codebase — start with Status, then explore by
-  section."*) and then a set of **section cards/links** — one per notes section (Status, Session
-  Logs, Changelog, Context, System Map, Reference, Decisions, Plans, Notes System, reports, …),
-  each a comfortable card with a one-line description. Links come **after** the root intro, not
-  as a bare wall (this is the pattern to match).
-- **A left sidebar lists every note**, organised by section, present on every Notes page, so the
-  whole tree is reachable from anywhere inside Notes.
+The shape, reached from the single **Notes** subnav item and **fully navigable**:
+
+- **A landing page = the root note, then jump-off points.** The Notes landing opens with the
+  **root/status note itself** — a short readable intro (e.g. *"Living documentation for the
+  codebase — start with Status, then explore by section."*) — and then, **after that prose**, a
+  set of **section cards/buttons** that jump to each part of the notes (Status, Session Logs,
+  Changelog, Context, System Map, Reference, Decisions, Plans, Notes System, reports, …), each a
+  comfortable card with a one-line description. Root text first, jump-off points after — not a
+  bare wall of links.
+- **A persistent, scrolling sidebar lists every note**, organised **by category**, present on
+  every Notes page, so the whole tree is reachable from anywhere inside Notes. It **scrolls
+  independently** of the content and marks where you are.
+- **Nested categories navigate in *and* back out.** Where notes nest (a section with
+  sub-pages), the sidebar lets you drill **into** a category and **back out** of it — you can
+  always climb back up the tree, never get stranded down a branch. Navigation is real and
+  two-way, not a flat dead-end list.
 - **The sidebar contains notes only.** It must **not** include the project **README / overview**
   — that is what the **Overview** (project-name) subnav item is for — and must not pull in the
   chrome nav/subnav, API pages, or other non-note pages. These **leak** in easily; prune them.
-- **Reader settings follow readability.** An individual **note page is readable** → it carries
-  `data-read` so the reading controls (line spacing + width) apply. The Notes **landing/index and
-  the sidebar are navigation, not reading** → they do **not** carry `data-read`. Same for legal
-  pages: each legal page is readable (`data-read`); a bare link index is not.
+- **Reader settings work, and apply in the content pane.** An individual **note page is
+  readable** → it carries `data-read` so the reading controls (line spacing + width) apply to
+  the **content column**. This is frequently wired wrong or not at all — verify the reader menu
+  actually reflows a note page. The Notes **landing/index and the sidebar are navigation, not
+  reading** → they do **not** carry `data-read`. Same for legal pages: each legal page is
+  readable (`data-read`); a bare link index is not.
+- **It has to look good.** Themed cards, real headings and spacing, a readable measure in the
+  content pane, the shared type and palette — a designed, polished section, not a functional-
+  but-ugly link list. The [page-quality bar](#page-quality-comfortable-formatted-connected)
+  applies in full.
 
 The [reader reading-page gating](05-navigation-and-cross-linking.md) and the
 [no-orphan quality bar](#page-quality-comfortable-formatted-connected) both apply here: notes are
